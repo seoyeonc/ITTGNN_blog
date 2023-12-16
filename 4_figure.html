@@ -70,9 +70,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: [{ data: ['index'] },{ data: ['categories'] }],
+      valueNames: ['listing-date','listing-title','listing-author',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
       
-      searchColumns: [],
+      searchColumns: ["listing-date","listing-title","listing-author"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -228,9 +228,29 @@ ul.task-list li input[type="checkbox"] {
 <table class="quarto-listing-table table">
 <thead>
 <tr>
+<th>
+Date
+</th>
+<th>
+Title
+</th>
+<th>
+Author
+</th>
 </tr>
 </thead>
 <tbody class="list">
+<tr data-index="0" data-listing-date-sort="1689778800000" data-listing-file-modified-sort="1702731703000" data-listing-reading-time-sort="0.095" data-listing-title-sort="Data management Figure for ITSTGCN" data-listing-filename-sort="2023-07-20-ITSTGCN_data_magement_figure.ipynb">
+<td class="listing-date">
+Jul 20, 2023
+</td>
+<td class="listing-title">
+<a href="./posts/3_result/4_figure/2023-07-20-ITSTGCN_data_magement_figure.html" class="title">Data management Figure for ITSTGCN</a>
+</td>
+<td class="listing-author">
+SEOYEON CHOI
+</td>
+</tr>
 </tbody>
 
 </table>
