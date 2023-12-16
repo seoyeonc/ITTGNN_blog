@@ -1,23 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://seoyeonc.github.io/ITTGNN_blog/posts/post-with-code/index.html</loc>
-    <lastmod>2023-12-16T12:19:05.793Z</lastmod>
+    <loc>https://seoyeonc.github.io/ITTGNN_blog/4_figure.html</loc>
+    <lastmod>2023-12-16T12:33:00.669Z</lastmod>
   </url>
   <url>
-    <loc>https://seoyeonc.github.io/ITTGNN_blog/posts/welcome/index.html</loc>
-    <lastmod>2023-12-16T12:19:06.212Z</lastmod>
+    <loc>https://seoyeonc.github.io/ITTGNN_blog/2_research.html</loc>
+    <lastmod>2023-12-16T12:33:01.078Z</lastmod>
+  </url>
+  <url>
+    <loc>https://seoyeonc.github.io/ITTGNN_blog/3_table.html</loc>
+    <lastmod>2023-12-16T12:33:01.460Z</lastmod>
   </url>
   <url>
     <loc>https://seoyeonc.github.io/ITTGNN_blog/index.html</loc>
-    <lastmod>2023-12-16T12:19:06.682Z</lastmod>
+    <lastmod>2023-12-16T12:33:01.869Z</lastmod>
   </url>
   <url>
     <loc>https://seoyeonc.github.io/ITTGNN_blog/about.html</loc>
-    <lastmod>2023-12-16T12:19:07.072Z</lastmod>
+    <lastmod>2023-12-16T12:33:02.258Z</lastmod>
   </url>
   <url>
     <loc>https://seoyeonc.github.io/ITTGNN_blog/1_studies.html</loc>
-    <lastmod>2023-12-16T12:19:07.468Z</lastmod>
+    <lastmod>2023-12-16T12:33:02.640Z</lastmod>
   </url>
 </urlset>
