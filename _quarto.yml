@@ -33,7 +33,7 @@ website:
 format:
   html:
     theme: 
-        light: cosmo
+        light: flatly
     css: styles.css
     toc: true
     code-fold: false
