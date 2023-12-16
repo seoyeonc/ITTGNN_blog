@@ -11,4 +11,20 @@ page-layout: full
 title-block-banner: true
 ---
 
+This blog indicates information of ITTGNN.
 
+---
+
+**Some links related ITTGNN**
+
+::: {.panel-tabset} 
+
+## Pytorch
+
+- **Pytorch Geometric Temporal**: <https://pytorch-geometric-temporal.readthedocs.io/en/latest/index.html>
+
+## Deep learning Architectures
+
+- **GNAR**: <https://arxiv.org/pdf/1912.04758.pdf> 
+
+:::

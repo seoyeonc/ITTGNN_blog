@@ -1,7 +1,7 @@
 ---
 title: "**Table**"
 listing:
-  contents: posts/Result/3_table
+  contents: posts/3_result/3_table
   sort: "date desc"
   type: table
   categories: false
