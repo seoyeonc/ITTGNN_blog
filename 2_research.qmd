@@ -1,0 +1,13 @@
+---
+title: "**Research**"
+listing:
+  contents: posts/2_research
+  sort: "date desc"
+  type: table
+  categories: false
+  sort-ui: false
+  filter-ui: false
+  page-size: 9999
+page-layout: full
+title-block-banner: false
+---
