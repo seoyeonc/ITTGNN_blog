@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.269">
+<meta name="generator" content="quarto-1.4.527">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -19,11 +19,12 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -48,47 +49,17 @@ pre.numberSource code > span > a:first-child::before
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
     padding: 0 4px; width: 4em;
-    color: #aaaaaa;
   }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
 div.sourceCode
   {   }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -110,7 +81,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -119,61 +96,97 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../../styles.css">
 </head>
 
 <body class="nav-sidebar docked nav-fixed">
 
-
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">ITTGNN_blog</span>
     </a>
   </div>
+            <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="https://seoyeonc.github.io/sy_hub/">
- <span class="menu-text">Main_Blog</span></a>
+    <a class="nav-link" href="https://seoyeonc.github.io/sy_hub/"> 
+<span class="menu-text">Main_Blog</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../about.html">
- <span class="menu-text">About</span></a>
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/seoyeonc"><i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/seoyeonc"> <i class="bi bi-github" role="img">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
 </ul>
-              <div id="quarto-search" class="" title="Search"></div>
           </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
       </div> <!-- /container-fluid -->
     </nav>
-  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-    <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">Batch</h1>
-      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
-        <i class="bi bi-chevron-right"></i>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Batch</li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
       </button>
     </div>
   </nav>
@@ -182,7 +195,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title d-none d-lg-block">Batch</h1>
+      <h1 class="title">Batch</h1>
                       </div>
   </div>
     
@@ -209,50 +222,56 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
-      <div class="mt-2 flex-shrink-0 align-items-center">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+        <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
         </div>
-      </div>
+        </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../1_studies.html" class="sidebar-item-text sidebar-link"><strong>Studies</strong></a>
+  <a href="../../1_studies.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><strong>Studies</strong></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true"><strong>Research</strong></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text"><strong>Research</strong></span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../2_research.html" class="sidebar-item-text sidebar-link"><strong>Research</strong></a>
+  <a href="../../2_research.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><strong>Research</strong></span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true"><strong>Result</strong></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text"><strong>Result</strong></span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../3_table.html" class="sidebar-item-text sidebar-link"><strong>Table</strong></a>
+  <a href="../../3_table.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><strong>Table</strong></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../4_figure.html" class="sidebar-item-text sidebar-link"><strong>Figure</strong></a>
+  <a href="../../3_figure.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><strong>Figure</strong></span></a>
   </div>
 </li>
       </ul>
@@ -260,6 +279,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </ul>
     </div>
 </nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -280,7 +300,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 
-<div class="cell" data-execution_count="1">
+
+<div id="5250995b-b0e8-4db7-b48f-db46f0691137" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> itstgcn_batch</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> itstgcn_batch.planner </span>
@@ -293,10 +314,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   from .autonotebook import tqdm as notebook_tqdm</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="2">
+<div id="86429b92-9d86-42ad-8a55-626360bf96bf" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>loader6 <span class="op">=</span> itstgcn_batch.load_data(<span class="st">'./data/Windmillsmall.pkl'</span>)</span></code></pre></div>
 </div>
-<div class="cell" data-execution_count="5">
+<div id="ca86c4e4-cfb2-4e1b-966f-e049400234a3" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>plans_stgcn_rand <span class="op">=</span> {</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">'max_iteration'</span>: <span class="dv">30</span>, </span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'method'</span>: [<span class="st">'STGCN'</span>, <span class="st">'IT-STGCN'</span>],</span>
@@ -308,207 +329,209 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">'epoch'</span>: [<span class="dv">5</span>]</span>
 <span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 </div>
-<div class="cell">
+<div id="909b3649-b86d-43f2-8cb7-7009b994550a" class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>plnr <span class="op">=</span> itstgcn_batch.planner.PLNR_STGCN_RAND(plans_stgcn_rand,loader6,dataset_name<span class="op">=</span><span class="st">'0829tstwindmillsmall'</span>)</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>plnr.simulate()</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>epoch=2  loss=17.999483498264125241088867       1/1</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="14">
+<div id="954b67c8-4305-4445-b6e5-8faa9a8179f5" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>pd.read_csv(<span class="st">'./simulation_results/2023-08-27_13-29-25.csv'</span>) <span class="co"># STGCN IT-STGCN</span></span></code></pre></div>
 </div>
-<div class="cell" data-execution_count="21">
+<div id="c6080b67-3064-4e8b-bfc0-eeb177b33af7" class="cell" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>data.query(<span class="st">"dataset=='windmillsmall' and mtype=='rand' and mrate==0.7 and method == 'STGCN'"</span>).sort_values(<span class="st">'mse'</span>)[:<span class="dv">5</span>]</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="21">
-
 <div>
 
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>dataset</th>
-      <th>method</th>
-      <th>mrate</th>
-      <th>mtype</th>
-      <th>lags</th>
-      <th>nof_filters</th>
-      <th>inter_method</th>
-      <th>epoch</th>
-      <th>mse</th>
-      <th>calculation_time</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>20</th>
-      <td>windmillsmall</td>
-      <td>STGCN</td>
-      <td>0.7</td>
-      <td>rand</td>
-      <td>8</td>
-      <td>12</td>
-      <td>linear</td>
-      <td>50</td>
-      <td>1.491985</td>
-      <td>4189.720611</td>
-    </tr>
-    <tr>
-      <th>24</th>
-      <td>windmillsmall</td>
-      <td>STGCN</td>
-      <td>0.7</td>
-      <td>rand</td>
-      <td>8</td>
-      <td>12</td>
-      <td>linear</td>
-      <td>50</td>
-      <td>1.526696</td>
-      <td>4184.767751</td>
-    </tr>
-    <tr>
-      <th>96</th>
-      <td>windmillsmall</td>
-      <td>STGCN</td>
-      <td>0.7</td>
-      <td>rand</td>
-      <td>8</td>
-      <td>12</td>
-      <td>linear</td>
-      <td>50</td>
-      <td>1.548946</td>
-      <td>4182.209651</td>
-    </tr>
-    <tr>
-      <th>82</th>
-      <td>windmillsmall</td>
-      <td>STGCN</td>
-      <td>0.7</td>
-      <td>rand</td>
-      <td>8</td>
-      <td>12</td>
-      <td>linear</td>
-      <td>50</td>
-      <td>1.574623</td>
-      <td>3112.238717</td>
-    </tr>
-    <tr>
-      <th>108</th>
-      <td>windmillsmall</td>
-      <td>STGCN</td>
-      <td>0.7</td>
-      <td>rand</td>
-      <td>8</td>
-      <td>12</td>
-      <td>linear</td>
-      <td>50</td>
-      <td>1.577491</td>
-      <td>4354.155174</td>
-    </tr>
-  </tbody>
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">dataset</th>
+<th data-quarto-table-cell-role="th">method</th>
+<th data-quarto-table-cell-role="th">mrate</th>
+<th data-quarto-table-cell-role="th">mtype</th>
+<th data-quarto-table-cell-role="th">lags</th>
+<th data-quarto-table-cell-role="th">nof_filters</th>
+<th data-quarto-table-cell-role="th">inter_method</th>
+<th data-quarto-table-cell-role="th">epoch</th>
+<th data-quarto-table-cell-role="th">mse</th>
+<th data-quarto-table-cell-role="th">calculation_time</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">20</td>
+<td>windmillsmall</td>
+<td>STGCN</td>
+<td>0.7</td>
+<td>rand</td>
+<td>8</td>
+<td>12</td>
+<td>linear</td>
+<td>50</td>
+<td>1.491985</td>
+<td>4189.720611</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">24</td>
+<td>windmillsmall</td>
+<td>STGCN</td>
+<td>0.7</td>
+<td>rand</td>
+<td>8</td>
+<td>12</td>
+<td>linear</td>
+<td>50</td>
+<td>1.526696</td>
+<td>4184.767751</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">96</td>
+<td>windmillsmall</td>
+<td>STGCN</td>
+<td>0.7</td>
+<td>rand</td>
+<td>8</td>
+<td>12</td>
+<td>linear</td>
+<td>50</td>
+<td>1.548946</td>
+<td>4182.209651</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">82</td>
+<td>windmillsmall</td>
+<td>STGCN</td>
+<td>0.7</td>
+<td>rand</td>
+<td>8</td>
+<td>12</td>
+<td>linear</td>
+<td>50</td>
+<td>1.574623</td>
+<td>3112.238717</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">108</td>
+<td>windmillsmall</td>
+<td>STGCN</td>
+<td>0.7</td>
+<td>rand</td>
+<td>8</td>
+<td>12</td>
+<td>linear</td>
+<td>50</td>
+<td>1.577491</td>
+<td>4354.155174</td>
+</tr>
+</tbody>
 </table>
+
 </div>
 </div>
 </div>
-<div class="cell" data-execution_count="22">
+<div id="61fe829e-aba4-44bf-8a79-0e740d297c4a" class="cell" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>data.query(<span class="st">"dataset=='windmillsmall' and mtype=='rand' and mrate==0.7 and method != 'STGCN'"</span>).sort_values(<span class="st">'mse'</span>)[:<span class="dv">5</span>]</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="22">
-
 <div>
 
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>dataset</th>
-      <th>method</th>
-      <th>mrate</th>
-      <th>mtype</th>
-      <th>lags</th>
-      <th>nof_filters</th>
-      <th>inter_method</th>
-      <th>epoch</th>
-      <th>mse</th>
-      <th>calculation_time</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>35</th>
-      <td>windmillsmall</td>
-      <td>IT-STGCN</td>
-      <td>0.7</td>
-      <td>rand</td>
-      <td>8</td>
-      <td>12</td>
-      <td>linear</td>
-      <td>50</td>
-      <td>1.118357</td>
-      <td>25106.537400</td>
-    </tr>
-    <tr>
-      <th>13</th>
-      <td>windmillsmall</td>
-      <td>IT-STGCN</td>
-      <td>0.7</td>
-      <td>rand</td>
-      <td>8</td>
-      <td>12</td>
-      <td>linear</td>
-      <td>50</td>
-      <td>1.133768</td>
-      <td>33006.879024</td>
-    </tr>
-    <tr>
-      <th>109</th>
-      <td>windmillsmall</td>
-      <td>IT-STGCN</td>
-      <td>0.7</td>
-      <td>rand</td>
-      <td>8</td>
-      <td>12</td>
-      <td>linear</td>
-      <td>50</td>
-      <td>1.134867</td>
-      <td>43213.207462</td>
-    </tr>
-    <tr>
-      <th>105</th>
-      <td>windmillsmall</td>
-      <td>IT-STGCN</td>
-      <td>0.7</td>
-      <td>rand</td>
-      <td>8</td>
-      <td>12</td>
-      <td>linear</td>
-      <td>50</td>
-      <td>1.148162</td>
-      <td>39068.090318</td>
-    </tr>
-    <tr>
-      <th>91</th>
-      <td>windmillsmall</td>
-      <td>IT-STGCN</td>
-      <td>0.7</td>
-      <td>rand</td>
-      <td>8</td>
-      <td>12</td>
-      <td>linear</td>
-      <td>50</td>
-      <td>1.155443</td>
-      <td>37083.352598</td>
-    </tr>
-  </tbody>
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">dataset</th>
+<th data-quarto-table-cell-role="th">method</th>
+<th data-quarto-table-cell-role="th">mrate</th>
+<th data-quarto-table-cell-role="th">mtype</th>
+<th data-quarto-table-cell-role="th">lags</th>
+<th data-quarto-table-cell-role="th">nof_filters</th>
+<th data-quarto-table-cell-role="th">inter_method</th>
+<th data-quarto-table-cell-role="th">epoch</th>
+<th data-quarto-table-cell-role="th">mse</th>
+<th data-quarto-table-cell-role="th">calculation_time</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">35</td>
+<td>windmillsmall</td>
+<td>IT-STGCN</td>
+<td>0.7</td>
+<td>rand</td>
+<td>8</td>
+<td>12</td>
+<td>linear</td>
+<td>50</td>
+<td>1.118357</td>
+<td>25106.537400</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">13</td>
+<td>windmillsmall</td>
+<td>IT-STGCN</td>
+<td>0.7</td>
+<td>rand</td>
+<td>8</td>
+<td>12</td>
+<td>linear</td>
+<td>50</td>
+<td>1.133768</td>
+<td>33006.879024</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">109</td>
+<td>windmillsmall</td>
+<td>IT-STGCN</td>
+<td>0.7</td>
+<td>rand</td>
+<td>8</td>
+<td>12</td>
+<td>linear</td>
+<td>50</td>
+<td>1.134867</td>
+<td>43213.207462</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">105</td>
+<td>windmillsmall</td>
+<td>IT-STGCN</td>
+<td>0.7</td>
+<td>rand</td>
+<td>8</td>
+<td>12</td>
+<td>linear</td>
+<td>50</td>
+<td>1.148162</td>
+<td>39068.090318</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">91</td>
+<td>windmillsmall</td>
+<td>IT-STGCN</td>
+<td>0.7</td>
+<td>rand</td>
+<td>8</td>
+<td>12</td>
+<td>linear</td>
+<td>50</td>
+<td>1.155443</td>
+<td>37083.352598</td>
+</tr>
+</tbody>
 </table>
+
 </div>
 </div>
 </div>
-<div class="cell" data-execution_count="3">
+<div id="d2734472-5b55-4479-8f89-2580fe4a48b6" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>data_dict <span class="op">=</span> itstgcn_batch.load_data(<span class="st">'./data/fivenodes.pkl'</span>)</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>loader <span class="op">=</span> itstgcn_batch.DatasetLoader(data_dict)</span></code></pre></div>
 </div>
-<div class="cell" data-execution_count="51">
+<div id="fd822e9a-2cae-434e-9f96-f596357d0200" class="cell" data-execution_count="51">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>plans_stgcn_rand <span class="op">=</span> {</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">'max_iteration'</span>: <span class="dv">1</span>, </span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'method'</span>: [<span class="st">'STGCN'</span>, <span class="st">'IT-STGCN'</span>],</span>
@@ -520,7 +543,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">'epoch'</span>: [<span class="dv">5</span>]</span>
 <span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 </div>
-<div class="cell" data-execution_count="52">
+<div id="4152f33c-47c2-4235-907e-e2ea70e783f8" class="cell" data-execution_count="52">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>plnr <span class="op">=</span> itstgcn_batch.planner.PLNR_STGCN_RAND(plans_stgcn_rand,loader,dataset_name<span class="op">=</span><span class="st">'0829fivenodes'</span>)</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>plnr.simulate()</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -530,467 +553,475 @@ epoch=6  loss=0.85238128900527950052795 1/52/53/54/55/5
 All results are stored in ./simulation_results/2023-09-01_17-11-14.csv</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="50">
+<div id="83977e78-8c40-427e-bad6-8b13e226e6d9" class="cell" data-execution_count="50">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>pd.read_csv(<span class="st">'./simulation_results/2023-09-01_17-09-10.csv'</span>) <span class="co"># STGCN IT-STGCN</span></span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="50">
-
 <div>
 
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>dataset</th>
-      <th>method</th>
-      <th>mrate</th>
-      <th>mtype</th>
-      <th>lags</th>
-      <th>nof_filters</th>
-      <th>batch_size</th>
-      <th>inter_method</th>
-      <th>epoch</th>
-      <th>mse</th>
-      <th>calculation_time</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>0829fivenodes</td>
-      <td>STGCN</td>
-      <td>0.7</td>
-      <td>rand</td>
-      <td>8</td>
-      <td>12</td>
-      <td>16</td>
-      <td>linear</td>
-      <td>2</td>
-      <td>1.252692</td>
-      <td>2.234628</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>0829fivenodes</td>
-      <td>IT-STGCN</td>
-      <td>0.7</td>
-      <td>rand</td>
-      <td>8</td>
-      <td>12</td>
-      <td>16</td>
-      <td>linear</td>
-      <td>2</td>
-      <td>1.639029</td>
-      <td>20.325224</td>
-    </tr>
-  </tbody>
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">dataset</th>
+<th data-quarto-table-cell-role="th">method</th>
+<th data-quarto-table-cell-role="th">mrate</th>
+<th data-quarto-table-cell-role="th">mtype</th>
+<th data-quarto-table-cell-role="th">lags</th>
+<th data-quarto-table-cell-role="th">nof_filters</th>
+<th data-quarto-table-cell-role="th">batch_size</th>
+<th data-quarto-table-cell-role="th">inter_method</th>
+<th data-quarto-table-cell-role="th">epoch</th>
+<th data-quarto-table-cell-role="th">mse</th>
+<th data-quarto-table-cell-role="th">calculation_time</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>0829fivenodes</td>
+<td>STGCN</td>
+<td>0.7</td>
+<td>rand</td>
+<td>8</td>
+<td>12</td>
+<td>16</td>
+<td>linear</td>
+<td>2</td>
+<td>1.252692</td>
+<td>2.234628</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>0829fivenodes</td>
+<td>IT-STGCN</td>
+<td>0.7</td>
+<td>rand</td>
+<td>8</td>
+<td>12</td>
+<td>16</td>
+<td>linear</td>
+<td>2</td>
+<td>1.639029</td>
+<td>20.325224</td>
+</tr>
+</tbody>
 </table>
+
 </div>
 </div>
 </div>
-<div class="cell" data-execution_count="18">
+<div id="3e92ceae-8a23-4035-9106-87ff454cac0a" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>pd.read_csv(<span class="st">'./simulation_results/2023-08-29_18-04-15.csv'</span>) <span class="co"># STGCN IT-STGCN</span></span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="18">
-
 <div>
 
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>dataset</th>
-      <th>method</th>
-      <th>mrate</th>
-      <th>mtype</th>
-      <th>lags</th>
-      <th>nof_filters</th>
-      <th>batch_size</th>
-      <th>inter_method</th>
-      <th>epoch</th>
-      <th>mse</th>
-      <th>calculation_time</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>0829fivenodes</td>
-      <td>STGCN</td>
-      <td>0.7</td>
-      <td>rand</td>
-      <td>8</td>
-      <td>12</td>
-      <td>64</td>
-      <td>linear</td>
-      <td>50</td>
-      <td>1.515168</td>
-      <td>36.609239</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>0829fivenodes</td>
-      <td>IT-STGCN</td>
-      <td>0.7</td>
-      <td>rand</td>
-      <td>8</td>
-      <td>12</td>
-      <td>64</td>
-      <td>linear</td>
-      <td>50</td>
-      <td>1.485295</td>
-      <td>135.137178</td>
-    </tr>
-  </tbody>
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">dataset</th>
+<th data-quarto-table-cell-role="th">method</th>
+<th data-quarto-table-cell-role="th">mrate</th>
+<th data-quarto-table-cell-role="th">mtype</th>
+<th data-quarto-table-cell-role="th">lags</th>
+<th data-quarto-table-cell-role="th">nof_filters</th>
+<th data-quarto-table-cell-role="th">batch_size</th>
+<th data-quarto-table-cell-role="th">inter_method</th>
+<th data-quarto-table-cell-role="th">epoch</th>
+<th data-quarto-table-cell-role="th">mse</th>
+<th data-quarto-table-cell-role="th">calculation_time</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>0829fivenodes</td>
+<td>STGCN</td>
+<td>0.7</td>
+<td>rand</td>
+<td>8</td>
+<td>12</td>
+<td>64</td>
+<td>linear</td>
+<td>50</td>
+<td>1.515168</td>
+<td>36.609239</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>0829fivenodes</td>
+<td>IT-STGCN</td>
+<td>0.7</td>
+<td>rand</td>
+<td>8</td>
+<td>12</td>
+<td>64</td>
+<td>linear</td>
+<td>50</td>
+<td>1.485295</td>
+<td>135.137178</td>
+</tr>
+</tbody>
 </table>
+
 </div>
 </div>
 </div>
-<div class="cell" data-execution_count="15">
+<div id="2159318b-d7aa-4510-b1fd-3c77a8bffb33" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>pd.read_csv(<span class="st">'./simulation_results/2023-08-29_18-00-15.csv'</span>) <span class="co"># STGCN IT-STGCN</span></span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="15">
-
 <div>
 
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>dataset</th>
-      <th>method</th>
-      <th>mrate</th>
-      <th>mtype</th>
-      <th>lags</th>
-      <th>nof_filters</th>
-      <th>batch_size</th>
-      <th>inter_method</th>
-      <th>epoch</th>
-      <th>mse</th>
-      <th>calculation_time</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>0829fivenodes</td>
-      <td>STGCN</td>
-      <td>0.7</td>
-      <td>rand</td>
-      <td>8</td>
-      <td>12</td>
-      <td>32</td>
-      <td>linear</td>
-      <td>50</td>
-      <td>1.869130</td>
-      <td>61.931024</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>0829fivenodes</td>
-      <td>IT-STGCN</td>
-      <td>0.7</td>
-      <td>rand</td>
-      <td>8</td>
-      <td>12</td>
-      <td>32</td>
-      <td>linear</td>
-      <td>50</td>
-      <td>1.320484</td>
-      <td>239.835408</td>
-    </tr>
-  </tbody>
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">dataset</th>
+<th data-quarto-table-cell-role="th">method</th>
+<th data-quarto-table-cell-role="th">mrate</th>
+<th data-quarto-table-cell-role="th">mtype</th>
+<th data-quarto-table-cell-role="th">lags</th>
+<th data-quarto-table-cell-role="th">nof_filters</th>
+<th data-quarto-table-cell-role="th">batch_size</th>
+<th data-quarto-table-cell-role="th">inter_method</th>
+<th data-quarto-table-cell-role="th">epoch</th>
+<th data-quarto-table-cell-role="th">mse</th>
+<th data-quarto-table-cell-role="th">calculation_time</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>0829fivenodes</td>
+<td>STGCN</td>
+<td>0.7</td>
+<td>rand</td>
+<td>8</td>
+<td>12</td>
+<td>32</td>
+<td>linear</td>
+<td>50</td>
+<td>1.869130</td>
+<td>61.931024</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>0829fivenodes</td>
+<td>IT-STGCN</td>
+<td>0.7</td>
+<td>rand</td>
+<td>8</td>
+<td>12</td>
+<td>32</td>
+<td>linear</td>
+<td>50</td>
+<td>1.320484</td>
+<td>239.835408</td>
+</tr>
+</tbody>
 </table>
+
 </div>
 </div>
 </div>
-<div class="cell" data-execution_count="21">
+<div id="84ec846d-3280-40e5-a137-4d38efeb91fa" class="cell" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>pd.read_csv(<span class="st">'./simulation_results/2023-08-29_18-07-28.csv'</span>) <span class="co"># STGCN IT-STGCN</span></span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="21">
-
 <div>
 
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>dataset</th>
-      <th>method</th>
-      <th>mrate</th>
-      <th>mtype</th>
-      <th>lags</th>
-      <th>nof_filters</th>
-      <th>batch_size</th>
-      <th>inter_method</th>
-      <th>epoch</th>
-      <th>mse</th>
-      <th>calculation_time</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>0829fivenodes</td>
-      <td>STGCN</td>
-      <td>0.7</td>
-      <td>rand</td>
-      <td>8</td>
-      <td>12</td>
-      <td>64</td>
-      <td>linear</td>
-      <td>30</td>
-      <td>1.354607</td>
-      <td>32.734412</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>0829fivenodes</td>
-      <td>IT-STGCN</td>
-      <td>0.7</td>
-      <td>rand</td>
-      <td>8</td>
-      <td>12</td>
-      <td>64</td>
-      <td>linear</td>
-      <td>30</td>
-      <td>1.372238</td>
-      <td>88.575825</td>
-    </tr>
-  </tbody>
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">dataset</th>
+<th data-quarto-table-cell-role="th">method</th>
+<th data-quarto-table-cell-role="th">mrate</th>
+<th data-quarto-table-cell-role="th">mtype</th>
+<th data-quarto-table-cell-role="th">lags</th>
+<th data-quarto-table-cell-role="th">nof_filters</th>
+<th data-quarto-table-cell-role="th">batch_size</th>
+<th data-quarto-table-cell-role="th">inter_method</th>
+<th data-quarto-table-cell-role="th">epoch</th>
+<th data-quarto-table-cell-role="th">mse</th>
+<th data-quarto-table-cell-role="th">calculation_time</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>0829fivenodes</td>
+<td>STGCN</td>
+<td>0.7</td>
+<td>rand</td>
+<td>8</td>
+<td>12</td>
+<td>64</td>
+<td>linear</td>
+<td>30</td>
+<td>1.354607</td>
+<td>32.734412</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>0829fivenodes</td>
+<td>IT-STGCN</td>
+<td>0.7</td>
+<td>rand</td>
+<td>8</td>
+<td>12</td>
+<td>64</td>
+<td>linear</td>
+<td>30</td>
+<td>1.372238</td>
+<td>88.575825</td>
+</tr>
+</tbody>
 </table>
+
 </div>
 </div>
 </div>
-<div class="cell" data-execution_count="24">
+<div id="456b1c80-b8a3-4560-a4d7-98474b659f80" class="cell" data-execution_count="24">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>pd.read_csv(<span class="st">'./simulation_results/2023-08-29_18-13-12.csv'</span>) <span class="co"># STGCN IT-STGCN</span></span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="24">
-
 <div>
 
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>dataset</th>
-      <th>method</th>
-      <th>mrate</th>
-      <th>mtype</th>
-      <th>lags</th>
-      <th>nof_filters</th>
-      <th>batch_size</th>
-      <th>inter_method</th>
-      <th>epoch</th>
-      <th>mse</th>
-      <th>calculation_time</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>0829fivenodes</td>
-      <td>STGCN</td>
-      <td>0.7</td>
-      <td>rand</td>
-      <td>8</td>
-      <td>12</td>
-      <td>16</td>
-      <td>linear</td>
-      <td>30</td>
-      <td>1.595359</td>
-      <td>30.866718</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>0829fivenodes</td>
-      <td>IT-STGCN</td>
-      <td>0.7</td>
-      <td>rand</td>
-      <td>8</td>
-      <td>12</td>
-      <td>16</td>
-      <td>linear</td>
-      <td>30</td>
-      <td>1.214464</td>
-      <td>261.216966</td>
-    </tr>
-  </tbody>
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">dataset</th>
+<th data-quarto-table-cell-role="th">method</th>
+<th data-quarto-table-cell-role="th">mrate</th>
+<th data-quarto-table-cell-role="th">mtype</th>
+<th data-quarto-table-cell-role="th">lags</th>
+<th data-quarto-table-cell-role="th">nof_filters</th>
+<th data-quarto-table-cell-role="th">batch_size</th>
+<th data-quarto-table-cell-role="th">inter_method</th>
+<th data-quarto-table-cell-role="th">epoch</th>
+<th data-quarto-table-cell-role="th">mse</th>
+<th data-quarto-table-cell-role="th">calculation_time</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>0829fivenodes</td>
+<td>STGCN</td>
+<td>0.7</td>
+<td>rand</td>
+<td>8</td>
+<td>12</td>
+<td>16</td>
+<td>linear</td>
+<td>30</td>
+<td>1.595359</td>
+<td>30.866718</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>0829fivenodes</td>
+<td>IT-STGCN</td>
+<td>0.7</td>
+<td>rand</td>
+<td>8</td>
+<td>12</td>
+<td>16</td>
+<td>linear</td>
+<td>30</td>
+<td>1.214464</td>
+<td>261.216966</td>
+</tr>
+</tbody>
 </table>
+
 </div>
 </div>
 </div>
-<div class="cell" data-execution_count="12">
+<div id="87216ac2-eced-4014-8099-66b063dee207" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>pd.read_csv(<span class="st">'./simulation_results/2023-08-29_17-47-21.csv'</span>) <span class="co"># STGCN IT-STGCN</span></span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="12">
-
 <div>
 
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>dataset</th>
-      <th>method</th>
-      <th>mrate</th>
-      <th>mtype</th>
-      <th>lags</th>
-      <th>nof_filters</th>
-      <th>batch_size</th>
-      <th>inter_method</th>
-      <th>epoch</th>
-      <th>mse</th>
-      <th>calculation_time</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>0829fivenodes</td>
-      <td>STGCN</td>
-      <td>0.7</td>
-      <td>rand</td>
-      <td>8</td>
-      <td>12</td>
-      <td>32</td>
-      <td>linear</td>
-      <td>20</td>
-      <td>1.432889</td>
-      <td>14.750201</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>0829fivenodes</td>
-      <td>IT-STGCN</td>
-      <td>0.7</td>
-      <td>rand</td>
-      <td>8</td>
-      <td>12</td>
-      <td>32</td>
-      <td>linear</td>
-      <td>20</td>
-      <td>1.285243</td>
-      <td>95.778697</td>
-    </tr>
-  </tbody>
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">dataset</th>
+<th data-quarto-table-cell-role="th">method</th>
+<th data-quarto-table-cell-role="th">mrate</th>
+<th data-quarto-table-cell-role="th">mtype</th>
+<th data-quarto-table-cell-role="th">lags</th>
+<th data-quarto-table-cell-role="th">nof_filters</th>
+<th data-quarto-table-cell-role="th">batch_size</th>
+<th data-quarto-table-cell-role="th">inter_method</th>
+<th data-quarto-table-cell-role="th">epoch</th>
+<th data-quarto-table-cell-role="th">mse</th>
+<th data-quarto-table-cell-role="th">calculation_time</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>0829fivenodes</td>
+<td>STGCN</td>
+<td>0.7</td>
+<td>rand</td>
+<td>8</td>
+<td>12</td>
+<td>32</td>
+<td>linear</td>
+<td>20</td>
+<td>1.432889</td>
+<td>14.750201</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>0829fivenodes</td>
+<td>IT-STGCN</td>
+<td>0.7</td>
+<td>rand</td>
+<td>8</td>
+<td>12</td>
+<td>32</td>
+<td>linear</td>
+<td>20</td>
+<td>1.285243</td>
+<td>95.778697</td>
+</tr>
+</tbody>
 </table>
+
 </div>
 </div>
 </div>
-<div class="cell" data-execution_count="11">
+<div id="777ede12-2d8d-473f-b632-249e51bb8205" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>pd.read_csv(<span class="st">'./simulation_results/2023-08-29_17-45-17.csv'</span>) <span class="co"># STGCN IT-STGCN</span></span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="11">
-
 <div>
 
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>dataset</th>
-      <th>method</th>
-      <th>mrate</th>
-      <th>mtype</th>
-      <th>lags</th>
-      <th>nof_filters</th>
-      <th>batch_size</th>
-      <th>inter_method</th>
-      <th>epoch</th>
-      <th>mse</th>
-      <th>calculation_time</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>0829fivenodes</td>
-      <td>STGCN</td>
-      <td>0.7</td>
-      <td>rand</td>
-      <td>8</td>
-      <td>12</td>
-      <td>32</td>
-      <td>linear</td>
-      <td>10</td>
-      <td>1.290018</td>
-      <td>10.178871</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>0829fivenodes</td>
-      <td>IT-STGCN</td>
-      <td>0.7</td>
-      <td>rand</td>
-      <td>8</td>
-      <td>12</td>
-      <td>32</td>
-      <td>linear</td>
-      <td>10</td>
-      <td>1.299491</td>
-      <td>47.223043</td>
-    </tr>
-  </tbody>
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">dataset</th>
+<th data-quarto-table-cell-role="th">method</th>
+<th data-quarto-table-cell-role="th">mrate</th>
+<th data-quarto-table-cell-role="th">mtype</th>
+<th data-quarto-table-cell-role="th">lags</th>
+<th data-quarto-table-cell-role="th">nof_filters</th>
+<th data-quarto-table-cell-role="th">batch_size</th>
+<th data-quarto-table-cell-role="th">inter_method</th>
+<th data-quarto-table-cell-role="th">epoch</th>
+<th data-quarto-table-cell-role="th">mse</th>
+<th data-quarto-table-cell-role="th">calculation_time</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>0829fivenodes</td>
+<td>STGCN</td>
+<td>0.7</td>
+<td>rand</td>
+<td>8</td>
+<td>12</td>
+<td>32</td>
+<td>linear</td>
+<td>10</td>
+<td>1.290018</td>
+<td>10.178871</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>0829fivenodes</td>
+<td>IT-STGCN</td>
+<td>0.7</td>
+<td>rand</td>
+<td>8</td>
+<td>12</td>
+<td>32</td>
+<td>linear</td>
+<td>10</td>
+<td>1.299491</td>
+<td>47.223043</td>
+</tr>
+</tbody>
 </table>
+
 </div>
 </div>
 </div>
-<div class="cell" data-execution_count="6">
+<div id="50fd50e6-185c-4581-916e-8d3d04308b1c" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>pd.read_csv(<span class="st">'./simulation_results/2023-08-29_17-41-40.csv'</span>) <span class="co"># STGCN IT-STGCN</span></span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
-
 <div>
 
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>dataset</th>
-      <th>method</th>
-      <th>mrate</th>
-      <th>mtype</th>
-      <th>lags</th>
-      <th>nof_filters</th>
-      <th>batch_size</th>
-      <th>inter_method</th>
-      <th>epoch</th>
-      <th>mse</th>
-      <th>calculation_time</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>0829fivenodes</td>
-      <td>STGCN</td>
-      <td>0.7</td>
-      <td>rand</td>
-      <td>8</td>
-      <td>12</td>
-      <td>16</td>
-      <td>linear</td>
-      <td>10</td>
-      <td>1.428137</td>
-      <td>10.698743</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>0829fivenodes</td>
-      <td>IT-STGCN</td>
-      <td>0.7</td>
-      <td>rand</td>
-      <td>8</td>
-      <td>12</td>
-      <td>16</td>
-      <td>linear</td>
-      <td>10</td>
-      <td>1.553111</td>
-      <td>97.193523</td>
-    </tr>
-  </tbody>
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">dataset</th>
+<th data-quarto-table-cell-role="th">method</th>
+<th data-quarto-table-cell-role="th">mrate</th>
+<th data-quarto-table-cell-role="th">mtype</th>
+<th data-quarto-table-cell-role="th">lags</th>
+<th data-quarto-table-cell-role="th">nof_filters</th>
+<th data-quarto-table-cell-role="th">batch_size</th>
+<th data-quarto-table-cell-role="th">inter_method</th>
+<th data-quarto-table-cell-role="th">epoch</th>
+<th data-quarto-table-cell-role="th">mse</th>
+<th data-quarto-table-cell-role="th">calculation_time</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>0829fivenodes</td>
+<td>STGCN</td>
+<td>0.7</td>
+<td>rand</td>
+<td>8</td>
+<td>12</td>
+<td>16</td>
+<td>linear</td>
+<td>10</td>
+<td>1.428137</td>
+<td>10.698743</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>0829fivenodes</td>
+<td>IT-STGCN</td>
+<td>0.7</td>
+<td>rand</td>
+<td>8</td>
+<td>12</td>
+<td>16</td>
+<td>linear</td>
+<td>10</td>
+<td>1.553111</td>
+<td>97.193523</td>
+</tr>
+</tbody>
 </table>
+
 </div>
 </div>
 </div>
-<div class="cell" data-execution_count="32">
+<div id="c8fb2d2a-9592-4172-a475-e36af9a19a1d" class="cell" data-execution_count="32">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> torch_geometric_temporal.dataset <span class="im">import</span> ChickenpoxDatasetLoader</span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>loader1 <span class="op">=</span> ChickenpoxDatasetLoader()</span></code></pre></div>
 </div>
-<div class="cell" data-execution_count="39">
+<div id="ef7dd47d-f59e-4c8b-8e19-f1f3389eb7e2" class="cell" data-execution_count="39">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>plans_stgcn_rand <span class="op">=</span> {</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">'max_iteration'</span>: <span class="dv">1</span>, </span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'method'</span>: [<span class="st">'STGCN'</span>, <span class="st">'IT-STGCN'</span>],</span>
@@ -1002,7 +1033,7 @@ All results are stored in ./simulation_results/2023-09-01_17-11-14.csv</code></p
 <span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">'epoch'</span>: [<span class="dv">50</span>]</span>
 <span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 </div>
-<div class="cell">
+<div id="1f6aa849-ef6f-4019-9f1b-58fb8d550ed8" class="cell">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>plnr <span class="op">=</span> itstgcn_batch.planner.PLNR_STGCN_RAND(plans_stgcn_rand,loader1,dataset_name<span class="op">=</span><span class="st">'testchickenpox'</span>)</span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>plnr.simulate()</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1010,125 +1041,127 @@ All results are stored in ./simulation_results/2023-09-01_17-11-14.csv</code></p
 batch=2  t=250   loss=0.6726564764976501    1/502/503/504/505/506/507/508/509/5010/5011/5012/5013/5014/5015/5016/5017/5018/5019/5020/5021/5022/5023/5024/5025/5026/5027/5028/5029/5030/5031/5032/5033/5034/5035/5036/5037/5038/5039/5040/5041/5042/5043/5044/5045/50</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="38">
+<div id="a6bf8bb3-e1e4-4dc6-ad33-b9cfe98ee798" class="cell" data-execution_count="38">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>pd.read_csv(<span class="st">'./simulation_results/2023-08-30_18-31-28.csv'</span>) <span class="co"># STGCN IT-STGCN</span></span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="38">
-
 <div>
 
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>dataset</th>
-      <th>method</th>
-      <th>mrate</th>
-      <th>mtype</th>
-      <th>lags</th>
-      <th>nof_filters</th>
-      <th>batch_size</th>
-      <th>inter_method</th>
-      <th>epoch</th>
-      <th>mse</th>
-      <th>calculation_time</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>testchickenpox</td>
-      <td>STGCN</td>
-      <td>0.7</td>
-      <td>rand</td>
-      <td>8</td>
-      <td>16</td>
-      <td>64</td>
-      <td>linear</td>
-      <td>50</td>
-      <td>2.069710</td>
-      <td>266.923153</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>testchickenpox</td>
-      <td>IT-STGCN</td>
-      <td>0.7</td>
-      <td>rand</td>
-      <td>8</td>
-      <td>16</td>
-      <td>64</td>
-      <td>linear</td>
-      <td>50</td>
-      <td>1.167303</td>
-      <td>1718.838966</td>
-    </tr>
-  </tbody>
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">dataset</th>
+<th data-quarto-table-cell-role="th">method</th>
+<th data-quarto-table-cell-role="th">mrate</th>
+<th data-quarto-table-cell-role="th">mtype</th>
+<th data-quarto-table-cell-role="th">lags</th>
+<th data-quarto-table-cell-role="th">nof_filters</th>
+<th data-quarto-table-cell-role="th">batch_size</th>
+<th data-quarto-table-cell-role="th">inter_method</th>
+<th data-quarto-table-cell-role="th">epoch</th>
+<th data-quarto-table-cell-role="th">mse</th>
+<th data-quarto-table-cell-role="th">calculation_time</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>testchickenpox</td>
+<td>STGCN</td>
+<td>0.7</td>
+<td>rand</td>
+<td>8</td>
+<td>16</td>
+<td>64</td>
+<td>linear</td>
+<td>50</td>
+<td>2.069710</td>
+<td>266.923153</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>testchickenpox</td>
+<td>IT-STGCN</td>
+<td>0.7</td>
+<td>rand</td>
+<td>8</td>
+<td>16</td>
+<td>64</td>
+<td>linear</td>
+<td>50</td>
+<td>1.167303</td>
+<td>1718.838966</td>
+</tr>
+</tbody>
 </table>
+
 </div>
 </div>
 </div>
-<div class="cell" data-execution_count="35">
+<div id="10dc7a6f-b269-41ec-8e56-c24fceec3d11" class="cell" data-execution_count="35">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>pd.read_csv(<span class="st">'./simulation_results/2023-08-29_19-14-32.csv'</span>) <span class="co"># STGCN IT-STGCN</span></span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="35">
-
 <div>
 
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>dataset</th>
-      <th>method</th>
-      <th>mrate</th>
-      <th>mtype</th>
-      <th>lags</th>
-      <th>nof_filters</th>
-      <th>batch_size</th>
-      <th>inter_method</th>
-      <th>epoch</th>
-      <th>mse</th>
-      <th>calculation_time</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>testchickenpox</td>
-      <td>STGCN</td>
-      <td>0.7</td>
-      <td>rand</td>
-      <td>8</td>
-      <td>16</td>
-      <td>32</td>
-      <td>linear</td>
-      <td>50</td>
-      <td>2.145854</td>
-      <td>200.711365</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>testchickenpox</td>
-      <td>IT-STGCN</td>
-      <td>0.7</td>
-      <td>rand</td>
-      <td>8</td>
-      <td>16</td>
-      <td>32</td>
-      <td>linear</td>
-      <td>50</td>
-      <td>1.078493</td>
-      <td>3340.726743</td>
-    </tr>
-  </tbody>
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">dataset</th>
+<th data-quarto-table-cell-role="th">method</th>
+<th data-quarto-table-cell-role="th">mrate</th>
+<th data-quarto-table-cell-role="th">mtype</th>
+<th data-quarto-table-cell-role="th">lags</th>
+<th data-quarto-table-cell-role="th">nof_filters</th>
+<th data-quarto-table-cell-role="th">batch_size</th>
+<th data-quarto-table-cell-role="th">inter_method</th>
+<th data-quarto-table-cell-role="th">epoch</th>
+<th data-quarto-table-cell-role="th">mse</th>
+<th data-quarto-table-cell-role="th">calculation_time</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>testchickenpox</td>
+<td>STGCN</td>
+<td>0.7</td>
+<td>rand</td>
+<td>8</td>
+<td>16</td>
+<td>32</td>
+<td>linear</td>
+<td>50</td>
+<td>2.145854</td>
+<td>200.711365</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>testchickenpox</td>
+<td>IT-STGCN</td>
+<td>0.7</td>
+<td>rand</td>
+<td>8</td>
+<td>16</td>
+<td>32</td>
+<td>linear</td>
+<td>50</td>
+<td>1.078493</td>
+<td>3340.726743</td>
+</tr>
+</tbody>
 </table>
+
 </div>
 </div>
 </div>
-<div class="cell" data-execution_count="26">
+<div id="9f37efca-486f-43ba-8e75-f287f5830ce3" class="cell" data-execution_count="26">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> torch_geometric_temporal.dataset <span class="im">import</span> PedalMeDatasetLoader</span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>loader2 <span class="op">=</span> PedalMeDatasetLoader()</span></code></pre></div>
 </div>
-<div class="cell" data-execution_count="45">
+<div id="263c388b-7102-4256-94c0-254502652f82" class="cell" data-execution_count="45">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>plans_stgcn_rand <span class="op">=</span> {</span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">'max_iteration'</span>: <span class="dv">1</span>, </span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'method'</span>: [<span class="st">'STGCN'</span>, <span class="st">'IT-STGCN'</span>],</span>
@@ -1140,7 +1173,7 @@ batch=2  t=250   loss=0.6726564764976501    1/502/503/504/505/506/507/508/509/50
 <span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">'epoch'</span>: [<span class="dv">2</span>]</span>
 <span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 </div>
-<div class="cell" data-execution_count="46">
+<div id="d58f27ff-bb90-414e-9c33-c7553a224d81" class="cell" data-execution_count="46">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>plnr <span class="op">=</span> itstgcn_batch.planner.PLNR_STGCN_RAND(plans_stgcn_rand,loader2,dataset_name<span class="op">=</span><span class="st">'0829testpedal'</span>)</span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>plnr.simulate()</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1150,245 +1183,249 @@ epoch=3  loss=0.1323363482952118952118      1/22/2
 All results are stored in ./simulation_results/2023-09-01_17-07-32.csv</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="47">
+<div id="3e49da1c-8660-4f7e-93ae-5a9e7611642e" class="cell" data-execution_count="47">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>pd.read_csv(<span class="st">'./simulation_results/2023-09-01_17-07-32.csv'</span>) <span class="co"># STGCN IT-STGCN</span></span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="47">
-
 <div>
 
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>dataset</th>
-      <th>method</th>
-      <th>mrate</th>
-      <th>mtype</th>
-      <th>lags</th>
-      <th>nof_filters</th>
-      <th>batch_size</th>
-      <th>inter_method</th>
-      <th>epoch</th>
-      <th>mse</th>
-      <th>calculation_time</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>0829testpedal</td>
-      <td>STGCN</td>
-      <td>0.7</td>
-      <td>rand</td>
-      <td>8</td>
-      <td>12</td>
-      <td>8</td>
-      <td>linear</td>
-      <td>2</td>
-      <td>1.371031</td>
-      <td>0.362818</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>0829testpedal</td>
-      <td>IT-STGCN</td>
-      <td>0.7</td>
-      <td>rand</td>
-      <td>8</td>
-      <td>12</td>
-      <td>8</td>
-      <td>linear</td>
-      <td>2</td>
-      <td>1.281301</td>
-      <td>1.038512</td>
-    </tr>
-  </tbody>
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">dataset</th>
+<th data-quarto-table-cell-role="th">method</th>
+<th data-quarto-table-cell-role="th">mrate</th>
+<th data-quarto-table-cell-role="th">mtype</th>
+<th data-quarto-table-cell-role="th">lags</th>
+<th data-quarto-table-cell-role="th">nof_filters</th>
+<th data-quarto-table-cell-role="th">batch_size</th>
+<th data-quarto-table-cell-role="th">inter_method</th>
+<th data-quarto-table-cell-role="th">epoch</th>
+<th data-quarto-table-cell-role="th">mse</th>
+<th data-quarto-table-cell-role="th">calculation_time</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>0829testpedal</td>
+<td>STGCN</td>
+<td>0.7</td>
+<td>rand</td>
+<td>8</td>
+<td>12</td>
+<td>8</td>
+<td>linear</td>
+<td>2</td>
+<td>1.371031</td>
+<td>0.362818</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>0829testpedal</td>
+<td>IT-STGCN</td>
+<td>0.7</td>
+<td>rand</td>
+<td>8</td>
+<td>12</td>
+<td>8</td>
+<td>linear</td>
+<td>2</td>
+<td>1.281301</td>
+<td>1.038512</td>
+</tr>
+</tbody>
 </table>
+
 </div>
 </div>
 </div>
-<div class="cell" data-execution_count="31">
+<div id="12962f90-20cb-48c1-9f25-55c60cdc520e" class="cell" data-execution_count="31">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>pd.read_csv(<span class="st">'./simulation_results/2023-08-29_18-14-16.csv'</span>) <span class="co"># STGCN IT-STGCN</span></span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="31">
-
 <div>
 
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>dataset</th>
-      <th>method</th>
-      <th>mrate</th>
-      <th>mtype</th>
-      <th>lags</th>
-      <th>nof_filters</th>
-      <th>batch_size</th>
-      <th>inter_method</th>
-      <th>epoch</th>
-      <th>mse</th>
-      <th>calculation_time</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>0829testpedal</td>
-      <td>STGCN</td>
-      <td>0.7</td>
-      <td>rand</td>
-      <td>8</td>
-      <td>12</td>
-      <td>8</td>
-      <td>linear</td>
-      <td>50</td>
-      <td>1.989184</td>
-      <td>8.535240</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>0829testpedal</td>
-      <td>IT-STGCN</td>
-      <td>0.7</td>
-      <td>rand</td>
-      <td>8</td>
-      <td>12</td>
-      <td>8</td>
-      <td>linear</td>
-      <td>50</td>
-      <td>1.307249</td>
-      <td>22.340453</td>
-    </tr>
-  </tbody>
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">dataset</th>
+<th data-quarto-table-cell-role="th">method</th>
+<th data-quarto-table-cell-role="th">mrate</th>
+<th data-quarto-table-cell-role="th">mtype</th>
+<th data-quarto-table-cell-role="th">lags</th>
+<th data-quarto-table-cell-role="th">nof_filters</th>
+<th data-quarto-table-cell-role="th">batch_size</th>
+<th data-quarto-table-cell-role="th">inter_method</th>
+<th data-quarto-table-cell-role="th">epoch</th>
+<th data-quarto-table-cell-role="th">mse</th>
+<th data-quarto-table-cell-role="th">calculation_time</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>0829testpedal</td>
+<td>STGCN</td>
+<td>0.7</td>
+<td>rand</td>
+<td>8</td>
+<td>12</td>
+<td>8</td>
+<td>linear</td>
+<td>50</td>
+<td>1.989184</td>
+<td>8.535240</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>0829testpedal</td>
+<td>IT-STGCN</td>
+<td>0.7</td>
+<td>rand</td>
+<td>8</td>
+<td>12</td>
+<td>8</td>
+<td>linear</td>
+<td>50</td>
+<td>1.307249</td>
+<td>22.340453</td>
+</tr>
+</tbody>
 </table>
+
 </div>
 </div>
 </div>
-<div class="cell" data-execution_count="31">
+<div id="29bcccbd-a5d7-4e08-b42e-2343153f90d4" class="cell" data-execution_count="31">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>pd.read_csv(<span class="st">'./simulation_results/2023-08-29_18-14-16.csv'</span>) <span class="co"># STGCN IT-STGCN</span></span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="31">
-
 <div>
 
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>dataset</th>
-      <th>method</th>
-      <th>mrate</th>
-      <th>mtype</th>
-      <th>lags</th>
-      <th>nof_filters</th>
-      <th>batch_size</th>
-      <th>inter_method</th>
-      <th>epoch</th>
-      <th>mse</th>
-      <th>calculation_time</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>0829testpedal</td>
-      <td>STGCN</td>
-      <td>0.7</td>
-      <td>rand</td>
-      <td>8</td>
-      <td>12</td>
-      <td>8</td>
-      <td>linear</td>
-      <td>50</td>
-      <td>1.989184</td>
-      <td>8.535240</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>0829testpedal</td>
-      <td>IT-STGCN</td>
-      <td>0.7</td>
-      <td>rand</td>
-      <td>8</td>
-      <td>12</td>
-      <td>8</td>
-      <td>linear</td>
-      <td>50</td>
-      <td>1.307249</td>
-      <td>22.340453</td>
-    </tr>
-  </tbody>
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">dataset</th>
+<th data-quarto-table-cell-role="th">method</th>
+<th data-quarto-table-cell-role="th">mrate</th>
+<th data-quarto-table-cell-role="th">mtype</th>
+<th data-quarto-table-cell-role="th">lags</th>
+<th data-quarto-table-cell-role="th">nof_filters</th>
+<th data-quarto-table-cell-role="th">batch_size</th>
+<th data-quarto-table-cell-role="th">inter_method</th>
+<th data-quarto-table-cell-role="th">epoch</th>
+<th data-quarto-table-cell-role="th">mse</th>
+<th data-quarto-table-cell-role="th">calculation_time</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>0829testpedal</td>
+<td>STGCN</td>
+<td>0.7</td>
+<td>rand</td>
+<td>8</td>
+<td>12</td>
+<td>8</td>
+<td>linear</td>
+<td>50</td>
+<td>1.989184</td>
+<td>8.535240</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>0829testpedal</td>
+<td>IT-STGCN</td>
+<td>0.7</td>
+<td>rand</td>
+<td>8</td>
+<td>12</td>
+<td>8</td>
+<td>linear</td>
+<td>50</td>
+<td>1.307249</td>
+<td>22.340453</td>
+</tr>
+</tbody>
 </table>
+
 </div>
 </div>
 </div>
-<div class="cell" data-execution_count="13">
+<div id="5bb94240-fdf5-4c88-9590-17666b0b6c02" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>pd.read_csv(<span class="st">'./simulation_results/2023-08-28_12-49-19_x.csv'</span>) <span class="co"># STGCN IT-STGCN</span></span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="13">
-
 <div>
 
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>dataset</th>
-      <th>method</th>
-      <th>mrate</th>
-      <th>mtype</th>
-      <th>lags</th>
-      <th>nof_filters</th>
-      <th>batch_size</th>
-      <th>inter_method</th>
-      <th>epoch</th>
-      <th>mse</th>
-      <th>calculation_time</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>testpedal</td>
-      <td>STGCN</td>
-      <td>0.7</td>
-      <td>rand</td>
-      <td>8</td>
-      <td>12</td>
-      <td>10</td>
-      <td>linear</td>
-      <td>50</td>
-      <td>3.081795</td>
-      <td>8.496341</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>testpedal</td>
-      <td>IT-STGCN</td>
-      <td>0.7</td>
-      <td>rand</td>
-      <td>8</td>
-      <td>12</td>
-      <td>10</td>
-      <td>linear</td>
-      <td>50</td>
-      <td>2.982537</td>
-      <td>27.241297</td>
-    </tr>
-  </tbody>
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">dataset</th>
+<th data-quarto-table-cell-role="th">method</th>
+<th data-quarto-table-cell-role="th">mrate</th>
+<th data-quarto-table-cell-role="th">mtype</th>
+<th data-quarto-table-cell-role="th">lags</th>
+<th data-quarto-table-cell-role="th">nof_filters</th>
+<th data-quarto-table-cell-role="th">batch_size</th>
+<th data-quarto-table-cell-role="th">inter_method</th>
+<th data-quarto-table-cell-role="th">epoch</th>
+<th data-quarto-table-cell-role="th">mse</th>
+<th data-quarto-table-cell-role="th">calculation_time</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>testpedal</td>
+<td>STGCN</td>
+<td>0.7</td>
+<td>rand</td>
+<td>8</td>
+<td>12</td>
+<td>10</td>
+<td>linear</td>
+<td>50</td>
+<td>3.081795</td>
+<td>8.496341</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>testpedal</td>
+<td>IT-STGCN</td>
+<td>0.7</td>
+<td>rand</td>
+<td>8</td>
+<td>12</td>
+<td>10</td>
+<td>linear</td>
+<td>50</td>
+<td>2.982537</td>
+<td>27.241297</td>
+</tr>
+</tbody>
 </table>
+
 </div>
 </div>
 </div>
-<div class="cell" data-execution_count="18">
+<div id="48b490fd-9d64-4269-856f-125232960ad2" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> torch_geometric_temporal.dataset <span class="im">import</span> WikiMathsDatasetLoader</span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>loader3 <span class="op">=</span> WikiMathsDatasetLoader()</span></code></pre></div>
 </div>
-<div class="cell">
+<div id="c38187e5-ee4d-4f76-a9fe-614ad828eef4" class="cell">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> torch_geometric_temporal.dataset <span class="im">import</span> MontevideoBusDatasetLoader</span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>loader10 <span class="op">=</span> MontevideoBusDatasetLoader()</span></code></pre></div>
 </div>
 <section id="import" class="level1">
 <h1>Import</h1>
-<div class="cell" data-execution_count="5">
+<div id="e6adc967-878e-4b3c-8809-b22a420e7ec0" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># modules </span></span>
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -1411,7 +1448,7 @@ All results are stored in ./simulation_results/2023-09-01_17-07-32.csv</code></p
 <span id="cb38-20"><a href="#cb38-20" aria-hidden="true" tabindex="-1"></a><span class="co"># from torch_geometric_temporal.nn.recurrent import TGCN</span></span>
 <span id="cb38-21"><a href="#cb38-21" aria-hidden="true" tabindex="-1"></a><span class="co"># from torch_geometric_temporal.nn.recurrent import DCRNN</span></span></code></pre></div>
 </div>
-<div class="cell">
+<div id="c02552fa-67ad-4ce0-a618-84afa42f2023" class="cell">
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># read data</span></span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> makedict(FX,W<span class="op">=</span><span class="va">None</span>,node_ids<span class="op">=</span><span class="va">None</span>):</span>
 <span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>    T,N <span class="op">=</span> np.array(FX).shape</span>
@@ -1427,7 +1464,7 @@ All results are stored in ./simulation_results/2023-09-01_17-07-32.csv</code></p
 <span id="cb39-13"><a href="#cb39-13" aria-hidden="true" tabindex="-1"></a>    }</span>
 <span id="cb39-14"><a href="#cb39-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> _dict</span></code></pre></div>
 </div>
-<div class="cell" data-execution_count="49">
+<div id="23f75774-1d81-4482-a15b-844618f81caf" class="cell" data-execution_count="49">
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1567,7 +1604,7 @@ All results are stored in ./simulation_results/2023-09-01_17-07-32.csv</code></p
 </div>
 <section id="load-data" class="level2">
 <h2 class="anchored" data-anchor-id="load-data">Load data</h2>
-<div class="cell" data-execution_count="46">
+<div id="8d3d82a1-26a4-4606-91bb-39c0ca4bda34" class="cell" data-execution_count="46">
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># read dataframe </span></span>
 <span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">'data_eng_230710.csv'</span>)</span>
 <span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="co"># make y, y_upper, y_period, time, regions </span></span>
@@ -1580,7 +1617,7 @@ All results are stored in ./simulation_results/2023-09-01_17-07-32.csv</code></p
 <h2 class="anchored" data-anchor-id="sample_codes">sample_codes</h2>
 <p><code>-</code> 예시1: y를 학습</p>
 <p><strong>학습~</strong></p>
-<div class="cell" data-execution_count="50">
+<div id="315bf81c-3a75-4f0a-948f-e1cc32cb006f" class="cell" data-execution_count="50">
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># step1: create lrnr object</span></span>
 <span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>lrnr <span class="op">=</span> RGCN_Learner()</span>
 <span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a><span class="co"># step2: load data </span></span>
@@ -1603,30 +1640,42 @@ epoch=4  loss=0.081149838734851325569305
 epoch=5  loss=0.080320493751313838172531            </code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="66">
+<div id="5d8a46ed-7197-4fef-a152-5e4296011a6d" class="cell" data-execution_count="66">
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>plt.plot(y[:<span class="dv">100</span>,<span class="dv">0</span>])</span></code></pre></div>
 </div>
 <p><strong>에폭별 적합결과(<span class="math inline">\(\hat{y}\)</span>) 시각화</strong></p>
-<div class="cell" data-execution_count="59">
+<div id="0c3357b9-21f7-489b-912a-7d23bb414cff" class="cell" data-execution_count="59">
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>lrnr.figs[<span class="dv">0</span>]</span></code></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2023-08-25-batch_files/figure-html/cell-49-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2023-08-25-batch_files/figure-html/cell-49-output-1.png" class="img-fluid figure-img"></p>
+</figure>
 </div>
 </div>
-<div class="cell" data-execution_count="38">
+</div>
+<div id="db095fbe-c85e-4f4c-8d6a-4f3498ed60f2" class="cell" data-execution_count="38">
 <div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>lrnr.figs[<span class="dv">1</span>]</span></code></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2023-08-25-batch_files/figure-html/cell-50-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2023-08-25-batch_files/figure-html/cell-50-output-1.png" class="img-fluid figure-img"></p>
+</figure>
 </div>
 </div>
-<div class="cell" data-execution_count="39">
+</div>
+<div id="2f8dd53c-4de9-41ea-af31-962621400b37" class="cell" data-execution_count="39">
 <div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>lrnr.figs[<span class="op">-</span><span class="dv">1</span>]</span></code></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2023-08-25-batch_files/figure-html/cell-51-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2023-08-25-batch_files/figure-html/cell-51-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p><code>-</code> 예시2: yU 학습</p>
-<div class="cell" data-execution_count="40">
+<div id="00aaffd7-7962-405c-994a-36a25aba678b" class="cell" data-execution_count="40">
 <div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co"># step1: create lrnr object</span></span>
 <span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>lrnr <span class="op">=</span> RGCN_Learner()</span>
 <span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a><span class="co"># step2: load data </span></span>
@@ -1649,14 +1698,18 @@ epoch=4  loss=0.0272646296531135271772957
 epoch=5  loss=0.0191931016526596582006645   </code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="41">
+<div id="a3ab58b1-a18c-4e29-9fc0-cc49eec8b7c0" class="cell" data-execution_count="41">
 <div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>lrnr.figs[<span class="op">-</span><span class="dv">1</span>]</span></code></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2023-08-25-batch_files/figure-html/cell-53-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2023-08-25-batch_files/figure-html/cell-53-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>5번정도 더 돌려보자</p>
-<div class="cell" data-execution_count="42">
+<div id="17b8c6d6-a597-42bf-8b2a-2a14851bcf19" class="cell" data-execution_count="42">
 <div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> e <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>):    </span>
 <span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>    lrnr.learn()</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1667,14 +1720,18 @@ epoch=9  loss=0.0103476242200189951082373
 epoch=10     loss=0.009508996026937005688799        </code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="43">
+<div id="0d315e96-fd62-42e5-8232-ce21cc31d000" class="cell" data-execution_count="43">
 <div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>lrnr.figs[<span class="op">-</span><span class="dv">1</span>]</span></code></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2023-08-25-batch_files/figure-html/cell-55-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2023-08-25-batch_files/figure-html/cell-55-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p><code>-</code> 예시3: yP 학습</p>
-<div class="cell" data-execution_count="44">
+<div id="b882470b-deda-4d31-a619-c472bbc296a6" class="cell" data-execution_count="44">
 <div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="co"># step1: create lrnr object</span></span>
 <span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>lrnr <span class="op">=</span> RGCN_Learner()</span>
 <span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a><span class="co"># step2: load data </span></span>
@@ -1697,10 +1754,14 @@ epoch=4  loss=0.0107088599754714682600975
 epoch=5  loss=0.0105961727974719788335514       </code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="45">
+<div id="8e21d2d4-d50a-416e-8c6a-b0290e83396c" class="cell" data-execution_count="45">
 <div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>lrnr.figs[<span class="op">-</span><span class="dv">1</span>] </span></code></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2023-08-25-batch_files/figure-html/cell-57-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2023-08-25-batch_files/figure-html/cell-57-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 
@@ -1736,10 +1797,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
-  function tippyHover(el, contentFn) {
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -1749,8 +1809,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -1765,6 +1834,233 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      return note.innerHTML;
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
@@ -1805,6 +2101,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
+
 
 
 
