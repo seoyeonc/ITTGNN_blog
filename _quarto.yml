@@ -28,7 +28,7 @@ website:
       - section: "**Result**"
         contents:
           - 3_table.qmd
-          - 4_figure.qmd
+          - 3_figure.qmd
 
 format:
   html:

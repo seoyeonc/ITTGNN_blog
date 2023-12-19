@@ -1,7 +1,7 @@
 ---
 title: "**Figure**"
 listing:
-  contents: posts/3_result/4_figure
+  contents: posts/3_result/3_figure
   sort: "date desc"
   type: table
   categories: false

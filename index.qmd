@@ -12,7 +12,7 @@ page-layout: full
 title-block-banner: true
 ---
 
-This blog indicates information of ITTGNN.
+This blog provides information on ITTGNN.
 
 ---
 
@@ -26,6 +26,15 @@ This blog indicates information of ITTGNN.
 
 ## Deep learning Architectures
 
-- **GNAR**: <https://arxiv.org/pdf/1912.04758.pdf> 
+- [**GConvGRU**](https://arxiv.org/abs/1612.07659)
+- [**GConvLSTM**](https://arxiv.org/abs/1612.07659)
+- [**GCLSTM**](https://arxiv.org/abs/1812.04206)
+- [**LRGCN**](https://arxiv.org/abs/1905.03994)
+- [**DyGrEncoder**](https://ieeexplore.ieee.org/document/9073186)
+- [**EvolveGCNH**](https://arxiv.org/abs/1902.10191)
+- [**EvolveGCNO**](https://arxiv.org/abs/1902.10191)
+- [**TGCN**](https://arxiv.org/abs/1811.05320)
+- [**DCRNN**](https://arxiv.org/abs/1707.01926)
+- [**GNAR**](https://arxiv.org/pdf/1912.04758.pdf)
 
 :::
