@@ -8,6 +8,7 @@
   {
     "listing": "/1_studies.html",
     "items": [
+      "/posts/1_studies/2023-09-20-논문리비전_수정.out.html",
       "/posts/1_studies/2023-05-11-CPUvsGPU.html"
     ]
   },
@@ -21,6 +22,7 @@
     "listing": "/index.html",
     "items": [
       "/posts/2_research/2099-05-31-Other Method.html",
+      "/posts/1_studies/2023-09-20-논문리비전_수정.out.html",
       "/posts/2_research/2023-08-25-batch.html",
       "/posts/3_result/3_figure/2023-07-20-ITSTGCN_data_magement_figure.html",
       "/posts/2_research/2023-07-18-EbayesThresh toy ex.html",
