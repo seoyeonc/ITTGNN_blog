@@ -42,7 +42,7 @@ def trim(f):
     fbar = Psi.T @ f # apply dft 
     fbar_threshed = np.stack([ebayesthresh(FloatVector(fbar[:,i])) for i in range(N)],axis=1)
     fhat = Psi @ fbar_threshed # inverse dft 
-    return fhat
+    return fhat,fbar,fbar_threshed
 
 def update_from_freq_domain(signal, missing_index):
     signal = np.array(signal)
@@ -118,11 +118,14 @@ class ITStgcnLearner(StgcnLearner):
         
         self.result_dict = {}
         self.MSE = {}
+        self.trimed = {}
+        self.power = {}
+        self.threshed = {}
         
         train_dataset_temp = copy.copy(self.train_dataset)
         for e in range(epoch):
             f,lags = convert_train_dataset(train_dataset_temp)
-            f = update_from_freq_domain(f,self.mindex)
+            f,f_trim,f_bar,fbar_threshed = update_from_freq_domain(f,self.mindex)
             T,N = f.shape 
             data_dict_temp = {
                 'edges':self.train_dataset.edge_index.T.tolist(), 
@@ -139,6 +142,9 @@ class ITStgcnLearner(StgcnLearner):
                 self.result_dict[f'epoch={e},time={t}'] = yt_hat
                 self.MSE[f'epoch={e},time={t}'] = yt_hat-snapshot.y
             print('{}/{}'.format(e+1,epoch),end='\r')
+            self.trimed[f'epoch={e}'] = f_trim
+            self.power[f'epoch={e}'] = f_bar
+            self.threshed[f'epoch={e}'] = fbar_threshed
             
         # record
         self.nof_filters = filters
@@ -148,8 +154,7 @@ class ITStgcnLearner(StgcnLearner):
         X = torch.tensor(dataset.features).float()
         y = torch.tensor(dataset.targets).float()
         yhat = torch.stack([self.model(snapshot.x, snapshot.edge_index, snapshot.edge_attr) for snapshot in dataset]).detach().squeeze().float()
-        out_result_dict=self.result_dict
-        return {'X':X, 'y':y, 'yhat':yhat,'out_result_dict':out_result_dict} 
+        return {'X':X, 'y':y, 'yhat':yhat} 
 
 class GNARLearner(StgcnLearner):
     def __init__(self,train_dataset,dataset_name = None):
