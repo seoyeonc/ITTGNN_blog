@@ -61,36 +61,36 @@
     <lastmod>2023-12-01T08:20:28.018Z</lastmod>
   </url>
   <url>
-    <loc>https://seoyeonc.github.io/ITTGNN_blog/posts/2_research/2023-08-25-batch.html</loc>
-    <lastmod>2023-12-01T08:20:28.734Z</lastmod>
+    <loc>https://seoyeonc.github.io/ITTGNN_blog/posts/2_research/2023-01-21-Class.html</loc>
+    <lastmod>2023-12-01T08:20:27.914Z</lastmod>
   </url>
   <url>
-    <loc>https://seoyeonc.github.io/ITTGNN_blog/posts/2_research/2022-12-07-torchgcn.html</loc>
-    <lastmod>2023-12-01T08:20:27.770Z</lastmod>
+    <loc>https://seoyeonc.github.io/ITTGNN_blog/posts/2_research/2023-02-06-ESTGCN_GNAR_DATA_2.html</loc>
+    <lastmod>2023-12-01T08:20:28.002Z</lastmod>
   </url>
   <url>
-    <loc>https://seoyeonc.github.io/ITTGNN_blog/posts/2_research/2023-05-25-GCONVGRU_simulation_table_reshape.html</loc>
-    <lastmod>2023-12-01T08:20:28.358Z</lastmod>
+    <loc>https://seoyeonc.github.io/ITTGNN_blog/posts/2_research/2023-03-03-ESTGCN_GNAR_edit_guebin2_seoyeon.html</loc>
+    <lastmod>2023-12-01T08:20:28.038Z</lastmod>
   </url>
   <url>
-    <loc>https://seoyeonc.github.io/ITTGNN_blog/posts/2_research/2023-01-26-ESTGCN_WIKI_DATA.html</loc>
-    <lastmod>2023-12-01T08:20:27.962Z</lastmod>
+    <loc>https://seoyeonc.github.io/ITTGNN_blog/posts/2_research/2023-02-20-ESTGCN_GNAR_edit_guebin2.html</loc>
+    <lastmod>2023-12-01T08:20:28.026Z</lastmod>
   </url>
   <url>
-    <loc>https://seoyeonc.github.io/ITTGNN_blog/posts/2_research/2023-06-06-GCLSTM_simulation_table_reshape.html</loc>
-    <lastmod>2023-12-01T08:20:28.482Z</lastmod>
-  </url>
-  <url>
-    <loc>https://seoyeonc.github.io/ITTGNN_blog/posts/2_research/2023-04-25-note_matrix.html</loc>
+    <loc>https://seoyeonc.github.io/ITTGNN_blog/posts/2_research/2023-05-04-questions of pytorch geometric temporal.html</loc>
     <lastmod>2023-12-01T08:20:28.338Z</lastmod>
   </url>
   <url>
-    <loc>https://seoyeonc.github.io/ITTGNN_blog/posts/2_research/2023-04-05-Simulation_boxplot.html</loc>
-    <lastmod>2023-12-01T08:20:28.334Z</lastmod>
+    <loc>https://seoyeonc.github.io/ITTGNN_blog/posts/2_research/2023-06-20-TGCN_Simulation_boxplot_reshape.html</loc>
+    <lastmod>2023-12-01T08:20:28.554Z</lastmod>
   </url>
   <url>
-    <loc>https://seoyeonc.github.io/ITTGNN_blog/posts/2_research/2023-04-29-pedalme_GSO_st.html</loc>
-    <lastmod>2023-12-01T08:20:28.338Z</lastmod>
+    <loc>https://seoyeonc.github.io/ITTGNN_blog/posts/2_research/2023-02-06-ESTGCN_GNAR_DATA_3.html</loc>
+    <lastmod>2023-12-01T08:20:28.002Z</lastmod>
+  </url>
+  <url>
+    <loc>https://seoyeonc.github.io/ITTGNN_blog/posts/2_research/2023-07-17-toy_example_guebin.html</loc>
+    <lastmod>2024-01-15T21:27:02.419Z</lastmod>
   </url>
   <url>
     <loc>https://seoyeonc.github.io/ITTGNN_blog/posts/2_research/2023-01-18-Algorithm_traintest_2.html</loc>
@@ -133,24 +133,36 @@
     <lastmod>2023-12-01T08:20:27.778Z</lastmod>
   </url>
   <url>
-    <loc>https://seoyeonc.github.io/ITTGNN_blog/posts/3_result/3_table/2023-07-05-ITSTGCN_data_management.html</loc>
-    <lastmod>2023-12-16T13:01:10.559Z</lastmod>
+    <loc>https://seoyeonc.github.io/ITTGNN_blog/posts/3_result/3_table/2024-01-08-Experiments_section.html</loc>
+    <lastmod>2024-01-21T15:34:43.600Z</lastmod>
   </url>
   <url>
-    <loc>https://seoyeonc.github.io/ITTGNN_blog/posts/1_studies/2023-05-11-CPUvsGPU.html</loc>
-    <lastmod>2023-12-01T08:20:28.338Z</lastmod>
+    <loc>https://seoyeonc.github.io/ITTGNN_blog/posts/3_result/3_table/2024-01-19.html</loc>
+    <lastmod>2024-01-22T09:27:03.778Z</lastmod>
   </url>
   <url>
-    <loc>https://seoyeonc.github.io/ITTGNN_blog/index.html</loc>
-    <lastmod>2023-12-19T01:57:08.513Z</lastmod>
+    <loc>https://seoyeonc.github.io/ITTGNN_blog/posts/3_result/3_figure/2023-12-29-fig_dashboard.html</loc>
+    <lastmod>2024-01-10T14:34:39.730Z</lastmod>
   </url>
   <url>
     <loc>https://seoyeonc.github.io/ITTGNN_blog/posts/1_studies/2023-09-20-논문리비전_수정.out.html</loc>
     <lastmod>2023-11-08T08:39:09.216Z</lastmod>
   </url>
   <url>
+    <loc>https://seoyeonc.github.io/ITTGNN_blog/index.html</loc>
+    <lastmod>2023-12-19T01:57:08.513Z</lastmod>
+  </url>
+  <url>
+    <loc>https://seoyeonc.github.io/ITTGNN_blog/posts/1_studies/2023-05-11-CPUvsGPU.html</loc>
+    <lastmod>2023-12-01T08:20:28.338Z</lastmod>
+  </url>
+  <url>
     <loc>https://seoyeonc.github.io/ITTGNN_blog/posts/3_result/3_figure/2023-07-20-ITSTGCN_data_magement_figure.html</loc>
-    <lastmod>2023-12-16T13:01:43.451Z</lastmod>
+    <lastmod>2024-01-09T06:40:43.888Z</lastmod>
+  </url>
+  <url>
+    <loc>https://seoyeonc.github.io/ITTGNN_blog/posts/3_result/3_table/2023-07-05-ITSTGCN_data_management.html</loc>
+    <lastmod>2024-01-21T15:09:31.433Z</lastmod>
   </url>
   <url>
     <loc>https://seoyeonc.github.io/ITTGNN_blog/posts/2_research/2023-07-18-Self Consistency toy ex.html</loc>
@@ -193,40 +205,40 @@
     <lastmod>2023-12-01T08:20:28.722Z</lastmod>
   </url>
   <url>
-    <loc>https://seoyeonc.github.io/ITTGNN_blog/posts/2_research/2023-07-17-toy_example_guebin.html</loc>
-    <lastmod>2023-12-01T08:20:28.706Z</lastmod>
+    <loc>https://seoyeonc.github.io/ITTGNN_blog/posts/2_research/2024-01-14-toy_example_figure.html</loc>
+    <lastmod>2024-01-15T04:49:23.908Z</lastmod>
   </url>
   <url>
-    <loc>https://seoyeonc.github.io/ITTGNN_blog/posts/2_research/2023-02-06-ESTGCN_GNAR_DATA_3.html</loc>
-    <lastmod>2023-12-01T08:20:28.002Z</lastmod>
-  </url>
-  <url>
-    <loc>https://seoyeonc.github.io/ITTGNN_blog/posts/2_research/2023-06-20-TGCN_Simulation_boxplot_reshape.html</loc>
-    <lastmod>2023-12-01T08:20:28.554Z</lastmod>
-  </url>
-  <url>
-    <loc>https://seoyeonc.github.io/ITTGNN_blog/posts/2_research/2023-05-04-questions of pytorch geometric temporal.html</loc>
+    <loc>https://seoyeonc.github.io/ITTGNN_blog/posts/2_research/2023-04-29-pedalme_GSO_st.html</loc>
     <lastmod>2023-12-01T08:20:28.338Z</lastmod>
   </url>
   <url>
-    <loc>https://seoyeonc.github.io/ITTGNN_blog/posts/2_research/2023-02-20-ESTGCN_GNAR_edit_guebin2.html</loc>
-    <lastmod>2023-12-01T08:20:28.026Z</lastmod>
+    <loc>https://seoyeonc.github.io/ITTGNN_blog/posts/2_research/2023-04-05-Simulation_boxplot.html</loc>
+    <lastmod>2023-12-01T08:20:28.334Z</lastmod>
   </url>
   <url>
-    <loc>https://seoyeonc.github.io/ITTGNN_blog/posts/2_research/2023-03-03-ESTGCN_GNAR_edit_guebin2_seoyeon.html</loc>
-    <lastmod>2023-12-01T08:20:28.038Z</lastmod>
+    <loc>https://seoyeonc.github.io/ITTGNN_blog/posts/2_research/2023-04-25-note_matrix.html</loc>
+    <lastmod>2023-12-01T08:20:28.338Z</lastmod>
   </url>
   <url>
-    <loc>https://seoyeonc.github.io/ITTGNN_blog/posts/2_research/2023-02-06-ESTGCN_GNAR_DATA_2.html</loc>
-    <lastmod>2023-12-01T08:20:28.002Z</lastmod>
+    <loc>https://seoyeonc.github.io/ITTGNN_blog/posts/2_research/2023-06-06-GCLSTM_simulation_table_reshape.html</loc>
+    <lastmod>2023-12-01T08:20:28.482Z</lastmod>
   </url>
   <url>
-    <loc>https://seoyeonc.github.io/ITTGNN_blog/posts/2_research/2023-01-21-Class.html</loc>
-    <lastmod>2023-12-01T08:20:27.914Z</lastmod>
+    <loc>https://seoyeonc.github.io/ITTGNN_blog/posts/2_research/2023-01-26-ESTGCN_WIKI_DATA.html</loc>
+    <lastmod>2023-12-01T08:20:27.962Z</lastmod>
   </url>
   <url>
-    <loc>https://seoyeonc.github.io/ITTGNN_blog/posts/2_research/2023-07-04-toy_example_figure.html</loc>
-    <lastmod>2023-12-01T08:20:28.682Z</lastmod>
+    <loc>https://seoyeonc.github.io/ITTGNN_blog/posts/2_research/2023-05-25-GCONVGRU_simulation_table_reshape.html</loc>
+    <lastmod>2023-12-01T08:20:28.358Z</lastmod>
+  </url>
+  <url>
+    <loc>https://seoyeonc.github.io/ITTGNN_blog/posts/2_research/2022-12-07-torchgcn.html</loc>
+    <lastmod>2023-12-01T08:20:27.770Z</lastmod>
+  </url>
+  <url>
+    <loc>https://seoyeonc.github.io/ITTGNN_blog/posts/2_research/2023-08-25-batch.html</loc>
+    <lastmod>2023-12-01T08:20:28.734Z</lastmod>
   </url>
   <url>
     <loc>https://seoyeonc.github.io/ITTGNN_blog/posts/2_research/2023-05-30-GConvLSTM_Simulation_boxplot_reshape.html</loc>
@@ -258,7 +270,7 @@
   </url>
   <url>
     <loc>https://seoyeonc.github.io/ITTGNN_blog/posts/2_research/2099-03-22-Baseline_SimulationPlanner-Tutorial_test_test.html</loc>
-    <lastmod>2023-12-01T08:20:28.734Z</lastmod>
+    <lastmod>2024-01-04T13:20:16.116Z</lastmod>
   </url>
   <url>
     <loc>https://seoyeonc.github.io/ITTGNN_blog/posts/2_research/2022-12-29-STGCN-tutorial.html</loc>
