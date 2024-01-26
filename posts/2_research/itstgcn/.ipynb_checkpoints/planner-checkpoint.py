@@ -120,22 +120,19 @@ class PLNR_GNAR_RAND(PLNR):
                 train_dataset, test_dataset = torch_geometric_temporal.signal.temporal_signal_split(self.dataset, train_ratio=0.8)
                 if mrate > 0: 
                     mtype = 'rand'
-                    mindex = rand_mindex(train_dataset,mrate=mrate)
-                    train_dataset = padding(train_dataset_miss = miss(train_dataset,mindex=mindex,mtype=mtype),interpolation_method=inter_method)
+                    mindex = rand_mindex_gnar(train_dataset,mrate=mrate)
+                    train_dataset = miss_gnar(train_dataset,mindex=mindex,mtype=mtype)
                 elif mrate ==0: 
                     mtype = None
                     inter_method = None 
                 method = 'GNAR'
                 lrnr = GNARLearner(train_dataset,dataset_name=self.dataset_name)
-                t1=time.time()
-                lrnr.learn()
-                t2=time.time()
-                evtor = Evaluator(lrnr,train_dataset,test_dataset)
+                evtor = Evaluator_gnar(lrnr,train_dataset,train_dataset)
                 evtor.calculate_mse()
-                mse = evtor.mse['test']['total']
+                mse = evtor.mse['train']['total']
                 nof_filters = None 
                 epoch= None
-                calculation_time = t2-t1
+                calculation_time = None
                 self.record(method,mrate,mtype,lags,nof_filters,inter_method,epoch,mse,calculation_time)
             print('{}/{} is done'.format(_+1,self.plans['max_iteration']))
         self.save()
@@ -153,19 +150,88 @@ class PLNR_GNAR_MANUAL(PLNR):
                 self.dataset = self.loader.get_dataset(lags=lags)
                 train_dataset, test_dataset = torch_geometric_temporal.signal.temporal_signal_split(self.dataset, train_ratio=0.8)
                 mtype = mtype
-                train_dataset = padding(train_dataset_miss = miss(train_dataset,mindex=mindex,mtype=mtype),interpolation_method=inter_method)
+                train_dataset = miss_gnar(train_dataset,mindex=mindex,mtype=mtype)
                 method = 'GNAR'
                 lrnr = GNARLearner(train_dataset,dataset_name=self.dataset_name)
-                t1= time.time()
-                lrnr.learn()
-                t2= time.time()
-                evtor = Evaluator(lrnr,train_dataset,test_dataset)
+                evtor = Evaluator_gnar(lrnr,train_dataset,train_dataset)
                 evtor.calculate_mse()
-                mse = evtor.mse['test']['total']
+                mse = evtor.mse['train']['total']
                 nof_filters = None 
                 epoch= None
                 mrate= lrnr.mrate_total
-                calculation_time = t2-t1
+                calculation_time = None
                 self.record(method,mrate,mtype,lags,nof_filters,inter_method,epoch,mse,calculation_time)
             print('{}/{} is done'.format(_+1,self.plans['max_iteration']))                
         self.save()
+        
+        
+        
+        
+        
+        
+        
+# old
+
+# class PLNR_GNAR_RAND(PLNR):
+#     def simulate(self):
+#         for _ in range(self.plans['max_iteration']):
+#             product_iterator = itertools.product(
+#                 self.plans['mrate'],
+#                 self.plans['lags'],
+#                 self.plans['inter_method']
+#             )
+#             for prod_iter in product_iterator:
+#                 mrate,lags,inter_method = prod_iter
+#                 self.dataset = self.loader.get_dataset(lags=lags)
+#                 train_dataset, test_dataset = torch_geometric_temporal.signal.temporal_signal_split(self.dataset, train_ratio=0.8)
+#                 if mrate > 0: 
+#                     mtype = 'rand'
+#                     mindex = rand_mindex(train_dataset,mrate=mrate)
+#                     train_dataset = padding(train_dataset_miss = miss(train_dataset,mindex=mindex,mtype=mtype),interpolation_method=inter_method)
+#                 elif mrate ==0: 
+#                     mtype = None
+#                     inter_method = None 
+#                 method = 'GNAR'
+#                 lrnr = GNARLearner(train_dataset,dataset_name=self.dataset_name)
+#                 t1=time.time()
+#                 lrnr.learn()
+#                 t2=time.time()
+#                 evtor = Evaluator(lrnr,train_dataset,test_dataset)
+#                 evtor.calculate_mse()
+#                 mse = evtor.mse['test']['total']
+#                 nof_filters = None 
+#                 epoch= None
+#                 calculation_time = t2-t1
+#                 self.record(method,mrate,mtype,lags,nof_filters,inter_method,epoch,mse,calculation_time)
+#             print('{}/{} is done'.format(_+1,self.plans['max_iteration']))
+#         self.save()
+            
+# class PLNR_GNAR_MANUAL(PLNR):
+#     def simulate(self,mindex,mtype):
+#         for _ in range(self.plans['max_iteration']):
+#             product_iterator = itertools.product(
+#                 self.plans['mindex'],
+#                 self.plans['lags'],
+#                 self.plans['inter_method']
+#             )
+#             for prod_iter in product_iterator:
+#                 mrate,lags,inter_method = prod_iter
+#                 self.dataset = self.loader.get_dataset(lags=lags)
+#                 train_dataset, test_dataset = torch_geometric_temporal.signal.temporal_signal_split(self.dataset, train_ratio=0.8)
+#                 mtype = mtype
+#                 train_dataset = padding(train_dataset_miss = miss(train_dataset,mindex=mindex,mtype=mtype),interpolation_method=inter_method)
+#                 method = 'GNAR'
+#                 lrnr = GNARLearner(train_dataset,dataset_name=self.dataset_name)
+#                 t1= time.time()
+#                 lrnr.learn()
+#                 t2= time.time()
+#                 evtor = Evaluator(lrnr,train_dataset,test_dataset)
+#                 evtor.calculate_mse()
+#                 mse = evtor.mse['test']['total']
+#                 nof_filters = None 
+#                 epoch= None
+#                 mrate= lrnr.mrate_total
+#                 calculation_time = t2-t1
+#                 self.record(method,mrate,mtype,lags,nof_filters,inter_method,epoch,mse,calculation_time)
+#             print('{}/{} is done'.format(_+1,self.plans['max_iteration']))                
+#         self.save()

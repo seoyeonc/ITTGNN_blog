@@ -49,3 +49,28 @@ def miss(train_dataset,mindex,mtype):
     train_dataset.mrate_total= float(np.sum([len(mx) for mx in train_dataset.mindex])/(N*T))
     train_dataset.mtype= mtype
     return train_dataset
+
+
+def rand_mindex_gnar(train_dataset,mrate = 0.5):
+    f,lags = convert_train_dataset(train_dataset)
+    T,N = f.shape
+    missing_count = int(np.round(mrate*(T-lags),0))
+    mindex = [np.sort(np.random.choice(range(T-lags),missing_count,replace=False)).tolist() for i in range(N)]  
+    return mindex
+
+def miss_gnar(train_dataset,mindex,mtype):
+    f,lags = convert_train_dataset(train_dataset)
+    T,N = f.shape
+    for i,m in enumerate(mindex): 
+        f[m,i] = np.nan
+    data_dict = {
+        'edges':train_dataset.edge_index.T.tolist(), 
+        'node_ids':{'node'+str(i):i for i in range(N)}, 
+        'FX':f.tolist()
+    }
+    train_dataset = DatasetLoader(data_dict).get_dataset(lags=lags)
+    train_dataset.mindex = mindex
+    train_dataset.mrate_eachnode = [len(mx)/T for mx in mindex]
+    train_dataset.mrate_total= float(np.sum([len(mx) for mx in train_dataset.mindex])/(N*T))
+    train_dataset.mtype= mtype
+    return train_dataset

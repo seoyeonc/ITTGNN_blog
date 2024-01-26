@@ -185,3 +185,23 @@ class Evaluator:
         fig.suptitle(_title)
         fig.tight_layout()
         return fig
+
+    
+class Evaluator_gnar:
+    def __init__(self,learner,train_dataset,test_dataset):
+        self.learner = learner
+        self.train_dataset = train_dataset
+        self.test_dataset = test_dataset
+        self.lags = self.learner.lags
+        self.n = torch.tensor(self.test_dataset.targets).shape[0]
+        rslt_tr = self.learner(self.train_dataset,n_ahead=self.n)
+        self.X_tr = rslt_tr['X']
+        self.y_tr = rslt_tr['y']
+        self.f_tr = torch.concat([self.train_dataset[0].x.T,self.y_tr],axis=0).float()
+        self.yhat_tr = rslt_tr['yhat']
+        self.fhat_tr = torch.concat([self.train_dataset[0].x.T,self.yhat_tr],axis=0).float()
+    def calculate_mse(self):
+        train_mse_eachnode = ((self.y_tr-self.yhat_tr)**2).mean(axis=0).tolist()
+        train_mse_total = ((self.y_tr-self.yhat_tr)**2).mean().item()
+        self.mse = {'train': {'each_node': train_mse_eachnode, 'total': train_mse_total}
+                   }

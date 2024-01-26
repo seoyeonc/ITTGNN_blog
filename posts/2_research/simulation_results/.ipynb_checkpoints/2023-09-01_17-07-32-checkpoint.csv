@@ -1,3 +1,0 @@
-dataset,method,mrate,mtype,lags,nof_filters,batch_size,inter_method,epoch,mse,calculation_time
-0829testpedal,STGCN,0.7,rand,8,12,8,linear,2,1.371030569076538,0.36281776428222656
-0829testpedal,IT-STGCN,0.7,rand,8,12,8,linear,2,1.281300663948059,1.0385122299194336

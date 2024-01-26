@@ -143,24 +143,15 @@ class GNARLearner(StgcnLearner):
     def __init__(self,train_dataset,dataset_name = None):
         super().__init__(train_dataset)
         self.method = 'GNAR'
-    def learn(self):
-    
+        self.nof_filters = None
+        self.epochs = None
         self.N = np.array(self.train_dataset.features).shape[1]
         w=np.zeros((self.N,self.N))
         for k in range(len(self.train_dataset.edge_index[0])):
             w[self.train_dataset.edge_index[0][k],self.train_dataset.edge_index[1][k]] = 1
 
         self.m = robjects.r.matrix(FloatVector(w), nrow = self.N, ncol = self.N)
-        _vts = robjects.r.matrix(
-            rpyn.numpy2rpy(np.array(self.train_dataset.features).reshape(-1,1).squeeze()), 
-            nrow = np.array(self.train_dataset.targets).shape[0] + self.lags, 
-            ncol = self.N
-        )
-        self.fit = GNAR.GNARfit(vts=_vts,net = GNAR.matrixtoGNAR(self.m), alphaOrder = self.lags, betaOrder = FloatVector([1]*self.lags))
-        
-        self.nof_filters = None
-        self.epochs = None
-    def __call__(self,dataset,mode='fit',n_ahead=1):
+    def __call__(self,dataset,mode='fore',n_ahead=1):
         r_code = '''
         substitute<-function(lrnr_fit1,lrnr_fit2){
         lrnr_fit1$mod$coef = lrnr_fit2$mod$coef
@@ -168,14 +159,13 @@ class GNARLearner(StgcnLearner):
         }
         '''
         robjects.r(r_code)
-        substitute=robjects.globalenv['substitute']
-        _vts = robjects.r.matrix(
-            rpyn.numpy2rpy(np.array(dataset.features).reshape(-1,1).squeeze()), 
-            nrow = np.array(dataset.targets).shape[0] + self.lags, 
+        
+        self._vts = robjects.r.matrix(
+            rpyn.numpy2rpy(np.array(self.train_dataset.features).reshape(-1,1).squeeze()), 
+            nrow = np.array(self.train_dataset.targets).shape[0] + self.lags, 
             ncol = self.N
         )
-        self._fit = GNAR.GNARfit(vts = _vts, net = GNAR.matrixtoGNAR(self.m), alphaOrder = self.lags, betaOrder = FloatVector([1]*self.lags))
-        self._fit = substitute(self._fit,self.fit)
+        self.fit = GNAR.GNARfit(vts=self._vts,net = GNAR.matrixtoGNAR(self.m), alphaOrder = self.lags, betaOrder = FloatVector([1]*self.lags))
         
         X = torch.tensor(dataset.features).float()
         y = torch.tensor(dataset.targets).float()
@@ -190,3 +180,55 @@ class GNARLearner(StgcnLearner):
         else: 
             print('mode should be "fit" or "fore"')
         return {'X':X, 'y':y, 'yhat':yhat} 
+    
+# class GNARLearner(StgcnLearner):
+#     def __init__(self,train_dataset,dataset_name = None):
+#         super().__init__(train_dataset)
+#         self.method = 'GNAR'
+#     def learn(self):
+    
+#         self.N = np.array(self.train_dataset.features).shape[1]
+#         w=np.zeros((self.N,self.N))
+#         for k in range(len(self.train_dataset.edge_index[0])):
+#             w[self.train_dataset.edge_index[0][k],self.train_dataset.edge_index[1][k]] = 1
+
+#         self.m = robjects.r.matrix(FloatVector(w), nrow = self.N, ncol = self.N)
+#         _vts = robjects.r.matrix(
+#             rpyn.numpy2rpy(np.array(self.train_dataset.features).reshape(-1,1).squeeze()), 
+#             nrow = np.array(self.train_dataset.targets).shape[0] + self.lags, 
+#             ncol = self.N
+#         )
+#         self.fit = GNAR.GNARfit(vts=_vts,net = GNAR.matrixtoGNAR(self.m), alphaOrder = self.lags, betaOrder = FloatVector([1]*self.lags))
+        
+#         self.nof_filters = None
+#         self.epochs = None
+#     def __call__(self,dataset,mode='fit',n_ahead=1):
+#         r_code = '''
+#         substitute<-function(lrnr_fit1,lrnr_fit2){
+#         lrnr_fit1$mod$coef = lrnr_fit2$mod$coef
+#         return(lrnr_fit1)
+#         }
+#         '''
+#         robjects.r(r_code)
+#         substitute=robjects.globalenv['substitute']
+#         _vts = robjects.r.matrix(
+#             rpyn.numpy2rpy(np.array(dataset.features).reshape(-1,1).squeeze()), 
+#             nrow = np.array(dataset.targets).shape[0] + self.lags, 
+#             ncol = self.N
+#         )
+#         self._fit = GNAR.GNARfit(vts = _vts, net = GNAR.matrixtoGNAR(self.m), alphaOrder = self.lags, betaOrder = FloatVector([1]*self.lags))
+#         self._fit = substitute(self._fit,self.fit)
+        
+#         X = torch.tensor(dataset.features).float()
+#         y = torch.tensor(dataset.targets).float()
+#         if mode == 'fit':
+#             X = np.array(dataset.features)
+#             yhat = GNAR.fitted_GNARfit(self._fit,robjects.FloatVector(X))
+#             X = torch.tensor(X).float()
+#             yhat = torch.tensor(np.array(yhat)).float()
+#         elif mode == 'fore': 
+#             yhat = GNAR.predict_GNARfit(self.fit,n_ahead=n_ahead)
+#             yhat = torch.tensor(np.array(yhat)).float()
+#         else: 
+#             print('mode should be "fit" or "fore"')
+#         return {'X':X, 'y':y, 'yhat':yhat} 
