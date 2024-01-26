@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>ITTGNN_blog - Figure</title>
+<title>ITTGNN_blog</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,27 +20,59 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -68,77 +100,22 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-author',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author"],
-    };
 
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
 <body class="nav-sidebar docked nav-fixed">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">ITTGNN_blog</span>
     </a>
   </div>
@@ -155,7 +132,7 @@ window.Quarto = {
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./about.html"> 
+    <a class="nav-link" href="../../about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item compact">
@@ -174,7 +151,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./3_table.html"><strong>Result</strong></a></li><li class="breadcrumb-item"><a href="./3_figure.html"><strong>Figure</strong></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -184,7 +161,7 @@ window.Quarto = {
   </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -196,7 +173,7 @@ window.Quarto = {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./1_studies.html" class="sidebar-item-text sidebar-link">
+  <a href="../../1_studies.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><strong>Studies</strong></span></a>
   </div>
 </li>
@@ -211,7 +188,7 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./2_research.html" class="sidebar-item-text sidebar-link">
+  <a href="../../2_research.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><strong>Research</strong></span></a>
   </div>
 </li>
@@ -228,13 +205,13 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./3_table.html" class="sidebar-item-text sidebar-link">
+  <a href="../../3_table.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><strong>Table</strong></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./3_figure.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../3_figure.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><strong>Figure</strong></span></a>
   </div>
 </li>
@@ -245,90 +222,141 @@ window.Quarto = {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         
     </div>
 <!-- main -->
-<main class="content column-page-right" id="quarto-document-content">
+<main class="content quarto-banner-title-block" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./3_table.html"><strong>Result</strong></a></li><li class="breadcrumb-item"><a href="./3_figure.html"><strong>Figure</strong></a></li></ol></nav>
-<div class="quarto-title">
-<h1 class="title"><strong>Figure</strong></h1>
+
+
+
+<p>GNAR</p>
+<div class="line-block">Model | FiveVTS | Chickenpox | Pedalme | Wikimath | Windmillsmall | MontevideoBus |</div>
+<div id="672be849-32a4-4d06-b65a-6d752b81a4ee" class="cell" data-execution_count="107">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(GNAR)</span></code></pre></div>
 </div>
-
-
-
-<div class="quarto-title-meta column-page-right">
-
-    
-  
-    
-  </div>
-  
-
-
-</header>
-
-
-
-
-
-
-<div class="quarto-listing quarto-listing-container-table" id="listing-listing">
-<table class="quarto-listing-table table">
+<div id="038f4bbf-e7b7-424e-97d4-7fd4468dbfd1" class="cell" data-execution_count="108">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>fiveVTS0<span class="ot">&lt;-</span>fiveVTS</span></code></pre></div>
+</div>
+<div id="24591902-9b41-480b-82ea-c508d48d866a" class="cell" data-execution_count="109">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>n<span class="ot">&lt;-</span>(<span class="fu">length</span>(fiveVTS0[,<span class="dv">1</span>])<span class="sc">*</span><span class="fl">0.8</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>nlags<span class="ot">&lt;-</span>(<span class="fu">length</span>(fiveVTS0[,<span class="dv">1</span>])<span class="sc">*</span><span class="fl">0.8</span>)<span class="sc">-</span><span class="dv">2</span></span></code></pre></div>
+</div>
+<div id="128fe343-d963-4c2c-ad7a-5c41474e56db" class="cell" data-execution_count="110">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>fiveVTS0[<span class="fu">sample</span>(<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span>nlags), <span class="at">size =</span> <span class="fl">0.3</span> <span class="sc">*</span> n),<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>fiveVTS0[<span class="fu">sample</span>(<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span>nlags), <span class="at">size =</span> <span class="fl">0.3</span> <span class="sc">*</span> n),<span class="dv">2</span>] <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>fiveVTS0[<span class="fu">sample</span>(<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span>nlags), <span class="at">size =</span> <span class="fl">0.3</span> <span class="sc">*</span> n),<span class="dv">3</span>] <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>fiveVTS0[<span class="fu">sample</span>(<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span>nlags), <span class="at">size =</span> <span class="fl">0.3</span> <span class="sc">*</span> n),<span class="dv">4</span>] <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>fiveVTS0[<span class="fu">sample</span>(<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span>nlags), <span class="at">size =</span> <span class="fl">0.3</span> <span class="sc">*</span> n),<span class="dv">5</span>] <span class="ot">&lt;-</span> <span class="cn">NA</span></span></code></pre></div>
+</div>
+<div id="170905a5-ce47-4a6a-8964-3873f5960766" class="cell" data-execution_count="111">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>nafit <span class="ot">&lt;-</span> <span class="fu">GNARfit</span>(<span class="at">vts =</span> fiveVTS0[<span class="dv">1</span><span class="sc">:</span><span class="dv">160</span>,], <span class="at">net =</span> fiveNet, <span class="at">alphaOrder =</span> <span class="dv">2</span>, <span class="at">betaOrder =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>))</span></code></pre></div>
+</div>
+<div id="2c703b56-6a40-4be5-905c-0ebbcdeb3505" class="cell" data-execution_count="117">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>predict<span class="ot">&lt;-</span> <span class="fu">predict</span>(nafit,<span class="at">n.ahead =</span> <span class="dv">40</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(predict)</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true">
+<caption>A matrix: 6 × 5 of type dbl</caption>
 <thead>
-<tr>
-<th>
-Date
-</th>
-<th>
-Title
-</th>
-<th>
-Author
-</th>
+<tr class="header">
+<th data-quarto-table-cell-role="th" scope="col">Series 1</th>
+<th data-quarto-table-cell-role="th" scope="col">Series 2</th>
+<th data-quarto-table-cell-role="th" scope="col">Series 3</th>
+<th data-quarto-table-cell-role="th" scope="col">Series 4</th>
+<th data-quarto-table-cell-role="th" scope="col">Series 5</th>
 </tr>
 </thead>
-<tbody class="list">
-<tr data-index="0" data-listing-date-sort="1704639600000" data-listing-file-modified-sort="1706306000720" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1003" data-listing-title-sort="(연구&amp;서연) IT-STGCN -- 실험결과시각화" data-listing-filename-sort="실험결과정리.ipynb">
-<td>
-<span class="listing-date">Jan 8, 2024</span>
-</td>
-<td>
-<a href="./posts/3_result/3_figure/실험결과정리.html" class="title listing-title">(연구&amp;서연) IT-STGCN – 실험결과시각화</a>
-</td>
-<td>
-<span class="listing-author">SEOYEON CHOI</span>
-</td>
+<tbody>
+<tr class="odd">
+<td>-0.97639279</td>
+<td>0.241614109</td>
+<td>0.174537938</td>
+<td>-0.17350937</td>
+<td>-1.36886707</td>
 </tr>
-<tr data-index="1" data-listing-date-sort="1703775600000" data-listing-file-modified-sort="1704897279730" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="9" data-listing-title-sort="Figure for dashboard" data-listing-filename-sort="2023-12-29-fig_dashboard.ipynb">
-<td>
-<span class="listing-date">Dec 29, 2023</span>
-</td>
-<td>
-<a href="./posts/3_result/3_figure/2023-12-29-fig_dashboard.html" class="title listing-title">Figure for dashboard</a>
-</td>
-<td>
-<span class="listing-author">SEOYEON CHOI</span>
-</td>
+<tr class="even">
+<td>-0.49231754</td>
+<td>0.039523956</td>
+<td>0.043116491</td>
+<td>-0.10898089</td>
+<td>-0.64489769</td>
 </tr>
-<tr data-index="2" data-listing-date-sort="1689778800000" data-listing-file-modified-sort="1704782443888" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="19" data-listing-title-sort="Data management Figure for ITSTGCN" data-listing-filename-sort="2023-07-20-ITSTGCN_data_magement_figure.ipynb">
-<td>
-<span class="listing-date">Jul 20, 2023</span>
-</td>
-<td>
-<a href="./posts/3_result/3_figure/2023-07-20-ITSTGCN_data_magement_figure.html" class="title listing-title">Data management Figure for ITSTGCN</a>
-</td>
-<td>
-<span class="listing-author">SEOYEON CHOI</span>
-</td>
+<tr class="odd">
+<td>-0.24308640</td>
+<td>-0.007812236</td>
+<td>-0.008004649</td>
+<td>-0.07678112</td>
+<td>-0.31780000</td>
+</tr>
+<tr class="even">
+<td>-0.12485799</td>
+<td>-0.019603268</td>
+<td>-0.019592963</td>
+<td>-0.04980972</td>
+<td>-0.15681519</td>
+</tr>
+<tr class="odd">
+<td>-0.06498647</td>
+<td>-0.018195074</td>
+<td>-0.018195626</td>
+<td>-0.03175021</td>
+<td>-0.07950193</td>
+</tr>
+<tr class="even">
+<td>-0.03462597</td>
+<td>-0.013759023</td>
+<td>-0.013758994</td>
+<td>-0.01977786</td>
+<td>-0.04103494</td>
 </tr>
 </tbody>
 </table>
-<div class="listing-no-matching d-none">
-No matching items
 </div>
-</div></main> <!-- /main -->
+</div>
+<div id="2a09df26-2e30-4181-8f16-8faa8d926317" class="cell" data-execution_count="124">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>(predict[,<span class="dv">1</span>] <span class="sc">-</span> <span class="fu">ts</span>(fiveVTS0[<span class="dv">151</span><span class="sc">:</span><span class="dv">200</span>,<span class="dv">1</span>]))<span class="sc">**</span><span class="dv">2</span></span></code></pre></div>
+<div class="cell-output cell-output-display">
+A Time Series:<br><style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class="list-inline"><li>5.58799142878491</li><li>0.666965936416604</li><li>0.159809063293537</li><li>&lt;NA&gt;</li><li>0.00629188488278831</li><li>0.337957697581599</li><li>&lt;NA&gt;</li><li>0.0282212014797316</li><li>0.0820240071704887</li><li>5.31407494055649</li><li>1.89861101707401</li><li>0.471539906296974</li><li>0.519313859990452</li><li>0.520226772784529</li><li>1.57787754873223</li><li>2.90999783956481</li><li>1.54063047709504</li><li>3.00519315533831</li><li>0.628067859074328</li><li>1.71210536909797</li><li>0.0229105680673379</li><li>2.07631869538371</li><li>0.363194271357353</li><li>1.62629234903699</li><li>1.97255528389458</li><li>0.430600847795843</li><li>0.155353902033888</li><li>0.888562415318064</li><li>0.000539626024893533</li><li>0.133740154132464</li><li>2.93851790947897e-05</li><li>0.000623092051748548</li><li>0.684606311618659</li><li>0.199387537472046</li><li>0.727258122881312</li><li>0.297083148986031</li><li>1.53152479927919</li><li>0.160478681230306</li><li>0.119736781238533</li><li>0.0588538252162804</li></ol>
+</div>
+</div>
+<div id="6c35c0f7-a354-403d-859d-59d03662bb60" class="cell" data-execution_count="122">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ts</span>(fiveVTS0[<span class="dv">151</span><span class="sc">:</span><span class="dv">200</span>,<span class="dv">1</span>])</span></code></pre></div>
+<div class="cell-output cell-output-display">
+A Time Series:<br><style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class="list-inline"><li>1.38750049162408</li><li>0.324362289439763</li><li>-0.642847662295262</li><li>&lt;NA&gt;</li><li>-0.14430787604546</li><li>0.546715317493225</li><li>&lt;NA&gt;</li><li>-0.178360097916621</li><li>-0.292207540157746</li><li>-2.30852414877782</li><li>-1.37979103173847</li><li>-0.687780533435674</li><li>0.719998168522977</li><li>0.720895215996944</li><li>1.25591724610612</li><li>1.70574267686919</li><li>-1.24129751477714</li><li>-1.73359436186417</li><li>0.792480615392693</li><li>-1.30849028854218</li><li>-0.151371780816588</li><li>-1.44094927084689</li><li>-0.602659335556662</li><li>1.27525970399717</li><li>-1.40447804622763</li><li>-0.656202533069454</li><li>-0.394150008933574</li><li>0.942635639757677</li><li>-0.0232299990766641</li><li>0.365704922218769</li><li>-0.00542086188327778</li><li>0.0249617808876408</li><li>0.827409379395341</li><li>0.446528305569579</li><li>-0.852794309324289</li><li>0.545053341197971</li><li>-1.23754790008359</li><li>-0.400597906051167</li><li>-0.346030030207122</li><li>-0.242598073884934</li><li>1.90692732958981</li><li>0.24755601276494</li><li>0.109182478356391</li><li>-0.428068354558935</li><li>-2.39169609312685</li><li>-2.21077486518177</li><li>-0.722601931885225</li><li>-2.93859071485278</li><li>-0.985951916349864</li><li>0.447242608669382</li></ol>
+</div>
+</div>
+<div id="7d2cd39c-603c-4f04-b4e5-c037136a3e76" class="cell" data-execution_count="60">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>((fiveVTS0[<span class="dv">161</span><span class="sc">:</span><span class="dv">200</span>,<span class="dv">1</span>] <span class="sc">-</span> predict[,<span class="dv">1</span>])<span class="sc">**</span><span class="dv">2</span>)</span></code></pre></div>
+<div class="cell-output cell-output-display">
+50.3789293250082
+</div>
+</div>
+<div id="0341d119-437d-4c09-b85b-4d85890526db" class="cell" data-execution_count="65">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(predict[,<span class="dv">1</span>])</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Untitled_files/figure-html/cell-12-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+
+
+
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

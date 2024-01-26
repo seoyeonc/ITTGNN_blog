@@ -2,6 +2,7 @@
   {
     "listing": "/3_figure.html",
     "items": [
+      "/posts/3_result/3_figure/실험결과정리.html",
       "/posts/3_result/3_figure/2023-12-29-fig_dashboard.html",
       "/posts/3_result/3_figure/2023-07-20-ITSTGCN_data_magement_figure.html"
     ]
@@ -16,7 +17,6 @@
   {
     "listing": "/3_table.html",
     "items": [
-      "/posts/3_result/3_table/2024-01-19.html",
       "/posts/3_result/3_table/2024-01-08-Experiments_section.html",
       "/posts/3_result/3_table/2023-07-05-ITSTGCN_data_management.html"
     ]
@@ -24,10 +24,18 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/2_research/LRGCNwindmillsmall50%.html",
+      "/posts/2_research/DYGRENCODERwindmillsmall50%.html",
+      "/posts/2_research/GNAR.html",
+      "/posts/2_research/monte.html",
+      "/posts/2_research/done.html",
+      "/posts/2_research/windmillsmall50%.html",
+      "/posts/2_research/chickenpox.html",
+      "/posts/2_research/Untitled.html",
       "/posts/2_research/2099-05-31-Other Method.html",
       "/posts/2_research/2024-01-14-toy_example_figure.html",
+      "/posts/3_result/3_figure/실험결과정리.html",
       "/posts/3_result/3_table/2024-01-08-Experiments_section.html",
-      "/posts/3_result/3_table/2024-01-19.html",
       "/posts/3_result/3_figure/2023-12-29-fig_dashboard.html",
       "/posts/1_studies/2023-09-20-논문리비전_수정.out.html",
       "/posts/2_research/2023-08-25-batch.html",
@@ -97,6 +105,14 @@
   {
     "listing": "/2_research.html",
     "items": [
+      "/posts/2_research/LRGCNwindmillsmall50%.html",
+      "/posts/2_research/DYGRENCODERwindmillsmall50%.html",
+      "/posts/2_research/GNAR.html",
+      "/posts/2_research/monte.html",
+      "/posts/2_research/done.html",
+      "/posts/2_research/windmillsmall50%.html",
+      "/posts/2_research/chickenpox.html",
+      "/posts/2_research/Untitled.html",
       "/posts/2_research/2099-05-31-Other Method.html",
       "/posts/2_research/2024-01-14-toy_example_figure.html",
       "/posts/2_research/2023-08-25-batch.html",

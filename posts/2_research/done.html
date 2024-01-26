@@ -1,0 +1,2105 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.527">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>ITTGNN_blog</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-sidebar docked nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">ITTGNN_blog</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="https://seoyeonc.github.io/sy_hub/"> 
+<span class="menu-text">Main_Blog</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/seoyeonc"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../1_studies.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><strong>Studies</strong></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text"><strong>Research</strong></span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../2_research.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><strong>Research</strong></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text"><strong>Result</strong></span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../3_table.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><strong>Table</strong></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../3_figure.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><strong>Figure</strong></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<div id="609d3fb0-9d2a-4a08-85e9-7a42be2b1b60" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span></code></pre></div>
+</div>
+<hr>
+<p>GConvLSTM</p>
+<div id="d014c748-9c3d-4453-a7c4-9118417b5ac5" class="cell" data-execution_count="78">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>pd.concat([pd.read_csv(<span class="st">'./simulation_results/2024-01-24_01-17-39.csv'</span>), <span class="co"># 1</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>           pd.read_csv(<span class="st">'./simulation_results/2024-01-24_08-15-26.csv'</span>), <span class="co"># 2</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>           pd.read_csv(<span class="st">'./simulation_results/2024-01-24_14-17-11.csv'</span>), <span class="co"># 3</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>           pd.read_csv(<span class="st">'./simulation_results/2024-01-25_01-05-51.csv'</span>), <span class="co"># 4</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>           pd.read_csv(<span class="st">'./simulation_results/2024-01-25_12-18-29.csv'</span>), <span class="co"># 5</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>           pd.read_csv(<span class="st">'./simulation_results/2024-01-25_23-41-45.csv'</span>), <span class="co"># 6</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>           pd.read_csv(<span class="st">'./simulation_results/2024-01-26_12-37-25.csv'</span>), <span class="co"># 7</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>           pd.read_csv(<span class="st">'./simulation_results/2024-01-26_21-14-21.csv'</span>), <span class="co"># 7</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>          ]).assign(model<span class="op">=</span><span class="st">'GConvLSTM'</span>)</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="78">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">dataset</th>
+<th data-quarto-table-cell-role="th">method</th>
+<th data-quarto-table-cell-role="th">mrate</th>
+<th data-quarto-table-cell-role="th">mtype</th>
+<th data-quarto-table-cell-role="th">lags</th>
+<th data-quarto-table-cell-role="th">nof_filters</th>
+<th data-quarto-table-cell-role="th">inter_method</th>
+<th data-quarto-table-cell-role="th">epoch</th>
+<th data-quarto-table-cell-role="th">mse</th>
+<th data-quarto-table-cell-role="th">calculation_time</th>
+<th data-quarto-table-cell-role="th">model</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>windmillsmall</td>
+<td>STGCN</td>
+<td>0.5</td>
+<td>rand</td>
+<td>8</td>
+<td>16</td>
+<td>linear</td>
+<td>50</td>
+<td>1.283014</td>
+<td>3476.057448</td>
+<td>GConvLSTM</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>windmillsmall</td>
+<td>IT-STGCN</td>
+<td>0.5</td>
+<td>rand</td>
+<td>8</td>
+<td>16</td>
+<td>linear</td>
+<td>50</td>
+<td>0.993595</td>
+<td>20334.428533</td>
+<td>GConvLSTM</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>windmillsmall</td>
+<td>STGCN</td>
+<td>0.5</td>
+<td>rand</td>
+<td>8</td>
+<td>16</td>
+<td>linear</td>
+<td>50</td>
+<td>1.325239</td>
+<td>4152.208847</td>
+<td>GConvLSTM</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>windmillsmall</td>
+<td>IT-STGCN</td>
+<td>0.5</td>
+<td>rand</td>
+<td>8</td>
+<td>16</td>
+<td>linear</td>
+<td>50</td>
+<td>0.998639</td>
+<td>20741.676931</td>
+<td>GConvLSTM</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>windmillsmall</td>
+<td>STGCN</td>
+<td>0.5</td>
+<td>rand</td>
+<td>8</td>
+<td>16</td>
+<td>linear</td>
+<td>50</td>
+<td>1.287660</td>
+<td>3829.066359</td>
+<td>GConvLSTM</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>windmillsmall</td>
+<td>IT-STGCN</td>
+<td>0.5</td>
+<td>rand</td>
+<td>8</td>
+<td>16</td>
+<td>linear</td>
+<td>50</td>
+<td>0.995080</td>
+<td>17702.747430</td>
+<td>GConvLSTM</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>windmillsmall</td>
+<td>STGCN</td>
+<td>0.5</td>
+<td>rand</td>
+<td>8</td>
+<td>16</td>
+<td>linear</td>
+<td>50</td>
+<td>1.318456</td>
+<td>4377.204319</td>
+<td>GConvLSTM</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>windmillsmall</td>
+<td>IT-STGCN</td>
+<td>0.5</td>
+<td>rand</td>
+<td>8</td>
+<td>16</td>
+<td>linear</td>
+<td>50</td>
+<td>0.992620</td>
+<td>34329.467202</td>
+<td>GConvLSTM</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>windmillsmall</td>
+<td>STGCN</td>
+<td>0.5</td>
+<td>rand</td>
+<td>8</td>
+<td>16</td>
+<td>linear</td>
+<td>50</td>
+<td>1.357958</td>
+<td>6785.776819</td>
+<td>GConvLSTM</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>windmillsmall</td>
+<td>IT-STGCN</td>
+<td>0.5</td>
+<td>rand</td>
+<td>8</td>
+<td>16</td>
+<td>linear</td>
+<td>50</td>
+<td>0.995017</td>
+<td>33324.177177</td>
+<td>GConvLSTM</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>windmillsmall</td>
+<td>STGCN</td>
+<td>0.5</td>
+<td>rand</td>
+<td>8</td>
+<td>16</td>
+<td>linear</td>
+<td>50</td>
+<td>1.336195</td>
+<td>7186.022908</td>
+<td>GConvLSTM</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>windmillsmall</td>
+<td>IT-STGCN</td>
+<td>0.5</td>
+<td>rand</td>
+<td>8</td>
+<td>16</td>
+<td>linear</td>
+<td>50</td>
+<td>0.991417</td>
+<td>33596.694606</td>
+<td>GConvLSTM</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>windmillsmall</td>
+<td>STGCN</td>
+<td>0.5</td>
+<td>rand</td>
+<td>8</td>
+<td>16</td>
+<td>linear</td>
+<td>50</td>
+<td>1.313900</td>
+<td>8261.675340</td>
+<td>GConvLSTM</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>windmillsmall</td>
+<td>IT-STGCN</td>
+<td>0.5</td>
+<td>rand</td>
+<td>8</td>
+<td>16</td>
+<td>linear</td>
+<td>50</td>
+<td>0.993833</td>
+<td>37881.343013</td>
+<td>GConvLSTM</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>DyGrEncoder</p>
+<div id="fdd773c6-abc7-4efb-ae39-28e05abc8cbe" class="cell" data-execution_count="83">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>pd.concat([pd.read_csv(<span class="st">'./simulation_results/2024-01-24_23-09-51.csv'</span>), <span class="co"># 1</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>           pd.read_csv(<span class="st">'./simulation_results/2024-01-25_07-49-42.csv'</span>), <span class="co"># 2</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>           pd.read_csv(<span class="st">'./simulation_results/2024-01-26_01-37-53.csv'</span>), <span class="co"># 3</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>           pd.read_csv(<span class="st">'./simulation_results/2024-01-26_12-20-37.csv'</span>), <span class="co"># 4</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>           pd.read_csv(<span class="st">'./simulation_results/2024-01-26_20-56-38.csv'</span>), <span class="co"># 5</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>           pd.read_csv(<span class="st">'./simulation_results/2024-01-27_05-43-47.csv'</span>), <span class="co"># 6</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>          ]).assign(model<span class="op">=</span><span class="st">'DyGrEncoder'</span>)</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="83">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">dataset</th>
+<th data-quarto-table-cell-role="th">method</th>
+<th data-quarto-table-cell-role="th">mrate</th>
+<th data-quarto-table-cell-role="th">mtype</th>
+<th data-quarto-table-cell-role="th">lags</th>
+<th data-quarto-table-cell-role="th">nof_filters</th>
+<th data-quarto-table-cell-role="th">inter_method</th>
+<th data-quarto-table-cell-role="th">epoch</th>
+<th data-quarto-table-cell-role="th">mse</th>
+<th data-quarto-table-cell-role="th">calculation_time</th>
+<th data-quarto-table-cell-role="th">model</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>windmillsmallDyGrEncoder</td>
+<td>STGCN</td>
+<td>0.5</td>
+<td>rand</td>
+<td>8</td>
+<td>12</td>
+<td>linear</td>
+<td>50</td>
+<td>1.399403</td>
+<td>1287.129029</td>
+<td>DyGrEncoder</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>windmillsmallDyGrEncoder</td>
+<td>IT-STGCN</td>
+<td>0.5</td>
+<td>rand</td>
+<td>8</td>
+<td>12</td>
+<td>linear</td>
+<td>50</td>
+<td>0.995185</td>
+<td>29379.109457</td>
+<td>DyGrEncoder</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>windmillsmallDyGrEncoder</td>
+<td>STGCN</td>
+<td>0.5</td>
+<td>rand</td>
+<td>8</td>
+<td>12</td>
+<td>linear</td>
+<td>50</td>
+<td>1.364160</td>
+<td>2173.189621</td>
+<td>DyGrEncoder</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>windmillsmallDyGrEncoder</td>
+<td>IT-STGCN</td>
+<td>0.5</td>
+<td>rand</td>
+<td>8</td>
+<td>12</td>
+<td>linear</td>
+<td>50</td>
+<td>0.990419</td>
+<td>28916.702413</td>
+<td>DyGrEncoder</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>windmillsmallDyGrEncoder</td>
+<td>STGCN</td>
+<td>0.5</td>
+<td>rand</td>
+<td>8</td>
+<td>12</td>
+<td>linear</td>
+<td>50</td>
+<td>1.389555</td>
+<td>2051.929635</td>
+<td>DyGrEncoder</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>windmillsmallDyGrEncoder</td>
+<td>IT-STGCN</td>
+<td>0.5</td>
+<td>rand</td>
+<td>8</td>
+<td>12</td>
+<td>linear</td>
+<td>50</td>
+<td>0.995240</td>
+<td>29975.615015</td>
+<td>DyGrEncoder</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>windmillsmallDyGrEncoder</td>
+<td>STGCN</td>
+<td>0.5</td>
+<td>rand</td>
+<td>8</td>
+<td>12</td>
+<td>linear</td>
+<td>50</td>
+<td>1.357190</td>
+<td>2952.702301</td>
+<td>DyGrEncoder</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>windmillsmallDyGrEncoder</td>
+<td>IT-STGCN</td>
+<td>0.5</td>
+<td>rand</td>
+<td>8</td>
+<td>12</td>
+<td>linear</td>
+<td>50</td>
+<td>0.990371</td>
+<td>35552.520746</td>
+<td>DyGrEncoder</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>windmillsmallDyGrEncoder</td>
+<td>STGCN</td>
+<td>0.5</td>
+<td>rand</td>
+<td>8</td>
+<td>12</td>
+<td>linear</td>
+<td>50</td>
+<td>1.357729</td>
+<td>1792.262343</td>
+<td>DyGrEncoder</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>windmillsmallDyGrEncoder</td>
+<td>IT-STGCN</td>
+<td>0.5</td>
+<td>rand</td>
+<td>8</td>
+<td>12</td>
+<td>linear</td>
+<td>50</td>
+<td>0.995582</td>
+<td>29117.568311</td>
+<td>DyGrEncoder</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>windmillsmallDyGrEncoder</td>
+<td>STGCN</td>
+<td>0.5</td>
+<td>rand</td>
+<td>8</td>
+<td>12</td>
+<td>linear</td>
+<td>50</td>
+<td>1.359898</td>
+<td>2105.582545</td>
+<td>DyGrEncoder</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>windmillsmallDyGrEncoder</td>
+<td>IT-STGCN</td>
+<td>0.5</td>
+<td>rand</td>
+<td>8</td>
+<td>12</td>
+<td>linear</td>
+<td>50</td>
+<td>0.995981</td>
+<td>29467.090409</td>
+<td>DyGrEncoder</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>LRGCN</p>
+<div id="89c9305b-8d12-41a7-a8c2-895a6f8be68a" class="cell" data-execution_count="81">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>pd.concat([pd.read_csv(<span class="st">'./simulation_results/2024-01-25_00-26-15.csv'</span>), <span class="co"># 1</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>           pd.read_csv(<span class="st">'./simulation_results/2024-01-25_10-04-35.csv'</span>), <span class="co"># 2</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>           pd.read_csv(<span class="st">'./simulation_results/2024-01-25_19-42-50.csv'</span>), <span class="co"># 3</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>           pd.read_csv(<span class="st">'./simulation_results/2024-01-26_06-17-49.csv'</span>), <span class="co"># 4</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>           pd.read_csv(<span class="st">'./simulation_results/2024-01-26_16-19-15.csv'</span>), <span class="co"># 5</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>           pd.read_csv(<span class="st">'./simulation_results/2024-01-27_01-56-42.csv'</span>), <span class="co"># 6</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>          ]).assign(model<span class="op">=</span><span class="st">'LRGCN'</span>)</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="81">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">dataset</th>
+<th data-quarto-table-cell-role="th">method</th>
+<th data-quarto-table-cell-role="th">mrate</th>
+<th data-quarto-table-cell-role="th">mtype</th>
+<th data-quarto-table-cell-role="th">lags</th>
+<th data-quarto-table-cell-role="th">nof_filters</th>
+<th data-quarto-table-cell-role="th">inter_method</th>
+<th data-quarto-table-cell-role="th">epoch</th>
+<th data-quarto-table-cell-role="th">mse</th>
+<th data-quarto-table-cell-role="th">calculation_time</th>
+<th data-quarto-table-cell-role="th">model</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>windmillsmallLRGCN</td>
+<td>STGCN</td>
+<td>0.5</td>
+<td>rand</td>
+<td>8</td>
+<td>12</td>
+<td>linear</td>
+<td>50</td>
+<td>1.419365</td>
+<td>2706.468822</td>
+<td>LRGCN</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>windmillsmallLRGCN</td>
+<td>IT-STGCN</td>
+<td>0.5</td>
+<td>rand</td>
+<td>8</td>
+<td>12</td>
+<td>linear</td>
+<td>50</td>
+<td>0.992892</td>
+<td>32066.538508</td>
+<td>LRGCN</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>windmillsmallLRGCN</td>
+<td>STGCN</td>
+<td>0.5</td>
+<td>rand</td>
+<td>8</td>
+<td>12</td>
+<td>linear</td>
+<td>50</td>
+<td>1.353130</td>
+<td>3044.404266</td>
+<td>LRGCN</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>windmillsmallLRGCN</td>
+<td>IT-STGCN</td>
+<td>0.5</td>
+<td>rand</td>
+<td>8</td>
+<td>12</td>
+<td>linear</td>
+<td>50</td>
+<td>0.992260</td>
+<td>31543.776187</td>
+<td>LRGCN</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>windmillsmallLRGCN</td>
+<td>STGCN</td>
+<td>0.5</td>
+<td>rand</td>
+<td>8</td>
+<td>12</td>
+<td>linear</td>
+<td>50</td>
+<td>1.334008</td>
+<td>3188.164355</td>
+<td>LRGCN</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>windmillsmallLRGCN</td>
+<td>IT-STGCN</td>
+<td>0.5</td>
+<td>rand</td>
+<td>8</td>
+<td>12</td>
+<td>linear</td>
+<td>50</td>
+<td>0.995353</td>
+<td>31375.653413</td>
+<td>LRGCN</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>windmillsmallLRGCN</td>
+<td>STGCN</td>
+<td>0.5</td>
+<td>rand</td>
+<td>8</td>
+<td>12</td>
+<td>linear</td>
+<td>50</td>
+<td>1.337325</td>
+<td>3132.741006</td>
+<td>LRGCN</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>windmillsmallLRGCN</td>
+<td>IT-STGCN</td>
+<td>0.5</td>
+<td>rand</td>
+<td>8</td>
+<td>12</td>
+<td>linear</td>
+<td>50</td>
+<td>0.992040</td>
+<td>34839.083089</td>
+<td>LRGCN</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>windmillsmallLRGCN</td>
+<td>STGCN</td>
+<td>0.5</td>
+<td>rand</td>
+<td>8</td>
+<td>12</td>
+<td>linear</td>
+<td>50</td>
+<td>1.371451</td>
+<td>3077.019833</td>
+<td>LRGCN</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>windmillsmallLRGCN</td>
+<td>IT-STGCN</td>
+<td>0.5</td>
+<td>rand</td>
+<td>8</td>
+<td>12</td>
+<td>linear</td>
+<td>50</td>
+<td>0.993275</td>
+<td>32914.471802</td>
+<td>LRGCN</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>windmillsmallLRGCN</td>
+<td>STGCN</td>
+<td>0.5</td>
+<td>rand</td>
+<td>8</td>
+<td>12</td>
+<td>linear</td>
+<td>50</td>
+<td>1.312752</td>
+<td>2960.035801</td>
+<td>LRGCN</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>windmillsmallLRGCN</td>
+<td>IT-STGCN</td>
+<td>0.5</td>
+<td>rand</td>
+<td>8</td>
+<td>12</td>
+<td>linear</td>
+<td>50</td>
+<td>0.991522</td>
+<td>31567.534146</td>
+<td>LRGCN</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<hr>
+<p>pedalme</p>
+<div id="b62d764c-2463-4140-a015-bb8c15e82ffc" class="cell" data-execution_count="65">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># pd.concat([pd.read_csv('./simulation_results/pedalme_linear_old.csv'),</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co">#           pd.read_csv('./simulation_results/2024-01-25_17-58-42.csv').assign(model='LRGCN').iloc[:,1:].assign(dataset='pedalme'),</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co">#            pd.read_csv('./simulation_results/pedalme_linear_block_old.csv'),</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co">#           pd.read_csv('./simulation_results/2024-01-25_18-06-45.csv').assign(model='LRGCN').iloc[:,1:].assign(dataset='pedalme')]).iloc[:,1:].to_csv('pedalme_linear.csv',index=False)</span></span></code></pre></div>
+</div>
+<hr>
+<p>monte</p>
+<p>block</p>
+<div id="6e25fdfd-5368-4ef5-ab3f-5511b1297309" class="cell" data-execution_count="75">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>pd.concat([pd.read_csv(<span class="st">'./simulation_results/2024-01-26_05-21-17.csv'</span>).assign(model<span class="op">=</span><span class="st">'GComvGRU'</span>), <span class="co"># 15(1)</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>           pd.read_csv(<span class="st">'./simulation_results/2024-01-26_09-48-48.csv'</span>).assign(model<span class="op">=</span><span class="st">'GComvGRU'</span>), <span class="co"># 15(2)</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>          ])</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="75">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">dataset</th>
+<th data-quarto-table-cell-role="th">method</th>
+<th data-quarto-table-cell-role="th">mrate</th>
+<th data-quarto-table-cell-role="th">mtype</th>
+<th data-quarto-table-cell-role="th">lags</th>
+<th data-quarto-table-cell-role="th">nof_filters</th>
+<th data-quarto-table-cell-role="th">inter_method</th>
+<th data-quarto-table-cell-role="th">epoch</th>
+<th data-quarto-table-cell-role="th">mse</th>
+<th data-quarto-table-cell-role="th">calculation_time</th>
+<th data-quarto-table-cell-role="th">model</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>monteblockGConvGRU</td>
+<td>STGCN</td>
+<td>0.149142</td>
+<td>block</td>
+<td>4</td>
+<td>12</td>
+<td>linear</td>
+<td>50</td>
+<td>0.931718</td>
+<td>299.104043</td>
+<td>GComvGRU</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>monteblockGConvGRU</td>
+<td>IT-STGCN</td>
+<td>0.149142</td>
+<td>block</td>
+<td>4</td>
+<td>12</td>
+<td>linear</td>
+<td>50</td>
+<td>0.931139</td>
+<td>550.015985</td>
+<td>GComvGRU</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>monteblockGConvGRU</td>
+<td>STGCN</td>
+<td>0.149142</td>
+<td>block</td>
+<td>4</td>
+<td>12</td>
+<td>linear</td>
+<td>50</td>
+<td>0.930514</td>
+<td>570.290766</td>
+<td>GComvGRU</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>monteblockGConvGRU</td>
+<td>IT-STGCN</td>
+<td>0.149142</td>
+<td>block</td>
+<td>4</td>
+<td>12</td>
+<td>linear</td>
+<td>50</td>
+<td>0.933784</td>
+<td>610.768229</td>
+<td>GComvGRU</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>monteblockGConvGRU</td>
+<td>STGCN</td>
+<td>0.149142</td>
+<td>block</td>
+<td>4</td>
+<td>12</td>
+<td>linear</td>
+<td>50</td>
+<td>0.931011</td>
+<td>265.058070</td>
+<td>GComvGRU</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">5</td>
+<td>monteblockGConvGRU</td>
+<td>IT-STGCN</td>
+<td>0.149142</td>
+<td>block</td>
+<td>4</td>
+<td>12</td>
+<td>linear</td>
+<td>50</td>
+<td>0.929757</td>
+<td>674.040715</td>
+<td>GComvGRU</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">6</td>
+<td>monteblockGConvGRU</td>
+<td>STGCN</td>
+<td>0.149142</td>
+<td>block</td>
+<td>4</td>
+<td>12</td>
+<td>linear</td>
+<td>50</td>
+<td>0.932275</td>
+<td>425.857081</td>
+<td>GComvGRU</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">7</td>
+<td>monteblockGConvGRU</td>
+<td>IT-STGCN</td>
+<td>0.149142</td>
+<td>block</td>
+<td>4</td>
+<td>12</td>
+<td>linear</td>
+<td>50</td>
+<td>0.930852</td>
+<td>562.374390</td>
+<td>GComvGRU</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">8</td>
+<td>monteblockGConvGRU</td>
+<td>STGCN</td>
+<td>0.149142</td>
+<td>block</td>
+<td>4</td>
+<td>12</td>
+<td>linear</td>
+<td>50</td>
+<td>0.934731</td>
+<td>411.990982</td>
+<td>GComvGRU</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">9</td>
+<td>monteblockGConvGRU</td>
+<td>IT-STGCN</td>
+<td>0.149142</td>
+<td>block</td>
+<td>4</td>
+<td>12</td>
+<td>linear</td>
+<td>50</td>
+<td>0.936990</td>
+<td>664.307830</td>
+<td>GComvGRU</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">10</td>
+<td>monteblockGConvGRU</td>
+<td>STGCN</td>
+<td>0.149142</td>
+<td>block</td>
+<td>4</td>
+<td>12</td>
+<td>linear</td>
+<td>50</td>
+<td>0.930695</td>
+<td>395.249585</td>
+<td>GComvGRU</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">11</td>
+<td>monteblockGConvGRU</td>
+<td>IT-STGCN</td>
+<td>0.149142</td>
+<td>block</td>
+<td>4</td>
+<td>12</td>
+<td>linear</td>
+<td>50</td>
+<td>0.931442</td>
+<td>521.525001</td>
+<td>GComvGRU</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">12</td>
+<td>monteblockGConvGRU</td>
+<td>STGCN</td>
+<td>0.149142</td>
+<td>block</td>
+<td>4</td>
+<td>12</td>
+<td>linear</td>
+<td>50</td>
+<td>0.932494</td>
+<td>610.015810</td>
+<td>GComvGRU</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">13</td>
+<td>monteblockGConvGRU</td>
+<td>IT-STGCN</td>
+<td>0.149142</td>
+<td>block</td>
+<td>4</td>
+<td>12</td>
+<td>linear</td>
+<td>50</td>
+<td>0.932101</td>
+<td>670.815484</td>
+<td>GComvGRU</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">14</td>
+<td>monteblockGConvGRU</td>
+<td>STGCN</td>
+<td>0.149142</td>
+<td>block</td>
+<td>4</td>
+<td>12</td>
+<td>linear</td>
+<td>50</td>
+<td>0.929891</td>
+<td>340.687619</td>
+<td>GComvGRU</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">15</td>
+<td>monteblockGConvGRU</td>
+<td>IT-STGCN</td>
+<td>0.149142</td>
+<td>block</td>
+<td>4</td>
+<td>12</td>
+<td>linear</td>
+<td>50</td>
+<td>0.930814</td>
+<td>688.510900</td>
+<td>GComvGRU</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">16</td>
+<td>monteblockGConvGRU</td>
+<td>STGCN</td>
+<td>0.149142</td>
+<td>block</td>
+<td>4</td>
+<td>12</td>
+<td>linear</td>
+<td>50</td>
+<td>0.929568</td>
+<td>530.603474</td>
+<td>GComvGRU</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">17</td>
+<td>monteblockGConvGRU</td>
+<td>IT-STGCN</td>
+<td>0.149142</td>
+<td>block</td>
+<td>4</td>
+<td>12</td>
+<td>linear</td>
+<td>50</td>
+<td>0.934458</td>
+<td>627.509763</td>
+<td>GComvGRU</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">18</td>
+<td>monteblockGConvGRU</td>
+<td>STGCN</td>
+<td>0.149142</td>
+<td>block</td>
+<td>4</td>
+<td>12</td>
+<td>linear</td>
+<td>50</td>
+<td>0.931746</td>
+<td>549.576937</td>
+<td>GComvGRU</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">19</td>
+<td>monteblockGConvGRU</td>
+<td>IT-STGCN</td>
+<td>0.149142</td>
+<td>block</td>
+<td>4</td>
+<td>12</td>
+<td>linear</td>
+<td>50</td>
+<td>0.930138</td>
+<td>582.252268</td>
+<td>GComvGRU</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">20</td>
+<td>monteblockGConvGRU</td>
+<td>STGCN</td>
+<td>0.149142</td>
+<td>block</td>
+<td>4</td>
+<td>12</td>
+<td>linear</td>
+<td>50</td>
+<td>0.933423</td>
+<td>399.936904</td>
+<td>GComvGRU</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">21</td>
+<td>monteblockGConvGRU</td>
+<td>IT-STGCN</td>
+<td>0.149142</td>
+<td>block</td>
+<td>4</td>
+<td>12</td>
+<td>linear</td>
+<td>50</td>
+<td>0.929868</td>
+<td>715.416811</td>
+<td>GComvGRU</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">22</td>
+<td>monteblockGConvGRU</td>
+<td>STGCN</td>
+<td>0.149142</td>
+<td>block</td>
+<td>4</td>
+<td>12</td>
+<td>linear</td>
+<td>50</td>
+<td>0.930802</td>
+<td>409.318287</td>
+<td>GComvGRU</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">23</td>
+<td>monteblockGConvGRU</td>
+<td>IT-STGCN</td>
+<td>0.149142</td>
+<td>block</td>
+<td>4</td>
+<td>12</td>
+<td>linear</td>
+<td>50</td>
+<td>0.931395</td>
+<td>544.664550</td>
+<td>GComvGRU</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">24</td>
+<td>monteblockGConvGRU</td>
+<td>STGCN</td>
+<td>0.149142</td>
+<td>block</td>
+<td>4</td>
+<td>12</td>
+<td>linear</td>
+<td>50</td>
+<td>0.931638</td>
+<td>583.273260</td>
+<td>GComvGRU</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">25</td>
+<td>monteblockGConvGRU</td>
+<td>IT-STGCN</td>
+<td>0.149142</td>
+<td>block</td>
+<td>4</td>
+<td>12</td>
+<td>linear</td>
+<td>50</td>
+<td>0.931750</td>
+<td>667.601656</td>
+<td>GComvGRU</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">26</td>
+<td>monteblockGConvGRU</td>
+<td>STGCN</td>
+<td>0.149142</td>
+<td>block</td>
+<td>4</td>
+<td>12</td>
+<td>linear</td>
+<td>50</td>
+<td>0.942542</td>
+<td>281.407660</td>
+<td>GComvGRU</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">27</td>
+<td>monteblockGConvGRU</td>
+<td>IT-STGCN</td>
+<td>0.149142</td>
+<td>block</td>
+<td>4</td>
+<td>12</td>
+<td>linear</td>
+<td>50</td>
+<td>0.932974</td>
+<td>645.180369</td>
+<td>GComvGRU</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">28</td>
+<td>monteblockGConvGRU</td>
+<td>STGCN</td>
+<td>0.149142</td>
+<td>block</td>
+<td>4</td>
+<td>12</td>
+<td>linear</td>
+<td>50</td>
+<td>0.930067</td>
+<td>612.553957</td>
+<td>GComvGRU</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">29</td>
+<td>monteblockGConvGRU</td>
+<td>IT-STGCN</td>
+<td>0.149142</td>
+<td>block</td>
+<td>4</td>
+<td>12</td>
+<td>linear</td>
+<td>50</td>
+<td>0.932761</td>
+<td>558.296924</td>
+<td>GComvGRU</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>monteblockGConvGRU</td>
+<td>STGCN</td>
+<td>0.149142</td>
+<td>block</td>
+<td>4</td>
+<td>12</td>
+<td>linear</td>
+<td>50</td>
+<td>0.932488</td>
+<td>372.226394</td>
+<td>GComvGRU</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>monteblockGConvGRU</td>
+<td>IT-STGCN</td>
+<td>0.149142</td>
+<td>block</td>
+<td>4</td>
+<td>12</td>
+<td>linear</td>
+<td>50</td>
+<td>0.930379</td>
+<td>699.658128</td>
+<td>GComvGRU</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>monteblockGConvGRU</td>
+<td>STGCN</td>
+<td>0.149142</td>
+<td>block</td>
+<td>4</td>
+<td>12</td>
+<td>linear</td>
+<td>50</td>
+<td>0.931438</td>
+<td>415.605205</td>
+<td>GComvGRU</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>monteblockGConvGRU</td>
+<td>IT-STGCN</td>
+<td>0.149142</td>
+<td>block</td>
+<td>4</td>
+<td>12</td>
+<td>linear</td>
+<td>50</td>
+<td>0.930347</td>
+<td>542.798099</td>
+<td>GComvGRU</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>monteblockGConvGRU</td>
+<td>STGCN</td>
+<td>0.149142</td>
+<td>block</td>
+<td>4</td>
+<td>12</td>
+<td>linear</td>
+<td>50</td>
+<td>0.930008</td>
+<td>562.986979</td>
+<td>GComvGRU</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">5</td>
+<td>monteblockGConvGRU</td>
+<td>IT-STGCN</td>
+<td>0.149142</td>
+<td>block</td>
+<td>4</td>
+<td>12</td>
+<td>linear</td>
+<td>50</td>
+<td>0.928100</td>
+<td>659.513895</td>
+<td>GComvGRU</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">6</td>
+<td>monteblockGConvGRU</td>
+<td>STGCN</td>
+<td>0.149142</td>
+<td>block</td>
+<td>4</td>
+<td>12</td>
+<td>linear</td>
+<td>50</td>
+<td>0.931606</td>
+<td>247.083671</td>
+<td>GComvGRU</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">7</td>
+<td>monteblockGConvGRU</td>
+<td>IT-STGCN</td>
+<td>0.149142</td>
+<td>block</td>
+<td>4</td>
+<td>12</td>
+<td>linear</td>
+<td>50</td>
+<td>0.931921</td>
+<td>561.147928</td>
+<td>GComvGRU</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">8</td>
+<td>monteblockGConvGRU</td>
+<td>STGCN</td>
+<td>0.149142</td>
+<td>block</td>
+<td>4</td>
+<td>12</td>
+<td>linear</td>
+<td>50</td>
+<td>0.936320</td>
+<td>408.399451</td>
+<td>GComvGRU</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">9</td>
+<td>monteblockGConvGRU</td>
+<td>IT-STGCN</td>
+<td>0.149142</td>
+<td>block</td>
+<td>4</td>
+<td>12</td>
+<td>linear</td>
+<td>50</td>
+<td>0.931158</td>
+<td>499.680166</td>
+<td>GComvGRU</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">10</td>
+<td>monteblockGConvGRU</td>
+<td>STGCN</td>
+<td>0.149142</td>
+<td>block</td>
+<td>4</td>
+<td>12</td>
+<td>linear</td>
+<td>50</td>
+<td>0.932733</td>
+<td>382.932732</td>
+<td>GComvGRU</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">11</td>
+<td>monteblockGConvGRU</td>
+<td>IT-STGCN</td>
+<td>0.149142</td>
+<td>block</td>
+<td>4</td>
+<td>12</td>
+<td>linear</td>
+<td>50</td>
+<td>0.931796</td>
+<td>501.847627</td>
+<td>GComvGRU</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">12</td>
+<td>monteblockGConvGRU</td>
+<td>STGCN</td>
+<td>0.149142</td>
+<td>block</td>
+<td>4</td>
+<td>12</td>
+<td>linear</td>
+<td>50</td>
+<td>0.930121</td>
+<td>398.458052</td>
+<td>GComvGRU</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">13</td>
+<td>monteblockGConvGRU</td>
+<td>IT-STGCN</td>
+<td>0.149142</td>
+<td>block</td>
+<td>4</td>
+<td>12</td>
+<td>linear</td>
+<td>50</td>
+<td>0.934384</td>
+<td>577.732913</td>
+<td>GComvGRU</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">14</td>
+<td>monteblockGConvGRU</td>
+<td>STGCN</td>
+<td>0.149142</td>
+<td>block</td>
+<td>4</td>
+<td>12</td>
+<td>linear</td>
+<td>50</td>
+<td>0.938307</td>
+<td>332.404821</td>
+<td>GComvGRU</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">15</td>
+<td>monteblockGConvGRU</td>
+<td>IT-STGCN</td>
+<td>0.149142</td>
+<td>block</td>
+<td>4</td>
+<td>12</td>
+<td>linear</td>
+<td>50</td>
+<td>0.928826</td>
+<td>712.387104</td>
+<td>GComvGRU</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">16</td>
+<td>monteblockGConvGRU</td>
+<td>STGCN</td>
+<td>0.149142</td>
+<td>block</td>
+<td>4</td>
+<td>12</td>
+<td>linear</td>
+<td>50</td>
+<td>0.933157</td>
+<td>535.517251</td>
+<td>GComvGRU</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">17</td>
+<td>monteblockGConvGRU</td>
+<td>IT-STGCN</td>
+<td>0.149142</td>
+<td>block</td>
+<td>4</td>
+<td>12</td>
+<td>linear</td>
+<td>50</td>
+<td>0.931454</td>
+<td>541.591015</td>
+<td>GComvGRU</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">18</td>
+<td>monteblockGConvGRU</td>
+<td>STGCN</td>
+<td>0.149142</td>
+<td>block</td>
+<td>4</td>
+<td>12</td>
+<td>linear</td>
+<td>50</td>
+<td>0.934156</td>
+<td>467.824079</td>
+<td>GComvGRU</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">19</td>
+<td>monteblockGConvGRU</td>
+<td>IT-STGCN</td>
+<td>0.149142</td>
+<td>block</td>
+<td>4</td>
+<td>12</td>
+<td>linear</td>
+<td>50</td>
+<td>0.932229</td>
+<td>695.850091</td>
+<td>GComvGRU</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">20</td>
+<td>monteblockGConvGRU</td>
+<td>STGCN</td>
+<td>0.149142</td>
+<td>block</td>
+<td>4</td>
+<td>12</td>
+<td>linear</td>
+<td>50</td>
+<td>0.933623</td>
+<td>349.885399</td>
+<td>GComvGRU</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">21</td>
+<td>monteblockGConvGRU</td>
+<td>IT-STGCN</td>
+<td>0.149142</td>
+<td>block</td>
+<td>4</td>
+<td>12</td>
+<td>linear</td>
+<td>50</td>
+<td>0.934271</td>
+<td>595.696776</td>
+<td>GComvGRU</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">22</td>
+<td>monteblockGConvGRU</td>
+<td>STGCN</td>
+<td>0.149142</td>
+<td>block</td>
+<td>4</td>
+<td>12</td>
+<td>linear</td>
+<td>50</td>
+<td>0.932913</td>
+<td>610.674303</td>
+<td>GComvGRU</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">23</td>
+<td>monteblockGConvGRU</td>
+<td>IT-STGCN</td>
+<td>0.149142</td>
+<td>block</td>
+<td>4</td>
+<td>12</td>
+<td>linear</td>
+<td>50</td>
+<td>0.930285</td>
+<td>668.320416</td>
+<td>GComvGRU</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">24</td>
+<td>monteblockGConvGRU</td>
+<td>STGCN</td>
+<td>0.149142</td>
+<td>block</td>
+<td>4</td>
+<td>12</td>
+<td>linear</td>
+<td>50</td>
+<td>0.927861</td>
+<td>345.334535</td>
+<td>GComvGRU</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">25</td>
+<td>monteblockGConvGRU</td>
+<td>IT-STGCN</td>
+<td>0.149142</td>
+<td>block</td>
+<td>4</td>
+<td>12</td>
+<td>linear</td>
+<td>50</td>
+<td>0.927856</td>
+<td>666.427625</td>
+<td>GComvGRU</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">26</td>
+<td>monteblockGConvGRU</td>
+<td>STGCN</td>
+<td>0.149142</td>
+<td>block</td>
+<td>4</td>
+<td>12</td>
+<td>linear</td>
+<td>50</td>
+<td>0.937333</td>
+<td>551.077905</td>
+<td>GComvGRU</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">27</td>
+<td>monteblockGConvGRU</td>
+<td>IT-STGCN</td>
+<td>0.149142</td>
+<td>block</td>
+<td>4</td>
+<td>12</td>
+<td>linear</td>
+<td>50</td>
+<td>0.929876</td>
+<td>638.035704</td>
+<td>GComvGRU</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">28</td>
+<td>monteblockGConvGRU</td>
+<td>STGCN</td>
+<td>0.149142</td>
+<td>block</td>
+<td>4</td>
+<td>12</td>
+<td>linear</td>
+<td>50</td>
+<td>0.930511</td>
+<td>552.010496</td>
+<td>GComvGRU</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">29</td>
+<td>monteblockGConvGRU</td>
+<td>IT-STGCN</td>
+<td>0.149142</td>
+<td>block</td>
+<td>4</td>
+<td>12</td>
+<td>linear</td>
+<td>50</td>
+<td>0.932798</td>
+<td>624.164069</td>
+<td>GComvGRU</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+
+
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      return note.innerHTML;
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
