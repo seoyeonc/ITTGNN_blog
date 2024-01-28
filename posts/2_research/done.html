@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="SEOYEON CHOI">
+<meta name="dcterms.date" content="2024-01-28">
 
-<title>ITTGNN_blog</title>
+<title>ITTGNN_blog - 시뮬 데이터 정리중</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -151,7 +153,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">시뮬 데이터 정리중</li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -161,7 +163,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">시뮬 데이터 정리중</h1>
+                      </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>SEOYEON CHOI </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">January 28, 2024</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -231,12 +261,33 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
+
+<ol type="1">
+<li>200에폭에서 커널 죽음(2번 시도)</li>
+</ol>
+<ul>
+<li>150 에폭에서 진행</li>
+<li>같은 데이터로 다른 커널에서 classic/proposed 나눠서 진행</li>
+</ul>
+<ol start="2" type="1">
+<li>저번에 우리의 결과보다 mse 낮게 나왔던 결과의 이유</li>
+</ol>
+<ul>
+<li>TGCN 예제 돌릴떄 train ratio를 20%로 했더니 mse값이 더 낮게 나왔음.</li>
+<li>우리는 train ratio 가 80%인데, 왜 20%가 더 작은지는.. (GNAR-R을 함께 보기)</li>
+</ul>
+<ol start="3" type="1">
+<li>GNAR 도 train 80%, test 20% 데이터 나눠서 하는 게 의미가 있는 것인지..</li>
+</ol>
+<ul>
+<li>이 싱태로 하면 mse 값이 너무 크게 나옴..(predict값이 0으로 수렴해버리는 GNAR)</li>
+</ul>
 <div id="609d3fb0-9d2a-4a08-85e9-7a42be2b1b60" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span></code></pre></div>
 </div>
 <hr>
 <p>GConvLSTM</p>
-<div id="d014c748-9c3d-4453-a7c4-9118417b5ac5" class="cell" data-execution_count="78">
+<div id="d014c748-9c3d-4453-a7c4-9118417b5ac5" class="cell" data-execution_count="101">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>pd.concat([pd.read_csv(<span class="st">'./simulation_results/2024-01-24_01-17-39.csv'</span>), <span class="co"># 1</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>           pd.read_csv(<span class="st">'./simulation_results/2024-01-24_08-15-26.csv'</span>), <span class="co"># 2</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>           pd.read_csv(<span class="st">'./simulation_results/2024-01-24_14-17-11.csv'</span>), <span class="co"># 3</span></span>
@@ -244,9 +295,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>           pd.read_csv(<span class="st">'./simulation_results/2024-01-25_12-18-29.csv'</span>), <span class="co"># 5</span></span>
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>           pd.read_csv(<span class="st">'./simulation_results/2024-01-25_23-41-45.csv'</span>), <span class="co"># 6</span></span>
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>           pd.read_csv(<span class="st">'./simulation_results/2024-01-26_12-37-25.csv'</span>), <span class="co"># 7</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>           pd.read_csv(<span class="st">'./simulation_results/2024-01-26_21-14-21.csv'</span>), <span class="co"># 7</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>          ]).assign(model<span class="op">=</span><span class="st">'GConvLSTM'</span>)</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="78">
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>           pd.read_csv(<span class="st">'./simulation_results/2024-01-26_21-14-21.csv'</span>), <span class="co"># 8</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>           pd.read_csv(<span class="st">'./simulation_results/2024-01-27_08-50-46.csv'</span>), <span class="co"># 9</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>           pd.read_csv(<span class="st">'./simulation_results/2024-01-27_19-02-29.csv'</span>), <span class="co"># 10</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>           pd.read_csv(<span class="st">'./simulation_results/2024-01-28_08-29-10.csv'</span>), <span class="co"># 11</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>           pd.read_csv(<span class="st">'./simulation_results/2024-01-28_17-22-21.csv'</span>), <span class="co"># 12</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>          ]).assign(model<span class="op">=</span><span class="st">'GConvLSTM'</span>)</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="101">
 <div>
 
 
@@ -464,6 +519,146 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>37881.343013</td>
 <td>GConvLSTM</td>
 </tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>windmillsmall</td>
+<td>STGCN</td>
+<td>0.5</td>
+<td>rand</td>
+<td>8</td>
+<td>16</td>
+<td>linear</td>
+<td>50</td>
+<td>1.392125</td>
+<td>1975.735434</td>
+<td>GConvLSTM</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>windmillsmall</td>
+<td>IT-STGCN</td>
+<td>0.5</td>
+<td>rand</td>
+<td>8</td>
+<td>16</td>
+<td>linear</td>
+<td>50</td>
+<td>0.997460</td>
+<td>28946.978392</td>
+<td>GConvLSTM</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>windmillsmall</td>
+<td>STGCN</td>
+<td>0.5</td>
+<td>rand</td>
+<td>8</td>
+<td>16</td>
+<td>linear</td>
+<td>50</td>
+<td>1.318593</td>
+<td>6948.836621</td>
+<td>GConvLSTM</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>windmillsmall</td>
+<td>IT-STGCN</td>
+<td>0.5</td>
+<td>rand</td>
+<td>8</td>
+<td>16</td>
+<td>linear</td>
+<td>50</td>
+<td>0.998245</td>
+<td>34599.245432</td>
+<td>GConvLSTM</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>windmillsmall</td>
+<td>STGCN</td>
+<td>0.5</td>
+<td>rand</td>
+<td>8</td>
+<td>16</td>
+<td>linear</td>
+<td>50</td>
+<td>1.399153</td>
+<td>1957.639161</td>
+<td>GConvLSTM</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>windmillsmall</td>
+<td>IT-STGCN</td>
+<td>0.5</td>
+<td>rand</td>
+<td>8</td>
+<td>16</td>
+<td>linear</td>
+<td>50</td>
+<td>0.996699</td>
+<td>34667.262108</td>
+<td>GConvLSTM</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>windmillsmall</td>
+<td>STGCN</td>
+<td>0.5</td>
+<td>rand</td>
+<td>8</td>
+<td>16</td>
+<td>linear</td>
+<td>50</td>
+<td>1.309674</td>
+<td>9025.758318</td>
+<td>GConvLSTM</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>windmillsmall</td>
+<td>IT-STGCN</td>
+<td>0.5</td>
+<td>rand</td>
+<td>8</td>
+<td>16</td>
+<td>linear</td>
+<td>50</td>
+<td>0.996202</td>
+<td>38963.648819</td>
+<td>GConvLSTM</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>windmillsmall</td>
+<td>STGCN</td>
+<td>0.5</td>
+<td>rand</td>
+<td>8</td>
+<td>16</td>
+<td>linear</td>
+<td>50</td>
+<td>1.301730</td>
+<td>1961.896874</td>
+<td>GConvLSTM</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>windmillsmall</td>
+<td>IT-STGCN</td>
+<td>0.5</td>
+<td>rand</td>
+<td>8</td>
+<td>16</td>
+<td>linear</td>
+<td>50</td>
+<td>0.997166</td>
+<td>29929.752295</td>
+<td>GConvLSTM</td>
+</tr>
 </tbody>
 </table>
 
@@ -471,15 +666,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>DyGrEncoder</p>
-<div id="fdd773c6-abc7-4efb-ae39-28e05abc8cbe" class="cell" data-execution_count="83">
+<div id="fdd773c6-abc7-4efb-ae39-28e05abc8cbe" class="cell" data-execution_count="102">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>pd.concat([pd.read_csv(<span class="st">'./simulation_results/2024-01-24_23-09-51.csv'</span>), <span class="co"># 1</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>           pd.read_csv(<span class="st">'./simulation_results/2024-01-25_07-49-42.csv'</span>), <span class="co"># 2</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>           pd.read_csv(<span class="st">'./simulation_results/2024-01-26_01-37-53.csv'</span>), <span class="co"># 3</span></span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>           pd.read_csv(<span class="st">'./simulation_results/2024-01-26_12-20-37.csv'</span>), <span class="co"># 4</span></span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>           pd.read_csv(<span class="st">'./simulation_results/2024-01-26_20-56-38.csv'</span>), <span class="co"># 5</span></span>
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>           pd.read_csv(<span class="st">'./simulation_results/2024-01-27_05-43-47.csv'</span>), <span class="co"># 6</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>          ]).assign(model<span class="op">=</span><span class="st">'DyGrEncoder'</span>)</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="83">
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>           pd.read_csv(<span class="st">'./simulation_results/2024-01-27_16-32-59.csv'</span>), <span class="co"># 7</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>           pd.read_csv(<span class="st">'./simulation_results/2024-01-28_03-29-56.csv'</span>), <span class="co"># 8</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>           pd.read_csv(<span class="st">'./simulation_results/2024-01-28_13-38-03.csv'</span>), <span class="co"># 9</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>          ]).assign(model<span class="op">=</span><span class="st">'DyGrEncoder'</span>)</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="102">
 <div>
 
 
@@ -669,6 +867,90 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>29467.090409</td>
 <td>DyGrEncoder</td>
 </tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>windmillsmallDyGrEncoder</td>
+<td>STGCN</td>
+<td>0.5</td>
+<td>rand</td>
+<td>8</td>
+<td>12</td>
+<td>linear</td>
+<td>50</td>
+<td>1.368710</td>
+<td>2130.964975</td>
+<td>DyGrEncoder</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>windmillsmallDyGrEncoder</td>
+<td>IT-STGCN</td>
+<td>0.5</td>
+<td>rand</td>
+<td>8</td>
+<td>12</td>
+<td>linear</td>
+<td>50</td>
+<td>0.991051</td>
+<td>36747.895950</td>
+<td>DyGrEncoder</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>windmillsmallDyGrEncoder</td>
+<td>STGCN</td>
+<td>0.5</td>
+<td>rand</td>
+<td>8</td>
+<td>12</td>
+<td>linear</td>
+<td>50</td>
+<td>1.334106</td>
+<td>2933.313962</td>
+<td>DyGrEncoder</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>windmillsmallDyGrEncoder</td>
+<td>IT-STGCN</td>
+<td>0.5</td>
+<td>rand</td>
+<td>8</td>
+<td>12</td>
+<td>linear</td>
+<td>50</td>
+<td>0.998642</td>
+<td>36430.339930</td>
+<td>DyGrEncoder</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>windmillsmallDyGrEncoder</td>
+<td>STGCN</td>
+<td>0.5</td>
+<td>rand</td>
+<td>8</td>
+<td>12</td>
+<td>linear</td>
+<td>50</td>
+<td>1.412649</td>
+<td>2965.455756</td>
+<td>DyGrEncoder</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>windmillsmallDyGrEncoder</td>
+<td>IT-STGCN</td>
+<td>0.5</td>
+<td>rand</td>
+<td>8</td>
+<td>12</td>
+<td>linear</td>
+<td>50</td>
+<td>0.999837</td>
+<td>33455.468574</td>
+<td>DyGrEncoder</td>
+</tr>
 </tbody>
 </table>
 
@@ -676,15 +958,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>LRGCN</p>
-<div id="89c9305b-8d12-41a7-a8c2-895a6f8be68a" class="cell" data-execution_count="81">
+<div id="89c9305b-8d12-41a7-a8c2-895a6f8be68a" class="cell" data-execution_count="99">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>pd.concat([pd.read_csv(<span class="st">'./simulation_results/2024-01-25_00-26-15.csv'</span>), <span class="co"># 1</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>           pd.read_csv(<span class="st">'./simulation_results/2024-01-25_10-04-35.csv'</span>), <span class="co"># 2</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>           pd.read_csv(<span class="st">'./simulation_results/2024-01-25_19-42-50.csv'</span>), <span class="co"># 3</span></span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>           pd.read_csv(<span class="st">'./simulation_results/2024-01-26_06-17-49.csv'</span>), <span class="co"># 4</span></span>
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>           pd.read_csv(<span class="st">'./simulation_results/2024-01-26_16-19-15.csv'</span>), <span class="co"># 5</span></span>
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>           pd.read_csv(<span class="st">'./simulation_results/2024-01-27_01-56-42.csv'</span>), <span class="co"># 6</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>          ]).assign(model<span class="op">=</span><span class="st">'LRGCN'</span>)</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="81">
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>           pd.read_csv(<span class="st">'./simulation_results/2024-01-27_12-31-42.csv'</span>), <span class="co"># 7</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>           pd.read_csv(<span class="st">'./simulation_results/2024-01-27_23-41-30.csv'</span>), <span class="co"># 8</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>           pd.read_csv(<span class="st">'./simulation_results/2024-01-28_10-50-18.csv'</span>), <span class="co"># 9</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>          ]).assign(model<span class="op">=</span><span class="st">'LRGCN'</span>)</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="99">
 <div>
 
 
@@ -874,6 +1159,90 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>31567.534146</td>
 <td>LRGCN</td>
 </tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>windmillsmallLRGCN</td>
+<td>STGCN</td>
+<td>0.5</td>
+<td>rand</td>
+<td>8</td>
+<td>12</td>
+<td>linear</td>
+<td>50</td>
+<td>1.377256</td>
+<td>3160.819826</td>
+<td>LRGCN</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>windmillsmallLRGCN</td>
+<td>IT-STGCN</td>
+<td>0.5</td>
+<td>rand</td>
+<td>8</td>
+<td>12</td>
+<td>linear</td>
+<td>50</td>
+<td>0.995118</td>
+<td>34827.182467</td>
+<td>LRGCN</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>windmillsmallLRGCN</td>
+<td>STGCN</td>
+<td>0.5</td>
+<td>rand</td>
+<td>8</td>
+<td>12</td>
+<td>linear</td>
+<td>50</td>
+<td>1.313329</td>
+<td>3004.048005</td>
+<td>LRGCN</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>windmillsmallLRGCN</td>
+<td>IT-STGCN</td>
+<td>0.5</td>
+<td>rand</td>
+<td>8</td>
+<td>12</td>
+<td>linear</td>
+<td>50</td>
+<td>0.994629</td>
+<td>37079.614291</td>
+<td>LRGCN</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>windmillsmallLRGCN</td>
+<td>STGCN</td>
+<td>0.5</td>
+<td>rand</td>
+<td>8</td>
+<td>12</td>
+<td>linear</td>
+<td>50</td>
+<td>1.383590</td>
+<td>3104.627234</td>
+<td>LRGCN</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>windmillsmallLRGCN</td>
+<td>IT-STGCN</td>
+<td>0.5</td>
+<td>rand</td>
+<td>8</td>
+<td>12</td>
+<td>linear</td>
+<td>50</td>
+<td>0.995887</td>
+<td>36924.668494</td>
+<td>LRGCN</td>
+</tr>
 </tbody>
 </table>
 
@@ -881,21 +1250,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <hr>
-<p>pedalme</p>
-<div id="b62d764c-2463-4140-a015-bb8c15e82ffc" class="cell" data-execution_count="65">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># pd.concat([pd.read_csv('./simulation_results/pedalme_linear_old.csv'),</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co">#           pd.read_csv('./simulation_results/2024-01-25_17-58-42.csv').assign(model='LRGCN').iloc[:,1:].assign(dataset='pedalme'),</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co">#            pd.read_csv('./simulation_results/pedalme_linear_block_old.csv'),</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co">#           pd.read_csv('./simulation_results/2024-01-25_18-06-45.csv').assign(model='LRGCN').iloc[:,1:].assign(dataset='pedalme')]).iloc[:,1:].to_csv('pedalme_linear.csv',index=False)</span></span></code></pre></div>
-</div>
-<hr>
 <p>monte</p>
 <p>block</p>
-<div id="6e25fdfd-5368-4ef5-ab3f-5511b1297309" class="cell" data-execution_count="75">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>pd.concat([pd.read_csv(<span class="st">'./simulation_results/2024-01-26_05-21-17.csv'</span>).assign(model<span class="op">=</span><span class="st">'GComvGRU'</span>), <span class="co"># 15(1)</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>           pd.read_csv(<span class="st">'./simulation_results/2024-01-26_09-48-48.csv'</span>).assign(model<span class="op">=</span><span class="st">'GComvGRU'</span>), <span class="co"># 15(2)</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>          ])</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="75">
+<div id="6e25fdfd-5368-4ef5-ab3f-5511b1297309" class="cell" data-execution_count="98">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>pd.concat([pd.read_csv(<span class="st">'./simulation_results/2024-01-26_05-21-17.csv'</span>).assign(model<span class="op">=</span><span class="st">'GComvGRU'</span>), <span class="co"># epoch 15(1)</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>           pd.read_csv(<span class="st">'./simulation_results/2024-01-26_09-48-48.csv'</span>).assign(model<span class="op">=</span><span class="st">'GComvGRU'</span>), <span class="co"># epoch 15(2)</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>           pd.read_csv(<span class="st">'./simulation_results/2024-01-27_17-54-13.csv'</span>).assign(model<span class="op">=</span><span class="st">'GConvLSTM'</span>), <span class="co"># epoch 30</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>           pd.read_csv(<span class="st">'./simulation_results/2024-01-27_23-03-18.csv'</span>).assign(model<span class="op">=</span><span class="st">'GCLSTM'</span>), <span class="co"># epoch 30</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>           pd.read_csv(<span class="st">'./simulation_results/2024-01-28_03-57-09.csv'</span>).assign(model<span class="op">=</span><span class="st">'DyGrEncoder'</span>), <span class="co"># epoch 30</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>           pd.read_csv(<span class="st">'./simulation_results/2024-01-28_10-28-48.csv'</span>).assign(model<span class="op">=</span><span class="st">'DCRNN'</span>), <span class="co"># epoch 30</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>          ])</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="98">
 <div>
 
 
@@ -988,8 +1353,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>GComvGRU</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">5</td>
-<td>monteblockGConvGRU</td>
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">55</td>
+<td>monteblockDCRNN</td>
 <td>IT-STGCN</td>
 <td>0.149142</td>
 <td>block</td>
@@ -997,13 +1376,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>12</td>
 <td>linear</td>
 <td>50</td>
-<td>0.929757</td>
-<td>674.040715</td>
-<td>GComvGRU</td>
+<td>0.938823</td>
+<td>639.044752</td>
+<td>DCRNN</td>
 </tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">6</td>
-<td>monteblockGConvGRU</td>
+<tr class="even">
+<td data-quarto-table-cell-role="th">56</td>
+<td>monteblockDCRNN</td>
 <td>STGCN</td>
 <td>0.149142</td>
 <td>block</td>
@@ -1011,13 +1390,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>12</td>
 <td>linear</td>
 <td>50</td>
-<td>0.932275</td>
-<td>425.857081</td>
-<td>GComvGRU</td>
+<td>0.954024</td>
+<td>105.638691</td>
+<td>DCRNN</td>
 </tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">7</td>
-<td>monteblockGConvGRU</td>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">57</td>
+<td>monteblockDCRNN</td>
 <td>IT-STGCN</td>
 <td>0.149142</td>
 <td>block</td>
@@ -1025,13 +1404,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>12</td>
 <td>linear</td>
 <td>50</td>
-<td>0.930852</td>
-<td>562.374390</td>
-<td>GComvGRU</td>
+<td>0.940108</td>
+<td>629.102410</td>
+<td>DCRNN</td>
 </tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">8</td>
-<td>monteblockGConvGRU</td>
+<tr class="even">
+<td data-quarto-table-cell-role="th">58</td>
+<td>monteblockDCRNN</td>
 <td>STGCN</td>
 <td>0.149142</td>
 <td>block</td>
@@ -1039,41 +1418,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>12</td>
 <td>linear</td>
 <td>50</td>
-<td>0.934731</td>
-<td>411.990982</td>
-<td>GComvGRU</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">9</td>
-<td>monteblockGConvGRU</td>
-<td>IT-STGCN</td>
-<td>0.149142</td>
-<td>block</td>
-<td>4</td>
-<td>12</td>
-<td>linear</td>
-<td>50</td>
-<td>0.936990</td>
-<td>664.307830</td>
-<td>GComvGRU</td>
+<td>0.951526</td>
+<td>98.818465</td>
+<td>DCRNN</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">10</td>
-<td>monteblockGConvGRU</td>
-<td>STGCN</td>
-<td>0.149142</td>
-<td>block</td>
-<td>4</td>
-<td>12</td>
-<td>linear</td>
-<td>50</td>
-<td>0.930695</td>
-<td>395.249585</td>
-<td>GComvGRU</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">11</td>
-<td>monteblockGConvGRU</td>
+<td data-quarto-table-cell-role="th">59</td>
+<td>monteblockDCRNN</td>
 <td>IT-STGCN</td>
 <td>0.149142</td>
 <td>block</td>
@@ -1081,685 +1432,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>12</td>
 <td>linear</td>
 <td>50</td>
-<td>0.931442</td>
-<td>521.525001</td>
-<td>GComvGRU</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">12</td>
-<td>monteblockGConvGRU</td>
-<td>STGCN</td>
-<td>0.149142</td>
-<td>block</td>
-<td>4</td>
-<td>12</td>
-<td>linear</td>
-<td>50</td>
-<td>0.932494</td>
-<td>610.015810</td>
-<td>GComvGRU</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">13</td>
-<td>monteblockGConvGRU</td>
-<td>IT-STGCN</td>
-<td>0.149142</td>
-<td>block</td>
-<td>4</td>
-<td>12</td>
-<td>linear</td>
-<td>50</td>
-<td>0.932101</td>
-<td>670.815484</td>
-<td>GComvGRU</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">14</td>
-<td>monteblockGConvGRU</td>
-<td>STGCN</td>
-<td>0.149142</td>
-<td>block</td>
-<td>4</td>
-<td>12</td>
-<td>linear</td>
-<td>50</td>
-<td>0.929891</td>
-<td>340.687619</td>
-<td>GComvGRU</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">15</td>
-<td>monteblockGConvGRU</td>
-<td>IT-STGCN</td>
-<td>0.149142</td>
-<td>block</td>
-<td>4</td>
-<td>12</td>
-<td>linear</td>
-<td>50</td>
-<td>0.930814</td>
-<td>688.510900</td>
-<td>GComvGRU</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">16</td>
-<td>monteblockGConvGRU</td>
-<td>STGCN</td>
-<td>0.149142</td>
-<td>block</td>
-<td>4</td>
-<td>12</td>
-<td>linear</td>
-<td>50</td>
-<td>0.929568</td>
-<td>530.603474</td>
-<td>GComvGRU</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">17</td>
-<td>monteblockGConvGRU</td>
-<td>IT-STGCN</td>
-<td>0.149142</td>
-<td>block</td>
-<td>4</td>
-<td>12</td>
-<td>linear</td>
-<td>50</td>
-<td>0.934458</td>
-<td>627.509763</td>
-<td>GComvGRU</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">18</td>
-<td>monteblockGConvGRU</td>
-<td>STGCN</td>
-<td>0.149142</td>
-<td>block</td>
-<td>4</td>
-<td>12</td>
-<td>linear</td>
-<td>50</td>
-<td>0.931746</td>
-<td>549.576937</td>
-<td>GComvGRU</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">19</td>
-<td>monteblockGConvGRU</td>
-<td>IT-STGCN</td>
-<td>0.149142</td>
-<td>block</td>
-<td>4</td>
-<td>12</td>
-<td>linear</td>
-<td>50</td>
-<td>0.930138</td>
-<td>582.252268</td>
-<td>GComvGRU</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">20</td>
-<td>monteblockGConvGRU</td>
-<td>STGCN</td>
-<td>0.149142</td>
-<td>block</td>
-<td>4</td>
-<td>12</td>
-<td>linear</td>
-<td>50</td>
-<td>0.933423</td>
-<td>399.936904</td>
-<td>GComvGRU</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">21</td>
-<td>monteblockGConvGRU</td>
-<td>IT-STGCN</td>
-<td>0.149142</td>
-<td>block</td>
-<td>4</td>
-<td>12</td>
-<td>linear</td>
-<td>50</td>
-<td>0.929868</td>
-<td>715.416811</td>
-<td>GComvGRU</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">22</td>
-<td>monteblockGConvGRU</td>
-<td>STGCN</td>
-<td>0.149142</td>
-<td>block</td>
-<td>4</td>
-<td>12</td>
-<td>linear</td>
-<td>50</td>
-<td>0.930802</td>
-<td>409.318287</td>
-<td>GComvGRU</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">23</td>
-<td>monteblockGConvGRU</td>
-<td>IT-STGCN</td>
-<td>0.149142</td>
-<td>block</td>
-<td>4</td>
-<td>12</td>
-<td>linear</td>
-<td>50</td>
-<td>0.931395</td>
-<td>544.664550</td>
-<td>GComvGRU</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">24</td>
-<td>monteblockGConvGRU</td>
-<td>STGCN</td>
-<td>0.149142</td>
-<td>block</td>
-<td>4</td>
-<td>12</td>
-<td>linear</td>
-<td>50</td>
-<td>0.931638</td>
-<td>583.273260</td>
-<td>GComvGRU</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">25</td>
-<td>monteblockGConvGRU</td>
-<td>IT-STGCN</td>
-<td>0.149142</td>
-<td>block</td>
-<td>4</td>
-<td>12</td>
-<td>linear</td>
-<td>50</td>
-<td>0.931750</td>
-<td>667.601656</td>
-<td>GComvGRU</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">26</td>
-<td>monteblockGConvGRU</td>
-<td>STGCN</td>
-<td>0.149142</td>
-<td>block</td>
-<td>4</td>
-<td>12</td>
-<td>linear</td>
-<td>50</td>
-<td>0.942542</td>
-<td>281.407660</td>
-<td>GComvGRU</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">27</td>
-<td>monteblockGConvGRU</td>
-<td>IT-STGCN</td>
-<td>0.149142</td>
-<td>block</td>
-<td>4</td>
-<td>12</td>
-<td>linear</td>
-<td>50</td>
-<td>0.932974</td>
-<td>645.180369</td>
-<td>GComvGRU</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">28</td>
-<td>monteblockGConvGRU</td>
-<td>STGCN</td>
-<td>0.149142</td>
-<td>block</td>
-<td>4</td>
-<td>12</td>
-<td>linear</td>
-<td>50</td>
-<td>0.930067</td>
-<td>612.553957</td>
-<td>GComvGRU</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">29</td>
-<td>monteblockGConvGRU</td>
-<td>IT-STGCN</td>
-<td>0.149142</td>
-<td>block</td>
-<td>4</td>
-<td>12</td>
-<td>linear</td>
-<td>50</td>
-<td>0.932761</td>
-<td>558.296924</td>
-<td>GComvGRU</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
-<td>monteblockGConvGRU</td>
-<td>STGCN</td>
-<td>0.149142</td>
-<td>block</td>
-<td>4</td>
-<td>12</td>
-<td>linear</td>
-<td>50</td>
-<td>0.932488</td>
-<td>372.226394</td>
-<td>GComvGRU</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
-<td>monteblockGConvGRU</td>
-<td>IT-STGCN</td>
-<td>0.149142</td>
-<td>block</td>
-<td>4</td>
-<td>12</td>
-<td>linear</td>
-<td>50</td>
-<td>0.930379</td>
-<td>699.658128</td>
-<td>GComvGRU</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
-<td>monteblockGConvGRU</td>
-<td>STGCN</td>
-<td>0.149142</td>
-<td>block</td>
-<td>4</td>
-<td>12</td>
-<td>linear</td>
-<td>50</td>
-<td>0.931438</td>
-<td>415.605205</td>
-<td>GComvGRU</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">3</td>
-<td>monteblockGConvGRU</td>
-<td>IT-STGCN</td>
-<td>0.149142</td>
-<td>block</td>
-<td>4</td>
-<td>12</td>
-<td>linear</td>
-<td>50</td>
-<td>0.930347</td>
-<td>542.798099</td>
-<td>GComvGRU</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">4</td>
-<td>monteblockGConvGRU</td>
-<td>STGCN</td>
-<td>0.149142</td>
-<td>block</td>
-<td>4</td>
-<td>12</td>
-<td>linear</td>
-<td>50</td>
-<td>0.930008</td>
-<td>562.986979</td>
-<td>GComvGRU</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">5</td>
-<td>monteblockGConvGRU</td>
-<td>IT-STGCN</td>
-<td>0.149142</td>
-<td>block</td>
-<td>4</td>
-<td>12</td>
-<td>linear</td>
-<td>50</td>
-<td>0.928100</td>
-<td>659.513895</td>
-<td>GComvGRU</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">6</td>
-<td>monteblockGConvGRU</td>
-<td>STGCN</td>
-<td>0.149142</td>
-<td>block</td>
-<td>4</td>
-<td>12</td>
-<td>linear</td>
-<td>50</td>
-<td>0.931606</td>
-<td>247.083671</td>
-<td>GComvGRU</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">7</td>
-<td>monteblockGConvGRU</td>
-<td>IT-STGCN</td>
-<td>0.149142</td>
-<td>block</td>
-<td>4</td>
-<td>12</td>
-<td>linear</td>
-<td>50</td>
-<td>0.931921</td>
-<td>561.147928</td>
-<td>GComvGRU</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">8</td>
-<td>monteblockGConvGRU</td>
-<td>STGCN</td>
-<td>0.149142</td>
-<td>block</td>
-<td>4</td>
-<td>12</td>
-<td>linear</td>
-<td>50</td>
-<td>0.936320</td>
-<td>408.399451</td>
-<td>GComvGRU</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">9</td>
-<td>monteblockGConvGRU</td>
-<td>IT-STGCN</td>
-<td>0.149142</td>
-<td>block</td>
-<td>4</td>
-<td>12</td>
-<td>linear</td>
-<td>50</td>
-<td>0.931158</td>
-<td>499.680166</td>
-<td>GComvGRU</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">10</td>
-<td>monteblockGConvGRU</td>
-<td>STGCN</td>
-<td>0.149142</td>
-<td>block</td>
-<td>4</td>
-<td>12</td>
-<td>linear</td>
-<td>50</td>
-<td>0.932733</td>
-<td>382.932732</td>
-<td>GComvGRU</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">11</td>
-<td>monteblockGConvGRU</td>
-<td>IT-STGCN</td>
-<td>0.149142</td>
-<td>block</td>
-<td>4</td>
-<td>12</td>
-<td>linear</td>
-<td>50</td>
-<td>0.931796</td>
-<td>501.847627</td>
-<td>GComvGRU</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">12</td>
-<td>monteblockGConvGRU</td>
-<td>STGCN</td>
-<td>0.149142</td>
-<td>block</td>
-<td>4</td>
-<td>12</td>
-<td>linear</td>
-<td>50</td>
-<td>0.930121</td>
-<td>398.458052</td>
-<td>GComvGRU</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">13</td>
-<td>monteblockGConvGRU</td>
-<td>IT-STGCN</td>
-<td>0.149142</td>
-<td>block</td>
-<td>4</td>
-<td>12</td>
-<td>linear</td>
-<td>50</td>
-<td>0.934384</td>
-<td>577.732913</td>
-<td>GComvGRU</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">14</td>
-<td>monteblockGConvGRU</td>
-<td>STGCN</td>
-<td>0.149142</td>
-<td>block</td>
-<td>4</td>
-<td>12</td>
-<td>linear</td>
-<td>50</td>
-<td>0.938307</td>
-<td>332.404821</td>
-<td>GComvGRU</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">15</td>
-<td>monteblockGConvGRU</td>
-<td>IT-STGCN</td>
-<td>0.149142</td>
-<td>block</td>
-<td>4</td>
-<td>12</td>
-<td>linear</td>
-<td>50</td>
-<td>0.928826</td>
-<td>712.387104</td>
-<td>GComvGRU</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">16</td>
-<td>monteblockGConvGRU</td>
-<td>STGCN</td>
-<td>0.149142</td>
-<td>block</td>
-<td>4</td>
-<td>12</td>
-<td>linear</td>
-<td>50</td>
-<td>0.933157</td>
-<td>535.517251</td>
-<td>GComvGRU</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">17</td>
-<td>monteblockGConvGRU</td>
-<td>IT-STGCN</td>
-<td>0.149142</td>
-<td>block</td>
-<td>4</td>
-<td>12</td>
-<td>linear</td>
-<td>50</td>
-<td>0.931454</td>
-<td>541.591015</td>
-<td>GComvGRU</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">18</td>
-<td>monteblockGConvGRU</td>
-<td>STGCN</td>
-<td>0.149142</td>
-<td>block</td>
-<td>4</td>
-<td>12</td>
-<td>linear</td>
-<td>50</td>
-<td>0.934156</td>
-<td>467.824079</td>
-<td>GComvGRU</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">19</td>
-<td>monteblockGConvGRU</td>
-<td>IT-STGCN</td>
-<td>0.149142</td>
-<td>block</td>
-<td>4</td>
-<td>12</td>
-<td>linear</td>
-<td>50</td>
-<td>0.932229</td>
-<td>695.850091</td>
-<td>GComvGRU</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">20</td>
-<td>monteblockGConvGRU</td>
-<td>STGCN</td>
-<td>0.149142</td>
-<td>block</td>
-<td>4</td>
-<td>12</td>
-<td>linear</td>
-<td>50</td>
-<td>0.933623</td>
-<td>349.885399</td>
-<td>GComvGRU</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">21</td>
-<td>monteblockGConvGRU</td>
-<td>IT-STGCN</td>
-<td>0.149142</td>
-<td>block</td>
-<td>4</td>
-<td>12</td>
-<td>linear</td>
-<td>50</td>
-<td>0.934271</td>
-<td>595.696776</td>
-<td>GComvGRU</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">22</td>
-<td>monteblockGConvGRU</td>
-<td>STGCN</td>
-<td>0.149142</td>
-<td>block</td>
-<td>4</td>
-<td>12</td>
-<td>linear</td>
-<td>50</td>
-<td>0.932913</td>
-<td>610.674303</td>
-<td>GComvGRU</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">23</td>
-<td>monteblockGConvGRU</td>
-<td>IT-STGCN</td>
-<td>0.149142</td>
-<td>block</td>
-<td>4</td>
-<td>12</td>
-<td>linear</td>
-<td>50</td>
-<td>0.930285</td>
-<td>668.320416</td>
-<td>GComvGRU</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">24</td>
-<td>monteblockGConvGRU</td>
-<td>STGCN</td>
-<td>0.149142</td>
-<td>block</td>
-<td>4</td>
-<td>12</td>
-<td>linear</td>
-<td>50</td>
-<td>0.927861</td>
-<td>345.334535</td>
-<td>GComvGRU</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">25</td>
-<td>monteblockGConvGRU</td>
-<td>IT-STGCN</td>
-<td>0.149142</td>
-<td>block</td>
-<td>4</td>
-<td>12</td>
-<td>linear</td>
-<td>50</td>
-<td>0.927856</td>
-<td>666.427625</td>
-<td>GComvGRU</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">26</td>
-<td>monteblockGConvGRU</td>
-<td>STGCN</td>
-<td>0.149142</td>
-<td>block</td>
-<td>4</td>
-<td>12</td>
-<td>linear</td>
-<td>50</td>
-<td>0.937333</td>
-<td>551.077905</td>
-<td>GComvGRU</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">27</td>
-<td>monteblockGConvGRU</td>
-<td>IT-STGCN</td>
-<td>0.149142</td>
-<td>block</td>
-<td>4</td>
-<td>12</td>
-<td>linear</td>
-<td>50</td>
-<td>0.929876</td>
-<td>638.035704</td>
-<td>GComvGRU</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">28</td>
-<td>monteblockGConvGRU</td>
-<td>STGCN</td>
-<td>0.149142</td>
-<td>block</td>
-<td>4</td>
-<td>12</td>
-<td>linear</td>
-<td>50</td>
-<td>0.930511</td>
-<td>552.010496</td>
-<td>GComvGRU</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">29</td>
-<td>monteblockGConvGRU</td>
-<td>IT-STGCN</td>
-<td>0.149142</td>
-<td>block</td>
-<td>4</td>
-<td>12</td>
-<td>linear</td>
-<td>50</td>
-<td>0.932798</td>
-<td>624.164069</td>
-<td>GComvGRU</td>
+<td>0.938476</td>
+<td>619.868114</td>
+<td>DCRNN</td>
 </tr>
 </tbody>
 </table>
 
+<p>300 rows × 11 columns</p>
 </div>
 </div>
 </div>

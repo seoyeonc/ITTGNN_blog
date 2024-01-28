@@ -2173,7 +2173,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>Object `TGCN` not found.</code></pre>
 </div>
 </div>
-<div id="ef454897-5e0d-4a5d-a2ac-3d77fc3a8bf8" class="cell" data-execution_count="8">
+<div id="ef454897-5e0d-4a5d-a2ac-3d77fc3a8bf8" class="cell" data-execution_count="26">
 <div class="sourceCode cell-code" id="cb76"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch</span>
 <span id="cb76-2"><a href="#cb76-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch.nn.functional <span class="im">as</span> F</span>
 <span id="cb76-3"><a href="#cb76-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> torch_geometric_temporal.nn.recurrent <span class="im">import</span> TGCN</span>
@@ -2433,7 +2433,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>MSE: 0.5202</code></pre>
 </div>
 </div>
-<div id="37ffd6b3-4438-456a-803b-628b5caa1e30" class="cell" data-execution_count="21">
+<div id="37ffd6b3-4438-456a-803b-628b5caa1e30" class="cell">
 <div class="sourceCode cell-code" id="cb95"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb95-1"><a href="#cb95-1" aria-hidden="true" tabindex="-1"></a>_e <span class="op">=</span> [_d[i].detach() <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(_d))]</span></code></pre></div>
 </div>
 <div id="ef0c75d1-2e34-46be-8a1c-300f6a389ca3" class="cell" data-execution_count="22">

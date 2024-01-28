@@ -9,7 +9,7 @@
 <meta name="author" content="SEOYEON CHOI">
 <meta name="dcterms.date" content="2024-01-28">
 
-<title>ITTGNN_blog - montevideobus 시뮬 데이터</title>
+<title>ITTGNN_blog - GNAR - R.. 논의 필요</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -59,7 +59,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -102,6 +102,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
 <link rel="stylesheet" href="../../styles.css">
@@ -150,7 +153,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">montevideobus 시뮬 데이터</li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">GNAR - R.. 논의 필요</li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -163,7 +166,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">montevideobus 시뮬 데이터</h1>
+      <h1 class="title">GNAR - R.. 논의 필요</h1>
                       </div>
   </div>
     
@@ -259,162 +262,125 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<p>monte</p>
-<table class="table">
+<p>GNAR</p>
+<div class="line-block">Model | FiveVTS | Chickenpox | Pedalme | Wikimath | Windmillsmall | MontevideoBus |</div>
+<div id="672be849-32a4-4d06-b65a-6d752b81a4ee" class="cell" data-execution_count="240">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(GNAR)</span></code></pre></div>
+</div>
+<div id="038f4bbf-e7b7-424e-97d4-7fd4468dbfd1" class="cell" data-execution_count="241">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>fiveVTS0<span class="ot">&lt;-</span>fiveVTS</span></code></pre></div>
+</div>
+<div id="24591902-9b41-480b-82ea-c508d48d866a" class="cell" data-execution_count="242">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>n<span class="ot">&lt;-</span><span class="fu">length</span>(fiveVTS0[,<span class="dv">1</span>])<span class="sc">-</span><span class="dv">40</span><span class="sc">-</span>lags</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>lags<span class="ot">&lt;-</span><span class="dv">2</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>nlags<span class="ot">&lt;-</span><span class="fu">length</span>(fiveVTS0[,<span class="dv">1</span>])<span class="sc">-</span><span class="dv">40</span><span class="sc">-</span>lags</span></code></pre></div>
+</div>
+<div id="128fe343-d963-4c2c-ad7a-5c41474e56db" class="cell" data-execution_count="243">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>fiveVTS0[<span class="fu">sample</span>(<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span>nlags), <span class="at">size =</span> <span class="fl">0.5</span> <span class="sc">*</span> n),<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>fiveVTS0[<span class="fu">sample</span>(<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span>nlags), <span class="at">size =</span> <span class="fl">0.5</span> <span class="sc">*</span> n),<span class="dv">2</span>] <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>fiveVTS0[<span class="fu">sample</span>(<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span>nlags), <span class="at">size =</span> <span class="fl">0.5</span> <span class="sc">*</span> n),<span class="dv">3</span>] <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>fiveVTS0[<span class="fu">sample</span>(<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span>nlags), <span class="at">size =</span> <span class="fl">0.5</span> <span class="sc">*</span> n),<span class="dv">4</span>] <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>fiveVTS0[<span class="fu">sample</span>(<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span>nlags), <span class="at">size =</span> <span class="fl">0.5</span> <span class="sc">*</span> n),<span class="dv">5</span>] <span class="ot">&lt;-</span> <span class="cn">NA</span></span></code></pre></div>
+</div>
+<div id="170905a5-ce47-4a6a-8964-3873f5960766" class="cell" data-execution_count="244">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>nafit <span class="ot">&lt;-</span> <span class="fu">GNARfit</span>(<span class="at">vts =</span> fiveVTS0[<span class="dv">1</span><span class="sc">:</span><span class="dv">160</span>,], <span class="at">net =</span> fiveNet, <span class="at">alphaOrder =</span> <span class="dv">2</span>, <span class="at">betaOrder =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>))</span></code></pre></div>
+</div>
+<div id="2c703b56-6a40-4be5-905c-0ebbcdeb3505" class="cell" data-execution_count="250">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>predict<span class="ot">&lt;-</span> <span class="fu">predict</span>(nafit,<span class="at">n.ahead =</span> <span class="dv">40</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(predict)</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true">
+<caption>A matrix: 6 × 5 of type dbl</caption>
 <thead>
 <tr class="header">
-<th>Model</th>
-<th>MontevideoBus</th>
+<th data-quarto-table-cell-role="th" scope="col">Series 1</th>
+<th data-quarto-table-cell-role="th" scope="col">Series 2</th>
+<th data-quarto-table-cell-role="th" scope="col">Series 3</th>
+<th data-quarto-table-cell-role="th" scope="col">Series 4</th>
+<th data-quarto-table-cell-role="th" scope="col">Series 5</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>Max iter.</td>
-<td>30</td>
+<td>-0.5789259213</td>
+<td>5.237545e-02</td>
+<td>0.3664436788</td>
+<td>-0.1256172722</td>
+<td>-0.5712965975</td>
 </tr>
 <tr class="even">
-<td>Epochs</td>
-<td>50</td>
+<td>-0.1451815969</td>
+<td>1.313459e-02</td>
+<td>0.0918958307</td>
+<td>-0.0315019858</td>
+<td>-0.1432683341</td>
 </tr>
 <tr class="odd">
-<td>Lags</td>
-<td>4</td>
+<td>-0.0364082783</td>
+<td>3.293858e-03</td>
+<td>0.0230454069</td>
+<td>-0.0078999893</td>
+<td>-0.0359284751</td>
 </tr>
 <tr class="even">
-<td>Interpolation</td>
-<td>nearest</td>
+<td>-0.0091303771</td>
+<td>8.260256e-04</td>
+<td>0.0057792696</td>
+<td>-0.0019811396</td>
+<td>-0.0090100533</td>
 </tr>
 <tr class="odd">
-<td>Filters</td>
-<td></td>
+<td>-0.0022896932</td>
+<td>2.071486e-04</td>
+<td>0.0014493108</td>
+<td>-0.0004968252</td>
+<td>-0.0022595187</td>
 </tr>
 <tr class="even">
-<td>GConvGRU</td>
-<td>12</td>
-</tr>
-<tr class="odd">
-<td>GConvLSTM</td>
-<td>12</td>
-</tr>
-<tr class="even">
-<td>GCLSTM</td>
-<td>12</td>
-</tr>
-<tr class="odd">
-<td>LRGCN</td>
-<td>2</td>
-</tr>
-<tr class="even">
-<td>DyGrEncoder</td>
-<td>12</td>
-</tr>
-<tr class="odd">
-<td>EvolveGCNH</td>
-<td>No need</td>
-</tr>
-<tr class="even">
-<td>EvolveGCNO</td>
-<td>No need</td>
-</tr>
-<tr class="odd">
-<td>TGCN</td>
-<td>8</td>
-</tr>
-<tr class="even">
-<td>DCRNN</td>
-<td>12</td>
+<td>-0.0005742035</td>
+<td>5.194822e-05</td>
+<td>0.0003634545</td>
+<td>-0.0001245926</td>
+<td>-0.0005666364</td>
 </tr>
 </tbody>
 </table>
-<div id="50dc7571-2a00-4a7f-8f7f-49d4a991d043" class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> itstgcn</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> itstgcn.planner </span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> random</span></code></pre></div>
 </div>
-<div id="51d10465-ff69-4ad1-b176-66f79d290f1d" class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> torch_geometric_temporal.dataset <span class="im">import</span> MontevideoBusDatasetLoader</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>loader10 <span class="op">=</span> MontevideoBusDatasetLoader()</span></code></pre></div>
 </div>
-<div id="5831c8d9-b08e-41ec-bcf9-018d461ff5df" class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>my_list <span class="op">=</span> [[] <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">675</span>)] <span class="co">#monte</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>another_list <span class="op">=</span> <span class="bu">list</span>(<span class="bu">range</span>(<span class="dv">200</span>,<span class="dv">350</span>)) <span class="co">#743</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> np.array(random.sample(<span class="bu">range</span>(<span class="dv">0</span>, <span class="dv">675</span>), <span class="dv">400</span>)):</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    my_list[i] <span class="op">=</span> another_list</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>mindex <span class="op">=</span> my_list</span></code></pre></div>
+<div id="592d8bb5-0d81-434e-94bb-c38823926933" class="cell" data-execution_count="246">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>fiveVTS0[<span class="dv">200</span>,]</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class="list-inline"><li>0.447242608669382</li><li>0.404155027472594</li><li>0.719959458064196</li><li>-0.442525232542003</li><li>-1.78159592474955</li></ol>
 </div>
-<div id="5767ca6f-3b1f-41ca-afc6-4bedfcabd7a1" class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>plans_stgcn_block <span class="op">=</span> {</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">'max_iteration'</span>: <span class="dv">30</span>, </span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'method'</span>: [<span class="st">'STGCN'</span>, <span class="st">'IT-STGCN'</span>],</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">'mrate'</span>: [mindex],</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">'lags'</span>: [<span class="dv">4</span>], </span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">'nof_filters'</span>: [<span class="dv">2</span>], </span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">'inter_method'</span>: [<span class="st">'linear'</span>],</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">'epoch'</span>: [<span class="dv">50</span>]</span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 </div>
-<div id="32ce27fe-abc0-4513-8f4f-5d513479321a" class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> itstgcnLRGCN</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> itstgcnLRGCN.planner</span></code></pre></div>
+<div id="2a09df26-2e30-4181-8f16-8faa8d926317" class="cell" data-execution_count="247">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>((predict[,<span class="dv">1</span>] <span class="sc">-</span> fiveVTS0[<span class="dv">161</span><span class="sc">:</span><span class="dv">200</span>,<span class="dv">1</span>])<span class="sc">**</span><span class="dv">2</span>)</span></code></pre></div>
+<div class="cell-output cell-output-display">
+49.7011776719904
 </div>
-<div id="2c4bc9c2-470e-4de1-804e-04e0edd331ee" class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>plnr <span class="op">=</span> itstgcnLRGCN.planner.PLNR_STGCN_MANUAL(plans_stgcn_block,loader10,dataset_name<span class="op">=</span><span class="st">'monteblockLRGCN'</span>)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>plnr.simulate(mindex<span class="op">=</span>mindex,mtype<span class="op">=</span><span class="st">'block'</span>)</span></code></pre></div>
 </div>
-<div id="a1367b57-e917-4358-9574-21a3cfb37a45" class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> itstgcnEvolveGCNH</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> itstgcnEvolveGCNH.planner</span></code></pre></div>
+<div id="b272b4ee-4536-4fb0-acd4-eeaf2a96347f" class="cell" data-execution_count="248">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(predict[,<span class="dv">1</span>])</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(fiveVTS0[<span class="dv">161</span><span class="sc">:</span><span class="dv">200</span>,<span class="dv">1</span>])</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="GNAR-R_files/figure-html/cell-10-output-1.png" class="img-fluid figure-img"></p>
+</figure>
 </div>
-<div id="45f5beea-6a72-4f98-ba3e-1f8a1e3b2396" class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>plnr <span class="op">=</span> itstgcnEvolveGCNH.planner.PLNR_STGCN_MANUAL(plans_stgcn_block,loader10,dataset_name<span class="op">=</span><span class="st">'monteblockEvolveGCNH'</span>)</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>plnr.simulate(mindex<span class="op">=</span>mindex,mtype<span class="op">=</span><span class="st">'block'</span>)</span></code></pre></div>
 </div>
-<div id="2fcf4ca5-7e62-449d-a13f-6f57d9024941" class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> itstgcnEvolveGCNO</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> itstgcnEvolveGCNO.planner</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="GNAR-R_files/figure-html/cell-10-output-2.png" class="img-fluid figure-img"></p>
+</figure>
 </div>
-<div id="900b144f-0170-4688-b232-ed56affa9813" class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>plnr <span class="op">=</span> itstgcnEvolveGCNO.planner.PLNR_STGCN_MANUAL(plans_stgcn_block,loader10,dataset_name<span class="op">=</span><span class="st">'monteblockEvolveGCNO'</span>)</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>plnr.simulate(mindex<span class="op">=</span>mindex,mtype<span class="op">=</span><span class="st">'block'</span>)</span></code></pre></div>
 </div>
-<div id="8ef9875d-c273-47b1-a3f7-8b1e9e27d5a9" class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>plans_stgcn_block <span class="op">=</span> {</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">'max_iteration'</span>: <span class="dv">30</span>, </span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'method'</span>: [<span class="st">'STGCN'</span>, <span class="st">'IT-STGCN'</span>],</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">'mrate'</span>: [mindex],</span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">'lags'</span>: [<span class="dv">4</span>], </span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">'nof_filters'</span>: [<span class="dv">8</span>], </span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">'inter_method'</span>: [<span class="st">'linear'</span>],</span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">'epoch'</span>: [<span class="dv">50</span>]</span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
-</div>
-<div id="575a8362-c7a6-4236-a4e1-3be980cf9ddf" class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> itstgcnTGCN</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> itstgcnTGCN.planner</span></code></pre></div>
-</div>
-<div id="a9980d2f-2af6-4e9f-8990-8fb60facbb94" class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>plnr <span class="op">=</span> itstgcnTGCN.planner.PLNR_STGCN_MANUAL(plans_stgcn_block,loader10,dataset_name<span class="op">=</span><span class="st">'monteblockTGCN'</span>)</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>plnr.simulate(mindex<span class="op">=</span>mindex,mtype<span class="op">=</span><span class="st">'block'</span>)</span></code></pre></div>
-</div>
-<div id="a3146392-a807-482c-9892-edaab06afb83" class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>plans_stgcn_rand <span class="op">=</span> {</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">'max_iteration'</span>: <span class="dv">30</span>, </span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'method'</span>: [<span class="st">'STGCN'</span>, <span class="st">'IT-STGCN'</span>],</span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">'mrate'</span>: [<span class="fl">0.3</span>,<span class="fl">0.5</span>,<span class="fl">0.7</span>,<span class="fl">0.8</span>],</span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">'lags'</span>: [<span class="dv">4</span>], </span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">'nof_filters'</span>: [<span class="dv">2</span>], </span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">'inter_method'</span>: [<span class="st">'linear'</span>],</span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">'epoch'</span>: [<span class="dv">50</span>]</span>
-<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
-</div>
-<div id="e1c34f09-5ba7-4671-9edb-1193990c963c" class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>plnr <span class="op">=</span> itstgcnLRGCN.planner.PLNR_STGCN_RAND(plans_stgcn_rand,loader10,dataset_name<span class="op">=</span><span class="st">'monteLRGCN'</span>)</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>plnr.simulate()</span></code></pre></div>
 </div>
 
 

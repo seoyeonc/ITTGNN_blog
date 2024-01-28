@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="SEOYEON CHOI">
+<meta name="dcterms.date" content="2024-01-28">
 
-<title>ITTGNN_blog</title>
+<title>ITTGNN_blog - wikimathsmall 50% 시뮬 데이터 LRGCN</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -148,7 +150,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">wikimathsmall 50% 시뮬 데이터 LRGCN</li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -158,7 +160,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">wikimathsmall 50% 시뮬 데이터 LRGCN</h1>
+                      </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>SEOYEON CHOI </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">January 28, 2024</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -224,6 +254,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </div>
 <!-- main -->
 <main class="content quarto-banner-title-block" id="quarto-document-content">
+
 
 
 
@@ -414,132 +445,89 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">'epoch'</span>: [<span class="dv">50</span>]</span>
 <span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 </div>
-<div id="185c38b6-6d74-4113-a72b-d6a4ed9cdae4" class="cell">
+<div id="5bf940cb-cd88-4b5d-b09e-1dbad8715d22" class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>plnr <span class="op">=</span> itstgcnLRGCN.planner.PLNR_STGCN_RAND(plans_stgcn_rand,loader6,dataset_name<span class="op">=</span><span class="st">'windmillsmallLRGCN'</span>)</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>plnr.simulate()</span></code></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>/home/csy/Dropbox/ITTGNN_blog/posts/2_research/itstgcnLRGCN/utils.py:71: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at /opt/conda/conda-bld/pytorch_1682343998658/work/torch/csrc/utils/tensor_new.cpp:245.)
-  lags = torch.tensor(train_dataset.features).shape[-1]</code></pre>
 </div>
-<div class="cell-output cell-output-stdout">
-<pre><code>2/50</code></pre>
+<div id="5cbcc6df-d776-444b-b8d2-c3886919ad12" class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>plnr <span class="op">=</span> itstgcnLRGCN.planner.PLNR_STGCN_RAND(plans_stgcn_rand,loader6,dataset_name<span class="op">=</span><span class="st">'windmillsmallLRGCN'</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>plnr.simulate()</span></code></pre></div>
 </div>
+<div id="b32f8e6f-a30d-4e7a-bcd8-4eee5d2e825e" class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>plnr <span class="op">=</span> itstgcnLRGCN.planner.PLNR_STGCN_RAND(plans_stgcn_rand,loader6,dataset_name<span class="op">=</span><span class="st">'windmillsmallLRGCN'</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>plnr.simulate()</span></code></pre></div>
 </div>
-<div id="df3ab65d-089a-4b1f-bab7-ec4e69ad8fe4" class="cell">
+<div id="5dca57b0-c83c-449d-ac38-0f53828a22c7" class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>plnr <span class="op">=</span> itstgcnLRGCN.planner.PLNR_STGCN_RAND(plans_stgcn_rand,loader6,dataset_name<span class="op">=</span><span class="st">'windmillsmallLRGCN'</span>)</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>plnr.simulate()</span></code></pre></div>
 </div>
-<div id="46d1f945-8699-4df1-a9af-92dc3e0bc9a6" class="cell">
+<div id="63314f0a-4628-466a-ac94-dcb299a46f48" class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>plnr <span class="op">=</span> itstgcnLRGCN.planner.PLNR_STGCN_RAND(plans_stgcn_rand,loader6,dataset_name<span class="op">=</span><span class="st">'windmillsmallLRGCN'</span>)</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>plnr.simulate()</span></code></pre></div>
 </div>
-<div id="b0c33624-565a-44ca-8819-3f5ebc224693" class="cell">
+<div id="05ca0e89-9574-44bc-8327-f9a7bf38579c" class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>plnr <span class="op">=</span> itstgcnLRGCN.planner.PLNR_STGCN_RAND(plans_stgcn_rand,loader6,dataset_name<span class="op">=</span><span class="st">'windmillsmallLRGCN'</span>)</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>plnr.simulate()</span></code></pre></div>
 </div>
-<div id="bb84355f-3c55-45e4-a309-35154f81e5c0" class="cell">
+<div id="240cacac-3030-4ba8-a921-c0eb11a6b7a3" class="cell">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>plnr <span class="op">=</span> itstgcnLRGCN.planner.PLNR_STGCN_RAND(plans_stgcn_rand,loader6,dataset_name<span class="op">=</span><span class="st">'windmillsmallLRGCN'</span>)</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>plnr.simulate()</span></code></pre></div>
 </div>
-<div id="ebe25eb7-946e-4f39-948e-67be25c6b4a9" class="cell">
+<div id="e5001414-3746-460d-ba54-48b732f6961a" class="cell">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>plnr <span class="op">=</span> itstgcnLRGCN.planner.PLNR_STGCN_RAND(plans_stgcn_rand,loader6,dataset_name<span class="op">=</span><span class="st">'windmillsmallLRGCN'</span>)</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>plnr.simulate()</span></code></pre></div>
 </div>
-<div id="2840c1e8-7a71-42b9-bcb9-76b54a40464f" class="cell">
+<div id="e56032ef-acd0-4a0d-b5d6-70ac06254ed0" class="cell">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>plnr <span class="op">=</span> itstgcnLRGCN.planner.PLNR_STGCN_RAND(plans_stgcn_rand,loader6,dataset_name<span class="op">=</span><span class="st">'windmillsmallLRGCN'</span>)</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>plnr.simulate()</span></code></pre></div>
 </div>
-<div id="03ea742c-004b-4906-9379-f8bf6e66f0c7" class="cell">
+<div id="c25ce91b-fa16-43f2-82d3-68091cbec26a" class="cell">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>plnr <span class="op">=</span> itstgcnLRGCN.planner.PLNR_STGCN_RAND(plans_stgcn_rand,loader6,dataset_name<span class="op">=</span><span class="st">'windmillsmallLRGCN'</span>)</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>plnr.simulate()</span></code></pre></div>
 </div>
-<div id="4aa90ac1-d003-4702-b03e-d0fa8c28efdc" class="cell">
+<div id="cecf8dea-8a3a-4b44-8cdc-7bf01b99b851" class="cell">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>plnr <span class="op">=</span> itstgcnLRGCN.planner.PLNR_STGCN_RAND(plans_stgcn_rand,loader6,dataset_name<span class="op">=</span><span class="st">'windmillsmallLRGCN'</span>)</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>plnr.simulate()</span></code></pre></div>
 </div>
-<div id="5bf940cb-cd88-4b5d-b09e-1dbad8715d22" class="cell">
+<div id="311d2ff7-116f-48bd-9ff1-f4b494885871" class="cell">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>plnr <span class="op">=</span> itstgcnLRGCN.planner.PLNR_STGCN_RAND(plans_stgcn_rand,loader6,dataset_name<span class="op">=</span><span class="st">'windmillsmallLRGCN'</span>)</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>plnr.simulate()</span></code></pre></div>
 </div>
-<div id="5cbcc6df-d776-444b-b8d2-c3886919ad12" class="cell">
+<div id="c546b83d-5547-4973-a4df-42dfb6c52611" class="cell">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>plnr <span class="op">=</span> itstgcnLRGCN.planner.PLNR_STGCN_RAND(plans_stgcn_rand,loader6,dataset_name<span class="op">=</span><span class="st">'windmillsmallLRGCN'</span>)</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>plnr.simulate()</span></code></pre></div>
 </div>
-<div id="b32f8e6f-a30d-4e7a-bcd8-4eee5d2e825e" class="cell">
+<div id="50e7ad30-d6b8-45d3-a790-b90931e0842d" class="cell">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>plnr <span class="op">=</span> itstgcnLRGCN.planner.PLNR_STGCN_RAND(plans_stgcn_rand,loader6,dataset_name<span class="op">=</span><span class="st">'windmillsmallLRGCN'</span>)</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>plnr.simulate()</span></code></pre></div>
 </div>
-<div id="5dca57b0-c83c-449d-ac38-0f53828a22c7" class="cell">
+<div id="ab77d1e5-3dc4-4ea9-a9d6-c43c74948077" class="cell">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>plnr <span class="op">=</span> itstgcnLRGCN.planner.PLNR_STGCN_RAND(plans_stgcn_rand,loader6,dataset_name<span class="op">=</span><span class="st">'windmillsmallLRGCN'</span>)</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>plnr.simulate()</span></code></pre></div>
 </div>
-<div id="63314f0a-4628-466a-ac94-dcb299a46f48" class="cell">
+<div id="e65c7697-8afe-4dab-a0c6-ae9dff2e34b4" class="cell">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>plnr <span class="op">=</span> itstgcnLRGCN.planner.PLNR_STGCN_RAND(plans_stgcn_rand,loader6,dataset_name<span class="op">=</span><span class="st">'windmillsmallLRGCN'</span>)</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>plnr.simulate()</span></code></pre></div>
 </div>
-<div id="05ca0e89-9574-44bc-8327-f9a7bf38579c" class="cell">
+<div id="316e88bc-9b82-416b-8bdd-d91d163bc6ea" class="cell">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>plnr <span class="op">=</span> itstgcnLRGCN.planner.PLNR_STGCN_RAND(plans_stgcn_rand,loader6,dataset_name<span class="op">=</span><span class="st">'windmillsmallLRGCN'</span>)</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>plnr.simulate()</span></code></pre></div>
 </div>
-<div id="240cacac-3030-4ba8-a921-c0eb11a6b7a3" class="cell">
+<div id="a5459e4d-0c62-48ad-bb26-bda855d3caa0" class="cell">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>plnr <span class="op">=</span> itstgcnLRGCN.planner.PLNR_STGCN_RAND(plans_stgcn_rand,loader6,dataset_name<span class="op">=</span><span class="st">'windmillsmallLRGCN'</span>)</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>plnr.simulate()</span></code></pre></div>
 </div>
-<div id="e5001414-3746-460d-ba54-48b732f6961a" class="cell">
+<div id="a17605db-573d-4cce-a7bd-dab920052ab9" class="cell">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>plnr <span class="op">=</span> itstgcnLRGCN.planner.PLNR_STGCN_RAND(plans_stgcn_rand,loader6,dataset_name<span class="op">=</span><span class="st">'windmillsmallLRGCN'</span>)</span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>plnr.simulate()</span></code></pre></div>
 </div>
-<div id="e56032ef-acd0-4a0d-b5d6-70ac06254ed0" class="cell">
+<div id="3dfdbdad-44e0-499f-ad31-b11dcf867021" class="cell">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>plnr <span class="op">=</span> itstgcnLRGCN.planner.PLNR_STGCN_RAND(plans_stgcn_rand,loader6,dataset_name<span class="op">=</span><span class="st">'windmillsmallLRGCN'</span>)</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>plnr.simulate()</span></code></pre></div>
 </div>
-<div id="c25ce91b-fa16-43f2-82d3-68091cbec26a" class="cell">
+<div id="66bb9634-cb35-41a9-9b24-2e1ff9757b09" class="cell">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>plnr <span class="op">=</span> itstgcnLRGCN.planner.PLNR_STGCN_RAND(plans_stgcn_rand,loader6,dataset_name<span class="op">=</span><span class="st">'windmillsmallLRGCN'</span>)</span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>plnr.simulate()</span></code></pre></div>
-</div>
-<div id="cecf8dea-8a3a-4b44-8cdc-7bf01b99b851" class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>plnr <span class="op">=</span> itstgcnLRGCN.planner.PLNR_STGCN_RAND(plans_stgcn_rand,loader6,dataset_name<span class="op">=</span><span class="st">'windmillsmallLRGCN'</span>)</span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>plnr.simulate()</span></code></pre></div>
-</div>
-<div id="311d2ff7-116f-48bd-9ff1-f4b494885871" class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>plnr <span class="op">=</span> itstgcnLRGCN.planner.PLNR_STGCN_RAND(plans_stgcn_rand,loader6,dataset_name<span class="op">=</span><span class="st">'windmillsmallLRGCN'</span>)</span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>plnr.simulate()</span></code></pre></div>
-</div>
-<div id="c546b83d-5547-4973-a4df-42dfb6c52611" class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>plnr <span class="op">=</span> itstgcnLRGCN.planner.PLNR_STGCN_RAND(plans_stgcn_rand,loader6,dataset_name<span class="op">=</span><span class="st">'windmillsmallLRGCN'</span>)</span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>plnr.simulate()</span></code></pre></div>
-</div>
-<div id="50e7ad30-d6b8-45d3-a790-b90931e0842d" class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>plnr <span class="op">=</span> itstgcnLRGCN.planner.PLNR_STGCN_RAND(plans_stgcn_rand,loader6,dataset_name<span class="op">=</span><span class="st">'windmillsmallLRGCN'</span>)</span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>plnr.simulate()</span></code></pre></div>
-</div>
-<div id="ab77d1e5-3dc4-4ea9-a9d6-c43c74948077" class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>plnr <span class="op">=</span> itstgcnLRGCN.planner.PLNR_STGCN_RAND(plans_stgcn_rand,loader6,dataset_name<span class="op">=</span><span class="st">'windmillsmallLRGCN'</span>)</span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>plnr.simulate()</span></code></pre></div>
-</div>
-<div id="e65c7697-8afe-4dab-a0c6-ae9dff2e34b4" class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>plnr <span class="op">=</span> itstgcnLRGCN.planner.PLNR_STGCN_RAND(plans_stgcn_rand,loader6,dataset_name<span class="op">=</span><span class="st">'windmillsmallLRGCN'</span>)</span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>plnr.simulate()</span></code></pre></div>
-</div>
-<div id="316e88bc-9b82-416b-8bdd-d91d163bc6ea" class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>plnr <span class="op">=</span> itstgcnLRGCN.planner.PLNR_STGCN_RAND(plans_stgcn_rand,loader6,dataset_name<span class="op">=</span><span class="st">'windmillsmallLRGCN'</span>)</span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>plnr.simulate()</span></code></pre></div>
-</div>
-<div id="a5459e4d-0c62-48ad-bb26-bda855d3caa0" class="cell">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>plnr <span class="op">=</span> itstgcnLRGCN.planner.PLNR_STGCN_RAND(plans_stgcn_rand,loader6,dataset_name<span class="op">=</span><span class="st">'windmillsmallLRGCN'</span>)</span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>plnr.simulate()</span></code></pre></div>
-</div>
-<div id="a17605db-573d-4cce-a7bd-dab920052ab9" class="cell">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>plnr <span class="op">=</span> itstgcnLRGCN.planner.PLNR_STGCN_RAND(plans_stgcn_rand,loader6,dataset_name<span class="op">=</span><span class="st">'windmillsmallLRGCN'</span>)</span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>plnr.simulate()</span></code></pre></div>
-</div>
-<div id="3dfdbdad-44e0-499f-ad31-b11dcf867021" class="cell">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>plnr <span class="op">=</span> itstgcnLRGCN.planner.PLNR_STGCN_RAND(plans_stgcn_rand,loader6,dataset_name<span class="op">=</span><span class="st">'windmillsmallLRGCN'</span>)</span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>plnr.simulate()</span></code></pre></div>
-</div>
-<div id="66bb9634-cb35-41a9-9b24-2e1ff9757b09" class="cell">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>plnr <span class="op">=</span> itstgcnLRGCN.planner.PLNR_STGCN_RAND(plans_stgcn_rand,loader6,dataset_name<span class="op">=</span><span class="st">'windmillsmallLRGCN'</span>)</span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>plnr.simulate()</span></code></pre></div>
 </div>
 
 
