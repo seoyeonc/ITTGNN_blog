@@ -51,7 +51,7 @@ def trim(f):
     T,N = f.shape
     Psi = make_Psi(T)
     fbar = Psi.T @ f # apply dft 
-    fbar_threshed = np.stack([ebayesthresh(FloatVector(fbar[:,i])) for i in range(N)],axis=1)
+    fbar_threshed = np.stack([ebayesthresh(FloatVector(fbar[:,i]),sd=0.1) for i in range(N)],axis=1)
     fhat = Psi @ fbar_threshed # inverse dft 
     return fhat
 
