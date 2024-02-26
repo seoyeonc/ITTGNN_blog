@@ -1,0 +1,2 @@
+"mrate","mse","dataset","method","mtype","lags","nof_filters","inter_method","epoch","calculation_time","model"
+0.600277050946591,0.908337891221502,"Wikimath","GNAR","block",8,NA,NA,NA,NA,"GNAR"
