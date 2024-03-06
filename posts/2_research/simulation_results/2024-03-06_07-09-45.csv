@@ -1,0 +1,3 @@
+dataset,method,mrate,mtype,lags,nof_filters,inter_method,epoch,mse,calculation_time
+sindmillsmallLRGCN,STGCN,0.2861435009657343,block,8,12,linear,50,0.9839428067207336,3060.8591542243958
+sindmillsmallLRGCN,IT-STGCN,0.2861435009657343,block,8,12,linear,50,0.9828189015388489,68187.48664903641
