@@ -2003,7 +2003,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="hyperparameter" class="level1">
 <h1>hyperparameter</h1>
-<div id="cb44d14f-0f4a-487d-9d0d-f21cb0febe7a" class="cell" data-execution_count="3">
+<div id="cb44d14f-0f4a-487d-9d0d-f21cb0febe7a" class="cell" data-execution_count="129">
 <div class="sourceCode cell-code" id="cb72"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> itstgcn</span>
 <span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb72-3"><a href="#cb72-3" aria-hidden="true" tabindex="-1"></a>data_dict <span class="op">=</span> itstgcn.load_data(<span class="st">'./data/fivenodes.pkl'</span>)</span>
@@ -2015,16 +2015,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb72-9"><a href="#cb72-9" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> torch_geometric_temporal.dataset <span class="im">import</span> PedalMeDatasetLoader</span>
 <span id="cb72-10"><a href="#cb72-10" aria-hidden="true" tabindex="-1"></a>loader2 <span class="op">=</span> PedalMeDatasetLoader()</span>
 <span id="cb72-11"><a href="#cb72-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb72-12"><a href="#cb72-12" aria-hidden="true" tabindex="-1"></a><span class="co"># from torch_geometric_temporal.dataset import WikiMathsDatasetLoader</span></span>
-<span id="cb72-13"><a href="#cb72-13" aria-hidden="true" tabindex="-1"></a><span class="co"># loader3 = WikiMathsDatasetLoader()</span></span>
+<span id="cb72-12"><a href="#cb72-12" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> torch_geometric_temporal.dataset <span class="im">import</span> WikiMathsDatasetLoader</span>
+<span id="cb72-13"><a href="#cb72-13" aria-hidden="true" tabindex="-1"></a>loader3 <span class="op">=</span> WikiMathsDatasetLoader()</span>
 <span id="cb72-14"><a href="#cb72-14" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb72-15"><a href="#cb72-15" aria-hidden="true" tabindex="-1"></a><span class="co"># from torch_geometric_temporal.dataset import WindmillOutputSmallDatasetLoader</span></span>
 <span id="cb72-16"><a href="#cb72-16" aria-hidden="true" tabindex="-1"></a><span class="co"># loader6 = WindmillOutputSmallDatasetLoader()</span></span>
 <span id="cb72-17"><a href="#cb72-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb72-18"><a href="#cb72-18" aria-hidden="true" tabindex="-1"></a><span class="co"># from torch_geometric_temporal.dataset import MontevideoBusDatasetLoader</span></span>
-<span id="cb72-19"><a href="#cb72-19" aria-hidden="true" tabindex="-1"></a><span class="co"># loader10 = MontevideoBusDatasetLoader()</span></span></code></pre></div>
+<span id="cb72-18"><a href="#cb72-18" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> torch_geometric_temporal.dataset <span class="im">import</span> MontevideoBusDatasetLoader</span>
+<span id="cb72-19"><a href="#cb72-19" aria-hidden="true" tabindex="-1"></a>loader10 <span class="op">=</span> MontevideoBusDatasetLoader()</span></code></pre></div>
 </div>
-<div id="65fac76f-ac3b-4306-afe2-5707b17f9652" class="cell" data-execution_count="4">
+<div id="65fac76f-ac3b-4306-afe2-5707b17f9652" class="cell" data-execution_count="130">
 <div class="sourceCode cell-code" id="cb73"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
 <span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a>    <span class="im">from</span> tqdm <span class="im">import</span> tqdm</span>
 <span id="cb73-3"><a href="#cb73-3" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">ImportError</span>:</span>
@@ -2173,7 +2173,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>Object `TGCN` not found.</code></pre>
 </div>
 </div>
-<div id="ef454897-5e0d-4a5d-a2ac-3d77fc3a8bf8" class="cell" data-execution_count="26">
+<div id="ef454897-5e0d-4a5d-a2ac-3d77fc3a8bf8" class="cell" data-execution_count="132">
 <div class="sourceCode cell-code" id="cb76"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch</span>
 <span id="cb76-2"><a href="#cb76-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch.nn.functional <span class="im">as</span> F</span>
 <span id="cb76-3"><a href="#cb76-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> torch_geometric_temporal.nn.recurrent <span class="im">import</span> TGCN</span>
@@ -2188,19 +2188,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb76-12"><a href="#cb76-12" aria-hidden="true" tabindex="-1"></a>dataset2 <span class="op">=</span> loader2.get_dataset(lags<span class="op">=</span><span class="dv">4</span>)</span>
 <span id="cb76-13"><a href="#cb76-13" aria-hidden="true" tabindex="-1"></a>dataset3 <span class="op">=</span> loader3.get_dataset(lags<span class="op">=</span><span class="dv">8</span>)</span>
 <span id="cb76-14"><a href="#cb76-14" aria-hidden="true" tabindex="-1"></a><span class="co"># dataset6 = loader6.get_dataset(lags=8)</span></span>
-<span id="cb76-15"><a href="#cb76-15" aria-hidden="true" tabindex="-1"></a><span class="co"># dataset10 = loader10.get_dataset(lags=4)</span></span>
+<span id="cb76-15"><a href="#cb76-15" aria-hidden="true" tabindex="-1"></a>dataset10 <span class="op">=</span> loader10.get_dataset(lags<span class="op">=</span><span class="dv">4</span>)</span>
 <span id="cb76-16"><a href="#cb76-16" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb76-17"><a href="#cb76-17" aria-hidden="true" tabindex="-1"></a>train_dataset, test_dataset <span class="op">=</span> temporal_signal_split(dataset, train_ratio<span class="op">=</span><span class="fl">0.2</span>)</span>
-<span id="cb76-18"><a href="#cb76-18" aria-hidden="true" tabindex="-1"></a>train_dataset1, test_dataset1 <span class="op">=</span> temporal_signal_split(dataset1, train_ratio<span class="op">=</span><span class="fl">0.2</span>)</span>
-<span id="cb76-19"><a href="#cb76-19" aria-hidden="true" tabindex="-1"></a>train_dataset2, test_dataset2 <span class="op">=</span> temporal_signal_split(dataset2, train_ratio<span class="op">=</span><span class="fl">0.2</span>)</span>
+<span id="cb76-18"><a href="#cb76-18" aria-hidden="true" tabindex="-1"></a>train_dataset1, test_dataset1 <span class="op">=</span> temporal_signal_split(dataset1, train_ratio<span class="op">=</span><span class="fl">0.8</span>)</span>
+<span id="cb76-19"><a href="#cb76-19" aria-hidden="true" tabindex="-1"></a>train_dataset2, test_dataset2 <span class="op">=</span> temporal_signal_split(dataset2, train_ratio<span class="op">=</span><span class="fl">0.8</span>)</span>
 <span id="cb76-20"><a href="#cb76-20" aria-hidden="true" tabindex="-1"></a>train_dataset3, test_dataset3 <span class="op">=</span> temporal_signal_split(dataset3, train_ratio<span class="op">=</span><span class="fl">0.2</span>)</span>
 <span id="cb76-21"><a href="#cb76-21" aria-hidden="true" tabindex="-1"></a><span class="co"># train_dataset6, test_dataset6 = temporal_signal_split(dataset6, train_ratio=0.2)</span></span>
-<span id="cb76-22"><a href="#cb76-22" aria-hidden="true" tabindex="-1"></a><span class="co"># train_dataset10, test_dataset10 = temporal_signal_split(dataset10, train_ratio=0.2)</span></span></code></pre></div>
+<span id="cb76-22"><a href="#cb76-22" aria-hidden="true" tabindex="-1"></a>train_dataset10, test_dataset10 <span class="op">=</span> temporal_signal_split(dataset10, train_ratio<span class="op">=</span><span class="fl">0.2</span>)</span></code></pre></div>
 </div>
-<div id="40f34078-e68e-4810-80da-062b9219b4bc" class="cell" data-execution_count="17">
+<div id="40f34078-e68e-4810-80da-062b9219b4bc" class="cell" data-execution_count="84">
 <div class="sourceCode cell-code" id="cb77"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code></pre></div>
 </div>
-<div id="ebfbc04d-e726-478a-9aa8-ae929848d903" class="cell" data-execution_count="9">
+<div id="ebfbc04d-e726-478a-9aa8-ae929848d903" class="cell" data-execution_count="85">
 <div class="sourceCode cell-code" id="cb78"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> RecurrentGCN(torch.nn.Module):</span>
 <span id="cb78-2"><a href="#cb78-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, node_features, filters):</span>
 <span id="cb78-3"><a href="#cb78-3" aria-hidden="true" tabindex="-1"></a>        <span class="bu">super</span>(RecurrentGCN, <span class="va">self</span>).<span class="fu">__init__</span>()</span>
@@ -2260,7 +2260,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>MSE: 1.1455</code></pre>
 </div>
 </div>
-<div id="a6c29232-7d71-42d6-a494-9f79a41dae12" class="cell" data-execution_count="40">
+<div id="a6c29232-7d71-42d6-a494-9f79a41dae12" class="cell">
 <div class="sourceCode cell-code" id="cb83"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a>_c <span class="op">=</span> [_a1[i].detach() <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(_a1))]</span>
 <span id="cb83-2"><a href="#cb83-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb83-3"><a href="#cb83-3" aria-hidden="true" tabindex="-1"></a>_e <span class="op">=</span> [_d[i].detach() <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(_d))]</span></code></pre></div>
@@ -2387,7 +2387,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="pedalme-nodes-4-filters-12" class="level3">
 <h3 class="anchored" data-anchor-id="pedalme-nodes-4-filters-12">Pedalme Nodes = 4, Filters = 12</h3>
-<div id="31d9f361-6486-4fd9-8cf7-d6ae5a71b4de" class="cell" data-execution_count="24">
+<div id="31d9f361-6486-4fd9-8cf7-d6ae5a71b4de" class="cell" data-execution_count="133">
 <div class="sourceCode cell-code" id="cb91"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb91-1"><a href="#cb91-1" aria-hidden="true" tabindex="-1"></a>model2 <span class="op">=</span> RecurrentGCN(node_features<span class="op">=</span><span class="dv">4</span>, filters<span class="op">=</span><span class="dv">12</span>)</span>
 <span id="cb91-2"><a href="#cb91-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb91-3"><a href="#cb91-3" aria-hidden="true" tabindex="-1"></a>optimizer2 <span class="op">=</span> torch.optim.Adam(model2.parameters(), lr<span class="op">=</span><span class="fl">0.01</span>)</span>
@@ -2411,10 +2411,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb91-21"><a href="#cb91-21" aria-hidden="true" tabindex="-1"></a>    optimizer2.step()</span>
 <span id="cb91-22"><a href="#cb91-22" aria-hidden="true" tabindex="-1"></a>    optimizer2.zero_grad()</span></code></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>100%|██████████| 50/50 [00:00&lt;00:00, 64.91it/s]</code></pre>
+<pre><code>100%|██████████| 50/50 [00:04&lt;00:00, 11.39it/s]</code></pre>
 </div>
 </div>
-<div id="e7cc01cc-f027-4d08-a116-62c5c79441c0" class="cell" data-tags="[]" data-execution_count="25">
+<div id="e7cc01cc-f027-4d08-a116-62c5c79441c0" class="cell" data-tags="[]" data-execution_count="134">
 <div class="sourceCode cell-code" id="cb93"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb93-1"><a href="#cb93-1" aria-hidden="true" tabindex="-1"></a>model2.<span class="bu">eval</span>()</span>
 <span id="cb93-2"><a href="#cb93-2" aria-hidden="true" tabindex="-1"></a>cost <span class="op">=</span> <span class="dv">0</span></span>
 <span id="cb93-3"><a href="#cb93-3" aria-hidden="true" tabindex="-1"></a>hidden_state <span class="op">=</span> <span class="va">None</span></span>
@@ -2430,16 +2430,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb93-13"><a href="#cb93-13" aria-hidden="true" tabindex="-1"></a>cost <span class="op">=</span> cost.item()</span>
 <span id="cb93-14"><a href="#cb93-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"MSE: </span><span class="sc">{:.4f}</span><span class="st">"</span>.<span class="bu">format</span>(cost))</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>MSE: 0.5202</code></pre>
+<pre><code>MSE: 1.4467</code></pre>
 </div>
 </div>
-<div id="37ffd6b3-4438-456a-803b-628b5caa1e30" class="cell">
+<div id="37ffd6b3-4438-456a-803b-628b5caa1e30" class="cell" data-execution_count="135">
 <div class="sourceCode cell-code" id="cb95"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb95-1"><a href="#cb95-1" aria-hidden="true" tabindex="-1"></a>_e <span class="op">=</span> [_d[i].detach() <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(_d))]</span></code></pre></div>
 </div>
-<div id="ef0c75d1-2e34-46be-8a1c-300f6a389ca3" class="cell" data-execution_count="22">
+<div id="ef0c75d1-2e34-46be-8a1c-300f6a389ca3" class="cell" data-execution_count="136">
 <div class="sourceCode cell-code" id="cb96"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb96-1"><a href="#cb96-1" aria-hidden="true" tabindex="-1"></a>_c <span class="op">=</span> [_a1[i].detach() <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(_a1))]</span></code></pre></div>
 </div>
-<div id="f3125e2f-d273-427f-acde-712d9a0c9c6b" class="cell" data-execution_count="23">
+<div id="f3125e2f-d273-427f-acde-712d9a0c9c6b" class="cell" data-execution_count="137">
 <div class="sourceCode cell-code" id="cb97"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb97-1"><a href="#cb97-1" aria-hidden="true" tabindex="-1"></a>fig, (( ax1,ax2),(ax3,ax4),(ax5,ax6)) <span class="op">=</span> plt.subplots(<span class="dv">3</span>,<span class="dv">2</span>,figsize<span class="op">=</span>(<span class="dv">30</span>,<span class="dv">20</span>))</span>
 <span id="cb97-2"><a href="#cb97-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb97-3"><a href="#cb97-3" aria-hidden="true" tabindex="-1"></a>ax1.set_title(<span class="st">'train node1'</span>)</span>

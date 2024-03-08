@@ -287,7 +287,7 @@ window.Quarto = {
   <li><a href="#missing-rate" id="toc-missing-rate" class="nav-link" data-scroll-target="#missing-rate">1. Missing Rate</a>
   <ul class="collapse">
   <li><a href="#trend" id="toc-trend" class="nav-link" data-scroll-target="#trend">1.1 Trend</a></li>
-  <li><a href="#every-model" id="toc-every-model" class="nav-link" data-scroll-target="#every-model">1.2 Every model</a></li>
+  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section">1.2</a></li>
   <li><a href="#six-datasets" id="toc-six-datasets" class="nav-link" data-scroll-target="#six-datasets">1.3 Six Datasets</a></li>
   <li><a href="#time" id="toc-time" class="nav-link" data-scroll-target="#time">2.1 Time</a></li>
   <li><a href="#node" id="toc-node" class="nav-link" data-scroll-target="#node">2.2 Node</a></li>
@@ -311,10 +311,38 @@ window.Quarto = {
 
 
 <p>https://arxiv.org/pdf/1609.02907.pdf%EF%BC%89</p>
-<p>gnn은 최근 다양한 분야에서 그래프 데이터 분석하는 모델이 되어왔다. 동적 데이터를 다루기 위해서 gnn은 stgnn아래 사용되어 왔다. stgnn이 다변량 시계열 채널 간의 미세한 공간적 연관성을 명시적으로 모델링할 수 있어, 기본 그래프 구조는 고정되어 있지만 노드 특성이 시간에 따라 동적으로 업데이트되는 시나리오에 특히 적합하다. 초기 연구에서는 rnn을 사용하여 시간 종속성을 캡쳐하고 gnn을 사용하여 공간 관계를 모델링하여 다변량 시계열을 예측하는 데 사용되는 순환 기반 stgnn이 제안 되었다. 이후로 stgnn 분야는 다양한 시계열 응용 프로그램에 대처하기 위해 제안된 다양한 아키텍쳐로 번성했다. 이 중에는 예측과 분류 같은 응용이 포함되어 있다. 다변량 시계열 이상치감지를 위해 최근에 stgnn을 활용하여 단계적 예측을 수행하고 정규화된 예측 오류를 계산하여 이상을 감지하는 GDn을 제안했다. MTAD-GAT는 이상을 감지하기 위해 연합 예측 및 재구성 기반 stgnn을 활용한다. Fusagnet은 stgnn의 희소 제약된 연합 최적화를 통해 mtad-gat를 확장한다. 현재의 깊은 감지 기술은 중요한 발전을 이루었지만, 현재의 불규칙한 시계열 설정에서는 각 타임 스탬프에서 실제 관측값이 완전히 사용 가능해야 하는데, 이는 불가능하다. 이 연구에서는 dg-node 공간 및 시간 모듈을 사용하여 불규칙한 시계열을 처리하기 위해 stgnn을 활용하고, 실시간으로 강력학 이상 감지를 달성하기 위해 gst-pro의 원래 예측에 대한 간단한 분포 접근 방식을 제안한다.</p>
 <hr>
-<p>related works gcn은 cnn이 graph로 효율적으로 확장된 분야로 증명되어 왔다. 그래프 도메인에서 , 특히 입력 데이터가 시간 변수인 것을 처리하기 위해 동적 그래프의 개념이 사용되었으며, 이 그래프는 시간에 따라 정보가 변하기 때문에 시간과 공간의 정보를 캡쳐하여 사용한다면 효과적일 것이다. 이에 dcrnn과 stgcn이 제안되었고, 이러한 방법이다. dcrnn에서는 Missing values are excluded in calculating these metrics가 되었고, stgcn에서는 . The linear interpolation method is used to fill missing values after data cleaning. In addition, data input are normalized by Z-Score method. 이렇게 되었다. st-gcn에서는 This transformation is interpolated for intermediate frames to generate a effect as if we smoothly move the view point during playback. We name this augmentation as random moving. 이렇게 보간하는 방법을 사용하기도 했다. st data와 관련하여 method가 제안될때 다양한 방법으로 irregular에서 regular로 변환하여 사용하려는 시도가 되어져 왔고 대부분 simple handle하는 방법을 사용했다. 하지만 이는 실제 관측값이 아니며, 이는 데이터를 예측하거나 분류할때 영향을 끼쳐 낮은 accuracy로 이끌 수 있다. 이를 개선할 수 있는 방법이 제안된다면 기존에 제안된 st data에 사용된 방법들의 더 정확한 예측값을 얻는 등 효과적인 결과를 이끌 수 있을 것이다. 이에 우리 연구에서는 missing 값을 처리 후 데이터의 normal trend를 활용하여 self consistecy 속성을 이용해 데이터의 예측 정확도를 키울 수 있는 접근 방식을 제안한다.</p>
-<p>The validation set is comprised of the final 20% of the training data.</p>
+<p>Related work</p>
+<p>gcn은 cnn이 graph로 효율적으로 확장된 분야로 증명되어 왔다.</p>
+<ul>
+<li>The progression from Convolutional Neural Networks (CNNs) to Graph Neural Networks (GCNs) has proven to be an effective adaptation for graph-structured data.</li>
+</ul>
+<p>그래프 도메인에서 , 특히 입력 데이터가 시간 변수인 것을 처리하기 위해 동적 그래프의 개념이 사용되었으며, 이 그래프는 시간에 따라 정보가 변하기 때문에 시간과 공간의 정보를 캡쳐하여 사용한다면 효과적일 것이다.</p>
+<ul>
+<li>In the domain of graphs, especially when dealing with temporal variations in input data, the concept is referred to as dynamic graphs . If the graphs captures information that evolves over time, incorporating both temporal and spatial aspects would be effective.</li>
+</ul>
+<p>이에 dcrnn과 stgcn,st-gcn이 제안되었고, 이러한 방법이다.</p>
+<ul>
+<li><p>To delve into these architectures, a focus on spatial and temporal information is observed in DCRNN (Diffusion Convolution Recurrent Neural Network) and STGCN (Spatio-temporal graph convolutional networks) . DCRNN captures spatial data using Graph Neural Networks (GNNs) and subsequently transfers the output to sequence-to-sequence or sequence models like Recurrent Neural Networks (RNNs) to consider temporal dependencies. On the other hand, STGCN stacks multiple spatiotemporal convolutional blocks, each comprising a spatial graph convolutional layer and two temporal gate convolutional layers.</p></li>
+<li><p>ST-GCN concurrently captures spatial and temporal messages. To apply traditional GNNs to extended graphs, ST-GCN expands the static graph structure by incorporating temporal connections, involving the construction of spatiotemporal graphs through the stacking of graph frames from each time step.</p></li>
+</ul>
+<p>st data와 관련하여 method가 제안될때 다양한 방법으로 irregular에서 regular로 변환하여 사용하려는 시도가 되어져 왔고 대부분 <strong>single imputation</strong>하는 방법을 사용했다. (<strong>simple handle 용어 모호</strong>)</p>
+<ul>
+<li>Various approaches have been attempted in the proposal of methods related to spatiotemporal data, aiming to transform irregular patterns into regular ones. Most attempts involved the application of single imputation methods.</li>
+</ul>
+<p>하지만 이는 데이터를 예측하거나 분류할때 영향을 끼쳐 낮은 accuracy로 이끌 수 있다.</p>
+<ul>
+<li>However, it can adversely impact accuracy when predicting or classifying the data, leading to lower accuracy.</li>
+</ul>
+<p>이를 개선할 수 있는 방법이 제안된다면 기존에 제안된 st data에 사용된 방법들의 더 정확한 예측값을 얻는 등 효과적인 결과를 이끌 수 있을 것이다.</p>
+<ul>
+<li>If there are proposed to improce methods, it could lead to more accurate predictions and, consequently, more effective results compared to the existing approaches used for spatiotemporal data.</li>
+</ul>
+<p>이에 우리 연구에서는 missing 값을 처리 후 데이터의 normal trend를 활용하여 self consistecy 속성을 이용해 데이터의 예측 정확도를 키울 수 있는 접근 방식을 제안한다.</p>
+<ul>
+<li>In this paper, we propose an approach that leverages the normal trend of data after handling missing values, utilizing the self-consistency property to enhance the accuracy of data predictions.</li>
+</ul>
+<p>데이터 섹션에 추가할 것 train/test 비율 - The validation set is comprised of the final 20% of the training data.</p>
 <ol type="1">
 <li>mrate 에 따라 mse</li>
 <li>time/node ration에 따라 mse</li>
@@ -341,15 +369,19 @@ window.Quarto = {
 </div>
 </div>
 <div id="10c5e1e5-ffec-4c40-906f-b3e57db93daf" class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>nearest_fivenodes <span class="op">=</span> pd.read_csv(<span class="st">'../Data/Add/nearest_fivenodes.csv'</span>).query(<span class="st">"method!='GNAR'"</span>)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>nearest_fivenodes.head()</span></code></pre></div>
-<div class="cell-output cell-output-error">
-<pre><code>NameError: name 'pd' is not defined</code></pre>
-</div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># nearest_fivenodes = pd.read_csv('../Data/Add/nearest_fivenodes.csv').query("method!='GNAR'")</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co"># nearest_fivenodes.head()</span></span></code></pre></div>
 </div>
 <div id="af336051-d22a-426e-9410-be00b1d0e30f" class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>nearest_pedalme <span class="op">=</span> pd.read_csv(<span class="st">'../Data/Add/nearest_pedalme.csv'</span>).query(<span class="st">"method!='GNAR'"</span>)</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>nearest_pedalme.head()</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># nearest_pedalme = pd.read_csv('../Data/Add/nearest_pedalme.csv').query("method!='GNAR'")</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co"># nearest_pedalme.head()</span></span></code></pre></div>
+</div>
+<div id="c0bf0dfe-f5e2-4595-9b25-82f8b7f67023" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>pd.read_csv(<span class="st">'../Data/pedalme_linear.csv'</span>)<span class="op">\</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>.query(<span class="st">'model=="TGCN"'</span>).query(<span class="st">'inter_method=="linear"'</span>).query(<span class="st">'mtype=="rand"'</span>)<span class="op">\</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>.groupby([<span class="st">'mrate'</span>,<span class="st">'method'</span>]).agg({<span class="st">'mse'</span>:<span class="st">'mean'</span>})<span class="op">\</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>.stack().reset_index().rename({<span class="dv">0</span>:<span class="st">'mse'</span>},axis<span class="op">=</span><span class="dv">1</span>)<span class="op">\</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>.plot.line(x<span class="op">=</span><span class="st">'mrate'</span>,y<span class="op">=</span><span class="st">'mse'</span>,color<span class="op">=</span><span class="st">'method'</span>)</span></code></pre></div>
 <div class="cell-output cell-output-error">
 <pre><code>NameError: name 'pd' is not defined</code></pre>
 </div>
@@ -363,7 +395,7 @@ window.Quarto = {
 <li>실험 결과에 대한 첫번 째 접근은 다음과 같다. Figure 1의 결과는 각 결측값 비율에 따라 정리한 데이터셋에 대한 결과이다. Classic과 Proposed는 결측값 비율이 점점 증가하면서 평균제곱오차도 함께 증가하는 경향을 보였다. 특히, Classic과 Proposed 각각에 대한 trendline을 비교해본 결과, 결측값 비율이 증가할 수록 Classic에 비해 우리가 제안한 방법((Proposed)의 평균제곱오차가 느리게 증가하는 경향을 띄었다. 반면, Classic 모델은 오히려 빠르게 증가하는 경향을 띄었다. 결측값 비율이 커질수록 우리가 제안하는 방법이 비교적 낮은 오차 내에서 값을 예측해낸다는 것을 알 수 있었다.</li>
 <li>The initial approach to the experimental results is as follows. Figure <span class="math inline">\(\ref{}\)</span> illustrates the outcomes for six datasets organized based on varying levels of missing data, with nine models employed. As the missing data rates increase, both Classic and Proposed models exhibit a tendency for the mean squared error (MSE) to rise. Particularly noteworthy is the comparison between the trendlines of Classic and Proposed: as the rate of missing values increases, the MSE of the Proposed method tends to increase more gradually compared to Classic. In contrast, the Classic model displays a more rapid increase in MSE. This comparison suggests that as the proportion of missing values grows, our proposed method (Proposed) tends to predict values with a slower increase in MSE compared to the Classic model. It becomes evident that as the missing data rate becomes higher, our proposed method performs relatively well, providing predictions with lower errors compared to the Classic model.</li>
 </ul>
-<div id="f64c5814-4ecf-4d32-b113-feeb62a34d2b" class="cell" data-execution_count="6">
+<div id="f64c5814-4ecf-4d32-b113-feeb62a34d2b" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>z<span class="co"># tidydata = pd.concat([df.query('dataset=="fivenodes" and model=="GConvGRU" and mtype=="rand"')])</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co"># tidydata['mrate'] = tidydata['mrate'].astype(str)</span></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co"># tidydata = tidydata.sort_values(by=['model','mrate'])</span></span>
@@ -404,10 +436,10 @@ window.Quarto = {
 </div>
 </div>
 </section>
-<section id="every-model" class="level2">
-<h2 class="anchored" data-anchor-id="every-model">1.2 Every model</h2>
+<section id="section" class="level2">
+<h2 class="anchored" data-anchor-id="section">1.2</h2>
 <p><code>1</code>의 내용에 대한 확장으로. <code>FiveVTS</code> 데이터 셋에서 <code>GConvGRU</code> 방법 이외에 시도한 다른 Classic 모델들에 대한 결과이다. <code>GConvGRU</code>, <code>GConvLSTM</code>, <code>GCLSTM</code>, <code>LRGCN</code>, <code>DyGrEncoder</code>, <code>EvolveGCNH</code>, <code>EvolveGCNO</code>, <code>TGCN</code>, <code>DCRNN</code> 모델의 결과이며. 첫번째 섹션에서 제시한 결과와 비슷하게 결측값 비율이 증가할 수록 예측값에 대한 오차가 증가하였으며. Proposed가 더 낮은 값을 띄는 경향을 보인 것을 확인할 수 있었다. 다른 데이터 셋에 대한 결과도 결측값이 증가할 수록 오차가 증가하되, 우리가 제안한 방법에 대한 mse값이 낮은 비슷한 경향을 보였으며, 나머지 모델에서 나온 6개의 데이터 셋에 대한 결과는 부록에서 확인할 수 있다.</p>
-<div id="6ca274e8-871f-44a2-8d63-7fa0b53b615b" class="cell" data-execution_count="7">
+<div id="6ca274e8-871f-44a2-8d63-7fa0b53b615b" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># tidydata = pd.DataFrame(df.query("dataset=='fivenodes' and mtype=='rand'"))</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co"># tidydata['model'] = pd.Categorical(tidydata['model'], categories=["GConvGRU", "GConvLSTM", "GCLSTM", "LRGCN", "DyGrEncoder", "EvolveGCNH", "EvolveGCNO", "TGCN", "DCRNN"])</span></span>
@@ -476,7 +508,7 @@ window.Quarto = {
 <ul>
 <li>이번 섹션에서는 데이터의 다양성을 고려하기 위하여 사용된 총 6개의 데이터에 대해 결측값 비율이 높을때(70% 혹은 80%) <code>GConvGRU</code> 모델에서 예측과 제안된 방법의 비교 결과를 제시하였다. 대부분의 데이터셋의 결과는 Classic 모델보다 Proposed 결과의 mse 값이 낮게 분포되어 있음을 확인하였다.</li>
 </ul>
-<div id="bd8d3b40-50a7-41a6-9e40-b451352b3111" class="cell" data-execution_count="8">
+<div id="bd8d3b40-50a7-41a6-9e40-b451352b3111" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># tidydata = pd.concat([df[(df['dataset']=='fivenodes') &amp; (df['mtype']=='rand') &amp; (df['inter_method']=='linear') &amp; (df['nof_filters']==12) &amp; </span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co">#            (df['lags']==2) &amp; (df['epoch']==50) &amp; (df['model']=='GConvGRU') &amp; (df['mrate'].isin([0.8]))],</span></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="co">#         df.query("dataset=='chickenpox' &amp; mtype=='rand' &amp; inter_method == 'linear' &amp; nof_filters==16 &amp; lags==4 &amp; epoch==50 &amp; model=='GConvGRU' &amp; (mrate == 0.8)"),</span></span>
@@ -532,7 +564,7 @@ window.Quarto = {
 <li>wikimath 데이터셋에서 DCRNN 결과에 대하여 결측값 비율이 작은 경우(30%) 대비 큰 경(80%)에 대하여 비교해보았다. wikimath 데이터셋에서 결측값을 주지 않았을떄, mse 값은 0.936±0.002(mean±sd)와 같았다. figure에서 보다시피, 결측값 비율이 30%으로 작을 때는 오차값이 작게 증가하였지만, 결측값의 비율이 80%로 높아졌을떄는 mse값이 확연히 높아진 것을 확인할 수 있었으며, 특히 classic 보다 proposed 의 값이 낮은 모습도 확인할 수 있었다.</li>
 </ul></li>
 </ul>
-<div id="5829ab13-b75b-4b76-a143-bfc53b3f7b2d" class="cell" data-execution_count="9">
+<div id="5829ab13-b75b-4b76-a143-bfc53b3f7b2d" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># # tidydata = pd.concat([df[(df['dataset']=='fivenodes') &amp; (df['mtype']=='rand') &amp; (df['inter_method']=='linear') &amp; (df['nof_filters']==12) &amp; </span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co"># #            (df['lags']==2) &amp; (df['epoch']==50) &amp; (df['model']=='GConvGRU') &amp; (df['mrate'].isin([0.3,0.8]))]])</span></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co"># tidydata = df.query("model=='DCRNN' and dataset=='wikimath' and mrate in [0.3,0.8]")</span></span>
@@ -567,7 +599,7 @@ window.Quarto = {
 <span id="cb14-32"><a href="#cb14-32" aria-hidden="true" tabindex="-1"></a><span class="co"># fig</span></span></code></pre></div>
 </div>
 <hr>
-<div id="201e1978-6909-4d24-9373-20fdde4af2f1" class="cell" data-execution_count="10">
+<div id="201e1978-6909-4d24-9373-20fdde4af2f1" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> df.query(<span class="st">"mtype=='rand'"</span>).query(<span class="st">"dataset != 'windmillsmall'"</span>)<span class="op">\</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>.groupby([<span class="st">"method"</span>,<span class="st">"dataset"</span>,<span class="st">"mrate"</span>,<span class="st">"model"</span>]).agg({<span class="st">'mse'</span>:<span class="st">'mean'</span>}).reset_index()<span class="op">\</span></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>.plot.line(</span>
@@ -597,7 +629,7 @@ window.Quarto = {
 <pre><code>NameError: name 'df' is not defined</code></pre>
 </div>
 </div>
-<div id="876208b4-bcc7-4f1a-827e-25bf9d960cb0" class="cell" data-execution_count="11">
+<div id="876208b4-bcc7-4f1a-827e-25bf9d960cb0" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>big <span class="op">=</span> df.query(<span class="st">"mtype=='rand'"</span>).query(<span class="st">"dataset == 'wikimath'"</span>).query(<span class="st">"model == 'GConvLSTM'"</span>).sort_values(by<span class="op">=</span><span class="st">'mrate'</span>)<span class="op">\</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>.assign(mrate_jittered <span class="op">=</span> <span class="kw">lambda</span> df: np.array(df[<span class="st">'mrate'</span>])<span class="op">+</span>np.random.randn(<span class="bu">len</span>(df[<span class="st">'mrate'</span>]))<span class="op">*</span><span class="fl">0.01</span>)</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>small <span class="op">=</span> big.groupby([<span class="st">"dataset"</span>,<span class="st">"mrate"</span>,<span class="st">"method"</span>]).agg({<span class="st">'mse'</span>:<span class="st">'mean'</span>}).reset_index().rename({<span class="st">'mse'</span>:<span class="st">'mse_mean'</span>},axis<span class="op">=</span><span class="dv">1</span>)</span>
@@ -661,7 +693,7 @@ window.Quarto = {
 </section>
 <section id="time" class="level2">
 <h2 class="anchored" data-anchor-id="time">2.1 Time</h2>
-<div id="454a64a5-6ff8-45bf-96da-c01681f7552d" class="cell" data-execution_count="12">
+<div id="454a64a5-6ff8-45bf-96da-c01681f7552d" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>df_dataset <span class="op">=</span> pd.DataFrame([[i,<span class="dv">0</span>,<span class="dv">0</span>] <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">set</span>(df.dataset)])</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>df_dataset.columns <span class="op">=</span> [<span class="st">'dataset'</span>,<span class="st">'node'</span>,<span class="st">'time'</span>]</span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -692,7 +724,7 @@ window.Quarto = {
 <li>According to the table (dataset explanation), the Time for the ‘Pedalme’ dataset is 36, while the time for the ‘Windmillsmall’ dataset is 17,472. Thus, the two datasets have different amounts of data. We compared between two datasets, and the result is on Figure 555. The variations observed in Figure 555 for each dataset indicate that the disparity between methods is relatively small for the ‘Pedalme’ dataset, whereas the difference is more pronounced for the ‘Windmillsmall’ dataset.This phenomenon arises as the increasing quantity of data facilitates learning patterns and trends. Consequently, our approach signifies its effectiveness when there is a substantial amount of data in the time aspect.</li>
 </ul></li>
 </ul>
-<div id="98acf431-d302-4f1f-a230-f8050edd97e3" class="cell" data-execution_count="13">
+<div id="98acf431-d302-4f1f-a230-f8050edd97e3" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># pedalme node = 15 time = 36</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="co"># windmill node = 11 time = 17,472</span></span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -738,7 +770,7 @@ window.Quarto = {
 </section>
 <section id="node" class="level2">
 <h2 class="anchored" data-anchor-id="node">2.2 Node</h2>
-<div id="2a7d9980-0894-4633-bc5c-9fe2c6a60376" class="cell" data-execution_count="14">
+<div id="2a7d9980-0894-4633-bc5c-9fe2c6a60376" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># wikimath nodes = 1068 time = 731</span></span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="co"># monte nodes = 675 time = 744</span></span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -778,7 +810,7 @@ window.Quarto = {
 <pre><code>NameError: name 'pd' is not defined</code></pre>
 </div>
 </div>
-<div id="8810a0b8-0570-402f-8f48-4a91dfc96212" class="cell" data-execution_count="15">
+<div id="8810a0b8-0570-402f-8f48-4a91dfc96212" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># fivenodes = pd.concat([</span></span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="co">#     df[(df['dataset']=='fivenodes') &amp; (df['mtype']=='rand') &amp; (df['inter_method']=='linear') &amp; (df['nof_filters']==12) &amp; </span></span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="co">#        (df['lags']==2) &amp; (df['epoch']==50) &amp; (df['model']=='GConvGRU') &amp; (df['mrate'].isin([0.3, 0.5, 0.6, 0.7, 0.8]))],</span></span>
@@ -913,7 +945,7 @@ window.Quarto = {
 <section id="linear-vs-nearest" class="level2">
 <h2 class="anchored" data-anchor-id="linear-vs-nearest">3.1 Linear vs Nearest</h2>
 <p><strong>Interpolation 에 따라, block은 시각적으로 보이기 좋지 않은 예시</strong></p>
-<div id="4adf370b-dac9-4af0-b992-56c44393d896" class="cell" data-execution_count="16">
+<div id="4adf370b-dac9-4af0-b992-56c44393d896" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>tt <span class="op">=</span> nearest_fivenodes.query(<span class="st">"dataset=='fivenodes'  and method!='GNAR' and mtype=='rand'  and nof_filters==12 and lags==2 and epoch==50 and model=='GConvGRU' and mrate in [0.3  , 0.5  , 0.6 ,0.7  , 0.8]"</span>)</span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>tt[<span class="st">'mrate'</span>] <span class="op">=</span> tt[<span class="st">'mrate'</span>].astype(<span class="bu">str</span>)</span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>tt <span class="op">=</span> tt.sort_values(by<span class="op">=</span>[<span class="st">'model'</span>,<span class="st">'mrate'</span>])</span>
@@ -950,13 +982,13 @@ window.Quarto = {
 <pre><code>NameError: name 'nearest_fivenodes' is not defined</code></pre>
 </div>
 </div>
-<div id="4a790af3-a0c5-4b9d-9705-90141184c59c" class="cell" data-execution_count="17">
+<div id="4a790af3-a0c5-4b9d-9705-90141184c59c" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>nearest_fivenodes.model.unique()</span></code></pre></div>
 <div class="cell-output cell-output-error">
 <pre><code>NameError: name 'nearest_fivenodes' is not defined</code></pre>
 </div>
 </div>
-<div id="65d21c7b-626c-4060-adfc-121c0a6a4f38" class="cell" data-execution_count="18">
+<div id="65d21c7b-626c-4060-adfc-121c0a6a4f38" class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>tt <span class="op">=</span> nearest_pedalme.query(<span class="st">"dataset=='pedalme' and method!='GNAR' and mtype=='rand' and nof_filters==12 and lags==4 and epoch==50 and model=='GConvGRU' and mrate in [0.3,0.5,0.6,0.8]"</span>)</span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>tt[<span class="st">'mrate'</span>] <span class="op">=</span> tt[<span class="st">'mrate'</span>].astype(<span class="bu">str</span>)</span>
 <span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>tt <span class="op">=</span> tt.sort_values(by<span class="op">=</span>[<span class="st">'model'</span>,<span class="st">'mrate'</span>])</span>
@@ -996,7 +1028,7 @@ window.Quarto = {
 <h1>4 Missing Type</h1>
 <section id="block-vs-random" class="level2">
 <h2 class="anchored" data-anchor-id="block-vs-random">4.1 Block vs random</h2>
-<div id="dbd61f41-0d4a-4c39-8cc8-c1afc5bf8c20" class="cell" data-execution_count="19">
+<div id="dbd61f41-0d4a-4c39-8cc8-c1afc5bf8c20" class="cell" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>tt<span class="op">=</span>df.query(<span class="st">"mtype in ['rand','block'] and mrate in [0.2877697841726618, 0.3] and dataset=='chickenpox'"</span>)</span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>tt[<span class="st">'mrate'</span>] <span class="op">=</span> tt[<span class="st">'mrate'</span>].astype(<span class="bu">str</span>)</span>
 <span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>tt <span class="op">=</span> tt.sort_values(by<span class="op">=</span>[<span class="st">'model'</span>,<span class="st">'mrate'</span>])</span>
@@ -1027,7 +1059,7 @@ window.Quarto = {
 <pre><code>NameError: name 'df' is not defined</code></pre>
 </div>
 </div>
-<div id="78daa2ea-89a3-43c9-a7b3-3cd12a5c02e5" class="cell" data-execution_count="20">
+<div id="78daa2ea-89a3-43c9-a7b3-3cd12a5c02e5" class="cell" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>tt<span class="op">=</span>df.query(<span class="st">"mtype in ['rand','block'] and mrate in [0.2857142857142857, 0.3] and model=='LRGCN' and dataset=='pedalme'"</span>)</span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>tt[<span class="st">'mrate'</span>] <span class="op">=</span> tt[<span class="st">'mrate'</span>].astype(<span class="bu">str</span>)</span>
 <span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>tt <span class="op">=</span> tt.sort_values(by<span class="op">=</span>[<span class="st">'model'</span>,<span class="st">'mrate'</span>])</span>
@@ -1058,7 +1090,7 @@ window.Quarto = {
 <pre><code>NameError: name 'df' is not defined</code></pre>
 </div>
 </div>
-<div id="d7b94be4-c6a6-403c-9610-f494d1eb1624" class="cell" data-execution_count="21">
+<div id="d7b94be4-c6a6-403c-9610-f494d1eb1624" class="cell" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a></span></code></pre></div>
 </div>
 
