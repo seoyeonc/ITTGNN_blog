@@ -340,7 +340,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <hr>
 <section id="data-설명" class="level1">
 <h1>Data 설명</h1>
-<div id="9548d2d1-ffb0-4d07-bda2-1c62cbadb2cf" class="cell" data-execution_count="7">
+<div id="9548d2d1-ffb0-4d07-bda2-1c62cbadb2cf" class="cell" data-execution_count="92">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># pd.read_csv('../Data/Body_Results.csv')</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># pd.read_csv('../Data/chicken_inter_final.csv') # chickenpox cubic + nearest mrate 0.8 에서</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># pd.read_csv('../Data/R_GNAR_results.csv') # GNAR을 R에서 돌린 결과 RANDOM, BLOCK</span></span>
@@ -363,7 +363,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="co">#            pd.read_csv('../Data/GCLSTM_80_windmillsmall.csv'),</span></span>
 <span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="co">#            pd.read_csv('../Data/EvolveGCNO_80_windmillsmall.csv'),</span></span>
 <span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="co">#            pd.read_csv('../Data/EvolveGCNH_80_windmillsmall.csv')</span></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="co">#           ])</span></span></code></pre></div>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="co">#           ])</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="co"># pd.concat([pd.read_csv('../Data/DCRNN_block_windmillsmall.csv'), # block windmillsmall 결과물</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="co">#           pd.read_csv('../Data/LRGCN_block_windmillsmall.csv'),</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="co">#           pd.read_csv('../Data/GConvGRU_block_windmillsmall.csv'),</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="co">#           pd.read_csv('../Data/EvolveGCNO_block_windmillsmall.csv'),</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="co">#           pd.read_csv('../Data/DyGrEncoder_block_windmillsmall.csv'),</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="co">#           pd.read_csv('../Data/GConvLSTM_block_windmillsmall.csv'),</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="co">#           pd.read_csv('../Data/GCLSTM_block_windmillsmall.csv'),</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="co">#           pd.read_csv('../Data/TGCN_block_windmillsmall.csv'),</span></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="co">#           pd.read_csv('../Data/EvolveGCNH_block_windmillsmall.csv')</span></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="co">#           ])</span></span></code></pre></div>
 </div>
 <div id="fc863199-4f9f-4b75-b96b-cb0a9b7eb2e1" class="cell" data-execution_count="388">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># pd.read_csv('../Data/pedalme_linear.csv') # pedalme linear random, block ##d body 결과에 추가함</span></span>
@@ -892,7 +902,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a>    df2.query(<span class="st">"dataset=='wikimath' and lags==8 and inter_method=='linear'"</span>)])</span>
 <span id="cb73-3"><a href="#cb73-3" aria-hidden="true" tabindex="-1"></a><span class="co"># df2_out.to_csv('./Appendix_Results.csv')</span></span></code></pre></div>
 </div>
-<div id="bc1635f9-ce96-47de-9e2c-8ceee6e9011f" class="cell" data-execution_count="61">
+<div id="bc1635f9-ce96-47de-9e2c-8ceee6e9011f" class="cell" data-execution_count="74">
 <div class="sourceCode cell-code" id="cb74"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a>df_out <span class="op">=</span> pd.concat([fivenode_final,Chickenpox_final,PedalMe_final,WikiMath_final,Windmillsmall_final,Montevideobus_final])</span>
 <span id="cb74-2"><a href="#cb74-2" aria-hidden="true" tabindex="-1"></a><span class="co"># df_out.to_csv('../Data/Body_Results.csv',index=False)</span></span></code></pre></div>
 </div>
@@ -2821,8 +2831,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="wikimathsdatasetloader-lags8" class="level1">
 <h1>WikiMathsDatasetLoader (lags=8)</h1>
-<div id="6cc56c99-336b-44c0-90d6-4a0a3e057bb9" class="cell" data-execution_count="59">
-<div class="sourceCode cell-code" id="cb91"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb91-1"><a href="#cb91-1" aria-hidden="true" tabindex="-1"></a>WikiMath_base <span class="op">=</span> df.query(<span class="st">"dataset=='wikimath' and mrate not in ['random','block'] and lags==8 and method !='GNAR'"</span>)</span>
+<div id="6cc56c99-336b-44c0-90d6-4a0a3e057bb9" class="cell" data-execution_count="73">
+<div class="sourceCode cell-code" id="cb91"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb91-1"><a href="#cb91-1" aria-hidden="true" tabindex="-1"></a>WikiMath_base <span class="op">=</span> df.query(<span class="st">"dataset=='wikimath' and mtype not in ['random','block'] and lags==8 and method !='GNAR'"</span>)</span>
 <span id="cb91-2"><a href="#cb91-2" aria-hidden="true" tabindex="-1"></a>WikiMath_random <span class="op">=</span> pd.concat([df.query(<span class="st">"dataset=='wikimath' and model!='GNAR' and mtype=='rand' and inter_method == 'linear' and nof_filters==12 and lags==8 and epoch==50 and model=='GConvGRU' and mrate in [0.3, 0.5, 0.6, 0.8]"</span>),</span>
 <span id="cb91-3"><a href="#cb91-3" aria-hidden="true" tabindex="-1"></a>                            df.query(<span class="st">"dataset=='wikimath' and model!='GNAR' and mtype=='rand' and inter_method == 'linear' and nof_filters==64 and lags==8 and epoch==50 and model=='GConvLSTM' and mrate in [0.3, 0.5, 0.6, 0.8]"</span>),</span>
 <span id="cb91-4"><a href="#cb91-4" aria-hidden="true" tabindex="-1"></a>                            df.query(<span class="st">"dataset=='wikimath' and model!='GNAR' and mtype=='rand' and inter_method == 'linear' and nof_filters==64 and lags==8 and epoch==50 and model=='GCLSTM' and mrate in [0.3, 0.5, 0.6, 0.8]"</span>),</span>
