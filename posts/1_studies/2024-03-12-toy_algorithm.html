@@ -22,40 +22,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -279,13 +245,7 @@ window.Quarto = {
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#toy-example" id="toc-toy-example" class="nav-link active" data-scroll-target="#toy-example">Toy Example</a></li>
-  </ul>
-</nav>
+        
     </div>
 <!-- main -->
 <main class="content quarto-banner-title-block" id="quarto-document-content">
@@ -297,9 +257,6 @@ window.Quarto = {
 <p>https://www.researchgate.net/profile/Liang-Liu-42/publication/339714816_Regression_multiple_imputation_for_missing_data_analysis/links/607f43e32fb9097c0cf91255/Regression-multiple-imputation-for-missing-data-analysis.pdf</p>
 <p>https://arxiv.org/pdf/1511.03512.pdf</p>
 <p>https://citeseerx.ist.psu.edu/document?repid=rep1&amp;type=pdf&amp;doi=576cd01f8e2c289651ae0a86374ac6d6abb787c1</p>
-<div id="ea761ea8-18c1-4de1-8c09-4eb994be3503" class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code></pre></div>
-</div>
 <p><strong>Define Spatio Temporal Graph data</strong></p>
 <p>directed and weighted Graph <span class="math inline">\(\cal{G} = (V, E,\)</span><span class="math inline">\(\textbf{W})\)</span></p>
 <ul>
@@ -338,7 +295,7 @@ window.Quarto = {
 </ul></li>
 <li><span class="math inline">\(\textbf{W}_{30 \times 30}\)</span> is a weighted adjacency matrix.</li>
 </ul>
-<p><span class="math inline">\(\textbf{W}_{3 \cdot 10 \times 3 \cdot 10} = \begin{bmatrix} \begin{bmatrix} 0 &amp; 1 &amp; 0 &amp;0 &amp; 0 &amp; 0 &amp;0 &amp; 0 &amp; 0 &amp; 0 \\ 1 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp;0&amp;0 \\ 0 &amp; 1 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp;0&amp;0\\ 0 &amp; 0 &amp; 1 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\ 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0\\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 1 &amp; 0 &amp; 0\\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 1 &amp; 0\\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 1\\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 \end{bmatrix} &amp; \begin{bmatrix} 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp;0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 0 &amp;0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 0 &amp;0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 \\0 &amp; 0 &amp; 0 &amp;0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 \\0 &amp; 0 &amp; 0 &amp;0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 \end{bmatrix} &amp; \begin{bmatrix} 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\0 &amp; 0 &amp; 0 &amp;0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 0 &amp;0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\0 &amp; 0 &amp; 0 &amp;0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\0 &amp; 0 &amp; 0 &amp;0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 0 &amp;0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 0 &amp;0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 0 &amp;0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \end{bmatrix} \\ \begin{bmatrix} 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\0 &amp; 0 &amp; 0 &amp;0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 0 &amp;0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\0 &amp; 0 &amp; 0 &amp;0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 0 &amp;0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 0 &amp;0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 0 &amp;0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 0 &amp;0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \end{bmatrix} &amp; \begin{bmatrix} 0 &amp; 1 &amp; 0 &amp;0 &amp; 0 &amp; 0 &amp;0 &amp; 0 &amp; 0 &amp; 0 \\ 1 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp;0&amp;0 \\ 0 &amp; 1 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp;0&amp;0\\ 0 &amp; 0 &amp; 1 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\ 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0\\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 1 &amp; 0 &amp; 0\\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 1 &amp; 0\\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 1\\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 \end{bmatrix} &amp; \begin{bmatrix} 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\0 &amp; 0 &amp; 0 &amp;0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 0 &amp;0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 0 &amp;0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 \\0 &amp; 0 &amp; 0 &amp;0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 \\0 &amp; 0 &amp; 0 &amp;0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 \end{bmatrix} \\ \begin{bmatrix} 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\0 &amp; 0 &amp; 0 &amp;0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 0 &amp;0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\0 &amp; 0 &amp; 0 &amp;0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 0 &amp;0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 0 &amp;0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 0 &amp;0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 0 &amp;0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \end{bmatrix} &amp; \begin{bmatrix} 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\0 &amp; 0 &amp; 0 &amp;0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 0 &amp;0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\0 &amp; 0 &amp; 0 &amp;0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 0 &amp;0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 0 &amp;0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 0 &amp;0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 0 &amp;0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \end{bmatrix} &amp; \begin{bmatrix} 0 &amp; 1 &amp; 0 &amp;0 &amp; 0 &amp; 0 &amp;0 &amp; 0 &amp; 0 &amp; 0 \\ 1 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp;0&amp;0 \\ 0 &amp; 1 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp;0&amp;0\\ 0 &amp; 0 &amp; 1 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\ 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0\\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 1 &amp; 0 &amp; 0\\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 1 &amp; 0\\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 1\\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 \end{bmatrix} \end{bmatrix}\)</span></p>
+<p><span class="math inline">\(\textbf{W}_{3 \cdot 10 \times 3 \cdot 10} = \begin{bmatrix} \begin{bmatrix} 0 &amp; 1 &amp; 0 &amp;0 &amp; 0 &amp; 0 &amp;0 &amp; 0 &amp; 0 &amp; 0 \\ 1 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp;0&amp;0 \\ 0 &amp; 1 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp;0&amp;0\\ 0 &amp; 0 &amp; 1 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\ 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0\\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 1 &amp; 0 &amp; 0\\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 1 &amp; 0\\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 1\\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 \end{bmatrix} &amp; \begin{bmatrix} 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp;0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 0 &amp;0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 0 &amp;0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 \\0 &amp; 0 &amp; 0 &amp;0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 \\0 &amp; 0 &amp; 0 &amp;0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 \end{bmatrix} &amp; \begin{bmatrix} 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\0 &amp; 0 &amp; 0 &amp;0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 0 &amp;0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 0 &amp;0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 \\0 &amp; 0 &amp; 0 &amp;0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 \\0 &amp; 0 &amp; 0 &amp;0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 \end{bmatrix} \\ \begin{bmatrix} 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\0 &amp; 0 &amp; 0 &amp;0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 0 &amp;0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\0 &amp; 0 &amp; 0 &amp;0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 0 &amp;0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 0 &amp;0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 0 &amp;0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 0 &amp;0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \end{bmatrix} &amp; \begin{bmatrix} 0 &amp; 1 &amp; 0 &amp;0 &amp; 0 &amp; 0 &amp;0 &amp; 0 &amp; 0 &amp; 0 \\ 1 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp;0&amp;0 \\ 0 &amp; 1 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp;0&amp;0\\ 0 &amp; 0 &amp; 1 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\ 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0\\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 1 &amp; 0 &amp; 0\\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 1 &amp; 0\\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 1\\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 \end{bmatrix} &amp; \begin{bmatrix} 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\0 &amp; 0 &amp; 0 &amp;0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 0 &amp;0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\0 &amp; 0 &amp; 0 &amp;0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\0 &amp; 0 &amp; 0 &amp;0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 0 &amp;0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 0 &amp;0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 0 &amp;0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \end{bmatrix} \\ \begin{bmatrix} 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\0 &amp; 0 &amp; 0 &amp;0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 0 &amp;0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\0 &amp; 0 &amp; 0 &amp;0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 0 &amp;0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 0 &amp;0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 0 &amp;0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 0 &amp;0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \end{bmatrix} &amp; \begin{bmatrix} 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\0 &amp; 0 &amp; 0 &amp;0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 0 &amp;0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\0 &amp; 0 &amp; 0 &amp;0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 0 &amp;0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 0 &amp;0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 0 &amp;0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 0 &amp;0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \end{bmatrix} &amp; \begin{bmatrix} 0 &amp; 1 &amp; 0 &amp;0 &amp; 0 &amp; 0 &amp;0 &amp; 0 &amp; 0 &amp; 0 \\ 1 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp;0&amp;0 \\ 0 &amp; 1 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp;0&amp;0\\ 0 &amp; 0 &amp; 1 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\ 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0\\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 1 &amp; 0 &amp; 0\\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 1 &amp; 0\\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 1\\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 \end{bmatrix} \end{bmatrix}\)</span></p>
 <ul>
 <li><span class="math inline">\(y_{v,t} \to y_{v,t-1}\)</span>이 이어져 있다고 가정하면 위와 같이 <span class="math inline">\(\textbf{W}\)</span>가 정의 됌.
 <ul>
@@ -353,30 +310,37 @@ window.Quarto = {
 <li>Define <span class="math inline">\({\cal Y} = ({\cal O} , {\cal M})\)</span></li>
 </ol>
 <ul>
-<li>A incomplete data <span class="math inline">\({\cal Y}\)</span> is a set of vectors $y_{i} : $<span class="math inline">\(\to \mathbb{R}^N\)</span>, <span class="math inline">\(i \in T\)</span></li>
-<li>A observed data <span class="math inline">\({\cal O}\)</span> is a set of vectors <span class="math inline">\(y^{obs}_{i}\)</span>, <span class="math inline">\(i \in \textbf{I}\)</span>, <span class="math inline">\(\textbf{I}\)</span> is a set of Indexed observed data.</li>
+<li>A incomplete data <span class="math inline">\({\cal Y} = \{ y_{v,t}: v \in {\cal V}, t \in {\cal T} \}\)</span>
+<ul>
+<li><span class="math inline">\({\cal Y} =\)</span> <span class="math inline">\(\textbf{Y}_{NT \times 1}\)</span></li>
+</ul></li>
 <li>A missing data <span class="math inline">\({\cal M} = \{ y_{v,t}: v \in {\cal V}, t \in {\cal I} \}\)</span> <span class="math inline">\({\cal I}\)</span> is a set of Indexed missing data.</li>
+<li>A observed data <span class="math inline">\({\cal O} = \{ y_{v,t}: v \in {\cal V}, t \in {\cal I^C} \}\)</span>.</li>
 </ul>
 <ol start="2" type="1">
-<li><p>If <span class="math inline">\(\textbf{Y}\)</span> is conducted the linear interpolation, <span class="math inline">\(\bar{\textbf{Y}}^{mis}\)</span> will be calculated as a interpolated value. And then, <span class="math inline">\(\textbf{Y}^{mis}\)</span> is imputated by <span class="math inline">\(\bar{\textbf{Y}}^{mis}\)</span>.</p></li>
-<li><p>Now, we can get <span class="math inline">\(\bar{\textbf{Y}} = (\textbf{Y}^{obs}, \bar{\textbf{Y}}^{mis})\)</span>.</p></li>
+<li>Conduct the linear interpolation <span class="math inline">\(\bar{{\cal Y}} = ( {\cal O} , \tilde{ {\cal M} } )\)</span></li>
 </ol>
+<ul>
+<li><span class="math inline">\({\cal M}\)</span> is imputated by <span class="math inline">\(\bar{{\cal M}}\)</span>.</li>
+</ul>
 <hr>
-<p><code>Example</code></p>
+<p><code>Example</code></p>
+<p><span class="math inline">\({\cal y} = ( {\cal O}, {\cal M} )\)</span>, 노드 3개(0,1,2), 타임 10 <span class="math inline">\(\therefore 3 \times 10= 30\)</span></p>
+<ul>
+<li>A incomplete data <span class="math inline">\({\cal Y} = \{ y_{0,0},y_{0,1},\cdots, y_{1,0},y_{1,1},\cdots, y_{2,0},y_{2,1},\cdots \}\)</span>
+<ul>
+<li><span class="math inline">\({\cal Y} =\)</span> <span class="math inline">\(\textbf{Y}_{30 \times 1}\)</span></li>
+</ul></li>
+<li>A missing data <span class="math inline">\({\cal M} = \{ y_{0,3}, y_{0,4},\cdots, y_{1,3},y_{1,8},\cdots,y_{2,4},y_{2,7},\cdots \}\)</span> -&gt; 임의로 노드별로 50%의 결측값이 뿌려져 있다고 가정</li>
+<li>A observed data <span class="math inline">\({\cal O} = \{ y_{0,0},\cdots,y_{1,0},\cdots,y_{2,0}\cdots \}\)</span>. -&gt; 결측값이 아닌 모든 관찰된 값</li>
+</ul>
+<ol start="2" type="1">
+<li>Conduct the linear interpolation <span class="math inline">\(\bar{{\cal Y}} = ( {\cal O} , \tilde{ {\cal M} } )\)</span></li>
+</ol>
+<ul>
+<li><span class="math inline">\({\cal M}\)</span> is imputated by <span class="math inline">\(\bar{{\cal M}}\)</span>.</li>
+</ul>
 <hr>
-<div id="101ef2fc-4409-44b5-a41c-8574e91f4568" class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>W <span class="op">=</span> np.zeros((T,T))</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(T):</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(T):</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> i<span class="op">==</span>j :</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>                W[i,j] <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>            <span class="cf">elif</span> np.<span class="bu">abs</span>(i<span class="op">-</span>j) <span class="op">&lt;=</span> <span class="dv">1</span> : </span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>                W[i,j] <span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    d <span class="op">=</span> np.array(W.<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">1</span>))</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    D <span class="op">=</span> np.diag(d)</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    L <span class="op">=</span> np.array(np.diag(<span class="dv">1</span><span class="op">/</span>np.sqrt(d)) <span class="op">@</span> (D<span class="op">-</span>W) <span class="op">@</span> np.diag(<span class="dv">1</span><span class="op">/</span>np.sqrt(d)))</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    lamb, Psi <span class="op">=</span> np.linalg.eigh(L)</span></code></pre></div>
-</div>
 <p><strong>Repeat steps Laplacian, Eigenvalue Decomposition, Graph Fourier Transform, Ebayes Thresholding, Inverse Graph Fourier Transform, respectively</strong></p>
 <ol type="1">
 <li>Define nomalized Laplacian matrix <span class="math inline">\(\textbf{L}\)</span> from graph shift operator <span class="math inline">\(W\)</span>.</li>
@@ -411,72 +375,80 @@ window.Quarto = {
 <li><p>Calculate <span class="math inline">\(\hat{\textbf{Y}}_{tr}\)</span> from Inverse Graph Fourier Transform</p></li>
 </ol>
 <ul>
-<li>Get <span class="math inline">\(\hat{\textbf{Y}}^{mis}\)</span> from values of a set of Indexed missing data on <span class="math inline">\(\hat{\textbf{Y}}_{tr}\)</span><br>
+<li>Get <span class="math inline">\(\hat{\cal{M}}\)</span> from values of a set of Indexed missing data on <span class="math inline">\(\hat{\textbf{Y}}_{tr}\)</span><br>
 </li>
-<li>Define <span class="math inline">\((\hat{\textbf{Y}})^{(0)} = (\textbf{Y}^{obs}, (\hat{\textbf{Y}}^{mis})^{(0)})\)</span></li>
+<li>Define <span class="math inline">\(\hat{{\cal Y}} = ({\cal O}, \hat{{\cal M}})\)</span></li>
 </ul>
 <ol start="7" type="1">
-<li>Learn TGNN with <span class="math inline">\((\hat{\textbf{Y}})^{(0)}\)</span>, and Get <span class="math inline">\(\hat{\textbf{Y}}_{tgnn}\)</span></li>
+<li>Learn TGNN with <span class="math inline">\(\hat{{\cal Y}}\)</span>, and Get <span class="math inline">\(\hat{{\cal Y}}_{tgnn}\)</span></li>
 </ol>
 <ul>
-<li>Get <span class="math inline">\((\hat{\textbf{Y}}^{mis})^{(1)}\)</span> from values of a set of Indexed missing data on <span class="math inline">\(\hat{\textbf{Y}}_{tgnn}\)</span></li>
-<li>Imputatation from <span class="math inline">\((\hat{\textbf{Y}}^{mis})^{(0)}\)</span> to <span class="math inline">\((\hat{\textbf{Y}}^{mis})^{(1)}\)</span>
+<li>Get <span class="math inline">\(\hat{{\cal M}}^{(1)}\)</span> from values of a set of Indexed missing data on <span class="math inline">\(\hat{{\cal Y}}_{tgnn}\)</span></li>
+<li>Imputatation from <span class="math inline">\(\hat{{\cal M}}\)</span> to <span class="math inline">\(\hat{{\cal M}}^{(1)}\)</span>
 <ul>
-<li><span class="math inline">\((\hat{\textbf{Y}})^{(1)} = (\textbf{Y}^{obs}, (\hat{\textbf{Y}}^{mis})^{(1)})\)</span></li>
+<li><span class="math inline">\(\hat{{\cal Y}}^{(1)} = ({\cal O}, \hat{{\cal M}}^{(1)})\)</span></li>
 </ul></li>
 </ul>
+<ol start="8" type="1">
+<li>Repeat every steps</li>
+</ol>
+<ul>
+<li>Get <span class="math inline">\(\hat{{\cal Y}}^{(l)} = ({\cal O}, \hat{{\cal M}}^{(l)})\)</span></li>
+<li><span class="math inline">\(l\)</span> is the iteration.</li>
+</ul>
+<hr>
+<p><code>Example</code></p>
+<p>행렬 확인차 여기 예제에서만 기호 오른쪽 아래에 행 * 열 입력</p>
+<p>그래프 라플라시안</p>
+<ul>
+<li><span class="math inline">\(\textbf{L}_{30 \times 30} = \textbf{D}^{-1/2}_{30 \times 30} (\textbf{I}_{30 \times 30} - \textbf{W}_{30 \times 30}) \textbf{D}^{-1/2}_{30 \times 30} = \textbf{I}_{30 \times 30} - \tilde{\textbf{W}}_{30 \times 30}\)</span></li>
+</ul>
+<p>고유값 분해</p>
+<ul>
+<li><span class="math inline">\(\textbf{L}_{30 \times 30} = \mathbf{V}_{30 \times 30} \Lambda_{30 \times 30} \mathbf{V}^H_{30 \times 30}\)</span></li>
+</ul>
+<p>그래프 푸리에 변환</p>
+<ul>
+<li><span class="math inline">\({\mathbf{V}}^H_{30 \times 30}\)</span> <span class="math inline">\(\bar{\textbf{Y}}_{30 \times 1}\)</span> <span class="math inline">\(= \tilde{\textbf{Y}}_{30 \times 1}\)</span></li>
+</ul>
+<p>이베이즈</p>
+<ul>
+<li><span class="math inline">\(\tilde{y}^2\)</span> = <span class="math inline">\(\hat{p}\)</span> and <span class="math inline">\(\hat{p}_{tr}\)</span> = <span class="math inline">\(30 \times 1\)</span> matrix or set of 30 scalars</li>
+</ul>
+<p>역 그래프 푸리에 변환</p>
+<ul>
+<li><p><span class="math inline">\(\textbf{V}_{30 \times 30} \tilde{\textbf{Y}}^{'}_{30 \times 30} = \hat{\textbf{Y}}_{tr,30 \times 1}\)</span></p></li>
+<li><p>여기서 구한 <span class="math inline">\(\hat{\cal{Y}}_{tr}\)</span> = <span class="math inline">\((\hat{\cal{O}},\hat{\cal{M}})\)</span> 기존에 구한 <span class="math inline">\(\bar{{\cal Y}} = ( {\cal O} , \tilde{ {\cal M} } )\)</span></p></li>
+<li><p>결측값 부분만 imputation <span class="math inline">\(\hat{{\cal Y}} = ({\cal O}, \hat{{\cal M}})\)</span></p></li>
+</ul>
+<p>모델로 학습</p>
+<ul>
+<li><p><span class="math inline">\(\hat{{\cal Y}}\)</span>로 TGNN 학습 후 <span class="math inline">\(\hat{{\cal Y}}_{tgnn}\)</span> 얻고 거기서 <span class="math inline">\(\hat{{\cal M}}^{(1)}\)</span> 얻기</p></li>
+<li><p><span class="math inline">\(\hat{{\cal M}}\)</span>을 <span class="math inline">\(\hat{{\cal M}}^{(1)}\)</span>로 대체</p>
+<ul>
+<li><span class="math inline">\(\hat{{\cal Y}}^{(1)} = ({\cal O}, \hat{{\cal M}}^{(1)})\)</span></li>
+</ul></li>
+</ul>
+<p>epoch = 20 가정</p>
+<p><span class="math inline">\(\hat{{\cal Y}}^{(20)} = ({\cal O}, \hat{{\cal M}}^{(20)})\)</span> 을 얻음</p>
+<hr>
 <p><strong>Calculate MSE</strong></p>
-<ol type="1">
-<li><span class="math inline">\(l\)</span> times Repeat the 9th step, <span class="math inline">\(l\)</span> is hyper parameter and the number of updated-values.</li>
-</ol>
+<p>Caculate MSE = <span class="math inline">\(\frac{1}{NT} \sum^N_{v=1} \sum^T_{t=1} (y_{v,t} - (\hat{y}_{v,t})^{(l)}) ^2\)</span></p>
 <ul>
-<li>Get <span class="math inline">\((\hat{\textbf{Y}})^{(l)}\)</span></li>
-<li><span class="math inline">\((\hat{\textbf{Y}})^{(l)}\)</span> is set of vectors <span class="math inline">\((\hat{y}_i)^{(1)} : V \to \mathbb{R}^N\)</span>, <span class="math inline">\(i \in T\)</span></li>
-<li><span class="math inline">\(\hat{y}^{l}_i, i \in T\)</span></li>
-</ul>
-<ol start="2" type="1">
-<li>Caculate MSE = <span class="math inline">\(\frac{1}{NT} \sum^N_{n=1} \sum^T_{t=1} (y_{nt} - (\hat{y}_{nt})^{(l)}) ^2\)</span></li>
-</ol>
-<section id="toy-example" class="level1">
-<h1>Toy Example</h1>
-<p>directed and weighted Graph <span class="math inline">\(\cal{G} = (V, E,\)</span><span class="math inline">\(\textbf{W})\)</span></p>
+<li><span class="math inline">\(\hat{{\cal Y}}^{(l)} = ({\cal O}, \hat{{\cal M}}^{(l)})\)</span></li>
+<li><span class="math inline">\({\cal Y}_{com} = \{ y_{v,t}: v \in {\cal V}, t \in {\cal T} \}\)</span>
 <ul>
-<li>$|| $<span class="math inline">\(= N = 2\)</span></li>
-<li>$ = $<span class="math inline">\(\{ v_0,v_1 \}\)</span>
-<ul>
-<li>노드 수는 2</li>
-</ul></li>
-<li>$ = $<span class="math inline">\(\{ 0, 1 \}\)</span>
-<ul>
-<li>링크는 노드 0 <span class="math inline">\(\to\)</span> 노드 1</li>
-</ul></li>
-<li>a graph signal $_i: $<span class="math inline">\(\to \mathbb{R}^2\)</span>, <span class="math inline">\(i \in \{1 \text{ to } 10,000\}\)</span>
-<ul>
-<li>노드별 타임이 10,000까지 있는 데이터</li>
-</ul></li>
-<li>Graph Signal Operator <span class="math inline">\(\textbf{W}\)</span>
-<ul>
-<li><span class="math inline">\(\begin{bmatrix} 0 &amp; 0 &amp; \cdots &amp; 1 \\ 1 &amp; 0 &amp; \cdots &amp; 0 \\ \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\ 0 &amp; \cdots &amp; 1 &amp; 0 \end{bmatrix}\)</span></li>
-</ul></li>
-<li>Incomplete data <span class="math inline">\(\textbf{Y} = (\textbf{Y}^{obs} , \textbf{Y}^{mis})\)</span>
-<ul>
-<li>A incomplete data <span class="math inline">\(\textbf{Y}\)</span> is a set of vectors $y_{i} : $<span class="math inline">\(\to \mathbb{R}^N\)</span>, <span class="math inline">\(i \in T\)</span></li>
-<li>A observed data <span class="math inline">\(\textbf{Y}^{obs}\)</span> is a set of vectors <span class="math inline">\(y^{obs}_{i}\)</span>, <span class="math inline">\(i \in \textbf{I}\)</span>, <span class="math inline">\(\textbf{I}\)</span> is a set of Indexed observed data.</li>
-<li>A missing data <span class="math inline">\(\textbf{Y}^{mis}\)</span> is a set of vectors <span class="math inline">\(y^{mis}_{i}\)</span>, <span class="math inline">\(i \in \textbf{M}\)</span>, <span class="math inline">\(\textbf{M}\)</span> is a set of Indexed missing data.</li>
-</ul></li>
-<li>after linear interpolation <span class="math inline">\(\bar{\textbf{Y}} = (\textbf{Y}^{obs}, \bar{\textbf{Y}}^{mis})\)</span>.
-<ul>
-<li>선형보간해서 incomplete data를 complete data로</li>
-</ul></li>
-<li>Update values after carrying out our proposed method, epoch <span class="math inline">\(= 200\)</span>
-<ul>
-<li><span class="math inline">\((\hat{\textbf{Y}})^{(200)} = (\textbf{Y}^{obs}, (\hat{\textbf{Y}}^{mis})^{(200)})\)</span></li>
+<li>Complete Data 표현…논의..?</li>
 </ul></li>
 </ul>
-<p>https://arxiv.org/pdf/1511.03512.pdf</p>
+<hr>
+<p><code>Example</code></p>
+<p><span class="math inline">\(\hat{{\cal Y}}^{(20)} = ({\cal O}, \hat{{\cal M}}^{(20)})\)</span> 를 이용해서 에러 구하기</p>
+<p><span class="math inline">\(\bar{{\cal Y}} = ( {\cal O} , \tilde{ {\cal M} } )\)</span></p>
+<p>MSE = <span class="math inline">\(\frac{1}{30} \sum^3_{v=1} \sum^{10}_{t=1} (y_{v,t} - (\hat{y}_{v,t})^{(20)}) ^2\)</span></p>
+<hr>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
