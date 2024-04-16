@@ -10,6 +10,7 @@
   {
     "listing": "/1_studies.html",
     "items": [
+      "/posts/1_studies/2024-05-16-scholar_writing.html",
       "/posts/1_studies/2024-03-12-toy_algorithm.html",
       "/posts/1_studies/2023-09-20-논문리비전_수정.out.html",
       "/posts/1_studies/2023-05-11-CPUvsGPU.html"
@@ -26,6 +27,7 @@
     "listing": "/index.html",
     "items": [
       "/posts/2_research/2099-05-31-Other Method.html",
+      "/posts/1_studies/2024-05-16-scholar_writing.html",
       "/posts/1_studies/2024-03-12-toy_algorithm.html",
       "/posts/3_result/3_figure/2024-02-29-실험결과정리.html",
       "/posts/2_research/2024-02-01-Self Consistency toy ex.html",

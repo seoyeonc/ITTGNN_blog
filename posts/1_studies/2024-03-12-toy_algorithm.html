@@ -257,7 +257,154 @@ window.Quarto = {
 <p>https://www.researchgate.net/profile/Liang-Liu-42/publication/339714816_Regression_multiple_imputation_for_missing_data_analysis/links/607f43e32fb9097c0cf91255/Regression-multiple-imputation-for-missing-data-analysis.pdf</p>
 <p>https://arxiv.org/pdf/1511.03512.pdf</p>
 <p>https://citeseerx.ist.psu.edu/document?repid=rep1&amp;type=pdf&amp;doi=576cd01f8e2c289651ae0a86374ac6d6abb787c1</p>
+<ul>
+<li>이베이즈 파이썬화?</li>
+<li>논문 코드 레이어화
+<ul>
+<li>코드 이해..</li>
+</ul></li>
+<li>튜토리얼 완성 pip으로 가능하게 github 파서</li>
+<li>그림 고민
+<ul>
+<li>연구/논문 조정</li>
+</ul></li>
+<li>논리 전개(논문) - 개요</li>
+<li>cam 논문 라이팅</li>
+</ul>
+<hr>
+<ul>
+<li>모두 undirected data이고, 데이터셋 중 한 개만 directed(Wiki)임.</li>
+</ul>
+<table class="table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 31%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Model</th>
+<th style="text-align: center;">Node_feature</th>
+<th style="text-align: center;">Edge Index</th>
+<th style="text-align: center;">Edge Weight</th>
+<th style="text-align: center;">Edge Type</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>GConvGRU</td>
+<td style="text-align: center;">O, Node features</td>
+<td style="text-align: center;">O</td>
+<td style="text-align: center;">O</td>
+<td style="text-align: center;">X</td>
+</tr>
+<tr class="even">
+<td>GConvLSTM</td>
+<td style="text-align: center;">O, Node features</td>
+<td style="text-align: center;">O</td>
+<td style="text-align: center;">O</td>
+<td style="text-align: center;">X</td>
+</tr>
+<tr class="odd">
+<td>GCLSTM</td>
+<td style="text-align: center;">O, Node features</td>
+<td style="text-align: center;">O</td>
+<td style="text-align: center;">O</td>
+<td style="text-align: center;">X</td>
+</tr>
+<tr class="even">
+<td>LRGCN</td>
+<td style="text-align: center;">O, Node features</td>
+<td style="text-align: center;">O</td>
+<td style="text-align: center;">O</td>
+<td style="text-align: center;">O</td>
+</tr>
+<tr class="odd">
+<td>DyGrEncoder</td>
+<td style="text-align: center;">O, Node features</td>
+<td style="text-align: center;">O</td>
+<td style="text-align: center;">O</td>
+<td style="text-align: center;">X</td>
+</tr>
+<tr class="even">
+<td>EvolveGCNH</td>
+<td style="text-align: center;">O, Node embedding</td>
+<td style="text-align: center;">O</td>
+<td style="text-align: center;">O</td>
+<td style="text-align: center;">X</td>
+</tr>
+<tr class="odd">
+<td>EvolveGCNO</td>
+<td style="text-align: center;">O, Node embedding</td>
+<td style="text-align: center;">O</td>
+<td style="text-align: center;">O</td>
+<td style="text-align: center;">X</td>
+</tr>
+<tr class="even">
+<td>TGCN</td>
+<td style="text-align: center;">O, Node features</td>
+<td style="text-align: center;">O</td>
+<td style="text-align: center;">O</td>
+<td style="text-align: center;">X</td>
+</tr>
+<tr class="odd">
+<td>DCRNN</td>
+<td style="text-align: center;">O, Node features</td>
+<td style="text-align: center;">O</td>
+<td style="text-align: center;">O</td>
+<td style="text-align: center;">X</td>
+</tr>
+</tbody>
+</table>
 <p><strong>Define Spatio Temporal Graph data</strong></p>
+<table class="table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Notations</th>
+<th style="text-align: center;">Definitions or Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\({\cal G}\)</span></td>
+<td style="text-align: center;">Input Graph</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(T\)</span></td>
+<td style="text-align: center;">the length of the time interval</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(\cal{V}\)</span></td>
+<td style="text-align: center;">a set of Verteces</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(V\)</span></td>
+<td style="text-align: center;">a set of an index node</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(N\)</span></td>
+<td style="text-align: center;">the number of Verteces</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(\cal{E}\)</span></td>
+<td style="text-align: center;">a set of undirected Edges</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(\textbf{y}\)</span></td>
+<td style="text-align: center;">a graph signal, a function defined on the vertices of the graph <span class="math inline">\(\cal{G}\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(\textbf{W}\)</span></td>
+<td style="text-align: center;">a weighted adjacency matrix</td>
+</tr>
+</tbody>
+</table>
 <ul>
 <li>Graph <span class="math inline">\({\cal G} = (\cup_{t \in {\cal T}} {\cal V}_t, \cup_{t \in {\cal T}} {\cal E}_t, \textbf{W})\)</span> ,<span class="math inline">\({\cal T}:=\{1,\dots,T\}\)</span>
 <ul>
@@ -281,29 +428,8 @@ window.Quarto = {
 </ul></li>
 <li><span class="math inline">\(\textbf{W}_{T \times T}\)</span> is a weighted adjacency matrix and interpreted as a graph shift operator.
 <ul>
-<li>Suppose Graph <span class="math inline">\(\cal{G}\)</span> is a directed cyclic graph and has time series periodic data, which allows to consider graph adjacency matrix as <span class="math inline">\(\begin{bmatrix} 0 &amp; 0 &amp; \cdots &amp; 1 \\ 1 &amp; 0 &amp; \cdots &amp; 0 \\ \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\ 0 &amp; \cdots &amp; 1 &amp; 0 \end{bmatrix}\)</span></li>
+<li>Suppose Graph <span class="math inline">\(\cal{G}\)</span> is a undirected cyclic graph and has time series periodic data, which allows to consider graph adjacency matrix as <span class="math inline">\(\begin{bmatrix} 0 &amp; 1 &amp; \cdots &amp; 0 \\ 1 &amp; 0 &amp; \cdots &amp; 0 \\ \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\ 0 &amp; \cdots &amp; 1 &amp; 0 \end{bmatrix}\)</span></li>
 </ul></li>
-</ul>
-<hr>
-<p><code>Toy Example</code></p>
-<p>Graph <span class="math inline">\({\cal G} = (V, E,\)</span><span class="math inline">\(\textbf{W})\)</span></p>
-<ul>
-<li><span class="math inline">\(\cal{V}\)</span> is a set of Verteces. <span class="math inline">\({\cal V} = \{ v_0, v_1, v_2 \}\)</span>, <span class="math inline">\(|{\cal V}| = 3\)</span>, <span class="math inline">\(V = \{ 0,1,2\}\)</span></li>
-<li><span class="math inline">\(\cal{E}\)</span> is a set of undirected Edges. <span class="math inline">\({\cal E} =\{ ( 0, 1), ( 0, 2) \}\)</span></li>
-<li>a graph signal <span class="math inline">\(\textbf{y}\)</span>: <span class="math inline">\({\cal V}_t \to \mathbb{R}^3\)</span></li>
-<li><span class="math inline">\(T = 10\)</span></li>
-<li><span class="math inline">\({\cal Y} = \{y_{0,1},y_{0,2},\cdots,y_{2,9},y_{2,10} \}\)</span>
-<ul>
-<li><span class="math inline">\({\cal Y} = \textbf{y}\)</span></li>
-</ul></li>
-<li><span class="math inline">\(\textbf{W}_{10 \times 10}\)</span> is a weighted adjacency matrix.</li>
-</ul>
-<p><span class="math inline">\(\textbf{W}_{10 \times 10} = \begin{bmatrix} 0 &amp; 1 &amp; 0 &amp;0 &amp; 0 &amp; 0 &amp;0 &amp; 0 &amp; 0 &amp; 0 \\ 1 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp;0&amp;0 \\ 0 &amp; 1 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp;0&amp;0\\ 0 &amp; 0 &amp; 1 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\ 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0\\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 1 &amp; 0 &amp; 0\\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 1 &amp; 0\\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 1\\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 \end{bmatrix}\)</span></p>
-<p>weight matrix 수정, (dft 형태로 바꾸고, stgcn할때 ~ (패키지에서 엣지 undirect로 잡았는지 확인</p>
-<ul>
-<li><p>사용한 데이터셋 중 한 개만 directed(Wiki)</p></li>
-<li><p><span class="math inline">\(y_{v,t} \to y_{v,t-1}\)</span>이 이어져 있다고 가정하면 위와 같이 <span class="math inline">\(\textbf{W}\)</span>가 정의 됌.</p></li>
-<li><p><span class="math inline">\(v\)</span> 자기 자신끼리는 time series peridic data로 이어져 있다고 가정</p></li>
 </ul>
 <hr>
 <p><strong>Define Complete Data</strong></p>
@@ -313,7 +439,7 @@ window.Quarto = {
 <ul>
 <li>A incomplete data <span class="math inline">\({\cal O}\)</span>
 <ul>
-<li><span class="math inline">\({\cal Y} = \{ y_{v,t}: t \in {\cal T}, v \in V,\}\)</span></li>
+<li><span class="math inline">\({\cal Y} = \{ y_{v,t}: t \in {\cal T}, v \in V\}\)</span></li>
 <li><span class="math inline">\({\cal Y} = \textbf{Y}_{N \times T}\)</span></li>
 <li><span class="math inline">\({\cal Y} = \textbf{y}\)</span></li>
 </ul></li>
@@ -327,27 +453,10 @@ window.Quarto = {
 </ul></li>
 </ul>
 <ol start="2" type="1">
-<li>Conduct the linear interpolation <span class="math inline">\(\bar{{\cal Y}} = ( {\cal O} , \tilde{ {\cal M} } )\)</span></li>
+<li>Conduct the linear interpolation and Update <span class="math inline">\({\cal M}\)</span> by <span class="math inline">\(\tilde{{\cal Y}} = ( {\cal O} , \tilde{ {\cal M} } )\)</span></li>
 </ol>
 <ul>
-<li><span class="math inline">\({\cal M}\)</span> is imputated by <span class="math inline">\(\bar{{\cal M}}\)</span>.</li>
-</ul>
-<hr>
-<p><code>Toy Example</code></p>
-<p><span class="math inline">\({\cal y} = ( {\cal O}, {\cal M} )\)</span>, 노드 3개(0,1,2), 타임 10 <span class="math inline">\(\therefore 3 \times 10= 30\)</span></p>
-<ul>
-<li>A incomplete data <span class="math inline">\({\cal Y} = \{ y_{0,0},y_{0,1},\cdots, y_{1,0},y_{1,1},\cdots, y_{2,0},y_{2,1},\cdots \}\)</span>
-<ul>
-<li><span class="math inline">\({\cal Y} =\)</span> <span class="math inline">\(\textbf{Y}_{3 \times 10}\)</span></li>
-</ul></li>
-<li>A missing data <span class="math inline">\({\cal M} = \{ y_{0,3}, y_{0,4},\cdots, y_{1,3},y_{1,8},\cdots,y_{2,4},y_{2,7},\cdots \}\)</span> -&gt; 임의로 노드별로 50%의 결측값이 뿌려져 있다고 가정</li>
-<li>A observed data <span class="math inline">\({\cal O} = \{ y_{0,0},\cdots,y_{1,0},\cdots,y_{2,0}\cdots \}\)</span>. -&gt; 결측값이 아닌 모든 관찰된 값</li>
-</ul>
-<ol start="2" type="1">
-<li>Conduct the linear interpolation <span class="math inline">\(\bar{{\cal Y}} = ( {\cal O} , \tilde{ {\cal M} } )\)</span></li>
-</ol>
-<ul>
-<li><span class="math inline">\({\cal M}\)</span> is imputated by <span class="math inline">\(\bar{{\cal M}}\)</span>.</li>
+<li><span class="math inline">\({\cal M}\)</span> is imputated by <span class="math inline">\(\tilde{{\cal M}}\)</span>.</li>
 </ul>
 <hr>
 <p><strong>Repeat steps Laplacian, Eigenvalue Decomposition, Graph Fourier Transform, Ebayes Thresholding, Inverse Graph Fourier Transform, respectively</strong></p>
@@ -355,10 +464,10 @@ window.Quarto = {
 <li>Define nomalized Laplacian matrix <span class="math inline">\(\textbf{L}\)</span> from graph shift operator <span class="math inline">\(W\)</span>.</li>
 </ol>
 <ul>
-<li><span class="math inline">\(\textbf{L} = \textbf{D}^{-1/2} (\textbf{I} - \textbf{W}) \textbf{D}^{-1/2} = \textbf{I} - \tilde{\textbf{W}}\)</span></li>
+<li><span class="math inline">\(\textbf{L} = \textbf{D}^{-1/2} (\textbf{I} - \textbf{W}) \textbf{D}^{-1/2} = \textbf{I} - \bar{\textbf{W}}\)</span></li>
 </ul>
 <ol start="2" type="1">
-<li>Caculate Eigenvalue Decomposition</li>
+<li>Calculate Eigenvalue Decomposition</li>
 </ol>
 <ul>
 <li><span class="math inline">\(\textbf{L} = \mathbf{V} \Lambda \mathbf{V}^H\)</span></li>
@@ -374,14 +483,14 @@ window.Quarto = {
 </ul></li>
 </ul>
 <ol start="4" type="1">
-<li>Estimate power of <span class="math inline">\(\tilde{\textbf{Y}}\)</span></li>
+<li>Estimate power of <span class="math inline">\(\bar{\textbf{Y}}\)</span></li>
 </ol>
 <ul>
-<li><span class="math inline">\(\hat{p} := \frac{1}{{\cal R}} \sum^{\cal R}_{r=1} |\tilde{y}_r|^2\)</span>
+<li><span class="math inline">\(\hat{p} := \frac{1}{{\cal R}} \sum^{\cal R}_{r=1} |\bar{y}_r|^2\)</span>
 <ul>
 <li>estimation of <span class="math inline">\(p\)</span></li>
-<li><span class="math inline">\(\tilde{Y}\)</span> is a set of vectors $_{i} : $<span class="math inline">\(\to \mathbb{R}^N\)</span>, <span class="math inline">\(i \in T\)</span></li>
-<li><span class="math inline">\({\cal R}\)</span>: a finite set of realization of the process <span class="math inline">\(\tilde{y}\)</span></li>
+<li><span class="math inline">\(\bar{Y}\)</span> is a set of vectors $_{i} : $<span class="math inline">\(\to \mathbb{R}^N\)</span>, <span class="math inline">\(i \in T\)</span></li>
+<li><span class="math inline">\({\cal R}\)</span>: a finite set of realization of the process <span class="math inline">\(\bar{y}\)</span></li>
 </ul></li>
 </ul>
 <ol start="5" type="1">
@@ -399,9 +508,10 @@ window.Quarto = {
 <li>Define <span class="math inline">\(\hat{{\cal Y}} = ({\cal O}, \hat{{\cal M}})\)</span></li>
 </ul>
 <ol start="7" type="1">
-<li>Learn TGNN with <span class="math inline">\(\hat{{\cal Y}}\)</span>, and Get <span class="math inline">\(\hat{{\cal Y}}_{tgnn}\)</span></li>
+<li>Learn STGCN with <span class="math inline">\(\hat{{\cal Y}}\)</span>, and Get <span class="math inline">\(\hat{{\cal Y}}_{stgcn}\)</span></li>
 </ol>
 <ul>
+<li>STGCN function <span class="math inline">\(:= f(\cdot)\)</span></li>
 <li>Get <span class="math inline">\(\hat{{\cal M}}^{(1)}\)</span> from values of a set of Indexed missing data on <span class="math inline">\(\hat{{\cal Y}}_{tgnn}\)</span></li>
 <li>Imputatation from <span class="math inline">\(\hat{{\cal M}}\)</span> to <span class="math inline">\(\hat{{\cal M}}^{(1)}\)</span>
 <ul>
@@ -412,19 +522,83 @@ window.Quarto = {
 <li>Repeat every steps</li>
 </ol>
 <ul>
-<li>Get <span class="math inline">\(\hat{{\cal Y}}^{(l)} = ({\cal O}, \hat{{\cal M}}^{(l)})\)</span></li>
-<li><span class="math inline">\(l\)</span> is the iteration.</li>
+<li>Get <span class="math inline">\(\hat{{\cal Y}}^{({\cal L})} = ({\cal O}, \hat{{\cal M}}^{({\cal L})})\)</span></li>
+<li><span class="math inline">\({\cal L}\)</span> is the iteration.
+<ul>
+<li><span class="math inline">\({\cal L} :=\{ 2,\cdots , L\}\)</span></li>
+</ul></li>
 </ul>
 <hr>
-<p><code>Algorithm</code> : Expectation of Periodogram</p>
-<p><strong>input</strong>: <span class="math inline">\(\tilde{y}_r\)</span></p>
-<p><strong>output</strong>: <span class="math inline">\({\hat p}_{tr}\)</span></p>
-<p><span class="math inline">\(\textbf{L} = \mathbf{V} \Lambda \mathbf{V}^H\)</span></p>
-<p>Graph Fourier Transform <span class="math inline">\({{\mathbf V}}^H {\bar {\textbf Y}} = \tilde{\textbf{Y}}\)</span></p>
-<p>EbayesThresh <span class="math inline">\({\hat p}_{tr}\)</span> by thresholding <span class="math inline">\({\hat p} := \frac{1}{R} \sum^R_{r=1} |\tilde{y}_r|^2\)</span></p>
-<p><span class="math inline">\({{\mathbf V}}^H {\bar {\textbf Y}} = \tilde{\textbf{Y}}\)</span></p>
+<p><strong>Calculate MSE</strong></p>
+<p>Caculate MSE = <span class="math inline">\(\frac{1}{NT} \sum^N_{v=1} \sum^T_{t=1} (y_{v,t} - (\hat{y}_{v,t})^{(L)}) ^2\)</span></p>
+<ul>
+<li><span class="math inline">\(\hat{{\cal Y}}^{(L)} = ({\cal O}, \hat{{\cal M}}^{(L)})\)</span></li>
+<li><span class="math inline">\({\cal Y}_{com} = \{ y_{v,t}: v \in {\cal V}, t \in {\cal T} \}\)</span></li>
+</ul>
+<hr>
+<p><code>Algorithm 1</code>: GFT, EbayesThresh and STGCN</p>
+<p><strong>Input</strong> <span class="math inline">\(\tilde{\cal{Y}} = ( {\cal O} , \tilde{ {\cal M} } )\)</span>(<span class="math inline">\(={\tilde{\textbf Y}}\)</span>)</p>
+<p><strong>Output</strong> <span class="math inline">\(\hat{{\cal Y}}^{(L)}\)</span></p>
+<p><strong>for</strong> <span class="math inline">\(l\)</span> =1, <span class="math inline">\({\cal L} :=\{ 1,2,\cdots , L\}\)</span> <strong>do</strong></p>
+<p>Apply GFT <span class="math inline">\({\mathbf V}^H {\tilde {\textbf Y}} = \bar{\textbf{Y}}\)</span></p>
+<p><span class="math inline">\(\hat{p} \leftarrow \frac{1}{{\cal R}} \sum^{\cal R}_{r=1} |\bar{y}_r|^2\)</span></p>
+<p>EbayesThresh <span class="math inline">\(\breve{\textbf{p}} \leftarrow \hat{\textbf{p}}\)</span></p>
+<p><span class="math inline">\({\breve {\textbf Y}} = \sqrt{\breve{\textbf{p}}}\)</span></p>
+<p>Apply Inverse GFT <span class="math inline">\({\mathbf V} {\breve {\textbf Y}} = \breve{\textbf{Y}}_{tr}\)</span></p>
+<p><span class="math inline">\({\cal{\tilde{M}}} \leftarrow \breve{ {\cal M}_{tr} }\)</span></p>
+<p><span class="math inline">\(\bar{\cal{Y}} = ( {\cal O} , \breve{ {\cal M}_{tr} } )\)</span></p>
+<p><span class="math inline">\(\text{ STGCN } (\bar{\cal{Y}}) \leftarrow \bar{{\cal Y}}^{(l)}_{gcn}\)</span></p>
+<p><span class="math inline">\({\bar {\cal M} }^{(l)}_{gcn} \leftarrow \hat{ {\cal M} }\)</span></p>
+<p><strong>end for</strong></p>
+<hr>
+<p><code>Algorithm 2</code>: Self Consistency</p>
+<p><strong>Input</strong> <span class="math inline">\(\hat{g}_{obs}(\cdot) = \tilde{\cal{Y}}\)</span></p>
+<p><strong>Output</strong> <span class="math inline">\(\hat{g}_{com}(\cdot) = {\cal \bar{Y}}^{(l)}\)</span></p>
+<p><span class="math inline">\(E(\bar{g}_{com} |{\cal O}; g = \bar{g}_{obs}) = \bar{g}_{obs}\)</span></p>
+<p><span class="math inline">\({\cal \bar{Y}}^{(l)} \leftarrow \tilde{\cal{Y}}\)</span></p>
+<hr>
+<p><code>Algorithm 3</code>: EbayesThresh</p>
+<p><strong>Input</strong> <span class="math inline">\(\hat{\textbf{p}}\)</span></p>
+<p><strong>Output</strong> <span class="math inline">\(\breve{\textbf{p}}\)</span></p>
+<p><span class="math inline">\(\hat{\textbf{p}} = \textbf{p}_{pp} + \textbf{p}_{ac}\)</span></p>
+<p><span class="math inline">\(\breve{\textbf{p}} \leftarrow \textbf{p}_{pp}\)</span></p>
 <hr>
 <p><code>Toy Example</code></p>
+<p><strong>Define data</strong></p>
+<p>Graph <span class="math inline">\({\cal G} = (V, E,\)</span><span class="math inline">\(\textbf{W})\)</span></p>
+<ul>
+<li><span class="math inline">\(\cal{V}\)</span> is a set of Verteces. <span class="math inline">\({\cal V} = \{ v_0, v_1, v_2 \}\)</span>, <span class="math inline">\(|{\cal V}| = 3\)</span>, <span class="math inline">\(V = \{ 0,1,2\}\)</span></li>
+<li><span class="math inline">\(\cal{E}\)</span> is a set of undirected Edges. <span class="math inline">\({\cal E} =\{ ( 0, 1), ( 0, 2) \}\)</span></li>
+<li>a graph signal <span class="math inline">\(\textbf{y}\)</span>: <span class="math inline">\({\cal V}_t \to \mathbb{R}^3\)</span></li>
+<li><span class="math inline">\(T = 10\)</span></li>
+<li><span class="math inline">\({\cal Y} = \{y_{0,1},y_{0,2},\cdots,y_{2,9},y_{2,10} \}\)</span>
+<ul>
+<li><span class="math inline">\({\cal Y} = \textbf{y}\)</span></li>
+</ul></li>
+<li><span class="math inline">\(\textbf{W}_{10 \times 10}\)</span> is a weighted adjacency matrix.</li>
+</ul>
+<p><span class="math inline">\(\textbf{W}_{10 \times 10} = \begin{bmatrix} 0 &amp; 1 &amp; 0 &amp;0 &amp; 0 &amp; 0 &amp;0 &amp; 0 &amp; 0 &amp; 0 \\ 1 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp;0&amp;0 \\ 0 &amp; 1 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp;0&amp;0\\ 0 &amp; 0 &amp; 1 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\ 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0\\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 1 &amp; 0 &amp; 0\\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 1 &amp; 0\\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 1\\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 \end{bmatrix}\)</span></p>
+<ul>
+<li><span class="math inline">\(y_{v,t} \to y_{v,t-1}\)</span>이 이어져 있다고 가정하면 위와 같이 <span class="math inline">\(\textbf{W}\)</span>가 정의 됌.</li>
+<li><span class="math inline">\(v\)</span> 자기 자신끼리는 time series peridic data로 이어져 있다고 가정</li>
+</ul>
+<p><strong>Incomplete data</strong></p>
+<p><span class="math inline">\({\cal y} = ( {\cal O}, {\cal M} )\)</span>, 노드 3개(0,1,2), 타임 10 <span class="math inline">\(\therefore 3 \times 10= 30\)</span></p>
+<ul>
+<li>A incomplete data <span class="math inline">\({\cal Y} = \{ y_{0,0},y_{0,1},\cdots, y_{1,0},y_{1,1},\cdots, y_{2,0},y_{2,1},\cdots \}\)</span>
+<ul>
+<li><span class="math inline">\({\cal Y} =\)</span> <span class="math inline">\(\textbf{Y}_{3 \times 10}\)</span></li>
+</ul></li>
+<li>A missing data <span class="math inline">\({\cal M} = \{ y_{0,3}, y_{0,4},\cdots, y_{1,3},y_{1,8},\cdots,y_{2,4},y_{2,7},\cdots \}\)</span> -&gt; 임의로 노드별로 50%의 결측값이 뿌려져 있다고 가정</li>
+<li>A observed data <span class="math inline">\({\cal O} = \{ y_{0,0},\cdots,y_{1,0},\cdots,y_{2,0}\cdots \}\)</span>. -&gt; 결측값이 아닌 모든 관찰된 값</li>
+</ul>
+<ol start="2" type="1">
+<li>Conduct the linear interpolation <span class="math inline">\(\bar{{\cal Y}} = ( {\cal O} , \tilde{ {\cal M} } )\)</span></li>
+</ol>
+<ul>
+<li><span class="math inline">\({\cal M}\)</span> is imputated by <span class="math inline">\(\bar{{\cal M}}\)</span>.</li>
+</ul>
+<p><strong>Repeat</strong></p>
 <p>행렬 확인차 여기 예제에서만 기호 오른쪽 아래에 행 * 열 입력</p>
 <p>그래프 라플라시안</p>
 <ul>
@@ -460,18 +634,8 @@ window.Quarto = {
 </ul>
 <p>epoch = 20 가정</p>
 <p><span class="math inline">\(\hat{{\cal Y}}^{(20)} = ({\cal O}, \hat{{\cal M}}^{(20)})\)</span> 을 얻음</p>
-<hr>
-<p><strong>Calculate MSE</strong></p>
-<p>Caculate MSE = <span class="math inline">\(\frac{1}{NT} \sum^N_{v=1} \sum^T_{t=1} (y_{v,t} - (\hat{y}_{v,t})^{(l)}) ^2\)</span></p>
-<ul>
-<li><span class="math inline">\(\hat{{\cal Y}}^{(l)} = ({\cal O}, \hat{{\cal M}}^{(l)})\)</span></li>
-<li><span class="math inline">\({\cal Y}_{com} = \{ y_{v,t}: v \in {\cal V}, t \in {\cal T} \}\)</span></li>
-</ul>
-<hr>
-<p><code>Toy Example</code></p>
 <p><span class="math inline">\(\hat{{\cal Y}}^{(20)} = ({\cal O}, \hat{{\cal M}}^{(20)})\)</span> 를 이용해서 에러 구하기</p>
 <p>MSE = <span class="math inline">\(\frac{1}{30} \sum^3_{v=1} \sum^{10}_{t=1} (y_{v,t_v} - (\hat{y}_{v,t_v})^{(20)}) ^2\)</span></p>
-<hr>
 
 
 
