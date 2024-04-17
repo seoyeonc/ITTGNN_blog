@@ -902,7 +902,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a>    df2.query(<span class="st">"dataset=='wikimath' and lags==8 and inter_method=='linear'"</span>)])</span>
 <span id="cb73-3"><a href="#cb73-3" aria-hidden="true" tabindex="-1"></a><span class="co"># df2_out.to_csv('./Appendix_Results.csv')</span></span></code></pre></div>
 </div>
-<div id="bc1635f9-ce96-47de-9e2c-8ceee6e9011f" class="cell" data-execution_count="74">
+<div id="bc1635f9-ce96-47de-9e2c-8ceee6e9011f" class="cell" data-execution_count="116">
 <div class="sourceCode cell-code" id="cb74"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a>df_out <span class="op">=</span> pd.concat([fivenode_final,Chickenpox_final,PedalMe_final,WikiMath_final,Windmillsmall_final,Montevideobus_final])</span>
 <span id="cb74-2"><a href="#cb74-2" aria-hidden="true" tabindex="-1"></a><span class="co"># df_out.to_csv('../Data/Body_Results.csv',index=False)</span></span></code></pre></div>
 </div>
@@ -3752,12 +3752,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="windmillsmalllags8" class="level1">
 <h1>Windmillsmall(lags=8)</h1>
-<div id="62d003e8-37e6-47f8-a524-a7dbff7eaaff" class="cell" data-execution_count="50">
-<div class="sourceCode cell-code" id="cb96"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb96-1"><a href="#cb96-1" aria-hidden="true" tabindex="-1"></a>Windmillsmall_base <span class="op">=</span> df.query(<span class="st">"dataset=='windmillsmall' and mrate not in ['random','block'] and lags==8 and method !='GNAR'"</span>)</span>
+<div id="62d003e8-37e6-47f8-a524-a7dbff7eaaff" class="cell" data-execution_count="106">
+<div class="sourceCode cell-code" id="cb96"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb96-1"><a href="#cb96-1" aria-hidden="true" tabindex="-1"></a>Windmillsmall_base <span class="op">=</span> df.query(<span class="st">"dataset=='windmillsmall' and mtype not in ['random','block'] and lags==8 and method !='GNAR'"</span>)</span>
 <span id="cb96-2"><a href="#cb96-2" aria-hidden="true" tabindex="-1"></a>Windmillsmall_random <span class="op">=</span> pd.concat([df.query(<span class="st">"dataset=='windmillsmall' and mtype=='rand' and inter_method == 'linear' and lags==8 and epoch==50 and method !='GNAR' and inter_method=='linear'"</span>)])</span>
-<span id="cb96-3"><a href="#cb96-3" aria-hidden="true" tabindex="-1"></a>Windmillsmall_block <span class="op">=</span> pd.concat([df.query(<span class="st">"dataset=='windmillsmall' and mtype=='block' and inter_method == 'linear' and lags==8 and epoch==50 and method !='GNAR' and inter_method=='linear'"</span>)])</span>
+<span id="cb96-3"><a href="#cb96-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Windmillsmall_block = pd.concat([df.query("dataset=='windmillsmall' and mtype=='block' and inter_method == 'linear' and lags==8 and epoch==50 and method !='GNAR' and inter_method=='linear'")])</span></span>
 <span id="cb96-4"><a href="#cb96-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Windmillsmall_GNAR = df.query("model=='GNAR' and dataset=='windmillsmall' and lags==8  and inter_method!='nearest' and method !='GNAR'")</span></span>
-<span id="cb96-5"><a href="#cb96-5" aria-hidden="true" tabindex="-1"></a>Windmillsmall_final <span class="op">=</span> pd.concat([Windmillsmall_base,Windmillsmall_random,Windmillsmall_block])</span></code></pre></div>
+<span id="cb96-5"><a href="#cb96-5" aria-hidden="true" tabindex="-1"></a>Windmillsmall_final <span class="op">=</span> pd.concat([Windmillsmall_base,Windmillsmall_random])</span></code></pre></div>
 </div>
 <section id="baseline-4" class="level2">
 <h2 class="anchored" data-anchor-id="baseline-4">Baseline</h2>
