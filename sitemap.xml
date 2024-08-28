@@ -90,7 +90,7 @@
   </url>
   <url>
     <loc>https://seoyeonc.github.io/ITTGNN_blog/posts/2_research/2024-08-26-temporal_signal_split check.html</loc>
-    <lastmod>2024-08-26T11:53:24.986Z</lastmod>
+    <lastmod>2024-08-26T11:59:35.213Z</lastmod>
   </url>
   <url>
     <loc>https://seoyeonc.github.io/ITTGNN_blog/posts/2_research/2023-07-17-toy_example_guebin.html</loc>
@@ -129,68 +129,72 @@
     <lastmod>2023-12-01T08:20:28.334Z</lastmod>
   </url>
   <url>
-    <loc>https://seoyeonc.github.io/ITTGNN_blog/posts/2_research/2023-05-17-itstgcntry)fail_version__Simulation_boxplot_reshape.html</loc>
-    <lastmod>2023-12-01T08:20:28.350Z</lastmod>
-  </url>
-  <url>
-    <loc>https://seoyeonc.github.io/ITTGNN_blog/posts/2_research/2024-02-01-Self Consistency toy ex.html</loc>
-    <lastmod>2024-02-05T23:20:46.671Z</lastmod>
-  </url>
-  <url>
-    <loc>https://seoyeonc.github.io/ITTGNN_blog/posts/2_research/2022-12-21-ST-GCN_Dataset.html</loc>
-    <lastmod>2023-12-01T08:20:27.778Z</lastmod>
-  </url>
-  <url>
-    <loc>https://seoyeonc.github.io/ITTGNN_blog/posts/3_result/3_table/2023-07-05-ITSTGCN_data_management.html</loc>
-    <lastmod>2024-04-17T09:26:44.178Z</lastmod>
-  </url>
-  <url>
-    <loc>https://seoyeonc.github.io/ITTGNN_blog/posts/3_result/3_figure/2023-12-29-fig_dashboard.html</loc>
-    <lastmod>2024-01-10T14:34:39.730Z</lastmod>
-  </url>
-  <url>
-    <loc>https://seoyeonc.github.io/ITTGNN_blog/posts/1_studies/2024-05-16-scholar_writing.html</loc>
-    <lastmod>2024-06-02T09:35:37.259Z</lastmod>
-  </url>
-  <url>
-    <loc>https://seoyeonc.github.io/ITTGNN_blog/posts/1_studies/2023-09-20-논문리비전_수정.out.html</loc>
-    <lastmod>2023-11-08T08:39:09.216Z</lastmod>
-  </url>
-  <url>
-    <loc>https://seoyeonc.github.io/ITTGNN_blog/index.html</loc>
-    <lastmod>2023-12-19T01:57:08.513Z</lastmod>
-  </url>
-  <url>
-    <loc>https://seoyeonc.github.io/ITTGNN_blog/posts/1_studies/2024-03-12-toy_algorithm.html</loc>
-    <lastmod>2024-04-28T07:28:37.617Z</lastmod>
-  </url>
-  <url>
-    <loc>https://seoyeonc.github.io/ITTGNN_blog/posts/1_studies/2023-05-11-CPUvsGPU.html</loc>
-    <lastmod>2023-12-01T08:20:28.338Z</lastmod>
-  </url>
-  <url>
-    <loc>https://seoyeonc.github.io/ITTGNN_blog/posts/3_result/3_figure/2024-02-29-실험결과정리.html</loc>
-    <lastmod>2024-08-26T11:53:39.162Z</lastmod>
-  </url>
-  <url>
-    <loc>https://seoyeonc.github.io/ITTGNN_blog/posts/3_result/3_figure/2023-07-20-ITSTGCN_data_magement_figure.html</loc>
-    <lastmod>2024-01-09T06:40:43.888Z</lastmod>
-  </url>
-  <url>
-    <loc>https://seoyeonc.github.io/ITTGNN_blog/posts/3_result/3_table/2024-01-08-Experiments_section.html</loc>
-    <lastmod>2024-08-26T11:53:45.946Z</lastmod>
-  </url>
-  <url>
-    <loc>https://seoyeonc.github.io/ITTGNN_blog/posts/2_research/2023-05-27-AddingtheRecurrentGCNmodels.html</loc>
-    <lastmod>2023-12-01T08:20:28.386Z</lastmod>
+    <loc>https://seoyeonc.github.io/ITTGNN_blog/posts/2_research/2023-06-25-EvolveGCNO_Simulation_boxplot_reshape.html</loc>
+    <lastmod>2023-12-01T08:20:28.570Z</lastmod>
   </url>
   <url>
     <loc>https://seoyeonc.github.io/ITTGNN_blog/posts/2_research/2023-01-26-guebin.html</loc>
     <lastmod>2023-12-01T08:20:27.978Z</lastmod>
   </url>
   <url>
-    <loc>https://seoyeonc.github.io/ITTGNN_blog/posts/2_research/2023-06-25-EvolveGCNO_Simulation_boxplot_reshape.html</loc>
-    <lastmod>2023-12-01T08:20:28.570Z</lastmod>
+    <loc>https://seoyeonc.github.io/ITTGNN_blog/posts/2_research/2023-05-27-AddingtheRecurrentGCNmodels.html</loc>
+    <lastmod>2023-12-01T08:20:28.386Z</lastmod>
+  </url>
+  <url>
+    <loc>https://seoyeonc.github.io/ITTGNN_blog/posts/3_result/3_table/2024-01-08-Experiments_section.html</loc>
+    <lastmod>2024-08-28T11:20:24.534Z</lastmod>
+  </url>
+  <url>
+    <loc>https://seoyeonc.github.io/ITTGNN_blog/posts/3_result/3_figure/2023-07-20-ITSTGCN_data_magement_figure.html</loc>
+    <lastmod>2024-01-09T06:40:43.888Z</lastmod>
+  </url>
+  <url>
+    <loc>https://seoyeonc.github.io/ITTGNN_blog/posts/3_result/3_figure/2024-02-29-실험결과정리.html</loc>
+    <lastmod>2024-08-28T11:20:18.490Z</lastmod>
+  </url>
+  <url>
+    <loc>https://seoyeonc.github.io/ITTGNN_blog/posts/1_studies/2023-05-11-CPUvsGPU.html</loc>
+    <lastmod>2023-12-01T08:20:28.338Z</lastmod>
+  </url>
+  <url>
+    <loc>https://seoyeonc.github.io/ITTGNN_blog/posts/1_studies/2024-03-12-toy_algorithm.html</loc>
+    <lastmod>2024-04-28T07:28:37.617Z</lastmod>
+  </url>
+  <url>
+    <loc>https://seoyeonc.github.io/ITTGNN_blog/index.html</loc>
+    <lastmod>2023-12-19T01:57:08.513Z</lastmod>
+  </url>
+  <url>
+    <loc>https://seoyeonc.github.io/ITTGNN_blog/posts/1_studies/2023-09-20-논문리비전_수정.out.html</loc>
+    <lastmod>2023-11-08T08:39:09.216Z</lastmod>
+  </url>
+  <url>
+    <loc>https://seoyeonc.github.io/ITTGNN_blog/posts/1_studies/2024-05-16-scholar_writing.html</loc>
+    <lastmod>2024-06-02T09:35:37.259Z</lastmod>
+  </url>
+  <url>
+    <loc>https://seoyeonc.github.io/ITTGNN_blog/posts/3_result/3_figure/2023-12-29-fig_dashboard.html</loc>
+    <lastmod>2024-01-10T14:34:39.730Z</lastmod>
+  </url>
+  <url>
+    <loc>https://seoyeonc.github.io/ITTGNN_blog/posts/3_result/3_table/2023-07-05-ITSTGCN_data_management.html</loc>
+    <lastmod>2024-04-17T09:26:44.178Z</lastmod>
+  </url>
+  <url>
+    <loc>https://seoyeonc.github.io/ITTGNN_blog/posts/2_research/2022-12-21-ST-GCN_Dataset.html</loc>
+    <lastmod>2023-12-01T08:20:27.778Z</lastmod>
+  </url>
+  <url>
+    <loc>https://seoyeonc.github.io/ITTGNN_blog/posts/2_research/2024-02-01-Self Consistency toy ex.html</loc>
+    <lastmod>2024-02-05T23:20:46.671Z</lastmod>
+  </url>
+  <url>
+    <loc>https://seoyeonc.github.io/ITTGNN_blog/posts/2_research/2023-05-17-itstgcntry)fail_version__Simulation_boxplot_reshape.html</loc>
+    <lastmod>2023-12-01T08:20:28.350Z</lastmod>
+  </url>
+  <url>
+    <loc>https://seoyeonc.github.io/ITTGNN_blog/posts/2_research/2024-08-28-data_explore.html</loc>
+    <lastmod>2024-08-28T11:18:43.123Z</lastmod>
   </url>
   <url>
     <loc>https://seoyeonc.github.io/ITTGNN_blog/posts/2_research/2023-04-27-simulation_table.html</loc>

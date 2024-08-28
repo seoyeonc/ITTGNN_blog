@@ -27,6 +27,7 @@
     "listing": "/index.html",
     "items": [
       "/posts/2_research/2099-05-31-Other Method.html",
+      "/posts/2_research/2024-08-28-data_explore.html",
       "/posts/2_research/2024-08-26-temporal_signal_split check.html",
       "/posts/1_studies/2024-05-16-scholar_writing.html",
       "/posts/1_studies/2024-03-12-toy_algorithm.html",
@@ -105,6 +106,7 @@
     "listing": "/2_research.html",
     "items": [
       "/posts/2_research/2099-05-31-Other Method.html",
+      "/posts/2_research/2024-08-28-data_explore.html",
       "/posts/2_research/2024-08-26-temporal_signal_split check.html",
       "/posts/2_research/2024-02-01-Self Consistency toy ex.html",
       "/posts/2_research/2024-01-28시뮬 데이터 정리.html",

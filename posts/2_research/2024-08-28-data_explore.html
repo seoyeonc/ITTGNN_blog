@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="SEOYEON CHOI">
-<meta name="dcterms.date" content="2024-08-26">
+<meta name="dcterms.date" content="2024-08-28">
 
-<title>ITTGNN_blog - torch_geometric_temporal 확인</title>
+<title>ITTGNN_blog - Real Data Analysis를 위한 데이터 살펴보기</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -59,7 +59,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -102,6 +102,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
 <link rel="stylesheet" href="../../styles.css">
@@ -150,7 +153,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">torch_geometric_temporal 확인</li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Real Data Analysis를 위한 데이터 살펴보기</li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -163,7 +166,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">torch_geometric_temporal 확인</h1>
+      <h1 class="title">Real Data Analysis를 위한 데이터 살펴보기</h1>
                       </div>
   </div>
     
@@ -180,7 +183,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">August 26, 2024</p>
+        <p class="date">August 28, 2024</p>
       </div>
     </div>
     
@@ -254,7 +257,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#temporal_signal_split-확인" id="toc-temporal_signal_split-확인" class="nav-link active" data-scroll-target="#temporal_signal_split-확인">temporal_signal_split 확인</a></li>
+  <li><a href="#import" id="toc-import" class="nav-link active" data-scroll-target="#import">Import</a></li>
+  <li><a href="#data" id="toc-data" class="nav-link" data-scroll-target="#data">Data</a>
+  <ul class="collapse">
+  <li><a href="#제주에너지공사-풍력-발전량" id="toc-제주에너지공사-풍력-발전량" class="nav-link" data-scroll-target="#제주에너지공사-풍력-발전량">제주에너지공사 풍력 발전량</a></li>
+  <li><a href="#한전-태양광-및-풍력-데이터" id="toc-한전-태양광-및-풍력-데이터" class="nav-link" data-scroll-target="#한전-태양광-및-풍력-데이터">한전 태양광 및 풍력 데이터</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -265,131 +273,323 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<section id="temporal_signal_split-확인" class="level1">
-<h1>temporal_signal_split 확인</h1>
-<p><a href="https://ysg2997.tistory.com/42">참고</a></p>
-<div id="af53d2bc-92c0-449c-8fbe-4d58565ab713" class="cell" data-execution_count="17">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> torch_geometric_temporal.signal <span class="im">import</span> temporal_signal_split</span></code></pre></div>
+<section id="import" class="level1">
+<h1>Import</h1>
+<div id="081d64bb-626a-404f-87d0-b291360beb14" class="cell" data-execution_count="31">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> json</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code></pre></div>
 </div>
-<div id="3fdb1304-3266-4cda-b813-dbeab699a73c" class="cell" data-execution_count="21">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code></pre></div>
+</section>
+<section id="data" class="level1">
+<h1>Data</h1>
+<section id="제주에너지공사-풍력-발전량" class="level2">
+<h2 class="anchored" data-anchor-id="제주에너지공사-풍력-발전량">제주에너지공사 풍력 발전량</h2>
+<p><a href="https://www.jejuenergy.or.kr/index.php/contents/infomation/openingpublicdata/monthlypower?act=view&amp;seq=2719&amp;bd_bcid=monthlypower">출처</a></p>
+<div id="6e5fc573-b688-4622-bda8-2f784281fc49" class="cell" data-execution_count="44">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>dfs <span class="op">=</span> []</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">5</span>):</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    file_path <span class="op">=</span> <span class="ss">f'./data_example/2022년 </span><span class="sc">{</span>i<span class="sc">}</span><span class="ss">분기 풍력 발전량.csv'</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    df <span class="op">=</span> pd.read_csv(file_path)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    dfs.append(df)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>combined_df <span class="op">=</span> pd.concat(dfs, ignore_index<span class="op">=</span><span class="va">True</span>)</span></code></pre></div>
 </div>
-<div id="7e58e1b1-7162-4547-8a34-4dfcb40f37a0" class="cell" data-execution_count="83">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span></code></pre></div>
-</div>
-<div id="98fe4f97-0001-4750-b9f1-b06e1f257187" class="cell" data-execution_count="91">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> torch_geometric_temporal.dataset <span class="im">import</span> WikiMathsDatasetLoader</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>dataset <span class="op">=</span> WikiMathsDatasetLoader().get_dataset()</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>train_dataset, test_dataset <span class="op">=</span> temporal_signal_split(dataset, train_ratio<span class="op">=</span><span class="fl">0.8</span>)</span></code></pre></div>
-</div>
-<div id="ffb803f5-9cd8-4bd8-a639-c14f8ebd0c53" class="cell" data-execution_count="92">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>dataset.snapshot_count</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="92">
-<pre><code>723</code></pre>
-</div>
-</div>
-<div id="496ec3d5-df65-41c1-bc07-6611c50c1702" class="cell" data-execution_count="93">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>train_dataset.snapshot_count</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="93">
-<pre><code>578</code></pre>
-</div>
-</div>
-<div id="c074b72c-3880-4853-bf4f-40744f33b188" class="cell" data-execution_count="94">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>test_dataset.snapshot_count</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="94">
-<pre><code>145</code></pre>
-</div>
-</div>
-<div id="6080827b-ef4b-4b4c-a135-a0b91a2bebe1" class="cell" data-execution_count="95">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>dataset.features[<span class="dv">0</span>].shape</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="95">
-<pre><code>(1068, 8)</code></pre>
+<div id="b944fcb7-1702-4ea2-9959-61e4af40ec54" class="cell" data-execution_count="47">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>(combined_df<span class="op">==</span><span class="dv">0</span>).<span class="bu">sum</span>()</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="47">
+<pre><code>일시        0
+가시리풍력     0
+김녕풍력      1
+동복풍력      5
+신창풍력     20
+행원풍력     10
+풍력전체      0
+dtype: int64</code></pre>
 </div>
 </div>
-<div id="1ff30e91-9d2d-4c7b-99a4-c51d3a5d9590" class="cell" data-execution_count="96">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>train_dataset.features[<span class="dv">0</span>].shape</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="96">
-<pre><code>(1068, 8)</code></pre>
-</div>
-</div>
-<div id="2fec9de2-daf4-4d85-b865-c667e10740aa" class="cell" data-execution_count="97">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>test_dataset.features[<span class="dv">0</span>].shape</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="97">
-<pre><code>(1068, 8)</code></pre>
-</div>
-</div>
-<div id="4e3b392f-5d4d-481c-8bd2-8132f8211fa0" class="cell" data-execution_count="101">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>mean_cases <span class="op">=</span> [snapshot.y.mean().item() <span class="cf">for</span> snapshot <span class="kw">in</span> dataset]</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>std_cases <span class="op">=</span> [snapshot.y.std().item() <span class="cf">for</span> snapshot <span class="kw">in</span> dataset]</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(mean_cases, columns<span class="op">=</span>[<span class="st">'mean'</span>])</span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'std'</span>] <span class="op">=</span> pd.DataFrame(std_cases, columns<span class="op">=</span>[<span class="st">'std'</span>])</span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>,<span class="dv">5</span>))</span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>plt.plot(df[<span class="st">'mean'</span>], <span class="st">'k-'</span>, label<span class="op">=</span><span class="st">'Mean'</span>)</span>
-<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>plt.grid(linestyle<span class="op">=</span><span class="st">':'</span>)</span>
-<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>plt.fill_between(df.index, df[<span class="st">'mean'</span>]<span class="op">-</span>df[<span class="st">'std'</span>], df[<span class="st">'mean'</span>]<span class="op">+</span>df[<span class="st">'std'</span>], color<span class="op">=</span><span class="st">'r'</span>, alpha<span class="op">=</span><span class="fl">0.1</span>)</span>
-<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>plt.axvline(x<span class="op">=</span><span class="dv">578</span>, color<span class="op">=</span><span class="st">'b'</span>, linestyle<span class="op">=</span><span class="st">'--'</span>)</span>
-<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>plt.text(<span class="dv">578</span>, <span class="fl">1.5</span>, <span class="st">'Train/test split'</span>, rotation<span class="op">=-</span><span class="dv">90</span>, color<span class="op">=</span><span class="st">'b'</span>)</span>
-<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Time (days)'</span>)</span>
-<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Normalized number of visits'</span>)</span>
-<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>plt.legend(loc<span class="op">=</span><span class="st">'upper right'</span>)</span></code></pre></div>
+<div id="ee4057ff-e770-428d-bc61-a7079fb4d9d4" class="cell" data-execution_count="53">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>plt.plot(combined_df[<span class="st">'신창풍력'</span>])</span></code></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="2024-08-26-temporal_signal_split check_files/figure-html/cell-12-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="2024-08-28-data_explore_files/figure-html/cell-5-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-<div id="d12a9de1-e28e-4e9e-80d9-c90acb1b3f87" class="cell" data-execution_count="104">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>mean_cases <span class="op">=</span> [snapshot.y.mean().item() <span class="cf">for</span> snapshot <span class="kw">in</span> train_dataset]</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>std_cases <span class="op">=</span> [snapshot.y.std().item() <span class="cf">for</span> snapshot <span class="kw">in</span> train_dataset]</span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(mean_cases, columns<span class="op">=</span>[<span class="st">'mean'</span>])</span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'std'</span>] <span class="op">=</span> pd.DataFrame(std_cases, columns<span class="op">=</span>[<span class="st">'std'</span>])</span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>,<span class="dv">5</span>))</span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>plt.plot(df[<span class="st">'mean'</span>], <span class="st">'k-'</span>, label<span class="op">=</span><span class="st">'Mean'</span>)</span>
-<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>plt.grid(linestyle<span class="op">=</span><span class="st">':'</span>)</span>
-<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>plt.fill_between(df.index, df[<span class="st">'mean'</span>]<span class="op">-</span>df[<span class="st">'std'</span>], df[<span class="st">'mean'</span>]<span class="op">+</span>df[<span class="st">'std'</span>], color<span class="op">=</span><span class="st">'r'</span>, alpha<span class="op">=</span><span class="fl">0.1</span>)</span>
-<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>plt.axvline(x<span class="op">=</span><span class="dv">578</span>, color<span class="op">=</span><span class="st">'b'</span>, linestyle<span class="op">=</span><span class="st">'--'</span>)</span>
-<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a><span class="co"># plt.text(360, 1.5, 'Train/test split', rotation=-90, color='b')</span></span>
-<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Time (days)'</span>)</span>
-<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Normalized number of visits'</span>)</span>
-<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>plt.legend(loc<span class="op">=</span><span class="st">'upper right'</span>)</span></code></pre></div>
-<div class="cell-output cell-output-display">
+<div id="c35d396b-5400-4b5f-b5ff-4c07eb4c1952" class="cell" data-execution_count="62">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>dfs <span class="op">=</span> []</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">5</span>):</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    file_path <span class="op">=</span> <span class="ss">f'./data_example/2021년 </span><span class="sc">{</span>i<span class="sc">}</span><span class="ss">분기 풍력 발전량.csv'</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    df <span class="op">=</span> pd.read_csv(file_path,encoding<span class="op">=</span><span class="st">'CP949'</span>)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    dfs.append(df)</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>combined_df <span class="op">=</span> pd.concat(dfs, ignore_index<span class="op">=</span><span class="va">True</span>)</span></code></pre></div>
+</div>
+<div id="1eba8875-66c8-4c30-b5af-581d8e530517" class="cell" data-execution_count="63">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>(combined_df<span class="op">==</span><span class="dv">0</span>).<span class="bu">sum</span>()</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="63">
+<pre><code>일자             0
+가시             0
+김녕             1
+동복             0
+신창             0
+행원             0
+전체             0
+동복북촌풍력발전단지     0
+신창풍력발전단지       0
+김녕풍력발전기        0
+행원풍력발전단지       0
+가시국산화풍력발전단지    0
+단위: kWh        0
+날짜             0
+ 가시리풍력         0
+ 김녕풍력발전기       1
+ 동복북촌풍력        0
+ 신창풍력          0
+행원풍력           0
+dtype: int64</code></pre>
+</div>
+</div>
+<div id="3a989520-188b-47ed-b984-5199ebfbf528" class="cell" data-execution_count="67">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>file_path <span class="op">=</span> <span class="st">'./data_example/2020년 풍력 발전량(4분기).csv'</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>pd.read_csv(file_path,encoding<span class="op">=</span><span class="st">'CP949'</span>)</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="67">
 <div>
-<figure class="figure">
-<p><img src="2024-08-26-temporal_signal_split check_files/figure-html/cell-13-output-1.png" class="img-fluid figure-img"></p>
-</figure>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">날짜</th>
+<th data-quarto-table-cell-role="th">발전량(kWh)</th>
+<th data-quarto-table-cell-role="th">Unnamed: 2</th>
+<th data-quarto-table-cell-role="th">Unnamed: 3</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>2020-10-01</td>
+<td>26,804</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>2020-10-02</td>
+<td>2,531</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>2020-10-03</td>
+<td>2,068</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>2020-10-04</td>
+<td>144,540</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>2020-10-05</td>
+<td>583,602</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">179</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">180</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">181</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">182</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">183</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+</tbody>
+</table>
+
+<p>184 rows × 4 columns</p>
 </div>
 </div>
 </div>
-<div id="c7dfd414-522a-4da6-918c-103e5b1f4c3e" class="cell" data-execution_count="105">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>mean_cases <span class="op">=</span> [snapshot.y.mean().item() <span class="cf">for</span> snapshot <span class="kw">in</span> test_dataset]</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>std_cases <span class="op">=</span> [snapshot.y.std().item() <span class="cf">for</span> snapshot <span class="kw">in</span> test_dataset]</span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(mean_cases, columns<span class="op">=</span>[<span class="st">'mean'</span>])</span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'std'</span>] <span class="op">=</span> pd.DataFrame(std_cases, columns<span class="op">=</span>[<span class="st">'std'</span>])</span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>,<span class="dv">5</span>))</span>
-<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>plt.plot(df[<span class="st">'mean'</span>], <span class="st">'k-'</span>, label<span class="op">=</span><span class="st">'Mean'</span>)</span>
-<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>plt.grid(linestyle<span class="op">=</span><span class="st">':'</span>)</span>
-<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>plt.fill_between(df.index, df[<span class="st">'mean'</span>]<span class="op">-</span>df[<span class="st">'std'</span>], df[<span class="st">'mean'</span>]<span class="op">+</span>df[<span class="st">'std'</span>], color<span class="op">=</span><span class="st">'r'</span>, alpha<span class="op">=</span><span class="fl">0.1</span>)</span>
-<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>plt.axvline(x<span class="op">=</span><span class="dv">0</span>, color<span class="op">=</span><span class="st">'b'</span>, linestyle<span class="op">=</span><span class="st">'--'</span>)</span>
-<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a><span class="co"># plt.text(360, 1.5, 'Train/test split', rotation=-90, color='b')</span></span>
-<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Time (days)'</span>)</span>
-<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Normalized number of visits'</span>)</span>
-<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>plt.legend(loc<span class="op">=</span><span class="st">'upper right'</span>)</span></code></pre></div>
-<div class="cell-output cell-output-display">
+</section>
+<section id="한전-태양광-및-풍력-데이터" class="level2">
+<h2 class="anchored" data-anchor-id="한전-태양광-및-풍력-데이터">한전 태양광 및 풍력 데이터</h2>
+<p><a href="https://www.data.go.kr/data/15065269/fileData.do#/layer_data_infomation">출처</a></p>
+<div id="57de08a4-44c0-4532-b4dc-cfa228653ecc" class="cell" data-execution_count="55">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>pd.read_csv(<span class="st">'./data_example/지역별 시간대별 태양광 및 풍력 발전량(2309_2311).csv'</span>,encoding<span class="op">=</span><span class="st">'CP949'</span>)</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="55">
 <div>
-<figure class="figure">
-<p><img src="2024-08-26-temporal_signal_split check_files/figure-html/cell-14-output-1.png" class="img-fluid figure-img"></p>
-</figure>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">거래일자</th>
+<th data-quarto-table-cell-role="th">거래시간</th>
+<th data-quarto-table-cell-role="th">지역명</th>
+<th data-quarto-table-cell-role="th">태양광발전량(Mwh)</th>
+<th data-quarto-table-cell-role="th">풍력발전량(Mwh)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>2023-09-01</td>
+<td>1.0</td>
+<td>경기도</td>
+<td>0.029757</td>
+<td>0.000000</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>2023-09-01</td>
+<td>2.0</td>
+<td>경기도</td>
+<td>0.000000</td>
+<td>0.000000</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>2023-09-01</td>
+<td>3.0</td>
+<td>경기도</td>
+<td>0.000000</td>
+<td>0.000000</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>2023-09-01</td>
+<td>4.0</td>
+<td>경기도</td>
+<td>0.000000</td>
+<td>0.000000</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>2023-09-01</td>
+<td>5.0</td>
+<td>경기도</td>
+<td>0.000000</td>
+<td>0.000000</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">29787</td>
+<td>2023-11-13</td>
+<td>4.0</td>
+<td>경기도</td>
+<td>0.000000</td>
+<td>0.920218</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">29788</td>
+<td>2023-11-13</td>
+<td>5.0</td>
+<td>경기도</td>
+<td>0.000000</td>
+<td>1.358814</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">29789</td>
+<td>2023-11-13</td>
+<td>6.0</td>
+<td>경기도</td>
+<td>0.000000</td>
+<td>0.781372</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">29790</td>
+<td>2023-11-13</td>
+<td>7.0</td>
+<td>경기도</td>
+<td>0.000152</td>
+<td>0.999404</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">29791</td>
+<td>2023</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+</tbody>
+</table>
+
+<p>29792 rows × 5 columns</p>
 </div>
+</div>
+</div>
+<div id="05cbd4b5-fc97-44d4-90e3-e3769c3b2616" class="cell" data-execution_count="69">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>(pd.read_csv(<span class="st">'./data_example/지역별 시간대별 태양광 및 풍력 발전량(2309_2311).csv'</span>,encoding<span class="op">=</span><span class="st">'CP949'</span>)<span class="op">==</span><span class="dv">0</span>).<span class="bu">sum</span>()</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="69">
+<pre><code>거래일자              0
+거래시간              0
+지역명               0
+태양광발전량(Mwh)    6014
+풍력발전량(Mwh)     6319
+dtype: int64</code></pre>
 </div>
 </div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
