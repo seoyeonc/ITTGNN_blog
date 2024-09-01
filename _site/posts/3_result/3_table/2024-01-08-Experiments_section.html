@@ -1,0 +1,1440 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.527">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="SEOYEON CHOI">
+<meta name="dcterms.date" content="2024-01-08">
+
+<title>ITTGNN_blog - Research Sections of Experiments</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<script src="../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../../styles.css">
+</head>
+
+<body class="nav-sidebar docked nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../../index.html">
+    <span class="navbar-title">ITTGNN_blog</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="https://seoyeonc.github.io/sy_hub/"> 
+<span class="menu-text">Main_Blog</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/seoyeonc"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Research Sections of Experiments</li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Research Sections of Experiments</h1>
+                      </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>SEOYEON CHOI </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">January 8, 2024</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../1_studies.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><strong>Studies</strong></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text"><strong>Research</strong></span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../2_research.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><strong>Research</strong></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text"><strong>Result</strong></span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../3_table.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><strong>Table</strong></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../3_figure.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><strong>Figure</strong></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#data" id="toc-data" class="nav-link active" data-scroll-target="#data">Data</a></li>
+  <li><a href="#missing-rate" id="toc-missing-rate" class="nav-link" data-scroll-target="#missing-rate">1. Missing Rate</a>
+  <ul class="collapse">
+  <li><a href="#trend" id="toc-trend" class="nav-link" data-scroll-target="#trend">1.1 Trend</a></li>
+  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section">1.2</a></li>
+  <li><a href="#six-datasets" id="toc-six-datasets" class="nav-link" data-scroll-target="#six-datasets">1.3 Six Datasets</a></li>
+  <li><a href="#time" id="toc-time" class="nav-link" data-scroll-target="#time">2.1 Time</a></li>
+  <li><a href="#node" id="toc-node" class="nav-link" data-scroll-target="#node">2.2 Node</a></li>
+  </ul></li>
+  <li><a href="#interpolation" id="toc-interpolation" class="nav-link" data-scroll-target="#interpolation">3 Interpolation</a>
+  <ul class="collapse">
+  <li><a href="#linear-vs-nearest" id="toc-linear-vs-nearest" class="nav-link" data-scroll-target="#linear-vs-nearest">3.1 Linear vs Nearest</a></li>
+  </ul></li>
+  <li><a href="#missing-type" id="toc-missing-type" class="nav-link" data-scroll-target="#missing-type">4 Missing Type</a>
+  <ul class="collapse">
+  <li><a href="#block-vs-random" id="toc-block-vs-random" class="nav-link" data-scroll-target="#block-vs-random">4.1 Block vs random</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+
+<p>https://arxiv.org/pdf/1609.02907.pdf%EF%BC%89</p>
+<hr>
+<p>Related work</p>
+<p>gcn은 cnn이 graph로 효율적으로 확장된 분야로 증명되어 왔다.</p>
+<ul>
+<li>The progression from Convolutional Neural Networks (CNNs) to Graph Neural Networks (GCNs) has proven to be an effective adaptation for graph-structured data.</li>
+</ul>
+<p>그래프 도메인에서 , 특히 입력 데이터가 시간 변수인 것을 처리하기 위해 동적 그래프의 개념이 사용되었으며, 이 그래프는 시간에 따라 정보가 변하기 때문에 시간과 공간의 정보를 캡쳐하여 사용한다면 효과적일 것이다.</p>
+<ul>
+<li>In the domain of graphs, especially when dealing with temporal variations in input data, the concept is referred to as dynamic graphs . If the graphs captures information that evolves over time, incorporating both temporal and spatial aspects would be effective.</li>
+</ul>
+<p>이에 dcrnn과 stgcn,st-gcn이 제안되었고, 이러한 방법이다.</p>
+<ul>
+<li><p>To delve into these architectures, a focus on spatial and temporal information is observed in DCRNN (Diffusion Convolution Recurrent Neural Network) and STGCN (Spatio-temporal graph convolutional networks) . DCRNN captures spatial data using Graph Neural Networks (GNNs) and subsequently transfers the output to sequence-to-sequence or sequence models like Recurrent Neural Networks (RNNs) to consider temporal dependencies. On the other hand, STGCN stacks multiple spatiotemporal convolutional blocks, each comprising a spatial graph convolutional layer and two temporal gate convolutional layers.</p></li>
+<li><p>ST-GCN concurrently captures spatial and temporal messages. To apply traditional GNNs to extended graphs, ST-GCN expands the static graph structure by incorporating temporal connections, involving the construction of spatiotemporal graphs through the stacking of graph frames from each time step.</p></li>
+</ul>
+<p>st data와 관련하여 method가 제안될때 다양한 방법으로 irregular에서 regular로 변환하여 사용하려는 시도가 되어져 왔고 대부분 <strong>single imputation</strong>하는 방법을 사용했다. (<strong>simple handle 용어 모호</strong>)</p>
+<ul>
+<li>Various approaches have been attempted in the proposal of methods related to spatiotemporal data, aiming to transform irregular patterns into regular ones. Most attempts involved the application of single imputation methods.</li>
+</ul>
+<p>하지만 이는 데이터를 예측하거나 분류할때 영향을 끼쳐 낮은 accuracy로 이끌 수 있다.</p>
+<ul>
+<li>However, it can adversely impact accuracy when predicting or classifying the data, leading to lower accuracy.</li>
+</ul>
+<p>이를 개선할 수 있는 방법이 제안된다면 기존에 제안된 st data에 사용된 방법들의 더 정확한 예측값을 얻는 등 효과적인 결과를 이끌 수 있을 것이다.</p>
+<ul>
+<li>If there are proposed to improce methods, it could lead to more accurate predictions and, consequently, more effective results compared to the existing approaches used for spatiotemporal data.</li>
+</ul>
+<p>이에 우리 연구에서는 missing 값을 처리 후 데이터의 normal trend를 활용하여 self consistecy 속성을 이용해 데이터의 예측 정확도를 키울 수 있는 접근 방식을 제안한다.</p>
+<ul>
+<li>In this paper, we propose an approach that leverages the normal trend of data after handling missing values, utilizing the self-consistency property to enhance the accuracy of data predictions.</li>
+</ul>
+<p>데이터 섹션에 추가할 것 train/test 비율 - The validation set is comprised of the final 20% of the training data.</p>
+<ol type="1">
+<li>mrate 에 따라 mse</li>
+<li>time/node ration에 따라 mse</li>
+<li>기타(interpolation 등)</li>
+</ol>
+<div id="8323b849-e384-4b01-ab93-cbd21978f529" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.io <span class="im">as</span> pio</span></code></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>ModuleNotFoundError: No module named 'plotly'</code></pre>
+</div>
+</div>
+<div id="2370ef55-1730-42af-b705-51d12ba6f9f1" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>pd.options.plotting.backend <span class="op">=</span> <span class="st">"plotly"</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>pio.templates.default <span class="op">=</span> <span class="st">"plotly_white"</span></span></code></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>NameError: name 'pd' is not defined</code></pre>
+</div>
+</div>
+<section id="data" class="level1">
+<h1>Data</h1>
+<div id="0029d80d-2795-480c-9753-0075f29de94c" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">'../Data/Body_Results.csv'</span>).query(<span class="st">"method!='GNAR'"</span>).iloc[:,<span class="dv">1</span>:]</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>df.head()</span></code></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>NameError: name 'pd' is not defined</code></pre>
+</div>
+</div>
+<div id="10c5e1e5-ffec-4c40-906f-b3e57db93daf" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># nearest_fivenodes = pd.read_csv('../Data/Add/nearest_fivenodes.csv').query("method!='GNAR'")</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co"># nearest_fivenodes.head()</span></span></code></pre></div>
+</div>
+<div id="af336051-d22a-426e-9410-be00b1d0e30f" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># nearest_pedalme = pd.read_csv('../Data/Add/nearest_pedalme.csv').query("method!='GNAR'")</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co"># nearest_pedalme.head()</span></span></code></pre></div>
+</div>
+<div id="c0bf0dfe-f5e2-4595-9b25-82f8b7f67023" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>pd.read_csv(<span class="st">'../Data/pedalme_linear.csv'</span>)<span class="op">\</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>.query(<span class="st">'model=="TGCN"'</span>).query(<span class="st">'inter_method=="linear"'</span>).query(<span class="st">'mtype=="rand"'</span>)<span class="op">\</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>.groupby([<span class="st">'mrate'</span>,<span class="st">'method'</span>]).agg({<span class="st">'mse'</span>:<span class="st">'mean'</span>})<span class="op">\</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>.stack().reset_index().rename({<span class="dv">0</span>:<span class="st">'mse'</span>},axis<span class="op">=</span><span class="dv">1</span>)<span class="op">\</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>.plot.line(x<span class="op">=</span><span class="st">'mrate'</span>,y<span class="op">=</span><span class="st">'mse'</span>,color<span class="op">=</span><span class="st">'method'</span>)</span></code></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>NameError: name 'pd' is not defined</code></pre>
+</div>
+</div>
+</section>
+<section id="missing-rate" class="level1">
+<h1>1. Missing Rate</h1>
+<section id="trend" class="level2">
+<h2 class="anchored" data-anchor-id="trend">1.1 Trend</h2>
+<ul>
+<li>실험 결과에 대한 첫번 째 접근은 다음과 같다. Figure 1의 결과는 각 결측값 비율에 따라 정리한 데이터셋에 대한 결과이다. Classic과 Proposed는 결측값 비율이 점점 증가하면서 평균제곱오차도 함께 증가하는 경향을 보였다. 특히, Classic과 Proposed 각각에 대한 trendline을 비교해본 결과, 결측값 비율이 증가할 수록 Classic에 비해 우리가 제안한 방법((Proposed)의 평균제곱오차가 느리게 증가하는 경향을 띄었다. 반면, Classic 모델은 오히려 빠르게 증가하는 경향을 띄었다. 결측값 비율이 커질수록 우리가 제안하는 방법이 비교적 낮은 오차 내에서 값을 예측해낸다는 것을 알 수 있었다.</li>
+<li>The initial approach to the experimental results is as follows. Figure <span class="math inline">\(\ref{}\)</span> illustrates the outcomes for six datasets organized based on varying levels of missing data, with nine models employed. As the missing data rates increase, both Classic and Proposed models exhibit a tendency for the mean squared error (MSE) to rise. Particularly noteworthy is the comparison between the trendlines of Classic and Proposed: as the rate of missing values increases, the MSE of the Proposed method tends to increase more gradually compared to Classic. In contrast, the Classic model displays a more rapid increase in MSE. This comparison suggests that as the proportion of missing values grows, our proposed method (Proposed) tends to predict values with a slower increase in MSE compared to the Classic model. It becomes evident that as the missing data rate becomes higher, our proposed method performs relatively well, providing predictions with lower errors compared to the Classic model.</li>
+</ul>
+<div id="f64c5814-4ecf-4d32-b113-feeb62a34d2b" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>z<span class="co"># tidydata = pd.concat([df.query('dataset=="fivenodes" and model=="GConvGRU" and mtype=="rand"')])</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co"># tidydata['mrate'] = tidydata['mrate'].astype(str)</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co"># tidydata = tidydata.sort_values(by=['model','mrate'])</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="co"># fig = px.box(tidydata,x='mrate',y='mse',color='method',width=70, log_y=True)</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="co"># fig.layout['xaxis']['title']['text']='Missing Rate'</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="co"># fig.layout['yaxis']['title']['text']='Mean Square Error'</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="co"># fig.data[0]['marker']['color'] = 'blue'</span></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a><span class="co"># fig.data[0]['name'] = 'Classic'</span></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a><span class="co"># fig.data[1]['marker']['color'] = 'red'</span></span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a><span class="co"># fig.data[1]['name'] = 'Proposed'</span></span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a><span class="co"># fig.layout['legend']['title']=''</span></span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a><span class="co"># fig.update_layout(template="seaborn")</span></span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a><span class="co"># fig.update_layout(title_text="Randomly Missing Values on FiveVTS")</span></span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a><span class="co"># fig.update_layout(height=600, width=1800)</span></span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a><span class="co"># fig.add_trace(go.Scatter(x=tidydata.query('method=="STGCN"').mrate.unique(), y=(tidydata.query('method=="STGCN"')).groupby('mrate')['mse'].mean(), </span></span>
+<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a><span class="co">#                          mode="lines", name="trendline of Classic", line=dict(color="blue",width=2)))</span></span>
+<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a><span class="co"># fig.add_trace(go.Scatter(x=tidydata.query('method=="STGCN"').mrate.unique(), y=(tidydata.query('method!="STGCN"')).groupby('mrate')['mse'].mean(), </span></span>
+<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a><span class="co">#                          mode="lines", name="trendline of Classic", line=dict(color="red",width=2)))</span></span>
+<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a><span class="co"># fig.update_layout(legend=dict(</span></span>
+<span id="cb11-29"><a href="#cb11-29" aria-hidden="true" tabindex="-1"></a><span class="co">#     yanchor="top",</span></span>
+<span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a><span class="co">#     y=0.99,</span></span>
+<span id="cb11-31"><a href="#cb11-31" aria-hidden="true" tabindex="-1"></a><span class="co">#     xanchor="left",</span></span>
+<span id="cb11-32"><a href="#cb11-32" aria-hidden="true" tabindex="-1"></a><span class="co">#     x=0.01</span></span>
+<span id="cb11-33"><a href="#cb11-33" aria-hidden="true" tabindex="-1"></a><span class="co"># ))</span></span>
+<span id="cb11-34"><a href="#cb11-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-35"><a href="#cb11-35" aria-hidden="true" tabindex="-1"></a><span class="co"># fig</span></span></code></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>NameError: name 'z' is not defined</code></pre>
+</div>
+</div>
+</section>
+<section id="section" class="level2">
+<h2 class="anchored" data-anchor-id="section">1.2</h2>
+<p><code>1</code>의 내용에 대한 확장으로. <code>FiveVTS</code> 데이터 셋에서 <code>GConvGRU</code> 방법 이외에 시도한 다른 Classic 모델들에 대한 결과이다. <code>GConvGRU</code>, <code>GConvLSTM</code>, <code>GCLSTM</code>, <code>LRGCN</code>, <code>DyGrEncoder</code>, <code>EvolveGCNH</code>, <code>EvolveGCNO</code>, <code>TGCN</code>, <code>DCRNN</code> 모델의 결과이며. 첫번째 섹션에서 제시한 결과와 비슷하게 결측값 비율이 증가할 수록 예측값에 대한 오차가 증가하였으며. Proposed가 더 낮은 값을 띄는 경향을 보인 것을 확인할 수 있었다. 다른 데이터 셋에 대한 결과도 결측값이 증가할 수록 오차가 증가하되, 우리가 제안한 방법에 대한 mse값이 낮은 비슷한 경향을 보였으며, 나머지 모델에서 나온 6개의 데이터 셋에 대한 결과는 부록에서 확인할 수 있다.</p>
+<div id="6ca274e8-871f-44a2-8d63-7fa0b53b615b" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># tidydata = pd.DataFrame(df.query("dataset=='fivenodes' and mtype=='rand'"))</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="co"># tidydata['model'] = pd.Categorical(tidydata['model'], categories=["GConvGRU", "GConvLSTM", "GCLSTM", "LRGCN", "DyGrEncoder", "EvolveGCNH", "EvolveGCNO", "TGCN", "DCRNN"])</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co"># tidydata['method'] = pd.Categorical(tidydata['method'], categories=['STGCN', 'IT-STGCN'])</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="co"># tidydata['mrate'] = tidydata['mrate'].astype(str)</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="co"># tidydata = tidydata.sort_values(by=['model','mrate'])</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="co"># fig = px.box(tidydata,x='mrate',y='mse',color='method',log_y=True,facet_col='model',facet_col_wrap=3)</span></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a><span class="co"># fig.layout['xaxis']['title']['text']=''</span></span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a><span class="co"># fig.layout['xaxis2']['title']['text']='Missing Rate'</span></span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a><span class="co"># fig.layout['xaxis3']['title']['text']=''</span></span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a><span class="co"># fig.layout['yaxis']['title']['text']=''</span></span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a><span class="co"># fig.layout['yaxis4']['title']['text']='MSE(log scale)'</span></span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a><span class="co"># fig.layout['yaxis7']['title']['text']=''</span></span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a><span class="co"># fig.layout['legend']['title']='Method'</span></span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a><span class="co"># fig.layout.xaxis4.showticklabels=True</span></span>
+<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a><span class="co"># fig.layout.xaxis5.showticklabels=True</span></span>
+<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a><span class="co"># fig.layout.xaxis6.showticklabels=True</span></span>
+<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a><span class="co"># fig.layout.xaxis7.showticklabels=True</span></span>
+<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a><span class="co"># fig.layout.xaxis8.showticklabels=True</span></span>
+<span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a><span class="co"># fig.layout.xaxis9.showticklabels=True</span></span>
+<span id="cb13-25"><a href="#cb13-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-26"><a href="#cb13-26" aria-hidden="true" tabindex="-1"></a><span class="co"># fig.layout.yaxis2.showticklabels=True</span></span>
+<span id="cb13-27"><a href="#cb13-27" aria-hidden="true" tabindex="-1"></a><span class="co"># fig.layout.yaxis3.showticklabels=True</span></span>
+<span id="cb13-28"><a href="#cb13-28" aria-hidden="true" tabindex="-1"></a><span class="co"># fig.layout.yaxis5.showticklabels=True</span></span>
+<span id="cb13-29"><a href="#cb13-29" aria-hidden="true" tabindex="-1"></a><span class="co"># fig.layout.yaxis6.showticklabels=True</span></span>
+<span id="cb13-30"><a href="#cb13-30" aria-hidden="true" tabindex="-1"></a><span class="co"># fig.layout.yaxis8.showticklabels=True</span></span>
+<span id="cb13-31"><a href="#cb13-31" aria-hidden="true" tabindex="-1"></a><span class="co"># fig.layout.yaxis9.showticklabels=True</span></span>
+<span id="cb13-32"><a href="#cb13-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-33"><a href="#cb13-33" aria-hidden="true" tabindex="-1"></a><span class="co"># fig.layout['legend']['title']=''</span></span>
+<span id="cb13-34"><a href="#cb13-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-35"><a href="#cb13-35" aria-hidden="true" tabindex="-1"></a><span class="co"># for i in range(0, 9):</span></span>
+<span id="cb13-36"><a href="#cb13-36" aria-hidden="true" tabindex="-1"></a><span class="co">#     fig.data[i]['marker']['color'] = 'blue'</span></span>
+<span id="cb13-37"><a href="#cb13-37" aria-hidden="true" tabindex="-1"></a><span class="co">#     fig.data[i]['name'] = 'Classic'</span></span>
+<span id="cb13-38"><a href="#cb13-38" aria-hidden="true" tabindex="-1"></a><span class="co"># for i in range(9, 18):    </span></span>
+<span id="cb13-39"><a href="#cb13-39" aria-hidden="true" tabindex="-1"></a><span class="co">#     fig.data[i]['marker']['color'] = 'red'</span></span>
+<span id="cb13-40"><a href="#cb13-40" aria-hidden="true" tabindex="-1"></a><span class="co">#     fig.data[i]['name'] = 'Proposed'</span></span>
+<span id="cb13-41"><a href="#cb13-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-42"><a href="#cb13-42" aria-hidden="true" tabindex="-1"></a><span class="co"># fig.update_layout(legend=dict(x=1, y=1, traceorder='normal', orientation='v'))</span></span>
+<span id="cb13-43"><a href="#cb13-43" aria-hidden="true" tabindex="-1"></a><span class="co"># fig.update_layout(template="seaborn")</span></span>
+<span id="cb13-44"><a href="#cb13-44" aria-hidden="true" tabindex="-1"></a><span class="co"># fig.update_layout(title_text="Models on FiveVTS")</span></span>
+<span id="cb13-45"><a href="#cb13-45" aria-hidden="true" tabindex="-1"></a><span class="co"># fig.update_layout(height=1200, width=1900)</span></span>
+<span id="cb13-46"><a href="#cb13-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-47"><a href="#cb13-47" aria-hidden="true" tabindex="-1"></a><span class="co"># fig.for_each_annotation(lambda a: a.update(text=a.text.split("=")[-1]))</span></span>
+<span id="cb13-48"><a href="#cb13-48" aria-hidden="true" tabindex="-1"></a><span class="co"># fig.update_layout(legend=dict(</span></span>
+<span id="cb13-49"><a href="#cb13-49" aria-hidden="true" tabindex="-1"></a><span class="co">#     yanchor="top",</span></span>
+<span id="cb13-50"><a href="#cb13-50" aria-hidden="true" tabindex="-1"></a><span class="co">#     y=0.99,</span></span>
+<span id="cb13-51"><a href="#cb13-51" aria-hidden="true" tabindex="-1"></a><span class="co">#     xanchor="left",</span></span>
+<span id="cb13-52"><a href="#cb13-52" aria-hidden="true" tabindex="-1"></a><span class="co">#     x=0.01</span></span>
+<span id="cb13-53"><a href="#cb13-53" aria-hidden="true" tabindex="-1"></a><span class="co"># ))</span></span>
+<span id="cb13-54"><a href="#cb13-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-55"><a href="#cb13-55" aria-hidden="true" tabindex="-1"></a><span class="co"># fig</span></span>
+<span id="cb13-56"><a href="#cb13-56" aria-hidden="true" tabindex="-1"></a><span class="co"># # with open('fivenodes_fig.pkl', 'wb') as file:</span></span>
+<span id="cb13-57"><a href="#cb13-57" aria-hidden="true" tabindex="-1"></a><span class="co"># #     pickle.dump(fig, file)</span></span>
+<span id="cb13-58"><a href="#cb13-58" aria-hidden="true" tabindex="-1"></a><span class="co"># # with open('fivenodes_fig.pkl', 'rb') as file:</span></span>
+<span id="cb13-59"><a href="#cb13-59" aria-hidden="true" tabindex="-1"></a><span class="co"># #     fivenodes_fig = pickle.load(file)</span></span>
+<span id="cb13-60"><a href="#cb13-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-61"><a href="#cb13-61" aria-hidden="true" tabindex="-1"></a><span class="co"># # fivenodes_fig</span></span></code></pre></div>
+</div>
+</section>
+<section id="six-datasets" class="level2">
+<h2 class="anchored" data-anchor-id="six-datasets">1.3 Six Datasets</h2>
+<ul>
+<li>이번 섹션에서는 데이터의 다양성을 고려하기 위하여 사용된 총 6개의 데이터에 대해 결측값 비율이 높을때(70% 혹은 80%) <code>GConvGRU</code> 모델에서 예측과 제안된 방법의 비교 결과를 제시하였다. 대부분의 데이터셋의 결과는 Classic 모델보다 Proposed 결과의 mse 값이 낮게 분포되어 있음을 확인하였다.</li>
+</ul>
+<div id="bd8d3b40-50a7-41a6-9e40-b451352b3111" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># tidydata = pd.concat([df[(df['dataset']=='fivenodes') &amp; (df['mtype']=='rand') &amp; (df['inter_method']=='linear') &amp; (df['nof_filters']==12) &amp; </span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co">#            (df['lags']==2) &amp; (df['epoch']==50) &amp; (df['model']=='GConvGRU') &amp; (df['mrate'].isin([0.8]))],</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co">#         df.query("dataset=='chickenpox' &amp; mtype=='rand' &amp; inter_method == 'linear' &amp; nof_filters==16 &amp; lags==4 &amp; epoch==50 &amp; model=='GConvGRU' &amp; (mrate == 0.8)"),</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co">#           df.query("dataset=='pedalme' &amp; mtype=='rand' &amp; inter_method == 'nearest' &amp; nof_filters==12 &amp; lags==4 &amp; epoch==50 &amp; model=='GConvGRU' &amp; (mrate == 0.8)"),</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="co">#           df.query("dataset=='wikimath' &amp; mtype=='rand' &amp; inter_method == 'linear' &amp; nof_filters==12 &amp; lags==8 &amp; epoch==50 &amp; model=='GConvGRU' &amp; (mrate == 0.8)"),</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="co">#           df.query("dataset=='windmillsmall' &amp; mtype=='rand' &amp; inter_method == 'linear' &amp; nof_filters==12 &amp; lags==8 &amp; epoch==50 &amp; model=='GConvGRU' &amp; (mrate == 0.7)"),</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="co">#           df.query("dataset=='monte' &amp; mtype=='rand' &amp; inter_method == 'nearest' &amp; nof_filters==12 &amp; lags==4 &amp; epoch==50 &amp; model=='GConvGRU' &amp; (mrate == 0.8)")])</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="co"># # tidydata = df.query("dataset=='fivenodes' and mtype=='rand' and mrate in [0.7,0.8]")</span></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="co"># tidydata['model'] = pd.Categorical(tidydata['model'], categories=["GConvGRU", "GConvLSTM", "GCLSTM", "LRGCN", "DyGrEncoder", "EvolveGCNH", "EvolveGCNO", "TGCN", "DCRNN"])</span></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a><span class="co"># categories=["fivenodes", "chickenpox", "pedalme", "wikimath", "windmillsmall", "monte"]</span></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a><span class="co"># tidydata['method'] = pd.Categorical(tidydata['method'], categories=['STGCN', 'IT-STGCN'])</span></span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a><span class="co"># tidydata = tidydata.sort_values(by='dataset', key=lambda x: x.map({dataset: i for i, dataset in enumerate(categories)}))</span></span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a><span class="co"># fig = px.strip(tidydata,x='dataset',y='mse',color='method', log_y=True,stripmode='overlay')</span></span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a><span class="co"># fig.layout['xaxis']['title']['text']='Missing Rate'</span></span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a><span class="co"># fig.layout['yaxis']['title']['text']='MSE(log scale)'</span></span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a><span class="co"># # fig.layout.annotations[0].text = 'FiveVTS'</span></span>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a><span class="co"># # fig.layout.annotations[1].text = 'Chickenpox'</span></span>
+<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a><span class="co"># # fig.layout.annotations[2].text = 'Pedalme'</span></span>
+<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a><span class="co"># # fig.layout.annotations[3].text = 'Wikimath'</span></span>
+<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a><span class="co"># # fig.layout.annotations[4].text = 'Windmillsmall'</span></span>
+<span id="cb14-26"><a href="#cb14-26" aria-hidden="true" tabindex="-1"></a><span class="co"># # fig.layout.annotations[5].text = 'MontevideoBus'</span></span>
+<span id="cb14-27"><a href="#cb14-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-28"><a href="#cb14-28" aria-hidden="true" tabindex="-1"></a><span class="co"># # fig.layout['legend']['title']=''</span></span>
+<span id="cb14-29"><a href="#cb14-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-30"><a href="#cb14-30" aria-hidden="true" tabindex="-1"></a><span class="co"># fig.data[0]['marker']['color'] = 'blue'</span></span>
+<span id="cb14-31"><a href="#cb14-31" aria-hidden="true" tabindex="-1"></a><span class="co"># fig.data[0]['name'] = 'Classic'</span></span>
+<span id="cb14-32"><a href="#cb14-32" aria-hidden="true" tabindex="-1"></a><span class="co"># fig.data[1]['marker']['color'] = 'red'</span></span>
+<span id="cb14-33"><a href="#cb14-33" aria-hidden="true" tabindex="-1"></a><span class="co"># fig.data[1]['name'] = 'Proposed'</span></span>
+<span id="cb14-34"><a href="#cb14-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-35"><a href="#cb14-35" aria-hidden="true" tabindex="-1"></a><span class="co"># fig.update_layout(template="seaborn")</span></span>
+<span id="cb14-36"><a href="#cb14-36" aria-hidden="true" tabindex="-1"></a><span class="co"># fig.update_layout(title_text="GConvGRU on datasets")</span></span>
+<span id="cb14-37"><a href="#cb14-37" aria-hidden="true" tabindex="-1"></a><span class="co"># # fig.update_yaxes(matches=None)</span></span>
+<span id="cb14-38"><a href="#cb14-38" aria-hidden="true" tabindex="-1"></a><span class="co"># fig.update_layout(height=800, width=1900)</span></span>
+<span id="cb14-39"><a href="#cb14-39" aria-hidden="true" tabindex="-1"></a><span class="co"># fig.update_layout(legend=dict(</span></span>
+<span id="cb14-40"><a href="#cb14-40" aria-hidden="true" tabindex="-1"></a><span class="co">#     yanchor="top",</span></span>
+<span id="cb14-41"><a href="#cb14-41" aria-hidden="true" tabindex="-1"></a><span class="co">#     y=0.99,</span></span>
+<span id="cb14-42"><a href="#cb14-42" aria-hidden="true" tabindex="-1"></a><span class="co">#     xanchor="left",</span></span>
+<span id="cb14-43"><a href="#cb14-43" aria-hidden="true" tabindex="-1"></a><span class="co">#     x=0.01</span></span>
+<span id="cb14-44"><a href="#cb14-44" aria-hidden="true" tabindex="-1"></a><span class="co">#  ))</span></span>
+<span id="cb14-45"><a href="#cb14-45" aria-hidden="true" tabindex="-1"></a><span class="co"># fig</span></span></code></pre></div>
+</div>
+<hr>
+<p><strong>DCRNN 모델의 wikimath 데이터에서 결측값 비율이 낮을 때 대비 높을 때 비교</strong></p>
+<ul>
+<li><p>결측값 비율이 커지니 차이가 커진 mse 값 분포</p></li>
+<li><p>내용</p>
+<ul>
+<li>wikimath 데이터셋에서 DCRNN 결과에 대하여 결측값 비율이 작은 경우(30%) 대비 큰 경(80%)에 대하여 비교해보았다. wikimath 데이터셋에서 결측값을 주지 않았을떄, mse 값은 0.936±0.002(mean±sd)와 같았다. figure에서 보다시피, 결측값 비율이 30%으로 작을 때는 오차값이 작게 증가하였지만, 결측값의 비율이 80%로 높아졌을떄는 mse값이 확연히 높아진 것을 확인할 수 있었으며, 특히 classic 보다 proposed 의 값이 낮은 모습도 확인할 수 있었다.</li>
+</ul></li>
+</ul>
+<div id="5829ab13-b75b-4b76-a143-bfc53b3f7b2d" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># # tidydata = pd.concat([df[(df['dataset']=='fivenodes') &amp; (df['mtype']=='rand') &amp; (df['inter_method']=='linear') &amp; (df['nof_filters']==12) &amp; </span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="co"># #            (df['lags']==2) &amp; (df['epoch']==50) &amp; (df['model']=='GConvGRU') &amp; (df['mrate'].isin([0.3,0.8]))]])</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="co"># tidydata = df.query("model=='DCRNN' and dataset=='wikimath' and mrate in [0.3,0.8]")</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="co"># tidydata['method'] = pd.Categorical(tidydata['method'], categories=['STGCN', 'IT-STGCN'])</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="co"># tidydata['mrate'] = tidydata['mrate'].astype(str)</span></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="co"># tidydata = tidydata.sort_values(by=['model','mrate'])</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="co"># fig = px.box(tidydata,x='mrate',y='mse',width=10, points='all',log_y=True,facet_col='method')</span></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a><span class="co"># fig.layout['xaxis2']['title']['text']='Missing Rate'</span></span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a><span class="co"># fig.layout['xaxis']['title']['text']='Missing Rate'</span></span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a><span class="co"># fig.layout['yaxis']['title']['text']='MSE(log scale)'</span></span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a><span class="co"># fig.data[0]['marker']['color'] = 'blue'</span></span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a><span class="co"># fig.data[1]['marker']['color'] = 'red'</span></span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a><span class="co"># fig.layout['legend']['title']=''</span></span>
+<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a><span class="co"># fig.layout.annotations[0].text = 'Classic'</span></span>
+<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a><span class="co"># fig.layout.annotations[1].text = 'Proposed'</span></span>
+<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a><span class="co"># fig.update_layout(template="seaborn")</span></span>
+<span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a><span class="co"># fig.update_layout(title_text="DCRNN on Wikimath")</span></span>
+<span id="cb15-24"><a href="#cb15-24" aria-hidden="true" tabindex="-1"></a><span class="co"># fig.update_layout(height=1000, width=1500)</span></span>
+<span id="cb15-25"><a href="#cb15-25" aria-hidden="true" tabindex="-1"></a><span class="co"># fig.update_layout(legend=dict(</span></span>
+<span id="cb15-26"><a href="#cb15-26" aria-hidden="true" tabindex="-1"></a><span class="co">#     yanchor="top",</span></span>
+<span id="cb15-27"><a href="#cb15-27" aria-hidden="true" tabindex="-1"></a><span class="co">#     y=0.99,</span></span>
+<span id="cb15-28"><a href="#cb15-28" aria-hidden="true" tabindex="-1"></a><span class="co">#     xanchor="left",</span></span>
+<span id="cb15-29"><a href="#cb15-29" aria-hidden="true" tabindex="-1"></a><span class="co">#     x=0.01</span></span>
+<span id="cb15-30"><a href="#cb15-30" aria-hidden="true" tabindex="-1"></a><span class="co">#  ))</span></span>
+<span id="cb15-31"><a href="#cb15-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-32"><a href="#cb15-32" aria-hidden="true" tabindex="-1"></a><span class="co"># fig</span></span></code></pre></div>
+</div>
+<hr>
+<div id="201e1978-6909-4d24-9373-20fdde4af2f1" class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> df.query(<span class="st">"mtype=='rand'"</span>).query(<span class="st">"dataset != 'windmillsmall'"</span>)<span class="op">\</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>.groupby([<span class="st">"method"</span>,<span class="st">"dataset"</span>,<span class="st">"mrate"</span>,<span class="st">"model"</span>]).agg({<span class="st">'mse'</span>:<span class="st">'mean'</span>}).reset_index()<span class="op">\</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>.plot.line(</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span><span class="st">'mrate'</span>,</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>    y<span class="op">=</span><span class="st">'mse'</span>,</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>    color<span class="op">=</span><span class="st">'method'</span>,</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>    facet_row<span class="op">=</span><span class="st">'model'</span>,</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>    facet_col<span class="op">=</span><span class="st">'dataset'</span>,</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>    width<span class="op">=</span><span class="dv">1200</span>,</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>    height<span class="op">=</span><span class="dv">1500</span>,</span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> scatter <span class="kw">in</span> fig.data:</span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>    scatter[<span class="st">'mode'</span>] <span class="op">=</span> <span class="st">'lines+markers'</span></span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>    scatter[<span class="st">'line'</span>][<span class="st">'dash'</span>] <span class="op">=</span> <span class="st">'dashdot'</span></span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> annotation <span class="kw">in</span> fig.layout[<span class="st">'annotations'</span>]:</span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>    annotation[<span class="st">'text'</span>] <span class="op">=</span> annotation[<span class="st">'text'</span>].replace(<span class="st">'dataset='</span>,<span class="st">''</span>)</span>
+<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a>    annotation[<span class="st">'text'</span>] <span class="op">=</span> annotation[<span class="st">'text'</span>].replace(<span class="st">'model='</span>,<span class="st">''</span>)</span>
+<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> k <span class="kw">in</span> [k <span class="cf">for</span> k <span class="kw">in</span> fig.layout <span class="cf">if</span> <span class="st">'xaxis'</span> <span class="kw">in</span> k]:</span>
+<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a>    fig.layout[k][<span class="st">'title'</span>][<span class="st">'text'</span>] <span class="op">=</span> <span class="va">None</span> </span>
+<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> k <span class="kw">in</span> [k <span class="cf">for</span> k <span class="kw">in</span> fig.layout <span class="cf">if</span> <span class="st">'yaxis'</span> <span class="kw">in</span> k]:</span>
+<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a>    fig.layout[k][<span class="st">'title'</span>][<span class="st">'text'</span>] <span class="op">=</span> <span class="va">None</span> </span>
+<span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a>fig.update_yaxes(showticklabels<span class="op">=</span><span class="va">True</span>,matches<span class="op">=</span><span class="va">None</span>)</span>
+<span id="cb16-25"><a href="#cb16-25" aria-hidden="true" tabindex="-1"></a>fig.update_xaxes(showticklabels<span class="op">=</span><span class="va">True</span>,matches<span class="op">=</span><span class="va">None</span>)</span></code></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>NameError: name 'df' is not defined</code></pre>
+</div>
+</div>
+<div id="876208b4-bcc7-4f1a-827e-25bf9d960cb0" class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>big <span class="op">=</span> df.query(<span class="st">"mtype=='rand'"</span>).query(<span class="st">"dataset == 'wikimath'"</span>).query(<span class="st">"model == 'GConvLSTM'"</span>).sort_values(by<span class="op">=</span><span class="st">'mrate'</span>)<span class="op">\</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>.assign(mrate_jittered <span class="op">=</span> <span class="kw">lambda</span> df: np.array(df[<span class="st">'mrate'</span>])<span class="op">+</span>np.random.randn(<span class="bu">len</span>(df[<span class="st">'mrate'</span>]))<span class="op">*</span><span class="fl">0.01</span>)</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>small <span class="op">=</span> big.groupby([<span class="st">"dataset"</span>,<span class="st">"mrate"</span>,<span class="st">"method"</span>]).agg({<span class="st">'mse'</span>:<span class="st">'mean'</span>}).reset_index().rename({<span class="st">'mse'</span>:<span class="st">'mse_mean'</span>},axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>tidydata <span class="op">=</span> big.merge(small)</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>tidydata[<span class="st">'mrate'</span>] <span class="op">=</span> tidydata[<span class="st">'mrate'</span>].astype(<span class="bu">str</span>)</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> px.scatter(</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>    tidydata,</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>    y<span class="op">=</span><span class="st">'mse'</span>,</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span><span class="st">'mrate_jittered'</span>,</span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>    opacity<span class="op">=</span><span class="fl">0.3</span>,</span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>    color<span class="op">=</span><span class="st">'method'</span>,</span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>    width<span class="op">=</span><span class="dv">750</span>,</span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>    height<span class="op">=</span><span class="dv">500</span>,</span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>_fig1 <span class="op">=</span> px.scatter(</span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a>    tidydata,</span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a>    y<span class="op">=</span><span class="st">'mse_mean'</span>,</span>
+<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span><span class="st">'mrate'</span>,</span>
+<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a>    color<span class="op">=</span><span class="st">'method'</span>,</span>
+<span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb18-21"><a href="#cb18-21" aria-hidden="true" tabindex="-1"></a>_fig1.data[<span class="dv">0</span>][<span class="st">'mode'</span>]<span class="op">=</span><span class="st">'markers+lines'</span></span>
+<span id="cb18-22"><a href="#cb18-22" aria-hidden="true" tabindex="-1"></a>_fig1.data[<span class="dv">0</span>][<span class="st">'marker'</span>][<span class="st">'size'</span>] <span class="op">=</span> <span class="dv">10</span></span>
+<span id="cb18-23"><a href="#cb18-23" aria-hidden="true" tabindex="-1"></a>_fig1.data[<span class="dv">0</span>][<span class="st">'line'</span>][<span class="st">'width'</span>] <span class="op">=</span> <span class="dv">3</span></span>
+<span id="cb18-24"><a href="#cb18-24" aria-hidden="true" tabindex="-1"></a>_fig1.data[<span class="dv">0</span>][<span class="st">'line'</span>][<span class="st">'dash'</span>] <span class="op">=</span> <span class="st">'dashdot'</span></span>
+<span id="cb18-25"><a href="#cb18-25" aria-hidden="true" tabindex="-1"></a>_fig1.data[<span class="dv">1</span>][<span class="st">'mode'</span>]<span class="op">=</span><span class="st">'markers+lines'</span></span>
+<span id="cb18-26"><a href="#cb18-26" aria-hidden="true" tabindex="-1"></a>_fig1.data[<span class="dv">1</span>][<span class="st">'marker'</span>][<span class="st">'size'</span>] <span class="op">=</span> <span class="dv">10</span></span>
+<span id="cb18-27"><a href="#cb18-27" aria-hidden="true" tabindex="-1"></a>_fig1.data[<span class="dv">1</span>][<span class="st">'line'</span>][<span class="st">'width'</span>] <span class="op">=</span> <span class="dv">3</span></span>
+<span id="cb18-28"><a href="#cb18-28" aria-hidden="true" tabindex="-1"></a>_fig1.data[<span class="dv">1</span>][<span class="st">'line'</span>][<span class="st">'dash'</span>] <span class="op">=</span> <span class="st">'dashdot'</span></span>
+<span id="cb18-29"><a href="#cb18-29" aria-hidden="true" tabindex="-1"></a>_fig2 <span class="op">=</span> px.violin(</span>
+<span id="cb18-30"><a href="#cb18-30" aria-hidden="true" tabindex="-1"></a>    tidydata.query(<span class="st">"method=='STGCN'"</span>),</span>
+<span id="cb18-31"><a href="#cb18-31" aria-hidden="true" tabindex="-1"></a>    y<span class="op">=</span><span class="st">'mse'</span>,</span>
+<span id="cb18-32"><a href="#cb18-32" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span><span class="st">'mrate'</span>,</span>
+<span id="cb18-33"><a href="#cb18-33" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb18-34"><a href="#cb18-34" aria-hidden="true" tabindex="-1"></a>_fig2.data[<span class="dv">0</span>][<span class="st">'opacity'</span>]<span class="op">=</span><span class="fl">0.7</span></span>
+<span id="cb18-35"><a href="#cb18-35" aria-hidden="true" tabindex="-1"></a>_fig2.data[<span class="dv">0</span>][<span class="st">'marker'</span>][<span class="st">'color'</span>]<span class="op">=</span><span class="st">'#636efa'</span></span>
+<span id="cb18-36"><a href="#cb18-36" aria-hidden="true" tabindex="-1"></a>_fig3 <span class="op">=</span> px.violin(</span>
+<span id="cb18-37"><a href="#cb18-37" aria-hidden="true" tabindex="-1"></a>    tidydata.query(<span class="st">"method=='IT-STGCN'"</span>),</span>
+<span id="cb18-38"><a href="#cb18-38" aria-hidden="true" tabindex="-1"></a>    y<span class="op">=</span><span class="st">'mse'</span>,</span>
+<span id="cb18-39"><a href="#cb18-39" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span><span class="st">'mrate'</span>,</span>
+<span id="cb18-40"><a href="#cb18-40" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb18-41"><a href="#cb18-41" aria-hidden="true" tabindex="-1"></a>_fig3.data[<span class="dv">0</span>][<span class="st">'opacity'</span>]<span class="op">=</span><span class="fl">0.7</span></span>
+<span id="cb18-42"><a href="#cb18-42" aria-hidden="true" tabindex="-1"></a>_fig3.data[<span class="dv">0</span>][<span class="st">'marker'</span>][<span class="st">'color'</span>]<span class="op">=</span><span class="st">'#EF553B'</span></span>
+<span id="cb18-43"><a href="#cb18-43" aria-hidden="true" tabindex="-1"></a>_fig3</span>
+<span id="cb18-44"><a href="#cb18-44" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> g <span class="kw">in</span> _fig1.data:</span>
+<span id="cb18-45"><a href="#cb18-45" aria-hidden="true" tabindex="-1"></a>    fig.add_trace(g)</span>
+<span id="cb18-46"><a href="#cb18-46" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> g <span class="kw">in</span> _fig2.data:</span>
+<span id="cb18-47"><a href="#cb18-47" aria-hidden="true" tabindex="-1"></a>    fig.add_trace(g)</span>
+<span id="cb18-48"><a href="#cb18-48" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> g <span class="kw">in</span> _fig3.data:</span>
+<span id="cb18-49"><a href="#cb18-49" aria-hidden="true" tabindex="-1"></a>    fig.add_trace(g)</span>
+<span id="cb18-50"><a href="#cb18-50" aria-hidden="true" tabindex="-1"></a>fig.data[<span class="dv">0</span>][<span class="st">'showlegend'</span>] <span class="op">=</span><span class="va">False</span></span>
+<span id="cb18-51"><a href="#cb18-51" aria-hidden="true" tabindex="-1"></a>fig.data[<span class="dv">1</span>][<span class="st">'showlegend'</span>] <span class="op">=</span><span class="va">False</span></span>
+<span id="cb18-52"><a href="#cb18-52" aria-hidden="true" tabindex="-1"></a>fig.layout[<span class="st">'xaxis'</span>][<span class="st">'title'</span>][<span class="st">'text'</span>]<span class="op">=</span><span class="st">'Missign Rate'</span></span>
+<span id="cb18-53"><a href="#cb18-53" aria-hidden="true" tabindex="-1"></a>fig.layout[<span class="st">'yaxis'</span>][<span class="st">'title'</span>][<span class="st">'text'</span>]<span class="op">=</span><span class="st">'MSE'</span></span>
+<span id="cb18-54"><a href="#cb18-54" aria-hidden="true" tabindex="-1"></a>fig.layout[<span class="st">'legend'</span>][<span class="st">'title'</span>][<span class="st">'text'</span>]<span class="op">=</span><span class="st">""</span></span>
+<span id="cb18-55"><a href="#cb18-55" aria-hidden="true" tabindex="-1"></a>fig.layout[<span class="st">'title'</span>][<span class="st">'text'</span>]<span class="op">=</span><span class="st">'Wikimath/GConvLSTM'</span></span>
+<span id="cb18-56"><a href="#cb18-56" aria-hidden="true" tabindex="-1"></a>fig</span></code></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>NameError: name 'df' is not defined</code></pre>
+</div>
+</div>
+</section>
+<section id="time" class="level2">
+<h2 class="anchored" data-anchor-id="time">2.1 Time</h2>
+<div id="454a64a5-6ff8-45bf-96da-c01681f7552d" class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>df_dataset <span class="op">=</span> pd.DataFrame([[i,<span class="dv">0</span>,<span class="dv">0</span>] <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">set</span>(df.dataset)])</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>df_dataset.columns <span class="op">=</span> [<span class="st">'dataset'</span>,<span class="st">'node'</span>,<span class="st">'time'</span>]</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>dataset_values <span class="op">=</span> {</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">'fivenodes'</span>: {<span class="st">'time'</span>: <span class="dv">200</span>, <span class="st">'node'</span>: <span class="dv">5</span>},</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">'chickenpox'</span>: {<span class="st">'time'</span>: <span class="dv">522</span>, <span class="st">'node'</span>: <span class="dv">20</span>},</span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">'pedalme'</span>: {<span class="st">'time'</span>: <span class="dv">36</span>, <span class="st">'node'</span>: <span class="dv">15</span>},</span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">'wikimath'</span>: {<span class="st">'time'</span>: <span class="dv">731</span>, <span class="st">'node'</span>: <span class="dv">1068</span>},</span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">'windmillsmall'</span>: {<span class="st">'time'</span>: <span class="dv">17472</span>, <span class="st">'node'</span>: <span class="dv">11</span>},</span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">'monte'</span>: {<span class="st">'time'</span>: <span class="dv">744</span>, <span class="st">'node'</span>: <span class="dv">675</span>},</span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> dataset, values <span class="kw">in</span> dataset_values.items():</span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a>    df_dataset.loc[df_dataset[<span class="st">'dataset'</span>] <span class="op">==</span> dataset, [<span class="st">'time'</span>, <span class="st">'node'</span>]] <span class="op">=</span> values.values()</span>
+<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a>df_dataset</span>
+<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a>df_dataset</span></code></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>NameError: name 'pd' is not defined</code></pre>
+</div>
+</div>
+<p><strong>time이 적은 pedalme 데이터와 time이 많은 windmillsmall 데이터의 결측값 비율이 높을 때(70% 혹은 80%) 비교</strong></p>
+<ul>
+<li>내용
+<ul>
+<li>이 섹션에서는 train 데이터 양에 따라 학습 결과를 논의해보고자 한다. 데이터가 적은 pedalme(node=15, time=36) 데이터는 proposed method 가 dramatic한 낮은 error값을 보이지 않았다. 반면에 time이 긴 windmillsmall(node=11, time=17472)은 proposed method가 결측값이 많을 때 mse 값이 낮게 나온 모습을 볼 수 있었다. underline function을 추정하여 true 겂을 따라가려는 우리 방법론이 효율적이기 위해서 데이터 양이 많을 경우가 좋다. time이 길거나(예를 들어 오랜 기간 어떤 기계의 센서에서 측정된 값) node가 많은(측정 지점이 많은) 경우가 실제 시공간 데이터의 경우 많을 것을 기대하기 떄문에, proposed의 효과가 있을 경우가 존재할 것이다.</li>
+<li>According to the table (dataset explanation), the Time for the ‘Pedalme’ dataset is 36, while the time for the ‘Windmillsmall’ dataset is 17,472. Thus, the two datasets have different amounts of data. We compared between two datasets, and the result is on Figure 555. The variations observed in Figure 555 for each dataset indicate that the disparity between methods is relatively small for the ‘Pedalme’ dataset, whereas the difference is more pronounced for the ‘Windmillsmall’ dataset.This phenomenon arises as the increasing quantity of data facilitates learning patterns and trends. Consequently, our approach signifies its effectiveness when there is a substantial amount of data in the time aspect.</li>
+</ul></li>
+</ul>
+<div id="98acf431-d302-4f1f-a230-f8050edd97e3" class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># pedalme node = 15 time = 36</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="co"># windmill node = 11 time = 17,472</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>tidydata <span class="op">=</span> pd.concat([</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>          df.query(<span class="st">"dataset=='pedalme' &amp; mtype=='rand'  &amp; model=='GCLSTM' &amp; (mrate == 0.8)"</span>),</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>          df.query(<span class="st">"dataset=='windmillsmall' &amp; mtype=='rand' &amp;  model=='GCLSTM' &amp; (mrate == 0.7)"</span>)])</span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>tidydata[<span class="st">'method'</span>] <span class="op">=</span> pd.Categorical(tidydata[<span class="st">'method'</span>], categories<span class="op">=</span>[<span class="st">'STGCN'</span>, <span class="st">'IT-STGCN'</span>])</span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>tidydata <span class="op">=</span> tidydata.sort_values(by<span class="op">=</span>[<span class="st">'dataset'</span>,<span class="st">'model'</span>,<span class="st">'mrate'</span>])</span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> px.box(tidydata,x<span class="op">=</span><span class="st">'dataset'</span>,y<span class="op">=</span><span class="st">'mse'</span>,color<span class="op">=</span><span class="st">'method'</span>,width<span class="op">=</span><span class="dv">70</span>, log_y<span class="op">=</span><span class="va">True</span>, points<span class="op">=</span><span class="st">"all"</span>)</span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a>fig.layout[<span class="st">'xaxis'</span>][<span class="st">'title'</span>][<span class="st">'text'</span>]<span class="op">=</span><span class="st">''</span></span>
+<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a>fig.layout[<span class="st">'yaxis'</span>][<span class="st">'title'</span>][<span class="st">'text'</span>]<span class="op">=</span><span class="st">'MSE(log scale)'</span></span>
+<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a>fig.data[<span class="dv">0</span>][<span class="st">'marker'</span>][<span class="st">'color'</span>] <span class="op">=</span> <span class="st">'blue'</span></span>
+<span id="cb22-18"><a href="#cb22-18" aria-hidden="true" tabindex="-1"></a>fig.data[<span class="dv">0</span>][<span class="st">'name'</span>] <span class="op">=</span> <span class="st">'Classic'</span></span>
+<span id="cb22-19"><a href="#cb22-19" aria-hidden="true" tabindex="-1"></a>fig.data[<span class="dv">1</span>][<span class="st">'marker'</span>][<span class="st">'color'</span>] <span class="op">=</span> <span class="st">'red'</span></span>
+<span id="cb22-20"><a href="#cb22-20" aria-hidden="true" tabindex="-1"></a>fig.data[<span class="dv">1</span>][<span class="st">'name'</span>] <span class="op">=</span> <span class="st">'Proposed'</span></span>
+<span id="cb22-21"><a href="#cb22-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-22"><a href="#cb22-22" aria-hidden="true" tabindex="-1"></a><span class="co"># fig.layout.annotations[0].text = 'Pedalme'</span></span>
+<span id="cb22-23"><a href="#cb22-23" aria-hidden="true" tabindex="-1"></a><span class="co"># fig.layout.annotations[1].text = 'Windmillsmall'</span></span>
+<span id="cb22-24"><a href="#cb22-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-25"><a href="#cb22-25" aria-hidden="true" tabindex="-1"></a>fig.layout[<span class="st">'legend'</span>][<span class="st">'title'</span>]<span class="op">=</span><span class="st">''</span></span>
+<span id="cb22-26"><a href="#cb22-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-27"><a href="#cb22-27" aria-hidden="true" tabindex="-1"></a>fig.update_layout(template<span class="op">=</span><span class="st">"seaborn"</span>)</span>
+<span id="cb22-28"><a href="#cb22-28" aria-hidden="true" tabindex="-1"></a>fig.update_layout(title_text<span class="op">=</span><span class="st">""</span>)</span>
+<span id="cb22-29"><a href="#cb22-29" aria-hidden="true" tabindex="-1"></a>fig.update_layout(height<span class="op">=</span><span class="dv">800</span>, width<span class="op">=</span><span class="dv">1800</span>)</span>
+<span id="cb22-30"><a href="#cb22-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-31"><a href="#cb22-31" aria-hidden="true" tabindex="-1"></a>fig.update_layout(legend<span class="op">=</span><span class="bu">dict</span>(</span>
+<span id="cb22-32"><a href="#cb22-32" aria-hidden="true" tabindex="-1"></a>    yanchor<span class="op">=</span><span class="st">"top"</span>,</span>
+<span id="cb22-33"><a href="#cb22-33" aria-hidden="true" tabindex="-1"></a>    y<span class="op">=</span><span class="fl">0.99</span>,</span>
+<span id="cb22-34"><a href="#cb22-34" aria-hidden="true" tabindex="-1"></a>    xanchor<span class="op">=</span><span class="st">"left"</span>,</span>
+<span id="cb22-35"><a href="#cb22-35" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span><span class="fl">0.01</span></span>
+<span id="cb22-36"><a href="#cb22-36" aria-hidden="true" tabindex="-1"></a> ))</span>
+<span id="cb22-37"><a href="#cb22-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-38"><a href="#cb22-38" aria-hidden="true" tabindex="-1"></a>fig</span></code></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>NameError: name 'pd' is not defined</code></pre>
+</div>
+</div>
+</section>
+<section id="node" class="level2">
+<h2 class="anchored" data-anchor-id="node">2.2 Node</h2>
+<div id="2a7d9980-0894-4633-bc5c-9fe2c6a60376" class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># wikimath nodes = 1068 time = 731</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="co"># monte nodes = 675 time = 744</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>tidydata <span class="op">=</span> pd.concat([</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>          df.query(<span class="st">"dataset=='wikimath' &amp; mtype=='rand'  &amp; model=='GCLSTM' &amp; (mrate == 0.8)"</span>),</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>          df.query(<span class="st">"dataset=='monte' &amp; mtype=='rand' &amp;  model=='GCLSTM' &amp; (mrate == 0.8)"</span>)])</span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>tidydata[<span class="st">'method'</span>] <span class="op">=</span> pd.Categorical(tidydata[<span class="st">'method'</span>], categories<span class="op">=</span>[<span class="st">'STGCN'</span>, <span class="st">'IT-STGCN'</span>])</span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>tidydata <span class="op">=</span> tidydata.sort_values(by<span class="op">=</span>[<span class="st">'dataset'</span>,<span class="st">'model'</span>,<span class="st">'mrate'</span>])</span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> px.box(tidydata,x<span class="op">=</span><span class="st">'dataset'</span>,y<span class="op">=</span><span class="st">'mse'</span>,color<span class="op">=</span><span class="st">'method'</span>,width<span class="op">=</span><span class="dv">70</span>, log_y<span class="op">=</span><span class="va">True</span>, points<span class="op">=</span><span class="st">"all"</span>)</span>
+<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a>fig.layout[<span class="st">'xaxis'</span>][<span class="st">'title'</span>][<span class="st">'text'</span>]<span class="op">=</span><span class="st">'Missing Rate'</span></span>
+<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a>fig.layout[<span class="st">'yaxis'</span>][<span class="st">'title'</span>][<span class="st">'text'</span>]<span class="op">=</span><span class="st">'MSE(log scale)'</span></span>
+<span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-17"><a href="#cb24-17" aria-hidden="true" tabindex="-1"></a>fig.data[<span class="dv">0</span>][<span class="st">'marker'</span>][<span class="st">'color'</span>] <span class="op">=</span> <span class="st">'blue'</span></span>
+<span id="cb24-18"><a href="#cb24-18" aria-hidden="true" tabindex="-1"></a>fig.data[<span class="dv">0</span>][<span class="st">'name'</span>] <span class="op">=</span> <span class="st">'Classic'</span></span>
+<span id="cb24-19"><a href="#cb24-19" aria-hidden="true" tabindex="-1"></a>fig.data[<span class="dv">1</span>][<span class="st">'marker'</span>][<span class="st">'color'</span>] <span class="op">=</span> <span class="st">'red'</span></span>
+<span id="cb24-20"><a href="#cb24-20" aria-hidden="true" tabindex="-1"></a>fig.data[<span class="dv">1</span>][<span class="st">'name'</span>] <span class="op">=</span> <span class="st">'Proposed'</span></span>
+<span id="cb24-21"><a href="#cb24-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-22"><a href="#cb24-22" aria-hidden="true" tabindex="-1"></a>fig.layout[<span class="st">'legend'</span>][<span class="st">'title'</span>]<span class="op">=</span><span class="st">''</span></span>
+<span id="cb24-23"><a href="#cb24-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-24"><a href="#cb24-24" aria-hidden="true" tabindex="-1"></a>fig.update_layout(template<span class="op">=</span><span class="st">"seaborn"</span>)</span>
+<span id="cb24-25"><a href="#cb24-25" aria-hidden="true" tabindex="-1"></a>fig.update_layout(title_text<span class="op">=</span><span class="st">""</span>)</span>
+<span id="cb24-26"><a href="#cb24-26" aria-hidden="true" tabindex="-1"></a>fig.update_layout(height<span class="op">=</span><span class="dv">800</span>, width<span class="op">=</span><span class="dv">1800</span>)</span>
+<span id="cb24-27"><a href="#cb24-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-28"><a href="#cb24-28" aria-hidden="true" tabindex="-1"></a>fig.update_layout(legend<span class="op">=</span><span class="bu">dict</span>(</span>
+<span id="cb24-29"><a href="#cb24-29" aria-hidden="true" tabindex="-1"></a>    yanchor<span class="op">=</span><span class="st">"top"</span>,</span>
+<span id="cb24-30"><a href="#cb24-30" aria-hidden="true" tabindex="-1"></a>    y<span class="op">=</span><span class="fl">0.99</span>,</span>
+<span id="cb24-31"><a href="#cb24-31" aria-hidden="true" tabindex="-1"></a>    xanchor<span class="op">=</span><span class="st">"left"</span>,</span>
+<span id="cb24-32"><a href="#cb24-32" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span><span class="fl">0.01</span></span>
+<span id="cb24-33"><a href="#cb24-33" aria-hidden="true" tabindex="-1"></a> ))</span>
+<span id="cb24-34"><a href="#cb24-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-35"><a href="#cb24-35" aria-hidden="true" tabindex="-1"></a>fig</span></code></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>NameError: name 'pd' is not defined</code></pre>
+</div>
+</div>
+<div id="8810a0b8-0570-402f-8f48-4a91dfc96212" class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># fivenodes = pd.concat([</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="co">#     df[(df['dataset']=='fivenodes') &amp; (df['mtype']=='rand') &amp; (df['inter_method']=='linear') &amp; (df['nof_filters']==12) &amp; </span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="co">#        (df['lags']==2) &amp; (df['epoch']==50) &amp; (df['model']=='GConvGRU') &amp; (df['mrate'].isin([0.3, 0.5, 0.6, 0.7, 0.8]))],</span></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="co">#     df[(df['dataset']=='fivenodes') &amp; (df['mtype']=='rand') &amp; (df['inter_method']=='linear') &amp; (df['nof_filters']==12) &amp; </span></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="co">#        (df['lags']==2) &amp; (df['epoch']==50) &amp; (df['model']=='GConvLSTM') &amp; (df['mrate'].isin([0.3, 0.5, 0.6, 0.7, 0.8]))],</span></span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a><span class="co">#     df[(df['dataset']=='fivenodes') &amp; (df['mtype']=='rand') &amp; (df['inter_method']=='linear') &amp; (df['nof_filters']==4) &amp; </span></span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a><span class="co">#        (df['lags']==2) &amp; (df['epoch']==50) &amp; (df['model']=='GCLSTM') &amp; (df['mrate'].isin([0.3, 0.5, 0.6, 0.7, 0.8]))],</span></span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a><span class="co">#     df[(df['dataset']=='fivenodes') &amp; (df['mtype']=='rand') &amp; (df['inter_method']=='linear') &amp; (df['nof_filters']==4) &amp; </span></span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a><span class="co">#        (df['lags']==2) &amp; (df['epoch']==50) &amp; (df['model']=='LRGCN') &amp; (df['mrate'].isin([0.3, 0.5, 0.6, 0.7, 0.8]))],</span></span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a><span class="co">#     df[(df['dataset']=='fivenodes') &amp; (df['mtype']=='rand') &amp; (df['inter_method']=='linear') &amp; (df['nof_filters']==12) &amp; </span></span>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a><span class="co">#        (df['lags']==2) &amp; (df['epoch']==50) &amp; (df['model']=='DyGrEncoder') &amp; (df['mrate'].isin([0.3, 0.5, 0.6, 0.7, 0.8]))],</span></span>
+<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a><span class="co">#     df[(df['dataset']=='fivenodes') &amp; (df['mtype']=='rand') &amp; (df['inter_method']=='linear') &amp; (df['lags']==2) &amp; </span></span>
+<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a><span class="co">#        (df['epoch']==50) &amp; (df['model']=='EvolveGCNH') &amp; (df['mrate'].isin([0.3, 0.5, 0.6, 0.7, 0.8]))],</span></span>
+<span id="cb26-14"><a href="#cb26-14" aria-hidden="true" tabindex="-1"></a><span class="co">#     df[(df['dataset']=='fivenodes') &amp; (df['mtype']=='rand') &amp; (df['inter_method']=='linear') &amp; (df['lags']==2) &amp; </span></span>
+<span id="cb26-15"><a href="#cb26-15" aria-hidden="true" tabindex="-1"></a><span class="co">#        (df['epoch']==50) &amp; (df['model']=='EvolveGCNO') &amp; (df['mrate'].isin([0.3, 0.5, 0.6, 0.7, 0.8]))],</span></span>
+<span id="cb26-16"><a href="#cb26-16" aria-hidden="true" tabindex="-1"></a><span class="co">#     df[(df['dataset']=='fivenodes') &amp; (df['mtype']=='rand') &amp; (df['inter_method']=='linear') &amp; (df['nof_filters']==12) &amp; </span></span>
+<span id="cb26-17"><a href="#cb26-17" aria-hidden="true" tabindex="-1"></a><span class="co">#        (df['lags']==2) &amp; (df['epoch']==50) &amp; (df['model']=='TGCN') &amp; (df['mrate'].isin([0.3, 0.5, 0.6, 0.7, 0.8]))],</span></span>
+<span id="cb26-18"><a href="#cb26-18" aria-hidden="true" tabindex="-1"></a><span class="co">#     df[(df['dataset']=='fivenodes') &amp; (df['mtype']=='rand') &amp; (df['inter_method']=='linear') &amp; (df['nof_filters']==2) &amp; </span></span>
+<span id="cb26-19"><a href="#cb26-19" aria-hidden="true" tabindex="-1"></a><span class="co">#        (df['lags']==2) &amp; (df['epoch']==50) &amp; (df['model']=='DCRNN') &amp; (df['mrate'].isin([0.3, 0.5, 0.6, 0.7, 0.8]))]</span></span>
+<span id="cb26-20"><a href="#cb26-20" aria-hidden="true" tabindex="-1"></a><span class="co"># ])</span></span>
+<span id="cb26-21"><a href="#cb26-21" aria-hidden="true" tabindex="-1"></a><span class="co"># fivenodes['nodes'] = 5</span></span>
+<span id="cb26-22"><a href="#cb26-22" aria-hidden="true" tabindex="-1"></a><span class="co"># fivenodes['time'] = 200</span></span>
+<span id="cb26-23"><a href="#cb26-23" aria-hidden="true" tabindex="-1"></a><span class="co"># fivenodes = fivenodes.query("mrate==0.8")</span></span>
+<span id="cb26-24"><a href="#cb26-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-25"><a href="#cb26-25" aria-hidden="true" tabindex="-1"></a><span class="co"># chickenpox = pd.concat([</span></span>
+<span id="cb26-26"><a href="#cb26-26" aria-hidden="true" tabindex="-1"></a><span class="co">#     df.query("dataset=='chickenpox' &amp; mtype=='rand' &amp; inter_method == 'linear' &amp; nof_filters==16 &amp; lags==4 &amp; epoch==50 &amp; model=='GConvGRU' &amp; (mrate == 0.3 | mrate == 0.5 | mrate == 0.6 | mrate == 0.8)"),</span></span>
+<span id="cb26-27"><a href="#cb26-27" aria-hidden="true" tabindex="-1"></a><span class="co">#     df.query("dataset=='chickenpox' &amp; mtype=='rand' &amp; inter_method == 'linear' &amp; nof_filters==32 &amp; lags==4 &amp; epoch==50 &amp; model=='GConvLSTM' &amp; (mrate == 0.3 | mrate == 0.5 | mrate == 0.6 | mrate == 0.8)"),</span></span>
+<span id="cb26-28"><a href="#cb26-28" aria-hidden="true" tabindex="-1"></a><span class="co">#     df.query("dataset=='chickenpox' &amp; mtype=='rand' &amp; inter_method == 'linear' &amp; nof_filters==16 &amp; lags==4 &amp; epoch==50 &amp; model=='GCLSTM' &amp; (mrate == 0.3 | mrate == 0.5 | mrate == 0.6 | mrate == 0.8)"),</span></span>
+<span id="cb26-29"><a href="#cb26-29" aria-hidden="true" tabindex="-1"></a><span class="co">#     df.query("dataset=='chickenpox' &amp; mtype=='rand' &amp; inter_method == 'linear' &amp; nof_filters==8 &amp; lags==4 &amp; epoch==50 &amp; model=='LRGCN' &amp; (mrate == 0.3 | mrate == 0.5 | mrate == 0.6 | mrate == 0.8)"),</span></span>
+<span id="cb26-30"><a href="#cb26-30" aria-hidden="true" tabindex="-1"></a><span class="co">#     df.query("dataset=='chickenpox' &amp; mtype=='rand' &amp; inter_method == 'linear' &amp; nof_filters==12 &amp; lags==4 &amp; epoch==50 &amp; model=='DyGrEncoder' &amp; (mrate == 0.3 | mrate == 0.5 | mrate == 0.6 | mrate == 0.8)"),</span></span>
+<span id="cb26-31"><a href="#cb26-31" aria-hidden="true" tabindex="-1"></a><span class="co">#     df.query("dataset=='chickenpox' &amp; mtype=='rand' &amp; inter_method == 'linear' &amp; lags==4 &amp; epoch==50 &amp; model=='EvolveGCNH' &amp; (mrate == 0.3 | mrate == 0.5 | mrate == 0.6 | mrate == 0.8)"),</span></span>
+<span id="cb26-32"><a href="#cb26-32" aria-hidden="true" tabindex="-1"></a><span class="co">#     df.query("dataset=='chickenpox' &amp; mtype=='rand' &amp; inter_method == 'linear' &amp; lags==4 &amp; epoch==50 &amp; model=='EvolveGCNO' &amp; (mrate == 0.3 | mrate == 0.5 | mrate == 0.6 | mrate == 0.8)"),</span></span>
+<span id="cb26-33"><a href="#cb26-33" aria-hidden="true" tabindex="-1"></a><span class="co">#     df.query("dataset=='chickenpox' &amp; mtype=='rand' &amp; inter_method == 'linear' &amp; nof_filters==12 &amp; lags==4 &amp; epoch==50 &amp; model=='TGCN' &amp; (mrate == 0.3 | mrate == 0.5 | mrate == 0.6 | mrate == 0.8)"),</span></span>
+<span id="cb26-34"><a href="#cb26-34" aria-hidden="true" tabindex="-1"></a><span class="co">#     df.query("dataset=='chickenpox' &amp; mtype=='rand' &amp; inter_method == 'linear' &amp; nof_filters==16 &amp; lags==4 &amp; epoch==50 &amp; model=='DCRNN' &amp; (mrate == 0.3 | mrate == 0.5 | mrate == 0.6 | mrate == 0.8)")</span></span>
+<span id="cb26-35"><a href="#cb26-35" aria-hidden="true" tabindex="-1"></a><span class="co"># ])</span></span>
+<span id="cb26-36"><a href="#cb26-36" aria-hidden="true" tabindex="-1"></a><span class="co"># chickenpox['nodes'] = 20</span></span>
+<span id="cb26-37"><a href="#cb26-37" aria-hidden="true" tabindex="-1"></a><span class="co"># chickenpox['time'] = 522</span></span>
+<span id="cb26-38"><a href="#cb26-38" aria-hidden="true" tabindex="-1"></a><span class="co"># chickenpox = chickenpox.query("mrate==0.8")</span></span>
+<span id="cb26-39"><a href="#cb26-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-40"><a href="#cb26-40" aria-hidden="true" tabindex="-1"></a><span class="co"># pedalme = pd.concat([</span></span>
+<span id="cb26-41"><a href="#cb26-41" aria-hidden="true" tabindex="-1"></a><span class="co">#     df.query("dataset=='pedalme' &amp; mtype=='rand' &amp; inter_method == 'nearest' &amp; nof_filters==12 &amp; lags==4 &amp; epoch==50 &amp; model=='GConvGRU' &amp; (mrate == 0.3 | mrate == 0.5 | mrate == 0.6 | mrate == 0.8)"),</span></span>
+<span id="cb26-42"><a href="#cb26-42" aria-hidden="true" tabindex="-1"></a><span class="co">#     df.query("dataset=='pedalme' &amp; mtype=='rand' &amp; inter_method == 'nearest' &amp; nof_filters==2 &amp; lags==4 &amp; epoch==50 &amp; model=='GConvLSTM' &amp; (mrate == 0.3 | mrate == 0.5 | mrate == 0.6 | mrate == 0.8)"),</span></span>
+<span id="cb26-43"><a href="#cb26-43" aria-hidden="true" tabindex="-1"></a><span class="co">#     df.query("dataset=='pedalme' &amp; mtype=='rand' &amp; inter_method == 'nearest' &amp; nof_filters==4 &amp; lags==4 &amp; epoch==50 &amp; model=='GCLSTM' &amp; (mrate == 0.3 | mrate == 0.5 | mrate == 0.6 | mrate == 0.8)"),</span></span>
+<span id="cb26-44"><a href="#cb26-44" aria-hidden="true" tabindex="-1"></a><span class="co">#     df.query("dataset=='pedalme' &amp; mtype=='rand' &amp; inter_method == 'nearest' &amp; nof_filters==8 &amp; lags==4 &amp; epoch==50 &amp; model=='LRGCN' &amp; (mrate == 0.3 | mrate == 0.5 | mrate == 0.6 | mrate == 0.8)"),</span></span>
+<span id="cb26-45"><a href="#cb26-45" aria-hidden="true" tabindex="-1"></a><span class="co">#     df.query("dataset=='pedalme' &amp; mtype=='rand' &amp; inter_method == 'nearest' &amp; nof_filters==12 &amp; lags==4 &amp; epoch==50 &amp; model=='DyGrEncoder' &amp; (mrate == 0.3 | mrate == 0.5 | mrate == 0.6 | mrate == 0.8)"),</span></span>
+<span id="cb26-46"><a href="#cb26-46" aria-hidden="true" tabindex="-1"></a><span class="co">#     df.query("dataset=='pedalme' &amp; mtype=='rand' &amp; inter_method == 'nearest' &amp; lags==4 &amp; epoch==50 &amp; model=='EvolveGCNH' &amp; (mrate == 0.3 | mrate == 0.5 | mrate == 0.6 | mrate == 0.8)"),</span></span>
+<span id="cb26-47"><a href="#cb26-47" aria-hidden="true" tabindex="-1"></a><span class="co">#     df.query("dataset=='pedalme' &amp; mtype=='rand' &amp; inter_method == 'nearest' &amp; lags==4 &amp; epoch==50 &amp; model=='EvolveGCNO' &amp; (mrate == 0.3 | mrate == 0.5 | mrate == 0.6 | mrate == 0.8)"),</span></span>
+<span id="cb26-48"><a href="#cb26-48" aria-hidden="true" tabindex="-1"></a><span class="co">#     df.query("dataset=='pedalme' &amp; mtype=='rand' &amp; inter_method == 'nearest' &amp; nof_filters==12 &amp; lags==4 &amp; epoch==50 &amp; model=='TGCN' &amp; (mrate == 0.3 | mrate == 0.5 | mrate == 0.6 | mrate == 0.8)"),</span></span>
+<span id="cb26-49"><a href="#cb26-49" aria-hidden="true" tabindex="-1"></a><span class="co">#     df.query("dataset=='pedalme' &amp; mtype=='rand' &amp; inter_method == 'nearest' &amp; nof_filters==8 &amp; lags==4 &amp; epoch==50 &amp; model=='DCRNN' &amp; (mrate == 0.3 | mrate == 0.5 | mrate == 0.6 | mrate == 0.8)")</span></span>
+<span id="cb26-50"><a href="#cb26-50" aria-hidden="true" tabindex="-1"></a><span class="co"># ], ignore_index=True)</span></span>
+<span id="cb26-51"><a href="#cb26-51" aria-hidden="true" tabindex="-1"></a><span class="co"># pedalme['nodes'] = 15</span></span>
+<span id="cb26-52"><a href="#cb26-52" aria-hidden="true" tabindex="-1"></a><span class="co"># pedalme['time'] = 36</span></span>
+<span id="cb26-53"><a href="#cb26-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-54"><a href="#cb26-54" aria-hidden="true" tabindex="-1"></a><span class="co"># pedalme = pedalme.query("mrate==0.8")</span></span>
+<span id="cb26-55"><a href="#cb26-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-56"><a href="#cb26-56" aria-hidden="true" tabindex="-1"></a><span class="co"># wikimath = pd.concat([</span></span>
+<span id="cb26-57"><a href="#cb26-57" aria-hidden="true" tabindex="-1"></a><span class="co">#     df.query("dataset=='wikimath' &amp; mtype=='rand' &amp; inter_method == 'linear' &amp; nof_filters==12 &amp; lags==8 &amp; epoch==50 &amp; model=='GConvGRU' &amp; (mrate == 0.3 | mrate == 0.5 | mrate == 0.6 | mrate == 0.8)"),</span></span>
+<span id="cb26-58"><a href="#cb26-58" aria-hidden="true" tabindex="-1"></a><span class="co">#     df.query("dataset=='wikimath' &amp; mtype=='rand' &amp; inter_method == 'linear' &amp; nof_filters==64 &amp; lags==8 &amp; epoch==50 &amp; model=='GConvLSTM' &amp; (mrate == 0.3 | mrate == 0.5 | mrate == 0.6 | mrate == 0.8)"),</span></span>
+<span id="cb26-59"><a href="#cb26-59" aria-hidden="true" tabindex="-1"></a><span class="co">#     df.query("dataset=='wikimath' &amp; mtype=='rand' &amp; inter_method == 'linear' &amp; nof_filters==64 &amp; lags==8 &amp; epoch==50 &amp; model=='GCLSTM' &amp; (mrate == 0.3 | mrate == 0.5 | mrate == 0.6 | mrate == 0.8)"),</span></span>
+<span id="cb26-60"><a href="#cb26-60" aria-hidden="true" tabindex="-1"></a><span class="co">#     df.query("dataset=='wikimath' &amp; mtype=='rand' &amp; inter_method == 'linear' &amp; nof_filters==32 &amp; lags==8 &amp; epoch==50 &amp; model=='LRGCN' &amp; (mrate == 0.3 | mrate == 0.5 | mrate == 0.6 | mrate == 0.8)"),</span></span>
+<span id="cb26-61"><a href="#cb26-61" aria-hidden="true" tabindex="-1"></a><span class="co">#     df.query("dataset=='wikimath' &amp; mtype=='rand' &amp; inter_method == 'linear' &amp; nof_filters==12 &amp; lags==8 &amp; epoch==50 &amp; model=='DyGrEncoder' &amp; (mrate == 0.3 | mrate == 0.5 | mrate == 0.6 | mrate == 0.8)"),</span></span>
+<span id="cb26-62"><a href="#cb26-62" aria-hidden="true" tabindex="-1"></a><span class="co">#     df.query("dataset=='wikimath' &amp; mtype=='rand' &amp; inter_method == 'linear' &amp; lags==8 &amp; epoch==50 &amp; model=='EvolveGCNH' &amp; (mrate == 0.3 | mrate == 0.5 | mrate == 0.6 | mrate == 0.8)"),</span></span>
+<span id="cb26-63"><a href="#cb26-63" aria-hidden="true" tabindex="-1"></a><span class="co">#     df.query("dataset=='wikimath' &amp; mtype=='rand' &amp; inter_method == 'linear' &amp; lags==8 &amp; epoch==50 &amp; model=='EvolveGCNO' &amp; (mrate == 0.3 | mrate == 0.5 | mrate == 0.6 | mrate == 0.8)"),</span></span>
+<span id="cb26-64"><a href="#cb26-64" aria-hidden="true" tabindex="-1"></a><span class="co">#     df.query("dataset=='wikimath' &amp; mtype=='rand' &amp; inter_method == 'linear' &amp; nof_filters==12 &amp; lags==8 &amp; epoch==50 &amp; model=='TGCN' &amp; (mrate == 0.3 | mrate == 0.5 | mrate == 0.6 | mrate == 0.8)"),</span></span>
+<span id="cb26-65"><a href="#cb26-65" aria-hidden="true" tabindex="-1"></a><span class="co">#     df.query("dataset=='wikimath' &amp; mtype=='rand' &amp; inter_method == 'linear' &amp; nof_filters==12 &amp; lags==8 &amp; epoch==50 &amp; model=='DCRNN' &amp; (mrate == 0.3 | mrate == 0.5 | mrate == 0.6 | mrate == 0.8)")</span></span>
+<span id="cb26-66"><a href="#cb26-66" aria-hidden="true" tabindex="-1"></a><span class="co"># ], ignore_index=True)</span></span>
+<span id="cb26-67"><a href="#cb26-67" aria-hidden="true" tabindex="-1"></a><span class="co"># wikimath['nodes'] = 1068</span></span>
+<span id="cb26-68"><a href="#cb26-68" aria-hidden="true" tabindex="-1"></a><span class="co"># wikimath['time'] = 731</span></span>
+<span id="cb26-69"><a href="#cb26-69" aria-hidden="true" tabindex="-1"></a><span class="co"># wikimath = wikimath.query("mrate==0.8")</span></span>
+<span id="cb26-70"><a href="#cb26-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-71"><a href="#cb26-71" aria-hidden="true" tabindex="-1"></a><span class="co"># windmillsmall = pd.concat([</span></span>
+<span id="cb26-72"><a href="#cb26-72" aria-hidden="true" tabindex="-1"></a><span class="co">#     df.query("dataset=='windmillsmall' &amp; mtype=='rand' &amp; inter_method == 'linear' &amp; nof_filters==12 &amp; lags==8 &amp; epoch==50 &amp; model=='GConvGRU' &amp; (mrate == 0.3 | mrate == 0.5 | mrate == 0.6 | mrate == 0.7)"),</span></span>
+<span id="cb26-73"><a href="#cb26-73" aria-hidden="true" tabindex="-1"></a><span class="co">#     df.query("dataset=='windmillsmall' &amp; mtype=='rand' &amp; inter_method == 'linear' &amp; nof_filters==16 &amp; lags==8 &amp; epoch==50 &amp; model=='GConvLSTM' &amp; (mrate == 0.3 | mrate == 0.5 | mrate == 0.6 | mrate == 0.7)"),</span></span>
+<span id="cb26-74"><a href="#cb26-74" aria-hidden="true" tabindex="-1"></a><span class="co">#     df.query("dataset=='windmillsmall' &amp; mtype=='rand' &amp; inter_method == 'linear' &amp; nof_filters==16 &amp; lags==8 &amp; epoch==50 &amp; model=='GCLSTM' &amp; (mrate == 0.3 | mrate == 0.5 | mrate == 0.6 | mrate == 0.7)"),</span></span>
+<span id="cb26-75"><a href="#cb26-75" aria-hidden="true" tabindex="-1"></a><span class="co">#     df.query("dataset=='windmillsmall' &amp; mtype=='rand' &amp; inter_method == 'linear' &amp; nof_filters==12 &amp; lags==8 &amp; epoch==50 &amp; model=='LRGCN' &amp; (mrate == 0.3 | mrate == 0.5 | mrate == 0.6 | mrate == 0.7)"),</span></span>
+<span id="cb26-76"><a href="#cb26-76" aria-hidden="true" tabindex="-1"></a><span class="co">#     df.query("dataset=='windmillsmall' &amp; mtype=='rand' &amp; inter_method == 'linear' &amp; nof_filters==12 &amp; lags==8 &amp; epoch==50 &amp; model=='DyGrEncoder' &amp; (mrate == 0.3 | mrate == 0.5 | mrate == 0.6 | mrate == 0.7)"),</span></span>
+<span id="cb26-77"><a href="#cb26-77" aria-hidden="true" tabindex="-1"></a><span class="co">#     df.query("dataset=='windmillsmall' &amp; mtype=='rand' &amp; inter_method == 'linear' &amp; lags==8 &amp; epoch==50 &amp; model=='EvolveGCNH' &amp; (mrate == 0.3 | mrate == 0.5 | mrate == 0.6 | mrate == 0.7)"),</span></span>
+<span id="cb26-78"><a href="#cb26-78" aria-hidden="true" tabindex="-1"></a><span class="co">#     df.query("dataset=='windmillsmall' &amp; mtype=='rand' &amp; inter_method == 'linear' &amp; lags==8 &amp; epoch==50 &amp; model=='EvolveGCNO' &amp; (mrate == 0.3 | mrate == 0.5 | mrate == 0.6 | mrate == 0.7)"),</span></span>
+<span id="cb26-79"><a href="#cb26-79" aria-hidden="true" tabindex="-1"></a><span class="co">#     df.query("dataset=='windmillsmall' &amp; mtype=='rand' &amp; inter_method == 'linear' &amp; nof_filters==12 &amp; lags==8 &amp; epoch==50 &amp; model=='TGCN' &amp; (mrate == 0.3 | mrate == 0.5 | mrate == 0.6 | mrate == 0.7)"),</span></span>
+<span id="cb26-80"><a href="#cb26-80" aria-hidden="true" tabindex="-1"></a><span class="co">#     df.query("dataset=='windmillsmall' &amp; mtype=='rand' &amp; inter_method == 'linear' &amp; nof_filters==4 &amp; lags==8 &amp; epoch==50 &amp; model=='DCRNN' &amp; (mrate == 0.3 | mrate == 0.5 | mrate == 0.6 | mrate == 0.7)")</span></span>
+<span id="cb26-81"><a href="#cb26-81" aria-hidden="true" tabindex="-1"></a><span class="co"># ], ignore_index=True)</span></span>
+<span id="cb26-82"><a href="#cb26-82" aria-hidden="true" tabindex="-1"></a><span class="co"># windmillsmall['nodes'] = 11</span></span>
+<span id="cb26-83"><a href="#cb26-83" aria-hidden="true" tabindex="-1"></a><span class="co"># windmillsmall['time'] = 17472</span></span>
+<span id="cb26-84"><a href="#cb26-84" aria-hidden="true" tabindex="-1"></a><span class="co"># windmillsmall = windmillsmall.query("mrate==0.7")</span></span>
+<span id="cb26-85"><a href="#cb26-85" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-86"><a href="#cb26-86" aria-hidden="true" tabindex="-1"></a><span class="co"># monte = pd.concat([</span></span>
+<span id="cb26-87"><a href="#cb26-87" aria-hidden="true" tabindex="-1"></a><span class="co">#     df.query("dataset=='monte' &amp; mtype=='rand' &amp; inter_method == 'nearest' &amp; nof_filters==12 &amp; lags==4 &amp; epoch==50 &amp; model=='GConvGRU' &amp; (mrate == 0.3 | mrate == 0.5 | mrate == 0.7 | mrate == 0.8)"),</span></span>
+<span id="cb26-88"><a href="#cb26-88" aria-hidden="true" tabindex="-1"></a><span class="co">#     df.query("dataset=='monte' &amp; mtype=='rand' &amp; inter_method == 'nearest' &amp; nof_filters==12 &amp; lags==4 &amp; epoch==50 &amp; model=='GConvLSTM' &amp; (mrate == 0.3 | mrate == 0.5 | mrate == 0.7 | mrate == 0.8)"),</span></span>
+<span id="cb26-89"><a href="#cb26-89" aria-hidden="true" tabindex="-1"></a><span class="co">#     df.query("dataset=='monte' &amp; mtype=='rand' &amp; inter_method == 'nearest' &amp; nof_filters==12 &amp; lags==4 &amp; epoch==50 &amp; model=='GCLSTM' &amp; (mrate == 0.3 | mrate == 0.5 | mrate == 0.7 | mrate == 0.8)"),</span></span>
+<span id="cb26-90"><a href="#cb26-90" aria-hidden="true" tabindex="-1"></a><span class="co">#     df.query("dataset=='monte' &amp; mtype=='rand' &amp; inter_method == 'nearest' &amp; nof_filters==2 &amp; lags==4 &amp; epoch==50 &amp; model=='LRGCN' &amp; (mrate == 0.3 | mrate == 0.5 | mrate == 0.7 | mrate == 0.8)"),</span></span>
+<span id="cb26-91"><a href="#cb26-91" aria-hidden="true" tabindex="-1"></a><span class="co">#     df.query("dataset=='monte' &amp; mtype=='rand' &amp; inter_method == 'nearest' &amp; nof_filters==12 &amp; lags==4 &amp; epoch==50 &amp; model=='DyGrEncoder' &amp; (mrate == 0.3 | mrate == 0.5 | mrate == 0.7 | mrate == 0.8)"),</span></span>
+<span id="cb26-92"><a href="#cb26-92" aria-hidden="true" tabindex="-1"></a><span class="co">#     df.query("dataset=='monte' &amp; mtype=='rand' &amp; inter_method == 'nearest' &amp; lags==4 &amp; epoch==50 &amp; model=='EvolveGCNH' &amp; (mrate == 0.3 | mrate == 0.5 | mrate == 0.7 | mrate == 0.8)"),</span></span>
+<span id="cb26-93"><a href="#cb26-93" aria-hidden="true" tabindex="-1"></a><span class="co">#     df.query("dataset=='monte' &amp; mtype=='rand' &amp; inter_method == 'nearest' &amp; lags==4 &amp; epoch==50 &amp; model=='EvolveGCNO' &amp; (mrate == 0.3 | mrate == 0.5 | mrate == 0.7 | mrate == 0.8)"),</span></span>
+<span id="cb26-94"><a href="#cb26-94" aria-hidden="true" tabindex="-1"></a><span class="co">#     df.query("dataset=='monte' &amp; mtype=='rand' &amp; inter_method == 'nearest' &amp; nof_filters==8 &amp; lags==4 &amp; epoch==50 &amp; model=='TGCN' &amp; (mrate == 0.3 | mrate == 0.5 | mrate == 0.7 | mrate == 0.8)"),</span></span>
+<span id="cb26-95"><a href="#cb26-95" aria-hidden="true" tabindex="-1"></a><span class="co">#     df.query("dataset=='monte' &amp; mtype=='rand' &amp; inter_method == 'nearest' &amp; nof_filters==12 &amp; lags==4 &amp; epoch==50 &amp; model=='DCRNN' &amp; (mrate == 0.3 | mrate == 0.5 | mrate == 0.7 | mrate == 0.8)")</span></span>
+<span id="cb26-96"><a href="#cb26-96" aria-hidden="true" tabindex="-1"></a><span class="co"># ], ignore_index=True)</span></span>
+<span id="cb26-97"><a href="#cb26-97" aria-hidden="true" tabindex="-1"></a><span class="co"># monte['nodes'] = 675</span></span>
+<span id="cb26-98"><a href="#cb26-98" aria-hidden="true" tabindex="-1"></a><span class="co"># monte['time'] = 744</span></span>
+<span id="cb26-99"><a href="#cb26-99" aria-hidden="true" tabindex="-1"></a><span class="co"># monte = monte.query("mrate==0.8")</span></span>
+<span id="cb26-100"><a href="#cb26-100" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-101"><a href="#cb26-101" aria-hidden="true" tabindex="-1"></a><span class="co"># tidydata = pd.concat([fivenodes, chickenpox, pedalme, wikimath,windmillsmall, monte])</span></span>
+<span id="cb26-102"><a href="#cb26-102" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-103"><a href="#cb26-103" aria-hidden="true" tabindex="-1"></a><span class="co"># tidydata = tidydata.sort_values(by=['time'])</span></span>
+<span id="cb26-104"><a href="#cb26-104" aria-hidden="true" tabindex="-1"></a><span class="co"># tidydata['model'] = pd.Categorical(tidydata['model'], categories=["GConvGRU", "GConvLSTM", "GCLSTM", "LRGCN", "DyGrEncoder", "EvolveGCNH", "EvolveGCNO", "TGCN", "DCRNN"])</span></span>
+<span id="cb26-105"><a href="#cb26-105" aria-hidden="true" tabindex="-1"></a><span class="co"># tidydata['method'] = pd.Categorical(tidydata['method'], categories=['STGCN', 'IT-STGCN'])</span></span>
+<span id="cb26-106"><a href="#cb26-106" aria-hidden="true" tabindex="-1"></a><span class="co"># tidydata['time'] = tidydata['time'].astype(str)</span></span>
+<span id="cb26-107"><a href="#cb26-107" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-108"><a href="#cb26-108" aria-hidden="true" tabindex="-1"></a><span class="co"># fig = px.strip(tidydata,x='time',y='mse',log_y=True,color='model',facet_col='method')</span></span>
+<span id="cb26-109"><a href="#cb26-109" aria-hidden="true" tabindex="-1"></a><span class="co"># fig.layout.annotations[0].text = 'Classic'</span></span>
+<span id="cb26-110"><a href="#cb26-110" aria-hidden="true" tabindex="-1"></a><span class="co"># fig.layout.annotations[1].text = 'Proposed'</span></span>
+<span id="cb26-111"><a href="#cb26-111" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-112"><a href="#cb26-112" aria-hidden="true" tabindex="-1"></a><span class="co"># fig.layout.xaxis.title.text = ''</span></span>
+<span id="cb26-113"><a href="#cb26-113" aria-hidden="true" tabindex="-1"></a><span class="co"># fig.layout.xaxis2.title.text = ''</span></span>
+<span id="cb26-114"><a href="#cb26-114" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-115"><a href="#cb26-115" aria-hidden="true" tabindex="-1"></a><span class="co"># fig.layout.yaxis2.showticklabels = True</span></span>
+<span id="cb26-116"><a href="#cb26-116" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-117"><a href="#cb26-117" aria-hidden="true" tabindex="-1"></a><span class="co"># fig.update_layout(template="seaborn")</span></span>
+<span id="cb26-118"><a href="#cb26-118" aria-hidden="true" tabindex="-1"></a><span class="co"># fig.update_layout(title_text="")</span></span>
+<span id="cb26-119"><a href="#cb26-119" aria-hidden="true" tabindex="-1"></a><span class="co"># fig.update_layout(height=1000, width=1800)</span></span>
+<span id="cb26-120"><a href="#cb26-120" aria-hidden="true" tabindex="-1"></a><span class="co"># fig.update_layout(legend=dict(</span></span>
+<span id="cb26-121"><a href="#cb26-121" aria-hidden="true" tabindex="-1"></a><span class="co">#     yanchor="top",</span></span>
+<span id="cb26-122"><a href="#cb26-122" aria-hidden="true" tabindex="-1"></a><span class="co">#     y=0.99,</span></span>
+<span id="cb26-123"><a href="#cb26-123" aria-hidden="true" tabindex="-1"></a><span class="co">#     xanchor="left",</span></span>
+<span id="cb26-124"><a href="#cb26-124" aria-hidden="true" tabindex="-1"></a><span class="co">#     x=0.01</span></span>
+<span id="cb26-125"><a href="#cb26-125" aria-hidden="true" tabindex="-1"></a><span class="co">#  ))</span></span>
+<span id="cb26-126"><a href="#cb26-126" aria-hidden="true" tabindex="-1"></a><span class="co"># fig</span></span></code></pre></div>
+</div>
+</section>
+</section>
+<section id="interpolation" class="level1">
+<h1>3 Interpolation</h1>
+<section id="linear-vs-nearest" class="level2">
+<h2 class="anchored" data-anchor-id="linear-vs-nearest">3.1 Linear vs Nearest</h2>
+<p><strong>Interpolation 에 따라, block은 시각적으로 보이기 좋지 않은 예시</strong></p>
+<div id="4adf370b-dac9-4af0-b992-56c44393d896" class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>tt <span class="op">=</span> nearest_fivenodes.query(<span class="st">"dataset=='fivenodes'  and method!='GNAR' and mtype=='rand'  and nof_filters==12 and lags==2 and epoch==50 and model=='GConvGRU' and mrate in [0.3  , 0.5  , 0.6 ,0.7  , 0.8]"</span>)</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>tt[<span class="st">'mrate'</span>] <span class="op">=</span> tt[<span class="st">'mrate'</span>].astype(<span class="bu">str</span>)</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>tt <span class="op">=</span> tt.sort_values(by<span class="op">=</span>[<span class="st">'model'</span>,<span class="st">'mrate'</span>])</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>tt[<span class="st">'method'</span>] <span class="op">=</span> pd.Categorical(tt[<span class="st">'method'</span>], categories<span class="op">=</span>[<span class="st">'STGCN'</span>, <span class="st">'IT-STGCN'</span>])</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> px.box(tt,x<span class="op">=</span><span class="st">'mrate'</span>,y<span class="op">=</span><span class="st">'mse'</span>,color<span class="op">=</span><span class="st">'method'</span>,facet_col<span class="op">=</span><span class="st">'inter_method'</span>)</span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>fig.layout[<span class="st">'xaxis'</span>][<span class="st">'title'</span>][<span class="st">'text'</span>]<span class="op">=</span><span class="st">'Missing Rate'</span></span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>fig.layout[<span class="st">'yaxis'</span>][<span class="st">'title'</span>][<span class="st">'text'</span>]<span class="op">=</span><span class="st">'MSE(log scale)'</span></span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a>fig.data[<span class="dv">0</span>][<span class="st">'marker'</span>][<span class="st">'color'</span>] <span class="op">=</span> <span class="st">'blue'</span></span>
+<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a>fig.data[<span class="dv">0</span>][<span class="st">'name'</span>] <span class="op">=</span> <span class="st">'Classic'</span></span>
+<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a>fig.data[<span class="dv">1</span>][<span class="st">'marker'</span>][<span class="st">'color'</span>] <span class="op">=</span> <span class="st">'blue'</span></span>
+<span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a>fig.data[<span class="dv">1</span>][<span class="st">'name'</span>] <span class="op">=</span> <span class="st">'Classic'</span></span>
+<span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a>fig.data[<span class="dv">2</span>][<span class="st">'marker'</span>][<span class="st">'color'</span>] <span class="op">=</span> <span class="st">'red'</span></span>
+<span id="cb27-16"><a href="#cb27-16" aria-hidden="true" tabindex="-1"></a>fig.data[<span class="dv">2</span>][<span class="st">'name'</span>] <span class="op">=</span> <span class="st">'Proposed'</span></span>
+<span id="cb27-17"><a href="#cb27-17" aria-hidden="true" tabindex="-1"></a>fig.data[<span class="dv">3</span>][<span class="st">'marker'</span>][<span class="st">'color'</span>] <span class="op">=</span> <span class="st">'red'</span></span>
+<span id="cb27-18"><a href="#cb27-18" aria-hidden="true" tabindex="-1"></a>fig.data[<span class="dv">3</span>][<span class="st">'name'</span>] <span class="op">=</span> <span class="st">'Proposed'</span></span>
+<span id="cb27-19"><a href="#cb27-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-20"><a href="#cb27-20" aria-hidden="true" tabindex="-1"></a>fig.layout[<span class="st">'legend'</span>][<span class="st">'title'</span>]<span class="op">=</span><span class="st">''</span></span>
+<span id="cb27-21"><a href="#cb27-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-22"><a href="#cb27-22" aria-hidden="true" tabindex="-1"></a>fig.update_layout(template<span class="op">=</span><span class="st">"seaborn"</span>)</span>
+<span id="cb27-23"><a href="#cb27-23" aria-hidden="true" tabindex="-1"></a>fig.update_layout(title_text<span class="op">=</span><span class="st">""</span>)</span>
+<span id="cb27-24"><a href="#cb27-24" aria-hidden="true" tabindex="-1"></a>fig.update_layout(height<span class="op">=</span><span class="dv">800</span>, width<span class="op">=</span><span class="dv">1800</span>)</span>
+<span id="cb27-25"><a href="#cb27-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-26"><a href="#cb27-26" aria-hidden="true" tabindex="-1"></a>fig.update_layout(legend<span class="op">=</span><span class="bu">dict</span>(</span>
+<span id="cb27-27"><a href="#cb27-27" aria-hidden="true" tabindex="-1"></a>    yanchor<span class="op">=</span><span class="st">"top"</span>,</span>
+<span id="cb27-28"><a href="#cb27-28" aria-hidden="true" tabindex="-1"></a>    y<span class="op">=</span><span class="fl">0.99</span>,</span>
+<span id="cb27-29"><a href="#cb27-29" aria-hidden="true" tabindex="-1"></a>    xanchor<span class="op">=</span><span class="st">"left"</span>,</span>
+<span id="cb27-30"><a href="#cb27-30" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span><span class="fl">0.01</span></span>
+<span id="cb27-31"><a href="#cb27-31" aria-hidden="true" tabindex="-1"></a> ))</span>
+<span id="cb27-32"><a href="#cb27-32" aria-hidden="true" tabindex="-1"></a>fig</span></code></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>NameError: name 'nearest_fivenodes' is not defined</code></pre>
+</div>
+</div>
+<div id="4a790af3-a0c5-4b9d-9705-90141184c59c" class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>nearest_fivenodes.model.unique()</span></code></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>NameError: name 'nearest_fivenodes' is not defined</code></pre>
+</div>
+</div>
+<div id="65d21c7b-626c-4060-adfc-121c0a6a4f38" class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>tt <span class="op">=</span> nearest_pedalme.query(<span class="st">"dataset=='pedalme' and method!='GNAR' and mtype=='rand' and nof_filters==12 and lags==4 and epoch==50 and model=='GConvGRU' and mrate in [0.3,0.5,0.6,0.8]"</span>)</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>tt[<span class="st">'mrate'</span>] <span class="op">=</span> tt[<span class="st">'mrate'</span>].astype(<span class="bu">str</span>)</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>tt <span class="op">=</span> tt.sort_values(by<span class="op">=</span>[<span class="st">'model'</span>,<span class="st">'mrate'</span>])</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> px.box(tt,x<span class="op">=</span><span class="st">'mrate'</span>,y<span class="op">=</span><span class="st">'mse'</span>,color<span class="op">=</span><span class="st">'method'</span>,facet_col<span class="op">=</span><span class="st">'inter_method'</span>)</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>fig.layout[<span class="st">'xaxis'</span>][<span class="st">'title'</span>][<span class="st">'text'</span>]<span class="op">=</span><span class="st">'Missing Rate'</span></span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>fig.layout[<span class="st">'yaxis'</span>][<span class="st">'title'</span>][<span class="st">'text'</span>]<span class="op">=</span><span class="st">'MSE(log scale)'</span></span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>fig.data[<span class="dv">0</span>][<span class="st">'marker'</span>][<span class="st">'color'</span>] <span class="op">=</span> <span class="st">'blue'</span></span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a>fig.data[<span class="dv">0</span>][<span class="st">'name'</span>] <span class="op">=</span> <span class="st">'Classic'</span></span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a>fig.data[<span class="dv">1</span>][<span class="st">'marker'</span>][<span class="st">'color'</span>] <span class="op">=</span> <span class="st">'blue'</span></span>
+<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a>fig.data[<span class="dv">1</span>][<span class="st">'name'</span>] <span class="op">=</span> <span class="st">'Classic'</span></span>
+<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a>fig.data[<span class="dv">2</span>][<span class="st">'marker'</span>][<span class="st">'color'</span>] <span class="op">=</span> <span class="st">'red'</span></span>
+<span id="cb31-13"><a href="#cb31-13" aria-hidden="true" tabindex="-1"></a>fig.data[<span class="dv">2</span>][<span class="st">'name'</span>] <span class="op">=</span> <span class="st">'Proposed'</span></span>
+<span id="cb31-14"><a href="#cb31-14" aria-hidden="true" tabindex="-1"></a>fig.data[<span class="dv">3</span>][<span class="st">'marker'</span>][<span class="st">'color'</span>] <span class="op">=</span> <span class="st">'red'</span></span>
+<span id="cb31-15"><a href="#cb31-15" aria-hidden="true" tabindex="-1"></a>fig.data[<span class="dv">3</span>][<span class="st">'name'</span>] <span class="op">=</span> <span class="st">'Proposed'</span></span>
+<span id="cb31-16"><a href="#cb31-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-17"><a href="#cb31-17" aria-hidden="true" tabindex="-1"></a>fig.layout[<span class="st">'legend'</span>][<span class="st">'title'</span>]<span class="op">=</span><span class="st">''</span></span>
+<span id="cb31-18"><a href="#cb31-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-19"><a href="#cb31-19" aria-hidden="true" tabindex="-1"></a>fig.update_layout(template<span class="op">=</span><span class="st">"seaborn"</span>)</span>
+<span id="cb31-20"><a href="#cb31-20" aria-hidden="true" tabindex="-1"></a>fig.update_layout(title_text<span class="op">=</span><span class="st">""</span>)</span>
+<span id="cb31-21"><a href="#cb31-21" aria-hidden="true" tabindex="-1"></a>fig.update_layout(height<span class="op">=</span><span class="dv">800</span>, width<span class="op">=</span><span class="dv">1800</span>)</span>
+<span id="cb31-22"><a href="#cb31-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-23"><a href="#cb31-23" aria-hidden="true" tabindex="-1"></a>fig.update_layout(legend<span class="op">=</span><span class="bu">dict</span>(</span>
+<span id="cb31-24"><a href="#cb31-24" aria-hidden="true" tabindex="-1"></a>    yanchor<span class="op">=</span><span class="st">"top"</span>,</span>
+<span id="cb31-25"><a href="#cb31-25" aria-hidden="true" tabindex="-1"></a>    y<span class="op">=</span><span class="fl">0.99</span>,</span>
+<span id="cb31-26"><a href="#cb31-26" aria-hidden="true" tabindex="-1"></a>    xanchor<span class="op">=</span><span class="st">"left"</span>,</span>
+<span id="cb31-27"><a href="#cb31-27" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span><span class="fl">0.01</span></span>
+<span id="cb31-28"><a href="#cb31-28" aria-hidden="true" tabindex="-1"></a> ))</span>
+<span id="cb31-29"><a href="#cb31-29" aria-hidden="true" tabindex="-1"></a>fig</span></code></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>NameError: name 'nearest_pedalme' is not defined</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="missing-type" class="level1">
+<h1>4 Missing Type</h1>
+<section id="block-vs-random" class="level2">
+<h2 class="anchored" data-anchor-id="block-vs-random">4.1 Block vs random</h2>
+<div id="dbd61f41-0d4a-4c39-8cc8-c1afc5bf8c20" class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>tt<span class="op">=</span>df.query(<span class="st">"mtype in ['rand','block'] and mrate in [0.2877697841726618, 0.3] and dataset=='chickenpox'"</span>)</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>tt[<span class="st">'mrate'</span>] <span class="op">=</span> tt[<span class="st">'mrate'</span>].astype(<span class="bu">str</span>)</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>tt <span class="op">=</span> tt.sort_values(by<span class="op">=</span>[<span class="st">'model'</span>,<span class="st">'mrate'</span>])</span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> px.box(tt,x<span class="op">=</span><span class="st">'mrate'</span>,y<span class="op">=</span><span class="st">'mse'</span>,color<span class="op">=</span><span class="st">'method'</span>)</span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>fig.layout[<span class="st">'xaxis'</span>][<span class="st">'title'</span>][<span class="st">'text'</span>]<span class="op">=</span><span class="st">'Missing Rate'</span></span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>fig.layout[<span class="st">'yaxis'</span>][<span class="st">'title'</span>][<span class="st">'text'</span>]<span class="op">=</span><span class="st">'MSE'</span></span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a>fig.data[<span class="dv">0</span>][<span class="st">'marker'</span>][<span class="st">'color'</span>] <span class="op">=</span> <span class="st">'blue'</span></span>
+<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a>fig.data[<span class="dv">0</span>][<span class="st">'name'</span>] <span class="op">=</span> <span class="st">'Classic'</span></span>
+<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a>fig.data[<span class="dv">1</span>][<span class="st">'marker'</span>][<span class="st">'color'</span>] <span class="op">=</span> <span class="st">'red'</span></span>
+<span id="cb33-12"><a href="#cb33-12" aria-hidden="true" tabindex="-1"></a>fig.data[<span class="dv">1</span>][<span class="st">'name'</span>] <span class="op">=</span> <span class="st">'Proposed'</span></span>
+<span id="cb33-13"><a href="#cb33-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-14"><a href="#cb33-14" aria-hidden="true" tabindex="-1"></a>fig.layout[<span class="st">'legend'</span>][<span class="st">'title'</span>]<span class="op">=</span><span class="st">''</span></span>
+<span id="cb33-15"><a href="#cb33-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-16"><a href="#cb33-16" aria-hidden="true" tabindex="-1"></a>fig.update_layout(template<span class="op">=</span><span class="st">"seaborn"</span>)</span>
+<span id="cb33-17"><a href="#cb33-17" aria-hidden="true" tabindex="-1"></a>fig.update_layout(title_text<span class="op">=</span><span class="st">""</span>)</span>
+<span id="cb33-18"><a href="#cb33-18" aria-hidden="true" tabindex="-1"></a>fig.update_layout(height<span class="op">=</span><span class="dv">800</span>, width<span class="op">=</span><span class="dv">1800</span>)</span>
+<span id="cb33-19"><a href="#cb33-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-20"><a href="#cb33-20" aria-hidden="true" tabindex="-1"></a>fig.update_layout(legend<span class="op">=</span><span class="bu">dict</span>(</span>
+<span id="cb33-21"><a href="#cb33-21" aria-hidden="true" tabindex="-1"></a>    yanchor<span class="op">=</span><span class="st">"top"</span>,</span>
+<span id="cb33-22"><a href="#cb33-22" aria-hidden="true" tabindex="-1"></a>    y<span class="op">=</span><span class="fl">0.99</span>,</span>
+<span id="cb33-23"><a href="#cb33-23" aria-hidden="true" tabindex="-1"></a>    xanchor<span class="op">=</span><span class="st">"left"</span>,</span>
+<span id="cb33-24"><a href="#cb33-24" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span><span class="fl">0.01</span></span>
+<span id="cb33-25"><a href="#cb33-25" aria-hidden="true" tabindex="-1"></a> ))</span>
+<span id="cb33-26"><a href="#cb33-26" aria-hidden="true" tabindex="-1"></a>fig</span></code></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>NameError: name 'df' is not defined</code></pre>
+</div>
+</div>
+<div id="78daa2ea-89a3-43c9-a7b3-3cd12a5c02e5" class="cell" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>tt<span class="op">=</span>df.query(<span class="st">"mtype in ['rand','block'] and mrate in [0.2857142857142857, 0.3] and model=='LRGCN' and dataset=='pedalme'"</span>)</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>tt[<span class="st">'mrate'</span>] <span class="op">=</span> tt[<span class="st">'mrate'</span>].astype(<span class="bu">str</span>)</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>tt <span class="op">=</span> tt.sort_values(by<span class="op">=</span>[<span class="st">'model'</span>,<span class="st">'mrate'</span>])</span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> px.box(tt,x<span class="op">=</span><span class="st">'mrate'</span>,y<span class="op">=</span><span class="st">'mse'</span>,color<span class="op">=</span><span class="st">'method'</span>)</span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>fig.layout[<span class="st">'xaxis'</span>][<span class="st">'title'</span>][<span class="st">'text'</span>]<span class="op">=</span><span class="st">'Missing Rate'</span></span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>fig.layout[<span class="st">'yaxis'</span>][<span class="st">'title'</span>][<span class="st">'text'</span>]<span class="op">=</span><span class="st">'MSE'</span></span>
+<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a>fig.data[<span class="dv">0</span>][<span class="st">'marker'</span>][<span class="st">'color'</span>] <span class="op">=</span> <span class="st">'blue'</span></span>
+<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a>fig.data[<span class="dv">0</span>][<span class="st">'name'</span>] <span class="op">=</span> <span class="st">'Classic'</span></span>
+<span id="cb35-11"><a href="#cb35-11" aria-hidden="true" tabindex="-1"></a>fig.data[<span class="dv">1</span>][<span class="st">'marker'</span>][<span class="st">'color'</span>] <span class="op">=</span> <span class="st">'red'</span></span>
+<span id="cb35-12"><a href="#cb35-12" aria-hidden="true" tabindex="-1"></a>fig.data[<span class="dv">1</span>][<span class="st">'name'</span>] <span class="op">=</span> <span class="st">'Proposed'</span></span>
+<span id="cb35-13"><a href="#cb35-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-14"><a href="#cb35-14" aria-hidden="true" tabindex="-1"></a>fig.layout[<span class="st">'legend'</span>][<span class="st">'title'</span>]<span class="op">=</span><span class="st">''</span></span>
+<span id="cb35-15"><a href="#cb35-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-16"><a href="#cb35-16" aria-hidden="true" tabindex="-1"></a>fig.update_layout(template<span class="op">=</span><span class="st">"seaborn"</span>)</span>
+<span id="cb35-17"><a href="#cb35-17" aria-hidden="true" tabindex="-1"></a>fig.update_layout(title_text<span class="op">=</span><span class="st">""</span>)</span>
+<span id="cb35-18"><a href="#cb35-18" aria-hidden="true" tabindex="-1"></a>fig.update_layout(height<span class="op">=</span><span class="dv">800</span>, width<span class="op">=</span><span class="dv">1800</span>)</span>
+<span id="cb35-19"><a href="#cb35-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-20"><a href="#cb35-20" aria-hidden="true" tabindex="-1"></a>fig.update_layout(legend<span class="op">=</span><span class="bu">dict</span>(</span>
+<span id="cb35-21"><a href="#cb35-21" aria-hidden="true" tabindex="-1"></a>    yanchor<span class="op">=</span><span class="st">"top"</span>,</span>
+<span id="cb35-22"><a href="#cb35-22" aria-hidden="true" tabindex="-1"></a>    y<span class="op">=</span><span class="fl">0.99</span>,</span>
+<span id="cb35-23"><a href="#cb35-23" aria-hidden="true" tabindex="-1"></a>    xanchor<span class="op">=</span><span class="st">"left"</span>,</span>
+<span id="cb35-24"><a href="#cb35-24" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span><span class="fl">0.01</span></span>
+<span id="cb35-25"><a href="#cb35-25" aria-hidden="true" tabindex="-1"></a> ))</span>
+<span id="cb35-26"><a href="#cb35-26" aria-hidden="true" tabindex="-1"></a>fig</span></code></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>NameError: name 'df' is not defined</code></pre>
+</div>
+</div>
+<div id="d7b94be4-c6a6-403c-9610-f494d1eb1624" class="cell" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a></span></code></pre></div>
+</div>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      return note.innerHTML;
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

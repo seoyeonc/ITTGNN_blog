@@ -1,0 +1,1675 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.527">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="SEOYEON CHOI">
+<meta name="dcterms.date" content="2024-02-29">
+
+<title>ITTGNN_blog - 실험결과정리</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<script src="../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../../styles.css">
+</head>
+
+<body class="nav-sidebar docked nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../../index.html">
+    <span class="navbar-title">ITTGNN_blog</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="https://seoyeonc.github.io/sy_hub/"> 
+<span class="menu-text">Main_Blog</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/seoyeonc"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">실험결과정리</li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">실험결과정리</h1>
+                      </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>SEOYEON CHOI </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">February 29, 2024</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../1_studies.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><strong>Studies</strong></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text"><strong>Research</strong></span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../2_research.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><strong>Research</strong></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text"><strong>Result</strong></span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../3_table.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><strong>Table</strong></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../3_figure.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><strong>Figure</strong></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#import" id="toc-import" class="nav-link active" data-scroll-target="#import">Import</a></li>
+  <li><a href="#conditions" id="toc-conditions" class="nav-link" data-scroll-target="#conditions">Conditions</a></li>
+  <li><a href="#data-사용자정의함수" id="toc-data-사용자정의함수" class="nav-link" data-scroll-target="#data-사용자정의함수">Data &amp; 사용자정의함수</a></li>
+  <li><a href="#randomly-missing-function" id="toc-randomly-missing-function" class="nav-link" data-scroll-target="#randomly-missing-function">Randomly Missing Function?</a></li>
+  <li><a href="#시각화1-missingrate본문" id="toc-시각화1-missingrate본문" class="nav-link" data-scroll-target="#시각화1-missingrate본문">시각화1: MissingRate(본문)</a></li>
+  <li><a href="#시각화2-missingrate-부록" id="toc-시각화2-missingrate-부록" class="nav-link" data-scroll-target="#시각화2-missingrate-부록">시각화2: MissingRate (부록)</a></li>
+  <li><a href="#시각화3" id="toc-시각화3" class="nav-link" data-scroll-target="#시각화3">시각화3</a>
+  <ul class="collapse">
+  <li><a href="#시각화3-1" id="toc-시각화3-1" class="nav-link" data-scroll-target="#시각화3-1">시각화3-1</a></li>
+  <li><a href="#시각화3-2" id="toc-시각화3-2" class="nav-link" data-scroll-target="#시각화3-2">시각화3-2</a></li>
+  </ul></li>
+  <li><a href="#시각화4" id="toc-시각화4" class="nav-link" data-scroll-target="#시각화4">시각화4</a></li>
+  <li><a href="#시각화5본문" id="toc-시각화5본문" class="nav-link" data-scroll-target="#시각화5본문">시각화5(본문)</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+
+<section id="import" class="level1">
+<h1>Import</h1>
+<div id="c533477a-7e40-48ec-afd2-8ae980a5b378" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.express <span class="im">as</span> px</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.graph_objects <span class="im">as</span> go</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pickle</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.io <span class="im">as</span> pio</span></code></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>ModuleNotFoundError: No module named 'plotly'</code></pre>
+</div>
+</div>
+<div id="a74da524-127e-4724-b222-88d65b059aed" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>pd.options.plotting.backend <span class="op">=</span> <span class="st">"plotly"</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>pio.templates.default <span class="op">=</span> <span class="st">"plotly_white"</span></span></code></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>ValueError: Could not find plotting backend 'plotly'. Ensure that you've installed the package providing the 'plotly' entrypoint, or that the package has a top-level `.plot` method.</code></pre>
+</div>
+</div>
+<div id="f6e91ab1-c49f-4e9c-9a58-bcf60cc6f9e9" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.concat([pd.read_csv(<span class="st">'../Data/Body_Results.csv'</span>),</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>            pd.read_csv(<span class="st">'../Data/chicken_inter_final.csv'</span>), <span class="co"># chickenpox cubic + nearest mrate 0.8 에서</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>            pd.read_csv(<span class="st">'../Data/R_GNAR_results.csv'</span>), <span class="co"># GNAR을 R에서 돌린 결과 RANDOM, BLOCK</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>            pd.concat([pd.read_csv(<span class="st">'../Data/DCRNN_50_windmillsmall.csv'</span>), <span class="co"># 50% windmillsmall 결과들</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>                       pd.read_csv(<span class="st">'../Data/GConvGRU_50_windmillsmall.csv'</span>),</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>                       pd.read_csv(<span class="st">'../Data/GConvLSTM_50_windmillsmall.csv'</span>),</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>                       pd.read_csv(<span class="st">'../Data/LRGCN_50_windmillsmall.csv'</span>),</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>                       pd.read_csv(<span class="st">'../Data/DyGrEncoder_50_windmillsmall.csv'</span>),</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>                       pd.read_csv(<span class="st">'../Data/TGCN_50_windmillsmall.csv'</span>),</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>                       pd.read_csv(<span class="st">'../Data/GCLSTM_50_windmillsmall.csv'</span>),</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>                       pd.read_csv(<span class="st">'../Data/EvolveGCNO_50_windmillsmall.csv'</span>),</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>                       pd.read_csv(<span class="st">'../Data/EvolveGCNH_50_windmillsmall.csv'</span>),</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>                      ]),</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>            pd.concat([pd.read_csv(<span class="st">'../Data/DCRNN_80_windmillsmall.csv'</span>), <span class="co"># 80% windmillsmall 결과들</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>                       pd.read_csv(<span class="st">'../Data/LRGCN_80_windmillsmall.csv'</span>),</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>                       pd.read_csv(<span class="st">'../Data/DyGrEncoder_80_windmillsmall.csv'</span>),</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>                       pd.read_csv(<span class="st">'../Data/GConvLSTM_80_windmillsmall.csv'</span>),</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>                       pd.read_csv(<span class="st">'../Data/GConvGRU_80_windmillsmall.csv'</span>),</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>                       pd.read_csv(<span class="st">'../Data/TGCN_80_windmillsmall.csv'</span>),</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>                       pd.read_csv(<span class="st">'../Data/GCLSTM_80_windmillsmall.csv'</span>),</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>                       pd.read_csv(<span class="st">'../Data/EvolveGCNO_80_windmillsmall.csv'</span>),</span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>                       pd.read_csv(<span class="st">'../Data/EvolveGCNH_80_windmillsmall.csv'</span>)</span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>                      ]),</span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>            pd.concat([pd.read_csv(<span class="st">'../Data/DCRNN_block_windmillsmall.csv'</span>), <span class="co"># block windmillsmall 결과물</span></span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>                      pd.read_csv(<span class="st">'../Data/LRGCN_block_windmillsmall.csv'</span>),</span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>                      pd.read_csv(<span class="st">'../Data/GConvGRU_block_windmillsmall.csv'</span>),</span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>                      pd.read_csv(<span class="st">'../Data/EvolveGCNO_block_windmillsmall.csv'</span>),</span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>                      pd.read_csv(<span class="st">'../Data/DyGrEncoder_block_windmillsmall.csv'</span>),</span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>                      pd.read_csv(<span class="st">'../Data/GConvLSTM_block_windmillsmall.csv'</span>),</span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>                      pd.read_csv(<span class="st">'../Data/GCLSTM_block_windmillsmall.csv'</span>),</span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>                      pd.read_csv(<span class="st">'../Data/TGCN_block_windmillsmall.csv'</span>),</span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>                      pd.read_csv(<span class="st">'../Data/EvolveGCNH_block_windmillsmall.csv'</span>)</span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>                      ])</span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>               ]).assign(model <span class="op">=</span> <span class="kw">lambda</span> df: df.model.<span class="bu">apply</span>(<span class="kw">lambda</span> x: <span class="st">'GConvGRU'</span> <span class="cf">if</span> x <span class="op">==</span> <span class="st">"GComvGRU"</span> <span class="cf">else</span> x))</span>
+<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.iloc[:,:<span class="op">-</span><span class="dv">1</span>]</span></code></pre></div>
+</div>
+</section>
+<section id="conditions" class="level1">
+<h1>Conditions</h1>
+<table class="table">
+<colgroup>
+<col style="width: 23%">
+<col style="width: 9%">
+<col style="width: 13%">
+<col style="width: 9%">
+<col style="width: 10%">
+<col style="width: 16%">
+<col style="width: 16%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Model</th>
+<th>FiveVTS</th>
+<th>Chickenpox</th>
+<th>Pedalme</th>
+<th>Wikimath</th>
+<th>Windmillsmall</th>
+<th>MontevideoBus</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Max iter.</td>
+<td>30</td>
+<td>30</td>
+<td>30</td>
+<td>30</td>
+<td>30</td>
+<td>30</td>
+</tr>
+<tr class="even">
+<td>Epochs</td>
+<td>50</td>
+<td>50</td>
+<td>50</td>
+<td>50</td>
+<td>50</td>
+<td>50</td>
+</tr>
+<tr class="odd">
+<td>Lags</td>
+<td>2</td>
+<td>4</td>
+<td>4</td>
+<td>8</td>
+<td>8</td>
+<td>4</td>
+</tr>
+<tr class="even">
+<td>Interpolation</td>
+<td>linear</td>
+<td>linear,nearest,cubic</td>
+<td>linear</td>
+<td>linear</td>
+<td>linear</td>
+<td>linear</td>
+</tr>
+<tr class="odd">
+<td>Filters</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>GConvGRU</td>
+<td>12</td>
+<td>16</td>
+<td>12</td>
+<td>12</td>
+<td>12</td>
+<td>12</td>
+</tr>
+<tr class="odd">
+<td>GConvLSTM</td>
+<td>12</td>
+<td>32</td>
+<td>2</td>
+<td>64</td>
+<td>16</td>
+<td>12</td>
+</tr>
+<tr class="even">
+<td>GCLSTM</td>
+<td>4</td>
+<td>16</td>
+<td>4</td>
+<td>64</td>
+<td>16</td>
+<td>12</td>
+</tr>
+<tr class="odd">
+<td>LRGCN</td>
+<td>4</td>
+<td>8</td>
+<td>8</td>
+<td>32</td>
+<td>12</td>
+<td>2</td>
+</tr>
+<tr class="even">
+<td>DyGrEncoder</td>
+<td>12</td>
+<td>12</td>
+<td>12</td>
+<td>12</td>
+<td>12</td>
+<td>12</td>
+</tr>
+<tr class="odd">
+<td>EvolveGCNH</td>
+<td>No need</td>
+<td>No need</td>
+<td>No need</td>
+<td>No need</td>
+<td>No need</td>
+<td>No need</td>
+</tr>
+<tr class="even">
+<td>EvolveGCNO</td>
+<td>No need</td>
+<td>No need</td>
+<td>No need</td>
+<td>No need</td>
+<td>No need</td>
+<td>No need</td>
+</tr>
+<tr class="odd">
+<td>TGCN</td>
+<td>12</td>
+<td>12</td>
+<td>12</td>
+<td>12</td>
+<td>12</td>
+<td>8</td>
+</tr>
+<tr class="even">
+<td>DCRNN</td>
+<td>2</td>
+<td>16</td>
+<td>8</td>
+<td>12</td>
+<td>4</td>
+<td>12</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="data-사용자정의함수" class="level1">
+<h1>Data &amp; 사용자정의함수</h1>
+<div id="0029d80d-2795-480c-9753-0075f29de94c" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>df_dataset <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">'dataset'</span>:[<span class="st">'fivenodes'</span>,<span class="st">'chickenpox'</span>,<span class="st">'pedalme'</span>,<span class="st">'wikimath'</span>,<span class="st">'windmillsmall'</span>,<span class="st">'monte'</span>],</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'node'</span>:[<span class="dv">5</span>,<span class="dv">20</span>,<span class="dv">15</span>,<span class="dv">1068</span>,<span class="dv">11</span>,<span class="dv">675</span>],</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">'time'</span>:[<span class="dv">200</span>,<span class="dv">522</span>,<span class="dv">36</span>,<span class="dv">731</span>,<span class="dv">17472</span>,<span class="dv">744</span>]</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df<span class="op">\</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>.merge(df_dataset)<span class="op">\</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>.assign(method <span class="op">=</span> <span class="kw">lambda</span> df: df[<span class="st">'method'</span>].<span class="bu">map</span>({<span class="st">'STGCN'</span>:<span class="st">'STGNN'</span>,<span class="st">'IT-STGCN'</span>:<span class="st">'IT-STGNN'</span>,<span class="st">'GNAR'</span>:<span class="st">'GNAR'</span>}))</span></code></pre></div>
+</div>
+<div id="05c74686-5fe7-40e9-b22c-6e2cbe2946ac" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>df.head()</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="5">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">dataset</th>
+<th data-quarto-table-cell-role="th">method</th>
+<th data-quarto-table-cell-role="th">mrate</th>
+<th data-quarto-table-cell-role="th">mtype</th>
+<th data-quarto-table-cell-role="th">lags</th>
+<th data-quarto-table-cell-role="th">nof_filters</th>
+<th data-quarto-table-cell-role="th">inter_method</th>
+<th data-quarto-table-cell-role="th">epoch</th>
+<th data-quarto-table-cell-role="th">mse</th>
+<th data-quarto-table-cell-role="th">calculation_time</th>
+<th data-quarto-table-cell-role="th">model</th>
+<th data-quarto-table-cell-role="th">node</th>
+<th data-quarto-table-cell-role="th">time</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>fivenodes</td>
+<td>STGNN</td>
+<td>0.0</td>
+<td>NaN</td>
+<td>2</td>
+<td>12.0</td>
+<td>NaN</td>
+<td>50.0</td>
+<td>0.729374</td>
+<td>80.985221</td>
+<td>GConvGRU</td>
+<td>5</td>
+<td>200</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>fivenodes</td>
+<td>STGNN</td>
+<td>0.0</td>
+<td>NaN</td>
+<td>2</td>
+<td>12.0</td>
+<td>NaN</td>
+<td>50.0</td>
+<td>0.729082</td>
+<td>80.891788</td>
+<td>GConvGRU</td>
+<td>5</td>
+<td>200</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>fivenodes</td>
+<td>IT-STGNN</td>
+<td>0.0</td>
+<td>NaN</td>
+<td>2</td>
+<td>12.0</td>
+<td>NaN</td>
+<td>50.0</td>
+<td>0.731600</td>
+<td>114.492592</td>
+<td>GConvGRU</td>
+<td>5</td>
+<td>200</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>fivenodes</td>
+<td>IT-STGNN</td>
+<td>0.0</td>
+<td>NaN</td>
+<td>2</td>
+<td>12.0</td>
+<td>NaN</td>
+<td>50.0</td>
+<td>0.735026</td>
+<td>115.544274</td>
+<td>GConvGRU</td>
+<td>5</td>
+<td>200</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>fivenodes</td>
+<td>STGNN</td>
+<td>0.0</td>
+<td>NaN</td>
+<td>2</td>
+<td>12.0</td>
+<td>NaN</td>
+<td>50.0</td>
+<td>0.727182</td>
+<td>102.783140</td>
+<td>GConvGRU</td>
+<td>5</td>
+<td>200</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div id="f4cfb5b6-e984-46ed-9e4e-705ed344ebad" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># df2 = pd.read_csv('../Data/Appendix_Results.csv').iloc[:,1:]</span></span></code></pre></div>
+</div>
+<div id="385afc2c-0e22-40cd-a24a-8d346758964c" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># df.assign(model = lambda df: df.model.apply(lambda x: '' if x == "GNAR" else x))\</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co"># .eval('model = method+model')</span></span></code></pre></div>
+</div>
+<div id="ebdf893d-f01a-4153-a909-4b6c4abcfd3b" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># df2 = df.assign(model = lambda df: df.model.apply(lambda x: '' if x == "GNAR" else x))\</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co"># .eval('model = method+model')\</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co"># .assign(model = lambda df: df.model.str.replace("STGNN",""))</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co"># df2.head()</span></span></code></pre></div>
+</div>
+<div id="8e5518ba-4a5b-424d-9b6e-7873c3a70ac5" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="bu">set</span>(df.method)</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="9">
+<pre><code>{'IT-STGNN', 'STGNN'}</code></pre>
+</div>
+</div>
+<div id="00370fa1-bce3-4fbf-a182-8434d1c74219" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>df2 <span class="op">=</span> df.assign(model <span class="op">=</span> <span class="kw">lambda</span> df: df.model.<span class="bu">apply</span>(<span class="kw">lambda</span> x: <span class="st">''</span> <span class="cf">if</span> x <span class="op">==</span> <span class="st">"GNAR"</span> <span class="cf">else</span> x))</span></code></pre></div>
+</div>
+<div id="0e608b3c-f4f9-49e8-bcc3-b348c07aff46" class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> show_experiment_spec(df):</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    df_cols <span class="op">=</span> [<span class="st">'method'</span>,<span class="st">'mrate'</span>,<span class="st">'mtype'</span>,<span class="st">'lags'</span>,<span class="st">'nof_filters'</span>,<span class="st">'inter_method'</span>,<span class="st">'epoch'</span>,<span class="st">'model'</span>]</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> dataset <span class="kw">in</span> df.dataset.unique():</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f'dataset: </span><span class="sc">{</span>dataset<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> col <span class="kw">in</span> df_cols: </span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>            df_query <span class="op">=</span> df[df[<span class="st">'dataset'</span>] <span class="op">==</span> dataset]</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f'</span><span class="sc">{</span>col<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>df_query[col]<span class="sc">.</span>unique()<span class="sc">.</span>tolist()<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">'---'</span>)</span></code></pre></div>
+</div>
+<p><code>-</code> 데이터세트별 실험셋팅</p>
+<div id="d4494dec-dabe-4a2d-a2f2-bd263f0b785a" class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>show_experiment_spec(df)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>dataset: fivenodes
+method: ['STGNN', 'IT-STGNN']
+mrate: [0.0, 0.7, 0.8, 0.3, 0.5, 0.6, 0.125]
+mtype: [nan, 'rand', 'block']
+lags: [2]
+nof_filters: [12.0, 4.0, 2.0]
+inter_method: [nan, 'linear']
+epoch: [50.0]
+model: ['GConvGRU', 'GConvLSTM', 'GCLSTM', 'DCRNN', 'LRGCN', 'TGCN', 'EvolveGCNO', 'DyGrEncoder', 'EvolveGCNH']
+---
+dataset: chickenpox
+method: ['STGNN', 'IT-STGNN']
+mrate: [0.0, 0.3, 0.8, 0.5, 0.6, 0.2877697841726618]
+mtype: [nan, 'rand', 'block']
+lags: [4]
+nof_filters: [16.0, 32.0, 8.0, 12.0]
+inter_method: [nan, 'linear', 'cubic', 'nearest']
+epoch: [50.0]
+model: ['GConvGRU', 'GConvLSTM', 'GCLSTM', 'DCRNN', 'LRGCN', 'TGCN', 'EvolveGCNO', 'DyGrEncoder', 'EvolveGCNH']
+---
+dataset: pedalme
+method: ['STGNN', 'IT-STGNN']
+mrate: [0.0, 0.3, 0.5, 0.6, 0.8, 0.2857142857142857]
+mtype: [nan, 'rand', 'block']
+lags: [4]
+nof_filters: [12.0, 2.0, 4.0, 8.0]
+inter_method: [nan, 'linear']
+epoch: [50.0]
+model: ['GConvGRU', 'GConvLSTM', 'GCLSTM', 'DCRNN', 'LRGCN', 'TGCN', 'EvolveGCNO', 'DyGrEncoder', 'EvolveGCNH']
+---
+dataset: wikimath
+method: ['STGNN', 'IT-STGNN']
+mrate: [0.3, 0.8, 0.0, 0.5, 0.6, 0.5982283238102543]
+mtype: ['rand', nan, 'block']
+lags: [8]
+nof_filters: [12.0, 64.0, 32.0]
+inter_method: ['linear', nan]
+epoch: [50.0]
+model: ['GConvGRU', 'GConvLSTM', 'GCLSTM', 'DCRNN', 'LRGCN', 'TGCN', 'EvolveGCNO', 'DyGrEncoder', 'EvolveGCNH']
+---
+dataset: windmillsmall
+method: ['STGNN', 'IT-STGNN']
+mrate: [0.0, 0.7, 0.5, 0.8, 0.2861435009657343]
+mtype: [nan, 'rand', 'block']
+lags: [8]
+nof_filters: [12.0, 16.0, 4.0]
+inter_method: [nan, 'linear']
+epoch: [50.0]
+model: ['GConvGRU', 'GConvLSTM', 'GCLSTM', 'DCRNN', 'LRGCN', 'TGCN', 'EvolveGCNO', 'DyGrEncoder', 'EvolveGCNH']
+---
+dataset: monte
+method: ['STGNN', 'IT-STGNN']
+mrate: [0.0, 0.3, 0.5, 0.7, 0.8, 0.1491424310216256]
+mtype: [nan, 'rand', 'block']
+lags: [4]
+nof_filters: [12.0, 2.0, 8.0]
+inter_method: [nan, 'linear']
+epoch: [50.0]
+model: ['GConvGRU', 'GConvLSTM', 'GCLSTM', 'DCRNN', 'LRGCN', 'TGCN', 'EvolveGCNO', 'DyGrEncoder', 'EvolveGCNH']
+---</code></pre>
+</div>
+</div>
+<p><code>-</code> 요약</p>
+<div id="aedbe830-ef9a-41b7-b138-9a96960c4624" class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>df_summary <span class="op">=</span> df2.groupby([<span class="st">"method"</span>,<span class="st">"dataset"</span>,<span class="st">"mrate"</span>,<span class="st">"model"</span>]).agg({<span class="st">'mse'</span>:<span class="st">'mean'</span>}).reset_index()<span class="op">\</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>.pivot_table(index<span class="op">=</span>[<span class="st">'model'</span>],columns<span class="op">=</span>[<span class="st">'dataset'</span>],values<span class="op">=</span><span class="st">'mse'</span>)</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>df_summary</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="13">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">dataset</th>
+<th data-quarto-table-cell-role="th">chickenpox</th>
+<th data-quarto-table-cell-role="th">fivenodes</th>
+<th data-quarto-table-cell-role="th">monte</th>
+<th data-quarto-table-cell-role="th">pedalme</th>
+<th data-quarto-table-cell-role="th">wikimath</th>
+<th data-quarto-table-cell-role="th">windmillsmall</th>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">model</th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">DCRNN</td>
+<td>1.186396</td>
+<td>1.245254</td>
+<td>1.040303</td>
+<td>1.315441</td>
+<td>0.634883</td>
+<td>1.123034</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">DyGrEncoder</td>
+<td>1.230307</td>
+<td>1.268549</td>
+<td>1.189316</td>
+<td>1.313140</td>
+<td>0.618263</td>
+<td>1.208989</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">EvolveGCNH</td>
+<td>1.068355</td>
+<td>1.191876</td>
+<td>1.634331</td>
+<td>1.256039</td>
+<td>0.817415</td>
+<td>1.125080</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">EvolveGCNO</td>
+<td>1.079361</td>
+<td>1.181221</td>
+<td>1.818289</td>
+<td>1.270238</td>
+<td>0.763434</td>
+<td>1.168028</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">GCLSTM</td>
+<td>1.226473</td>
+<td>1.229599</td>
+<td>1.021227</td>
+<td>1.265733</td>
+<td>0.760473</td>
+<td>1.174891</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">GConvGRU</td>
+<td>1.436439</td>
+<td>1.294271</td>
+<td>1.064923</td>
+<td>1.496929</td>
+<td>0.607534</td>
+<td>1.246340</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">GConvLSTM</td>
+<td>1.329921</td>
+<td>1.252394</td>
+<td>1.011046</td>
+<td>1.259794</td>
+<td>0.811922</td>
+<td>1.199358</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">LRGCN</td>
+<td>1.142547</td>
+<td>1.231416</td>
+<td>0.982733</td>
+<td>1.291406</td>
+<td>0.723700</td>
+<td>1.147274</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">TGCN</td>
+<td>1.164413</td>
+<td>1.119728</td>
+<td>1.060148</td>
+<td>1.281458</td>
+<td>0.755205</td>
+<td>1.107451</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</section>
+<section id="randomly-missing-function" class="level1">
+<h1>Randomly Missing Function?</h1>
+</section>
+<section id="시각화1-missingrate본문" class="level1">
+<h1>시각화1: MissingRate(본문)</h1>
+<blockquote class="blockquote">
+<p>Dataset 은 Chickenpox, Model은 GConvLSTM, 랜덤 결측값 비율에 따라 mse의 중앙값의 분포를 나타낸 figure이다. 결측값 비율이 상승할수록 두 methods의 mse는 커지고 있었다. 특히 결측값 비율이 80%일때, classic method인 GConvLSTM가 Proposed method에 비해 mse 분포의 분산이 dramatic 하게 커진 모습을 보였다.</p>
+</blockquote>
+<div id="dde27dd1-f3a7-4ff5-9830-809c74d0d561" class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>big <span class="op">=</span> df.query(<span class="st">"mtype=='rand' or mtype.isna()"</span>).query(<span class="st">"dataset == 'chickenpox'"</span>).query(<span class="st">"model == 'GConvLSTM'"</span>)<span class="op">\</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>.sort_values(by<span class="op">=</span><span class="st">'mrate'</span>)<span class="op">\</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>.assign(mrate_jittered <span class="op">=</span> <span class="kw">lambda</span> df: np.array(df[<span class="st">'mrate'</span>])<span class="op">+</span>np.random.randn(<span class="bu">len</span>(df[<span class="st">'mrate'</span>]))<span class="op">*</span><span class="fl">0.01</span>)</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>small <span class="op">=</span> big.groupby([<span class="st">"dataset"</span>,<span class="st">"mrate"</span>,<span class="st">"method"</span>]).agg({<span class="st">'mse'</span>:np.median}).reset_index().rename({<span class="st">'mse'</span>:<span class="st">'mse_median'</span>},axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>tidydata <span class="op">=</span> big.merge(small)</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="co">#---#</span></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> px.scatter(</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>    tidydata,</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>    y<span class="op">=</span><span class="st">'mse_median'</span>,</span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span><span class="st">'mrate'</span>,</span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>    opacity<span class="op">=</span><span class="fl">0.3</span>,</span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>    color<span class="op">=</span><span class="st">'method'</span>,</span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>    width<span class="op">=</span><span class="dv">700</span>,</span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>    height<span class="op">=</span><span class="dv">600</span>,</span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>    hover_data<span class="op">=</span><span class="st">'mrate'</span></span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a>fig.data[<span class="dv">0</span>][<span class="st">'mode'</span>]<span class="op">=</span><span class="st">'markers+lines'</span></span>
+<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a>fig.data[<span class="dv">0</span>][<span class="st">'marker'</span>][<span class="st">'size'</span>] <span class="op">=</span> <span class="dv">6</span></span>
+<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a>fig.data[<span class="dv">0</span>][<span class="st">'line'</span>][<span class="st">'width'</span>] <span class="op">=</span> <span class="fl">1.5</span></span>
+<span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a>fig.data[<span class="dv">0</span>][<span class="st">'line'</span>][<span class="st">'dash'</span>] <span class="op">=</span> <span class="st">'dashdot'</span></span>
+<span id="cb18-21"><a href="#cb18-21" aria-hidden="true" tabindex="-1"></a>fig.data[<span class="dv">1</span>][<span class="st">'mode'</span>]<span class="op">=</span><span class="st">'markers+lines'</span></span>
+<span id="cb18-22"><a href="#cb18-22" aria-hidden="true" tabindex="-1"></a>fig.data[<span class="dv">1</span>][<span class="st">'marker'</span>][<span class="st">'size'</span>] <span class="op">=</span> <span class="dv">6</span></span>
+<span id="cb18-23"><a href="#cb18-23" aria-hidden="true" tabindex="-1"></a>fig.data[<span class="dv">1</span>][<span class="st">'line'</span>][<span class="st">'width'</span>] <span class="op">=</span><span class="fl">1.5</span></span>
+<span id="cb18-24"><a href="#cb18-24" aria-hidden="true" tabindex="-1"></a>fig.data[<span class="dv">1</span>][<span class="st">'line'</span>][<span class="st">'dash'</span>] <span class="op">=</span> <span class="st">'dashdot'</span></span>
+<span id="cb18-25"><a href="#cb18-25" aria-hidden="true" tabindex="-1"></a>fig.data[<span class="dv">0</span>].marker.color<span class="op">=</span><span class="st">'#EF553B'</span></span>
+<span id="cb18-26"><a href="#cb18-26" aria-hidden="true" tabindex="-1"></a>fig.data[<span class="dv">1</span>].marker.color<span class="op">=</span><span class="st">'#636efa'</span></span>
+<span id="cb18-27"><a href="#cb18-27" aria-hidden="true" tabindex="-1"></a>box1 <span class="op">=</span> px.box(</span>
+<span id="cb18-28"><a href="#cb18-28" aria-hidden="true" tabindex="-1"></a>    tidydata.query(<span class="st">"method=='STGNN'"</span>),</span>
+<span id="cb18-29"><a href="#cb18-29" aria-hidden="true" tabindex="-1"></a>    y<span class="op">=</span><span class="st">'mse'</span>,</span>
+<span id="cb18-30"><a href="#cb18-30" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span><span class="st">'mrate'</span>,</span>
+<span id="cb18-31"><a href="#cb18-31" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb18-32"><a href="#cb18-32" aria-hidden="true" tabindex="-1"></a>box1.data[<span class="dv">0</span>][<span class="st">'opacity'</span>]<span class="op">=</span><span class="fl">0.5</span></span>
+<span id="cb18-33"><a href="#cb18-33" aria-hidden="true" tabindex="-1"></a>box1.data[<span class="dv">0</span>][<span class="st">'marker'</span>][<span class="st">'color'</span>]<span class="op">=</span><span class="st">'#EF553B'</span></span>
+<span id="cb18-34"><a href="#cb18-34" aria-hidden="true" tabindex="-1"></a>box2 <span class="op">=</span> px.box(</span>
+<span id="cb18-35"><a href="#cb18-35" aria-hidden="true" tabindex="-1"></a>    tidydata.query(<span class="st">"method=='IT-STGNN'"</span>),</span>
+<span id="cb18-36"><a href="#cb18-36" aria-hidden="true" tabindex="-1"></a>    y<span class="op">=</span><span class="st">'mse'</span>,</span>
+<span id="cb18-37"><a href="#cb18-37" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span><span class="st">'mrate'</span>,</span>
+<span id="cb18-38"><a href="#cb18-38" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb18-39"><a href="#cb18-39" aria-hidden="true" tabindex="-1"></a>box2.data[<span class="dv">0</span>][<span class="st">'opacity'</span>]<span class="op">=</span><span class="fl">0.5</span></span>
+<span id="cb18-40"><a href="#cb18-40" aria-hidden="true" tabindex="-1"></a>box2.data[<span class="dv">0</span>][<span class="st">'marker'</span>][<span class="st">'color'</span>]<span class="op">=</span><span class="st">'#636efa'</span></span>
+<span id="cb18-41"><a href="#cb18-41" aria-hidden="true" tabindex="-1"></a>fig.add_traces(box1.data)</span>
+<span id="cb18-42"><a href="#cb18-42" aria-hidden="true" tabindex="-1"></a>fig.add_traces(box2.data)</span>
+<span id="cb18-43"><a href="#cb18-43" aria-hidden="true" tabindex="-1"></a>fig.data[<span class="dv">0</span>][<span class="st">'showlegend'</span>] <span class="op">=</span><span class="va">True</span></span>
+<span id="cb18-44"><a href="#cb18-44" aria-hidden="true" tabindex="-1"></a>fig.data[<span class="dv">1</span>][<span class="st">'showlegend'</span>] <span class="op">=</span><span class="va">True</span></span>
+<span id="cb18-45"><a href="#cb18-45" aria-hidden="true" tabindex="-1"></a>fig.layout[<span class="st">'xaxis'</span>][<span class="st">'title'</span>][<span class="st">'text'</span>]<span class="op">=</span><span class="st">'Missing Rate'</span></span>
+<span id="cb18-46"><a href="#cb18-46" aria-hidden="true" tabindex="-1"></a>fig.layout[<span class="st">'yaxis'</span>][<span class="st">'title'</span>][<span class="st">'text'</span>]<span class="op">=</span><span class="st">'MSE'</span></span>
+<span id="cb18-47"><a href="#cb18-47" aria-hidden="true" tabindex="-1"></a>fig.layout[<span class="st">'legend'</span>][<span class="st">'title'</span>][<span class="st">'text'</span>]<span class="op">=</span><span class="st">""</span></span>
+<span id="cb18-48"><a href="#cb18-48" aria-hidden="true" tabindex="-1"></a>fig.layout[<span class="st">'title'</span>][<span class="st">'text'</span>]<span class="op">=</span><span class="st">'Chickenpox/GConvLSTM'</span></span>
+<span id="cb18-49"><a href="#cb18-49" aria-hidden="true" tabindex="-1"></a>fig.data[<span class="dv">0</span>].name <span class="op">=</span> <span class="st">'STGCN'</span></span>
+<span id="cb18-50"><a href="#cb18-50" aria-hidden="true" tabindex="-1"></a>fig.data[<span class="dv">1</span>].name <span class="op">=</span> <span class="st">'ITSTGCN'</span></span>
+<span id="cb18-51"><a href="#cb18-51" aria-hidden="true" tabindex="-1"></a>fig.update_layout(legend<span class="op">=</span><span class="bu">dict</span>(</span>
+<span id="cb18-52"><a href="#cb18-52" aria-hidden="true" tabindex="-1"></a>    yanchor<span class="op">=</span><span class="st">"top"</span>,</span>
+<span id="cb18-53"><a href="#cb18-53" aria-hidden="true" tabindex="-1"></a>    y<span class="op">=</span><span class="fl">0.96</span>,</span>
+<span id="cb18-54"><a href="#cb18-54" aria-hidden="true" tabindex="-1"></a>    xanchor<span class="op">=</span><span class="st">"left"</span>,</span>
+<span id="cb18-55"><a href="#cb18-55" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span><span class="fl">0.01</span></span>
+<span id="cb18-56"><a href="#cb18-56" aria-hidden="true" tabindex="-1"></a>))</span>
+<span id="cb18-57"><a href="#cb18-57" aria-hidden="true" tabindex="-1"></a>fig.update_layout(font<span class="op">=</span><span class="bu">dict</span>(size<span class="op">=</span><span class="dv">15</span>))</span>
+<span id="cb18-58"><a href="#cb18-58" aria-hidden="true" tabindex="-1"></a>fig</span></code></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>TypeError: unhashable type: 'numpy.ndarray'</code></pre>
+</div>
+</div>
+</section>
+<section id="시각화2-missingrate-부록" class="level1">
+<h1>시각화2: MissingRate (부록)</h1>
+<p><code>caption</code> : 이것은 시험 결과이며, x축은 missing rate를 나타내며, y축은 mse 값에 log를 취한 값을 나타낸다. figure의 행은 model을 나타내고, 열은 dataset을 나타낸다.</p>
+<p>experiment 1의 결과(figure 번호 언급)와 비슷하게 결측값 비율이 커질 수록 mse 값이 증가하지만, classic 이 proposed 보다 더 dramatic하게 go up 한다는 것을 알 수 있다.</p>
+<div id="18fa97a0-f497-464b-8333-5011055a9849" class="cell" data-tags="[]" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>tidydata <span class="op">=</span> df.query(<span class="st">"mtype!='block'"</span>).query(<span class="st">"method!='GNAR'"</span>).query(<span class="st">"dataset != 'fivenodes' and inter_method not in ('cubic','nearest')"</span>)<span class="op">\</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>.groupby([<span class="st">"method"</span>,<span class="st">"dataset"</span>,<span class="st">"mrate"</span>,<span class="st">"model"</span>]).agg({<span class="st">'mse'</span>:<span class="st">'mean'</span>}).reset_index()</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="co">#---#</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> px.line(</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>    tidydata,</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span><span class="st">'mrate'</span>,</span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>    y<span class="op">=</span><span class="st">'mse'</span>,</span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>    color<span class="op">=</span><span class="st">'method'</span>,</span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>    facet_row<span class="op">=</span><span class="st">'model'</span>,</span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>    facet_col<span class="op">=</span><span class="st">'dataset'</span>,</span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>    width<span class="op">=</span><span class="dv">1000</span>,</span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>    height<span class="op">=</span><span class="dv">1000</span>,</span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">90</span>):</span>
+<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> fig.data[i].name <span class="op">==</span> <span class="st">'STGNN'</span>:</span>
+<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a>        fig.data[i].name <span class="op">=</span> <span class="st">'STGCN'</span></span>
+<span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> fig.data[i].name <span class="op">==</span> <span class="st">'IT-STGNN'</span>:</span>
+<span id="cb20-19"><a href="#cb20-19" aria-hidden="true" tabindex="-1"></a>        fig.data[i].name <span class="op">=</span> <span class="st">'ITSTGCN'</span></span>
+<span id="cb20-20"><a href="#cb20-20" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> scatter <span class="kw">in</span> fig.data:</span>
+<span id="cb20-21"><a href="#cb20-21" aria-hidden="true" tabindex="-1"></a>    scatter[<span class="st">'mode'</span>] <span class="op">=</span> <span class="st">'lines+markers'</span></span>
+<span id="cb20-22"><a href="#cb20-22" aria-hidden="true" tabindex="-1"></a>    scatter[<span class="st">'line'</span>][<span class="st">'dash'</span>] <span class="op">=</span> <span class="st">'dashdot'</span></span>
+<span id="cb20-23"><a href="#cb20-23" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> annotation <span class="kw">in</span> fig.layout[<span class="st">'annotations'</span>]:</span>
+<span id="cb20-24"><a href="#cb20-24" aria-hidden="true" tabindex="-1"></a>    annotation[<span class="st">'text'</span>] <span class="op">=</span> annotation[<span class="st">'text'</span>].replace(<span class="st">'dataset='</span>,<span class="st">''</span>)</span>
+<span id="cb20-25"><a href="#cb20-25" aria-hidden="true" tabindex="-1"></a>    annotation[<span class="st">'text'</span>] <span class="op">=</span> annotation[<span class="st">'text'</span>].replace(<span class="st">'model='</span>,<span class="st">''</span>)</span>
+<span id="cb20-26"><a href="#cb20-26" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> k <span class="kw">in</span> [k <span class="cf">for</span> k <span class="kw">in</span> fig.layout <span class="cf">if</span> <span class="st">'xaxis'</span> <span class="kw">in</span> k]:</span>
+<span id="cb20-27"><a href="#cb20-27" aria-hidden="true" tabindex="-1"></a>    fig.layout[k][<span class="st">'title'</span>][<span class="st">'text'</span>] <span class="op">=</span> <span class="va">None</span> </span>
+<span id="cb20-28"><a href="#cb20-28" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> k <span class="kw">in</span> [k <span class="cf">for</span> k <span class="kw">in</span> fig.layout <span class="cf">if</span> <span class="st">'yaxis'</span> <span class="kw">in</span> k]:</span>
+<span id="cb20-29"><a href="#cb20-29" aria-hidden="true" tabindex="-1"></a>    fig.layout[k][<span class="st">'title'</span>][<span class="st">'text'</span>] <span class="op">=</span> <span class="va">None</span> </span>
+<span id="cb20-30"><a href="#cb20-30" aria-hidden="true" tabindex="-1"></a>fig.update_yaxes(showticklabels<span class="op">=</span><span class="va">True</span>,matches<span class="op">=</span><span class="va">None</span>)</span>
+<span id="cb20-31"><a href="#cb20-31" aria-hidden="true" tabindex="-1"></a>fig.update_xaxes(showticklabels<span class="op">=</span><span class="va">True</span>,matches<span class="op">=</span><span class="va">None</span>)</span>
+<span id="cb20-32"><a href="#cb20-32" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>):</span>
+<span id="cb20-33"><a href="#cb20-33" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> fig.layout.annotations[i].text <span class="op">==</span> <span class="st">'fivenodes'</span>:</span>
+<span id="cb20-34"><a href="#cb20-34" aria-hidden="true" tabindex="-1"></a>        fig.layout.annotations[i].text <span class="op">=</span> <span class="st">'FiveVTS'</span></span>
+<span id="cb20-35"><a href="#cb20-35" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> fig.layout.annotations[i].text <span class="op">==</span> <span class="st">'chickenpox'</span>:</span>
+<span id="cb20-36"><a href="#cb20-36" aria-hidden="true" tabindex="-1"></a>        fig.layout.annotations[i].text <span class="op">=</span> <span class="st">'Chickenpox'</span></span>
+<span id="cb20-37"><a href="#cb20-37" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> fig.layout.annotations[i].text <span class="op">==</span> <span class="st">'pedalme'</span>:</span>
+<span id="cb20-38"><a href="#cb20-38" aria-hidden="true" tabindex="-1"></a>        fig.layout.annotations[i].text <span class="op">=</span> <span class="st">'Pedalme'</span></span>
+<span id="cb20-39"><a href="#cb20-39" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> fig.layout.annotations[i].text <span class="op">==</span> <span class="st">'wikimath'</span>:</span>
+<span id="cb20-40"><a href="#cb20-40" aria-hidden="true" tabindex="-1"></a>        fig.layout.annotations[i].text <span class="op">=</span> <span class="st">'Wikimath'</span></span>
+<span id="cb20-41"><a href="#cb20-41" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> fig.layout.annotations[i].text <span class="op">==</span> <span class="st">'windmillsmall'</span>:</span>
+<span id="cb20-42"><a href="#cb20-42" aria-hidden="true" tabindex="-1"></a>        fig.layout.annotations[i].text <span class="op">=</span> <span class="st">'Windmillsmall'</span></span>
+<span id="cb20-43"><a href="#cb20-43" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> fig.layout.annotations[i].text <span class="op">==</span> <span class="st">'monte'</span>:</span>
+<span id="cb20-44"><a href="#cb20-44" aria-hidden="true" tabindex="-1"></a>        fig.layout.annotations[i].text <span class="op">=</span> <span class="st">'MontevideoBus'</span></span>
+<span id="cb20-45"><a href="#cb20-45" aria-hidden="true" tabindex="-1"></a>fig.layout.legend.title.text <span class="op">=</span> <span class="st">''</span>        </span>
+<span id="cb20-46"><a href="#cb20-46" aria-hidden="true" tabindex="-1"></a>fig.update_annotations(font<span class="op">=</span><span class="bu">dict</span>(size<span class="op">=</span><span class="dv">14</span>))</span>
+<span id="cb20-47"><a href="#cb20-47" aria-hidden="true" tabindex="-1"></a>fig.update_layout(legend <span class="op">=</span> <span class="bu">dict</span>(font <span class="op">=</span> <span class="bu">dict</span>(size <span class="op">=</span> <span class="dv">14</span>)))</span>
+<span id="cb20-48"><a href="#cb20-48" aria-hidden="true" tabindex="-1"></a>fig.update_layout(legend_traceorder<span class="op">=</span><span class="st">"reversed"</span>)</span></code></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>NameError: name 'px' is not defined</code></pre>
+</div>
+</div>
+</section>
+<section id="시각화3" class="level1">
+<h1>시각화3</h1>
+<p><code>caption</code> :</p>
+<section id="시각화3-1" class="level2">
+<h2 class="anchored" data-anchor-id="시각화3-1">시각화3-1</h2>
+<blockquote class="blockquote">
+<p>V = 노드의 수, T = 데이터 수로 봤을때, Ratio = T/V를 계산하여 x축에 놓고, classic method와 proposed method 의 mse 차이를 계산하여 y축에 놓았다.</p>
+</blockquote>
+<div id="4d801771-2ff1-47e9-a3a6-f76dee3c0abf" class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>tidydata <span class="op">=</span> df.query(<span class="st">'mtype != "block"'</span>).query(<span class="st">'dataset != "fivenodes"'</span>)<span class="op">\</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>.groupby([<span class="st">"method"</span>,<span class="st">"dataset"</span>,<span class="st">"node"</span>,<span class="st">"time"</span>]).agg({<span class="st">'mse'</span>:<span class="st">'mean'</span>}).reset_index()<span class="op">\</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>.assign(ratio <span class="op">=</span> <span class="kw">lambda</span> df: df[<span class="st">'time'</span>]<span class="op">/</span>df[<span class="st">'node'</span>])<span class="op">\</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>.pivot_table(index<span class="op">=</span>[<span class="st">'dataset'</span>,<span class="st">'ratio'</span>] ,columns<span class="op">=</span>[<span class="st">'method'</span>],values<span class="op">=</span><span class="st">'mse'</span>)<span class="op">\</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>.assign(mse_diff <span class="op">=</span> <span class="kw">lambda</span> df: df[<span class="st">'STGNN'</span>]<span class="op">-</span> df[<span class="st">'IT-STGNN'</span>]).loc[:,<span class="st">'mse_diff'</span>]<span class="op">\</span></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>.reset_index()</span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>tidydata</span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> px.scatter(</span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>    tidydata,</span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span><span class="st">'ratio'</span>,</span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>    log_x<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>    y<span class="op">=</span><span class="st">'mse_diff'</span>,</span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a>    text<span class="op">=</span><span class="st">'dataset'</span>,</span>
+<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a>    width<span class="op">=</span><span class="dv">900</span>,</span>
+<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a>    height<span class="op">=</span><span class="dv">600</span></span>
+<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a>fig.data[<span class="dv">0</span>][<span class="st">'textposition'</span>] <span class="op">=</span> [<span class="st">'bottom right'</span>] <span class="op">+</span> [<span class="st">'top right'</span>] <span class="op">+</span> [<span class="st">'top right'</span>] <span class="op">+</span> [<span class="st">'bottom right'</span>] <span class="op">+</span> [<span class="st">'top left'</span>]</span>
+<span id="cb22-18"><a href="#cb22-18" aria-hidden="true" tabindex="-1"></a>fig.data[<span class="dv">0</span>][<span class="st">'marker'</span>][<span class="st">'size'</span>] <span class="op">=</span> <span class="dv">15</span></span>
+<span id="cb22-19"><a href="#cb22-19" aria-hidden="true" tabindex="-1"></a>fig.data[<span class="dv">0</span>][<span class="st">'marker'</span>][<span class="st">'color'</span>] <span class="op">=</span> <span class="st">'blue'</span></span>
+<span id="cb22-20"><a href="#cb22-20" aria-hidden="true" tabindex="-1"></a>fig.data[<span class="dv">0</span>].text <span class="op">=</span> [<span class="st">'Chickenpox'</span>, <span class="st">'MontevideoBus'</span>, <span class="st">'Pedalme'</span>, <span class="st">'Wikimath'</span>, <span class="st">'Windmillsmall'</span>]</span>
+<span id="cb22-21"><a href="#cb22-21" aria-hidden="true" tabindex="-1"></a>fig.layout[<span class="st">'xaxis'</span>][<span class="st">'title'</span>][<span class="st">'text'</span>]<span class="op">=</span><span class="st">'Ratio((Time length)/(The number of Nodes))'</span></span>
+<span id="cb22-22"><a href="#cb22-22" aria-hidden="true" tabindex="-1"></a>fig.layout[<span class="st">'yaxis'</span>][<span class="st">'title'</span>][<span class="st">'text'</span>]<span class="op">=</span><span class="st">'MSE difference'</span></span>
+<span id="cb22-23"><a href="#cb22-23" aria-hidden="true" tabindex="-1"></a>fig.update_layout(font<span class="op">=</span><span class="bu">dict</span>(size<span class="op">=</span><span class="dv">17</span>))</span>
+<span id="cb22-24"><a href="#cb22-24" aria-hidden="true" tabindex="-1"></a><span class="co"># fig.update_xaxes(showticklabels=False)</span></span>
+<span id="cb22-25"><a href="#cb22-25" aria-hidden="true" tabindex="-1"></a><span class="co"># fig.update_yaxes(showticklabels=False)</span></span>
+<span id="cb22-26"><a href="#cb22-26" aria-hidden="true" tabindex="-1"></a>fig.update_xaxes(showline<span class="op">=</span><span class="va">True</span>, linewidth<span class="op">=</span><span class="dv">2</span>, linecolor<span class="op">=</span><span class="st">'black'</span>, mirror<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb22-27"><a href="#cb22-27" aria-hidden="true" tabindex="-1"></a>fig.update_yaxes(showline<span class="op">=</span><span class="va">True</span>, linewidth<span class="op">=</span><span class="dv">2</span>, linecolor<span class="op">=</span><span class="st">'black'</span>, mirror<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb22-28"><a href="#cb22-28" aria-hidden="true" tabindex="-1"></a>fig</span></code></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>NameError: name 'px' is not defined</code></pre>
+</div>
+</div>
+</section>
+<section id="시각화3-2" class="level2">
+<h2 class="anchored" data-anchor-id="시각화3-2">시각화3-2</h2>
+<blockquote class="blockquote">
+<p>y축은 mse값을 나타내고, missing rate에 상관없이 randomly missing rate을 다르게 한 실험 결과들의 데이터셋 별 모델 별 mse의 순위를 나타내는 figure이다.</p>
+</blockquote>
+<div id="8795adcc-9bbf-48db-8feb-248bf258151d" class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> func(x):</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="st">'IT-STGCN'</span> <span class="kw">in</span> x:</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">'IT-STGNN'</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> <span class="st">'GNAR'</span> <span class="kw">in</span> x:</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">'GNAR'</span></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>: </span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">'STGNN'</span></span></code></pre></div>
+</div>
+<div id="b663c99a-a5ab-496a-84cf-d5fc59180192" class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>tidydata <span class="op">=</span> df2.query(<span class="st">'mtype != "block"'</span>).query(<span class="st">'method!="GNAR"'</span>).groupby([<span class="st">"method"</span>,<span class="st">"dataset"</span>,<span class="st">"mrate"</span>,<span class="st">"model"</span>]).agg({<span class="st">'mse'</span>:<span class="st">'mean'</span>}).reset_index()<span class="op">\</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>.pivot_table(index<span class="op">=</span>[<span class="st">'model'</span>,<span class="st">'method'</span>],columns<span class="op">=</span>[<span class="st">'dataset'</span>],values<span class="op">=</span><span class="st">'mse'</span>).stack().reset_index().rename({<span class="dv">0</span>:<span class="st">'mse'</span>},axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>tidydata <span class="op">=</span> pd.concat([df.sort_values(<span class="st">'mse'</span>).reset_index(drop<span class="op">=</span><span class="va">True</span>).reset_index() <span class="cf">for</span> _,df <span class="kw">in</span> tidydata.groupby([<span class="st">"dataset"</span>])])</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="co">#---#</span></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> px.bar(</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>    tidydata,</span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span><span class="st">'index'</span>,</span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>    y<span class="op">=</span><span class="st">'mse'</span>,</span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>    color<span class="op">=</span><span class="st">'method'</span>,</span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>    facet_col<span class="op">=</span><span class="st">'dataset'</span>,</span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>    facet_col_wrap<span class="op">=</span><span class="dv">2</span>,</span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a>    text<span class="op">=</span><span class="st">'model'</span>,</span>
+<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a>    height<span class="op">=</span><span class="dv">900</span></span>
+<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">12</span>):</span>
+<span id="cb25-16"><a href="#cb25-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> fig.data[i].name <span class="op">==</span> <span class="st">'STGNN'</span>:</span>
+<span id="cb25-17"><a href="#cb25-17" aria-hidden="true" tabindex="-1"></a>        fig.data[i].name <span class="op">=</span> <span class="st">'STGCN'</span></span>
+<span id="cb25-18"><a href="#cb25-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> fig.data[i].name <span class="op">==</span> <span class="st">'IT-STGNN'</span>:</span>
+<span id="cb25-19"><a href="#cb25-19" aria-hidden="true" tabindex="-1"></a>        fig.data[i].name <span class="op">=</span> <span class="st">'ITSTGCN'</span></span>
+<span id="cb25-20"><a href="#cb25-20" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> annotation <span class="kw">in</span> fig.layout[<span class="st">'annotations'</span>]:</span>
+<span id="cb25-21"><a href="#cb25-21" aria-hidden="true" tabindex="-1"></a>    annotation[<span class="st">'text'</span>] <span class="op">=</span> annotation[<span class="st">'text'</span>].replace(<span class="st">'dataset='</span>,<span class="st">''</span>)</span>
+<span id="cb25-22"><a href="#cb25-22" aria-hidden="true" tabindex="-1"></a>    annotation[<span class="st">'text'</span>] <span class="op">=</span> annotation[<span class="st">'text'</span>].replace(<span class="st">'model='</span>,<span class="st">''</span>)</span>
+<span id="cb25-23"><a href="#cb25-23" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">6</span>):</span>
+<span id="cb25-24"><a href="#cb25-24" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> fig.layout.annotations[i].text <span class="op">==</span> <span class="st">'fivenodes'</span>:</span>
+<span id="cb25-25"><a href="#cb25-25" aria-hidden="true" tabindex="-1"></a>        fig.layout.annotations[i].text <span class="op">=</span> <span class="st">'FiveVTS'</span></span>
+<span id="cb25-26"><a href="#cb25-26" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> fig.layout.annotations[i].text <span class="op">==</span> <span class="st">'chickenpox'</span>:</span>
+<span id="cb25-27"><a href="#cb25-27" aria-hidden="true" tabindex="-1"></a>        fig.layout.annotations[i].text <span class="op">=</span> <span class="st">'Chickenpox'</span></span>
+<span id="cb25-28"><a href="#cb25-28" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> fig.layout.annotations[i].text <span class="op">==</span> <span class="st">'pedalme'</span>:</span>
+<span id="cb25-29"><a href="#cb25-29" aria-hidden="true" tabindex="-1"></a>        fig.layout.annotations[i].text <span class="op">=</span> <span class="st">'Pedalme'</span></span>
+<span id="cb25-30"><a href="#cb25-30" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> fig.layout.annotations[i].text <span class="op">==</span> <span class="st">'wikimath'</span>:</span>
+<span id="cb25-31"><a href="#cb25-31" aria-hidden="true" tabindex="-1"></a>        fig.layout.annotations[i].text <span class="op">=</span> <span class="st">'Wikimath'</span></span>
+<span id="cb25-32"><a href="#cb25-32" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> fig.layout.annotations[i].text <span class="op">==</span> <span class="st">'windmillsmall'</span>:</span>
+<span id="cb25-33"><a href="#cb25-33" aria-hidden="true" tabindex="-1"></a>        fig.layout.annotations[i].text <span class="op">=</span> <span class="st">'Windmillsmall'</span></span>
+<span id="cb25-34"><a href="#cb25-34" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> fig.layout.annotations[i].text <span class="op">==</span> <span class="st">'monte'</span>:</span>
+<span id="cb25-35"><a href="#cb25-35" aria-hidden="true" tabindex="-1"></a>        fig.layout.annotations[i].text <span class="op">=</span> <span class="st">'MontevideoBus'</span></span>
+<span id="cb25-36"><a href="#cb25-36" aria-hidden="true" tabindex="-1"></a>fig.layout.xaxis.title.text<span class="op">=</span><span class="st">''</span></span>
+<span id="cb25-37"><a href="#cb25-37" aria-hidden="true" tabindex="-1"></a>fig.layout.xaxis2.title.text<span class="op">=</span><span class="st">''</span></span>
+<span id="cb25-38"><a href="#cb25-38" aria-hidden="true" tabindex="-1"></a>fig.layout.yaxis.title.text<span class="op">=</span><span class="st">''</span></span>
+<span id="cb25-39"><a href="#cb25-39" aria-hidden="true" tabindex="-1"></a>fig.layout.yaxis3.title.text<span class="op">=</span><span class="st">'Missing Rate'</span></span>
+<span id="cb25-40"><a href="#cb25-40" aria-hidden="true" tabindex="-1"></a>fig.layout.yaxis5.title.text<span class="op">=</span><span class="st">''</span></span>
+<span id="cb25-41"><a href="#cb25-41" aria-hidden="true" tabindex="-1"></a>fig.update_layout(font<span class="op">=</span><span class="bu">dict</span>(size<span class="op">=</span><span class="dv">17</span>))</span>
+<span id="cb25-42"><a href="#cb25-42" aria-hidden="true" tabindex="-1"></a>fig.update_annotations(font<span class="op">=</span><span class="bu">dict</span>(size<span class="op">=</span><span class="dv">17</span>))</span>
+<span id="cb25-43"><a href="#cb25-43" aria-hidden="true" tabindex="-1"></a>fig.layout.legend.title.text <span class="op">=</span> <span class="st">''</span>        </span>
+<span id="cb25-44"><a href="#cb25-44" aria-hidden="true" tabindex="-1"></a>fig</span></code></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>NameError: name 'px' is not defined</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="시각화4" class="level1">
+<h1>시각화4</h1>
+<div id="6cb00f0e-f317-4804-8b61-3963c764cd52" class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>tidydata <span class="op">=</span> df.assign(mtype <span class="op">=</span> df[<span class="st">'mtype'</span>].fillna(<span class="st">"rand"</span>))<span class="op">\</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>.query(<span class="st">'method != "GNAR" and inter_method not in ["nearest","cubic"]'</span>)<span class="op">\</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>.groupby([<span class="st">"method"</span>,<span class="st">"dataset"</span>,<span class="st">"mtype"</span>,<span class="st">"mrate"</span>]).agg({<span class="st">'mse'</span>:<span class="st">'mean'</span>}).reset_index()<span class="op">\</span></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>.sort_values(<span class="st">'mrate'</span>)<span class="op">\</span></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>.assign(mrate <span class="op">=</span> <span class="kw">lambda</span> df: df[<span class="st">'mrate'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: <span class="ss">f'</span><span class="sc">{</span>x<span class="sc">:.3f}</span><span class="ss">'</span>))</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a><span class="co">#---#</span></span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> px.bar(</span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>    tidydata,</span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span><span class="st">'mrate'</span>,</span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>    y<span class="op">=</span><span class="st">'mse'</span>,</span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a>    color<span class="op">=</span><span class="st">'method'</span>,</span>
+<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a>    facet_col<span class="op">=</span><span class="st">'dataset'</span>,</span>
+<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a>    facet_col_wrap<span class="op">=</span><span class="dv">2</span>,    </span>
+<span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a>    width<span class="op">=</span><span class="dv">1200</span>,</span>
+<span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a>    height<span class="op">=</span><span class="dv">800</span>,</span>
+<span id="cb27-16"><a href="#cb27-16" aria-hidden="true" tabindex="-1"></a>    barmode<span class="op">=</span><span class="st">'group'</span>,</span>
+<span id="cb27-17"><a href="#cb27-17" aria-hidden="true" tabindex="-1"></a>    hover_data<span class="op">=</span><span class="st">'mtype'</span>,</span>
+<span id="cb27-18"><a href="#cb27-18" aria-hidden="true" tabindex="-1"></a>    opacity<span class="op">=</span><span class="fl">0.2</span></span>
+<span id="cb27-19"><a href="#cb27-19" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb27-20"><a href="#cb27-20" aria-hidden="true" tabindex="-1"></a>fig.update_yaxes(showticklabels<span class="op">=</span><span class="va">True</span>,matches<span class="op">=</span><span class="va">None</span>)</span>
+<span id="cb27-21"><a href="#cb27-21" aria-hidden="true" tabindex="-1"></a>fig.update_xaxes(showticklabels<span class="op">=</span><span class="va">True</span>,matches<span class="op">=</span><span class="va">None</span>) </span>
+<span id="cb27-22"><a href="#cb27-22" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> trace <span class="kw">in</span> fig.data:</span>
+<span id="cb27-23"><a href="#cb27-23" aria-hidden="true" tabindex="-1"></a>    trace[<span class="st">'marker'</span>][<span class="st">'opacity'</span>]<span class="op">=</span>[<span class="fl">0.2</span>, <span class="dv">1</span>, <span class="fl">0.2</span>, <span class="fl">0.2</span>, <span class="fl">0.2</span>, <span class="fl">0.2</span>, <span class="fl">0.2</span>]</span>
+<span id="cb27-24"><a href="#cb27-24" aria-hidden="true" tabindex="-1"></a>fig.data[<span class="dv">7</span>].marker.opacity<span class="op">=</span>[<span class="fl">0.2</span>, <span class="fl">0.2</span>, <span class="fl">0.2</span>, <span class="dv">1</span>, <span class="fl">0.2</span>, <span class="fl">0.2</span>, <span class="fl">0.2</span>]</span>
+<span id="cb27-25"><a href="#cb27-25" aria-hidden="true" tabindex="-1"></a>fig.data[<span class="dv">1</span>].marker.opacity<span class="op">=</span>[<span class="fl">0.2</span>, <span class="fl">0.2</span>, <span class="fl">0.2</span>, <span class="dv">1</span>, <span class="fl">0.2</span>, <span class="fl">0.2</span>, <span class="fl">0.2</span>]</span>
+<span id="cb27-26"><a href="#cb27-26" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">12</span>):</span>
+<span id="cb27-27"><a href="#cb27-27" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> fig.data[i].name <span class="op">==</span> <span class="st">'STGNN'</span>:</span>
+<span id="cb27-28"><a href="#cb27-28" aria-hidden="true" tabindex="-1"></a>        fig.data[i].name <span class="op">=</span> <span class="st">'STGCN'</span></span>
+<span id="cb27-29"><a href="#cb27-29" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> fig.data[i].name <span class="op">==</span> <span class="st">'IT-STGNN'</span>:</span>
+<span id="cb27-30"><a href="#cb27-30" aria-hidden="true" tabindex="-1"></a>        fig.data[i].name <span class="op">=</span> <span class="st">'ITSTGCN'</span></span>
+<span id="cb27-31"><a href="#cb27-31" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> annotation <span class="kw">in</span> fig.layout[<span class="st">'annotations'</span>]:</span>
+<span id="cb27-32"><a href="#cb27-32" aria-hidden="true" tabindex="-1"></a>    annotation[<span class="st">'text'</span>] <span class="op">=</span> annotation[<span class="st">'text'</span>].replace(<span class="st">'dataset='</span>,<span class="st">''</span>)</span>
+<span id="cb27-33"><a href="#cb27-33" aria-hidden="true" tabindex="-1"></a>    annotation[<span class="st">'text'</span>] <span class="op">=</span> annotation[<span class="st">'text'</span>].replace(<span class="st">'model='</span>,<span class="st">''</span>)</span>
+<span id="cb27-34"><a href="#cb27-34" aria-hidden="true" tabindex="-1"></a>fig.update_layout(font<span class="op">=</span><span class="bu">dict</span>(size<span class="op">=</span><span class="dv">15</span>))</span>
+<span id="cb27-35"><a href="#cb27-35" aria-hidden="true" tabindex="-1"></a>fig.update_annotations(font<span class="op">=</span><span class="bu">dict</span>(size<span class="op">=</span><span class="dv">16</span>))</span>
+<span id="cb27-36"><a href="#cb27-36" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">6</span>):</span>
+<span id="cb27-37"><a href="#cb27-37" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> fig.layout.annotations[i].text <span class="op">==</span> <span class="st">'fivenodes'</span>:</span>
+<span id="cb27-38"><a href="#cb27-38" aria-hidden="true" tabindex="-1"></a>        fig.layout.annotations[i].text <span class="op">=</span> <span class="st">'FiveVTS'</span></span>
+<span id="cb27-39"><a href="#cb27-39" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> fig.layout.annotations[i].text <span class="op">==</span> <span class="st">'chickenpox'</span>:</span>
+<span id="cb27-40"><a href="#cb27-40" aria-hidden="true" tabindex="-1"></a>        fig.layout.annotations[i].text <span class="op">=</span> <span class="st">'Chickenpox'</span></span>
+<span id="cb27-41"><a href="#cb27-41" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> fig.layout.annotations[i].text <span class="op">==</span> <span class="st">'pedalme'</span>:</span>
+<span id="cb27-42"><a href="#cb27-42" aria-hidden="true" tabindex="-1"></a>        fig.layout.annotations[i].text <span class="op">=</span> <span class="st">'Pedalme'</span></span>
+<span id="cb27-43"><a href="#cb27-43" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> fig.layout.annotations[i].text <span class="op">==</span> <span class="st">'wikimath'</span>:</span>
+<span id="cb27-44"><a href="#cb27-44" aria-hidden="true" tabindex="-1"></a>        fig.layout.annotations[i].text <span class="op">=</span> <span class="st">'Wikimath'</span></span>
+<span id="cb27-45"><a href="#cb27-45" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> fig.layout.annotations[i].text <span class="op">==</span> <span class="st">'windmillsmall'</span>:</span>
+<span id="cb27-46"><a href="#cb27-46" aria-hidden="true" tabindex="-1"></a>        fig.layout.annotations[i].text <span class="op">=</span> <span class="st">'Windmillsmall'</span></span>
+<span id="cb27-47"><a href="#cb27-47" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> fig.layout.annotations[i].text <span class="op">==</span> <span class="st">'monte'</span>:</span>
+<span id="cb27-48"><a href="#cb27-48" aria-hidden="true" tabindex="-1"></a>        fig.layout.annotations[i].text <span class="op">=</span> <span class="st">'MontevideoBus'</span></span>
+<span id="cb27-49"><a href="#cb27-49" aria-hidden="true" tabindex="-1"></a>fig.layout.yaxis.title.text<span class="op">=</span><span class="st">''</span></span>
+<span id="cb27-50"><a href="#cb27-50" aria-hidden="true" tabindex="-1"></a>fig.layout.yaxis3.title.text<span class="op">=</span><span class="st">'Missing Rate'</span></span>
+<span id="cb27-51"><a href="#cb27-51" aria-hidden="true" tabindex="-1"></a>fig.layout.yaxis5.title.text<span class="op">=</span><span class="st">''</span></span>
+<span id="cb27-52"><a href="#cb27-52" aria-hidden="true" tabindex="-1"></a>fig.layout.legend.title.text <span class="op">=</span> <span class="st">''</span>        </span>
+<span id="cb27-53"><a href="#cb27-53" aria-hidden="true" tabindex="-1"></a>fig.layout.xaxis.title.text<span class="op">=</span><span class="st">''</span></span>
+<span id="cb27-54"><a href="#cb27-54" aria-hidden="true" tabindex="-1"></a>fig.layout.xaxis2.title.text<span class="op">=</span><span class="st">''</span></span>
+<span id="cb27-55"><a href="#cb27-55" aria-hidden="true" tabindex="-1"></a>fig</span></code></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>NameError: name 'px' is not defined</code></pre>
+</div>
+</div>
+</section>
+<section id="시각화5본문" class="level1">
+<h1>시각화5(본문)</h1>
+<blockquote class="blockquote">
+<p>dataset은 chickenpox이고, interpolation method를 linear, nearest, cubic으로 주었을때 각각의 결과를 model 구분없이 box plot으로 나타내었다. linear 가 다른 방법들에 비해 error 값이 작게 나온 것을 확인하였기에 우리 paper의 experiment에서도 linear를 중심으로 사용하였다.</p>
+</blockquote>
+<div id="ca899dc6-a20f-424e-8ca0-596b80234f1e" class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>tidydata <span class="op">=</span> pd.concat([df2.query(<span class="st">"dataset=='chickenpox'"</span>).groupby([<span class="st">"method"</span>,<span class="st">"dataset"</span>,<span class="st">"mrate"</span>,<span class="st">"model"</span>]).agg({<span class="st">'mse'</span>:<span class="st">'mean'</span>}).reset_index()<span class="op">\</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>        .pivot_table(index<span class="op">=</span>[<span class="st">'model'</span>,<span class="st">'method'</span>],columns<span class="op">=</span>[<span class="st">'dataset'</span>],values<span class="op">=</span><span class="st">'mse'</span>).reset_index().rename({<span class="st">'chickenpox'</span>:<span class="st">'mse'</span>},axis<span class="op">=</span><span class="dv">1</span>).assign(inter_method<span class="op">=</span><span class="st">'linear'</span>),</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>           pd.read_csv(<span class="st">'../Data/chicken_inter_final.csv'</span>).query(<span class="st">"inter_method!='cubic'"</span>).groupby([<span class="st">"method"</span>,<span class="st">"dataset"</span>,<span class="st">"mrate"</span>,<span class="st">"model"</span>]).agg({<span class="st">'mse'</span>:<span class="st">'mean'</span>}).reset_index()<span class="op">\</span></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>        .pivot_table(index<span class="op">=</span>[<span class="st">'model'</span>,<span class="st">'method'</span>],columns<span class="op">=</span>[<span class="st">'dataset'</span>],values<span class="op">=</span><span class="st">'mse'</span>).reset_index().rename({<span class="st">'chickenpox'</span>:<span class="st">'mse'</span>},axis<span class="op">=</span><span class="dv">1</span>).assign(inter_method<span class="op">=</span><span class="st">'nearest'</span>)<span class="op">\</span></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>.assign(method <span class="op">=</span> <span class="kw">lambda</span> df: df[<span class="st">'method'</span>].<span class="bu">map</span>({<span class="st">'STGCN'</span>:<span class="st">'STGNN'</span>,<span class="st">'IT-STGCN'</span>:<span class="st">'IT-STGNN'</span>,<span class="st">'GNAR'</span>:<span class="st">'GNAR'</span>})),</span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>        pd.read_csv(<span class="st">'../Data/chicken_inter_final.csv'</span>).query(<span class="st">"inter_method=='cubic'"</span>).groupby([<span class="st">"method"</span>,<span class="st">"dataset"</span>,<span class="st">"mrate"</span>,<span class="st">"model"</span>]).agg({<span class="st">'mse'</span>:<span class="st">'mean'</span>}).reset_index()<span class="op">\</span></span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>        .pivot_table(index<span class="op">=</span>[<span class="st">'model'</span>,<span class="st">'method'</span>],columns<span class="op">=</span>[<span class="st">'dataset'</span>],values<span class="op">=</span><span class="st">'mse'</span>).reset_index().rename({<span class="st">'chickenpox'</span>:<span class="st">'mse'</span>},axis<span class="op">=</span><span class="dv">1</span>).assign(inter_method<span class="op">=</span><span class="st">'cubic'</span>)<span class="op">\</span></span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>.assign(method <span class="op">=</span> <span class="kw">lambda</span> df: df[<span class="st">'method'</span>].<span class="bu">map</span>({<span class="st">'STGCN'</span>:<span class="st">'STGNN'</span>,<span class="st">'IT-STGCN'</span>:<span class="st">'IT-STGNN'</span>,<span class="st">'GNAR'</span>:<span class="st">'GNAR'</span>}))</span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a>          ])</span>
+<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> px.box(tidydata,</span>
+<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a>            x<span class="op">=</span><span class="st">'inter_method'</span>,</span>
+<span id="cb29-12"><a href="#cb29-12" aria-hidden="true" tabindex="-1"></a>            y<span class="op">=</span><span class="st">'mse'</span>,</span>
+<span id="cb29-13"><a href="#cb29-13" aria-hidden="true" tabindex="-1"></a>            log_y<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb29-14"><a href="#cb29-14" aria-hidden="true" tabindex="-1"></a>            color<span class="op">=</span><span class="st">'method'</span>,</span>
+<span id="cb29-15"><a href="#cb29-15" aria-hidden="true" tabindex="-1"></a>            width<span class="op">=</span><span class="dv">1500</span>,</span>
+<span id="cb29-16"><a href="#cb29-16" aria-hidden="true" tabindex="-1"></a>            height<span class="op">=</span><span class="dv">500</span>)</span>
+<span id="cb29-17"><a href="#cb29-17" aria-hidden="true" tabindex="-1"></a>fig</span></code></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>NameError: name 'px' is not defined</code></pre>
+</div>
+</div>
+<div id="d8689e38-c79f-42b4-9fda-c2ffedf8caf5" class="cell" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>tidydata.groupby([<span class="st">'inter_method'</span>,<span class="st">'method'</span>]).agg({<span class="st">'mse'</span>:np.mean}).reset_index().<span class="bu">round</span>(<span class="dv">3</span>)</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="21">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">dataset</th>
+<th data-quarto-table-cell-role="th">inter_method</th>
+<th data-quarto-table-cell-role="th">method</th>
+<th data-quarto-table-cell-role="th">mse</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>cubic</td>
+<td>IT-STGNN</td>
+<td>1.923</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>cubic</td>
+<td>STGNN</td>
+<td>3.300</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>linear</td>
+<td>IT-STGNN</td>
+<td>1.040</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>linear</td>
+<td>STGNN</td>
+<td>1.374</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>nearest</td>
+<td>IT-STGNN</td>
+<td>1.331</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">5</td>
+<td>nearest</td>
+<td>STGNN</td>
+<td>1.903</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div id="29b3ec3f-b502-45cd-912a-ce3a8e01122d" class="cell" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>tidydata.groupby([<span class="st">'inter_method'</span>,<span class="st">'method'</span>]).agg({<span class="st">'mse'</span>:np.std}).reset_index().<span class="bu">round</span>(<span class="dv">2</span>)</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="22">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">dataset</th>
+<th data-quarto-table-cell-role="th">inter_method</th>
+<th data-quarto-table-cell-role="th">method</th>
+<th data-quarto-table-cell-role="th">mse</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>cubic</td>
+<td>IT-STGNN</td>
+<td>0.56</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>cubic</td>
+<td>STGNN</td>
+<td>2.49</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>linear</td>
+<td>IT-STGNN</td>
+<td>0.04</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>linear</td>
+<td>STGNN</td>
+<td>0.22</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>nearest</td>
+<td>IT-STGNN</td>
+<td>0.14</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">5</td>
+<td>nearest</td>
+<td>STGNN</td>
+<td>0.51</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: center;"></th>
+<th style="text-align: center;">STGNN</th>
+<th style="text-align: center;">IT-STGNN</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Cubic</td>
+<td style="text-align: center;"><span class="math inline">\(3.300 \pm 2.49\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(1.923 \pm 0.56\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Linear</td>
+<td style="text-align: center;"><span class="math inline">\(1.374 \pm 0.22\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(1.040 \pm 0.04\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Nearest</td>
+<td style="text-align: center;"><span class="math inline">\(1.903 \pm 0.51\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(1.331 \pm 0.14\)</span></td>
+</tr>
+</tbody>
+</table>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      return note.innerHTML;
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
