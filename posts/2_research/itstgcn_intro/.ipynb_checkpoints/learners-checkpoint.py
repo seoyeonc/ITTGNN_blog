@@ -47,13 +47,14 @@ def trim(f):
 def update_from_freq_domain(signal, missing_index):
     signal = np.array(signal)
     T,N = signal.shape 
-    signal_trimed = trim(signal)
+    signal_trimed,signalbar,signalbar_threshed = trim(signal)
     for i in range(N):
         try: 
             signal[missing_index[i],i] = signal_trimed[missing_index[i],i]
         except: 
             pass 
-    return signal
+    return signal, signal_trimed,signalbar,signalbar_threshed
+
 
 class RecurrentGCN(torch.nn.Module):
     def __init__(self, node_features, filters):
